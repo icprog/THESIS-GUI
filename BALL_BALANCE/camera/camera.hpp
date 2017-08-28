@@ -6,7 +6,6 @@
 #include <sstream>
 #include <iostream>
 
-#include <opencv2/core/core.hpp>
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
@@ -20,12 +19,17 @@ public:
 	void setSize(int width, int height);
     void getFrame();
 	void detectBall();
-	void showCamera();
+	void showCamera(int id);
 	int getX();
     int getY();
 	void createTrackbars();
 
 	void setHSVParam(int lowH, int highH, int lowS, int highS, int lowV, int highV);
+
+	void getFPS_start();
+	void getFPS_end();
+
+	int fps_;
 
     bool fail();
     std::string getErrorStr();
@@ -80,6 +84,8 @@ private:
 
     bool fail_;                     // True on fail
     std::string errorString_;       // If fail_ is true, here is a valid reason of the error
+
+
 
 };
 

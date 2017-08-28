@@ -29,30 +29,30 @@ void
 PID::compute(double input)
 {
 	proportional = kp_ * input;
-	integral = integral + ki_ * input * period_;
+	integral = integral + ki_ *  input * period_ ;
 	derivative = kd_ * (input - lastInput_) / period_;
 
-	lastInput_ = input;
-
 	output_ = proportional + integral + derivative;
+
+	lastInput_ = input;
 }
 
 double
-PID::getOutput()
+PID::getOutput(double offset)
 {
 	if (output_ > maxOutput_)
-		return maxOutput_;
+		return maxOutput_ + offset;
 	else if (output_ < minOutput_)
-		return minOutput_;
+		return minOutput_ + offset;
 	else
-		return output_;
+		return output_ + offset;
 }
 void
-PID::setPIDParam(double kp, double ki, double kd)
+PID::setPIDParam(double kp, double ki, double kd, double scale)
 {
-	kp_ = kp;
-	ki_ = ki;
-	kd_ = ki;
+	kp_ = kp / scale;
+	ki_ = ki / scale;
+	kd_ = ki / scale;
 }
 void
 PID::setPIDOutputLimit(double min, double max)

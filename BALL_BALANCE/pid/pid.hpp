@@ -9,8 +9,8 @@ class PID
 public:
 	PID();
     void compute(double input);           // Computing the output signal
-    double getOutput();                     // Get the output after computing
-	void setPIDParam(double kp, double ki, double kd);
+    double getOutput(double offset);                     // Get the output after computing
+	void setPIDParam(double kp, double ki, double kd, double scale);
 	void setPIDOutputLimit(double min, double max);
 	void setPIDPeriod(double period);
 private:

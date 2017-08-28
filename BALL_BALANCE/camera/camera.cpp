@@ -6,11 +6,10 @@ Camera::Camera(int id) :x_(0),
 						y_(0),
 						width_(640),
 						height_(480),
-						camera_(id),
 						imgOriginal_(),
 						imgHSV_(),
 						imgThresholded_(),
-
+						camera_(id),
 						objMoments_(),
 						objMoment01_(0.0),
 						objMoment10_(0.0),
@@ -24,7 +23,9 @@ Camera::Camera(int id) :x_(0),
 						lowS_(0),
 						highS_(255),
 						lowV_(0),
-						highV_(255) 
+						highV_(255),
+						start_(0),
+						fps_(0)
 {
         if ( !camera_.isOpened() )  // If not success, exit program
         {
@@ -68,9 +69,9 @@ Camera::setSize(int width, int height)
 void
 Camera::getFrame()
 {
-	start_ = cv::getTickCount();
     int ret = 0;
     ret = camera_.read(imgOriginal_); // Reading new frame from video stream
+	//cv::flip(imgOriginal_, imgOriginal_, 1);
     if ( !ret )
     {
             this->setFail();
@@ -95,12 +96,16 @@ Camera::detectBall()
 	//show frames
 }
 void
-Camera::showCamera()
+Camera::showCamera(int id)
 {
-	double fps = cv::getTickFrequency() / (cv::getTickCount() - start_);
-	putText(imgOriginal_, "FPS : " + intToString((int)fps)   , cv::Point(10, height_ - 10), 2, 1, cv::Scalar(0, 255, 0), 2);
-	cv::imshow( "Original", imgOriginal_); // Showing the original image
-	cv::imshow("Threshold", imgThresholded_); // Showing the original image
+	putText(imgOriginal_, "X : " + intToString((int)x_), cv::Point(0, 60), 2, 1, cv::Scalar(0, 255, 0), 2);
+	putText(imgOriginal_, "Y : " + intToString((int)y_), cv::Point(0, 90), 2, 1, cv::Scalar(0, 255, 0), 2);
+	if(id==2)
+		cv::imshow("Threshold", imgThresholded_); // Showing the original image
+	putText(imgOriginal_, "FPS : " + intToString(fps_), cv::Point(0, 30), 2, 1, cv::Scalar(0, 255, 0), 2, CV_AA);
+	if(id==1 || id == 2)
+		cv::imshow("Original", imgOriginal_); // Showing the original image		
+	
 }
 int
 Camera::getX()
@@ -161,7 +166,7 @@ Camera::drawObject(int x, int y, cv::Mat &frame) {
 		line(frame, cv::Point(x, y), cv::Point(x + 25, y), cv::Scalar(0, 255, 0), 2);
 	else line(frame, cv::Point(x, y), cv::Point(width_, y), cv::Scalar(0, 255, 0), 2);
 
-	putText(frame, intToString(x) + "," + intToString(y), cv::Point(x, y + 30), 1, 1, cv::Scalar(0, 255, 0), 2);
+	//putText(frame, intToString(x) + "," + intToString(y), cv::Point(x, y + 30), 1, 1, cv::Scalar(0, 255, 0), 2);
 
 }
 void 
@@ -193,6 +198,7 @@ Camera::trackFilteredObject(int &x, int &y, cv::Mat threshold, cv::Mat &cameraFe
 	//use moments method to find our filtered object
 	double refArea = 0;
 	bool objectFound = false;
+	this->setErrorStr("Not detect object");
 	if (hierarchy.size() > 0) {
 		int numObjects = hierarchy.size();
 		//if number of objects greater than MAX_NUM_OBJECTS we have a noisy filter
@@ -213,16 +219,15 @@ Camera::trackFilteredObject(int &x, int &y, cv::Mat threshold, cv::Mat &cameraFe
 					refArea = area;
 				}
 				else objectFound = false;
-
-
 			}
 			//let user know you found an object
-			if (objectFound == true) {
-				putText(cameraFeed, "Tracking Object", cv::Point(0, 50), 2, 1, cv::Scalar(0, 255, 0), 2);
+			if (objectFound == true) 
+			{
+				//putText(cameraFeed, "Tracking Object", cv::Point(0, 10), 2, 1, cv::Scalar(0, 255, 0), 2);
+				this->setErrorStr("Tracking Object");
 				//draw object location on screen
 				drawObject(x, y, cameraFeed);
 			}
-
 		}
 		else putText(cameraFeed, "TOO MUCH NOISE! ADJUST FILTER", cv::Point(0, 50), 1, 2, cv::Scalar(0, 0, 255), 2);
 	}
@@ -270,4 +275,15 @@ Camera::setHSVParam(int lowH, int highH, int lowS, int highS, int lowV, int high
 	highS_ = highS;
 	lowV_ = lowV;
 	highV_ = highV;
+}
+
+void
+Camera::getFPS_end()
+{
+	fps_ = (int)(cv::getTickFrequency() / (cv::getTickCount() - start_));
+}
+void
+Camera::getFPS_start()
+{
+	start_ = cv::getTickCount();
 }
