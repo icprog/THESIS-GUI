@@ -119,6 +119,7 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::TrackBar^  trackBar1;
 	private: System::Windows::Forms::TrackBar^  trackBar2;
 	private: System::Windows::Forms::TrackBar^  trackBar3;
+	private: System::Windows::Forms::Button^  bCALIB;
 
 
 
@@ -188,6 +189,7 @@ namespace BALL_BALANCE {
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
 			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
 			this->trackBar3 = (gcnew System::Windows::Forms::TrackBar());
+			this->bCALIB = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -585,11 +587,22 @@ namespace BALL_BALANCE {
 			this->trackBar3->TabIndex = 30;
 			this->trackBar3->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar3_Scroll);
 			// 
+			// bCALIB
+			// 
+			this->bCALIB->Location = System::Drawing::Point(238, 12);
+			this->bCALIB->Name = L"bCALIB";
+			this->bCALIB->Size = System::Drawing::Size(82, 22);
+			this->bCALIB->TabIndex = 31;
+			this->bCALIB->Text = L"CALIB";
+			this->bCALIB->UseVisualStyleBackColor = true;
+			this->bCALIB->Click += gcnew System::EventHandler(this, &MyForm::bCALIB_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(954, 466);
+			this->Controls->Add(this->bCALIB);
 			this->Controls->Add(this->trackBar3);
 			this->Controls->Add(this->trackBar2);
 			this->Controls->Add(this->trackBar1);
@@ -712,14 +725,17 @@ namespace BALL_BALANCE {
 		txtErrX->Text = "0";
 		txtErrY->Text = "0";
 		txtSEND->Text = "90:60:150:90:120:110$";
-		txtKP1->Text = "25";
-		txtKI1->Text = "0";
-		txtKD1->Text = "1500";
+		trackBar1->Value = 5;
+		trackBar2->Value = 0;
+		trackBar3->Value = 0;
+
 
 		txtKP2->Text = "0";
 		txtKI2->Text = "0";
 		txtKD2->Text = "0";
-
+		txtKP1->Text = trackBar1->Value.ToString();
+		txtKI1->Text = trackBar2->Value.ToString();
+		txtKD1->Text = trackBar3->Value.ToString();
 
 	}
 	private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -787,7 +803,7 @@ namespace BALL_BALANCE {
 		}
 		else
 		{
-			bSEND->Text = "START";
+			bSEND->Text = "SEND";
 			timerUART_Send->Stop();
 		}
 	}
@@ -815,7 +831,7 @@ namespace BALL_BALANCE {
 			draw(posX, posY);
 			timeGraph++;
 		}
-		camera.showCamera(1);
+		camera.showCamera(2);
 		camera.getFPS_end();
 	}
 	private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -823,7 +839,6 @@ namespace BALL_BALANCE {
 		{
 			camera.setSize(640, 480);
 			camera.setHSVParam(0, 84, 138, 255, 180, 255);
-			//camera.createTrackbars();
 			timerGraph->Interval = 1;
 			timerGraph->Start();
 			bSTART->Text = "STOP";
@@ -865,6 +880,9 @@ private: System::Void trackBar2_Scroll(System::Object^  sender, System::EventArg
 }
 private: System::Void trackBar3_Scroll(System::Object^  sender, System::EventArgs^  e) {
 	txtKD1->Text = trackBar3->Value.ToString();
+}
+private: System::Void bCALIB_Click(System::Object^  sender, System::EventArgs^  e) {
+	camera.createTrackbars();
 }
 };
 }
