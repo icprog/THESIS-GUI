@@ -25,7 +25,8 @@ Camera::Camera(int id) :x_(0),
 						lowV_(0),
 						highV_(255),
 						start_(0),
-						fps_(0)
+						fps_(0),
+						myROI(0,0,width_,height_)
 {
         if ( !camera_.isOpened() )  // If not success, exit program
         {
@@ -70,8 +71,9 @@ void
 Camera::getFrame()
 {
     int ret = 0;
-    ret = camera_.read(imgOriginal_); // Reading new frame from video stream
+    ret = camera_.read(imgFullframe_); // Reading new frame from video stream
 	//cv::flip(imgOriginal_, imgOriginal_, 1);
+	imgFullframe_(myROI).copyTo(imgOriginal_);
     if ( !ret )
     {
             this->setFail();
@@ -92,20 +94,21 @@ Camera::detectBall()
 	//pass in thresholded frame to our object tracking function
 	//this function will return the x and y coordinates of the
 	//filtered object
-	trackFilteredObject(x_,y_,imgThresholded_,imgOriginal_);
+	trackFilteredObject(x_,y_,imgThresholded_,imgFullframe_);
 	//show frames
 }
 void
 Camera::showCamera(int id)
 {
-	putText(imgOriginal_, "X : " + intToString((int)x_), cv::Point(0, 60), 2, 1, cv::Scalar(0, 255, 0), 2);
-	putText(imgOriginal_, "Y : " + intToString((int)y_), cv::Point(0, 90), 2, 1, cv::Scalar(0, 255, 0), 2);
+	//rectangle(img, textOrg + Point(0, baseline),textOrg + Point(textSize.width, -textSize.height),Scalar(0, 0, 255));
+	rectangle(imgFullframe_, cv::Point(xcrop_, ycrop_), cv::Point(xcrop_+widthcrop_, ycrop_+heightcrop_), cv::Scalar(255, 0, 0),2);
+	putText(imgFullframe_, "X : " + intToString((int)x_), cv::Point(0, 60), 2, 1, cv::Scalar(0, 255, 0), 2);
+	putText(imgFullframe_, "Y : " + intToString((int)y_), cv::Point(0, 90), 2, 1, cv::Scalar(0, 255, 0), 2);
+	putText(imgFullframe_, "FPS : " + intToString((int)fps_), cv::Point(0, 30), 2, 1, cv::Scalar(0, 255, 0), 2);
 	if(id==2)
 		cv::imshow("Threshold", imgThresholded_); // Showing the original image
-	putText(imgOriginal_, "FPS : " + intToString(fps_), cv::Point(0, 30), 2, 1, cv::Scalar(0, 255, 0), 2, CV_AA);
 	if(id==1 || id == 2)
-		cv::imshow("Original", imgOriginal_); // Showing the original image		
-	
+		cv::imshow("Original", imgFullframe_); // Showing the original image		
 }
 int
 Camera::getX()
@@ -152,21 +155,8 @@ Camera::drawObject(int x, int y, cv::Mat &frame) {
 	//added 'if' and 'else' statements to prevent
 	//memory errors from writing off the screen (ie. (-25,-25) is not within the window!)
 
-	circle(frame, cv::Point(x, y), 20, cv::Scalar(0, 255, 0), 2);
-	if (y - 25>0)
-		line(frame, cv::Point(x, y), cv::Point(x, y - 25), cv::Scalar(0, 255, 0), 2);
-	else line(frame, cv::Point(x, y), cv::Point(x, 0), cv::Scalar(0, 255, 0), 2);
-	if (y + 25<height_)
-		line(frame, cv::Point(x, y), cv::Point(x, y + 25), cv::Scalar(0, 255, 0), 2);
-	else line(frame, cv::Point(x, y), cv::Point(x, height_), cv::Scalar(0, 255, 0), 2);
-	if (x - 25>0)
-		line(frame, cv::Point(x, y), cv::Point(x - 25, y), cv::Scalar(0, 255, 0), 2);
-	else line(frame, cv::Point(x, y), cv::Point(0, y), cv::Scalar(0, 255, 0), 2);
-	if (x + 25<width_)
-		line(frame, cv::Point(x, y), cv::Point(x + 25, y), cv::Scalar(0, 255, 0), 2);
-	else line(frame, cv::Point(x, y), cv::Point(width_, y), cv::Scalar(0, 255, 0), 2);
-
-	//putText(frame, intToString(x) + "," + intToString(y), cv::Point(x, y + 30), 1, 1, cv::Scalar(0, 255, 0), 2);
+	circle(frame, cv::Point(x + xcrop_, y + ycrop_), 30, cv::Scalar(0, 255, 0), 2);
+	circle(frame, cv::Point(x + xcrop_, y + ycrop_), 1, cv::Scalar(0, 255, 0), 2);
 
 }
 void 
@@ -200,7 +190,7 @@ Camera::trackFilteredObject(int &x, int &y, cv::Mat threshold, cv::Mat &cameraFe
 	bool objectFound = false;
 	this->setErrorStr("Not detect object");
 	if (hierarchy.size() > 0) {
-		int numObjects = hierarchy.size();
+		int numObjects = (int)hierarchy.size();
 		//if number of objects greater than MAX_NUM_OBJECTS we have a noisy filter
 		if (numObjects<MAX_NUM_OBJECTS) {
 			for (int index = 0; index >= 0; index = hierarchy[index][0]) {
@@ -213,8 +203,8 @@ Camera::trackFilteredObject(int &x, int &y, cv::Mat threshold, cv::Mat &cameraFe
 				//we only want the object with the largest area so we safe a reference area each
 				//iteration and compare it to the area in the next iteration.
 				if (area>MIN_OBJECT_AREA && area<MAX_OBJECT_AREA && area>refArea) {
-					x = moment.m10 / area;
-					y = moment.m01 / area;
+					x = (int)(moment.m10 / area);
+					y = (int)(moment.m01 / area);
 					objectFound = true;
 					refArea = area;
 				}
@@ -262,9 +252,12 @@ Camera::createTrackbars(){
     cv::createTrackbar( "S_MAX", "TB", &highS_, 255);
     cv::createTrackbar( "V_MIN", "TB", &lowV_, 255);
     cv::createTrackbar( "V_MAX", "TB", &highV_, 255);
-
-
+	cv::createTrackbar("X", "TB", &xcrop_, width_);
+	cv::createTrackbar("Y", "TB", &ycrop_, height_);
+	cv::createTrackbar("WIDTH", "TB", &widthcrop_, width_);
+	cv::createTrackbar("HEIGHT", "TB", &heightcrop_, height_);
 }
+
 
 void
 Camera::setHSVParam(int lowH, int highH, int lowS, int highS, int lowV, int highV)
@@ -277,10 +270,31 @@ Camera::setHSVParam(int lowH, int highH, int lowS, int highS, int lowV, int high
 	highV_ = highV;
 }
 
+void Camera::setCropFrame(int PointX, int PointY, int width, int height)
+{
+	xcrop_ = PointX;
+	ycrop_ = PointY;
+	widthcrop_ = width;
+	heightcrop_ = height;
+}
+void Camera::callback_func(int, void* ptr)
+{
+	Camera *tmp = (Camera*)ptr;
+	tmp->applyCropFrame();
+}
+
+void Camera::applyCropFrame()
+{
+	myROI.x = xcrop_;
+	myROI.y = ycrop_;
+	myROI.width = widthcrop_;
+	myROI.height = heightcrop_;
+}
+
 void
 Camera::getFPS_end()
 {
-	fps_ = (int)(cv::getTickFrequency() / (cv::getTickCount() - start_));
+	fps_ = cv::getTickFrequency() / (cv::getTickCount() - start_);
 }
 void
 Camera::getFPS_start()

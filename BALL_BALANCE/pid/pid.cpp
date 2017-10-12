@@ -28,11 +28,11 @@ maxOutput_(180)
 void
 PID::compute(double input)
 {
-	proportional = kp_ * input;
-	integral = integral + ki_ *  input * period_ ;
-	derivative = kd_ * (input - lastInput_) / period_;
+	proportional = input;
+	integral = integral +  input * period_ ;
+	derivative = (input - lastInput_) / period_;
 
-	output_ = proportional + integral + derivative;
+	output_ = kp_ * proportional + ki_ * integral + kd_ * derivative;
 
 	lastInput_ = input;
 }
@@ -50,9 +50,9 @@ PID::getOutput(double offset)
 void
 PID::setPIDParam(double kp, double ki, double kd, double scale)
 {
-	kp_ = kp / scale;
-	ki_ = ki / scale;
-	kd_ = ki / scale;
+	kp_ = kp * scale;
+	ki_ = ki * scale;
+	kd_ = ki * scale;
 }
 void
 PID::setPIDOutputLimit(double min, double max)

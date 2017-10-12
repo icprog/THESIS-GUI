@@ -114,7 +114,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\BALL_BALANCE\camera\camera.cpp" />
+    <ClCompile Include="..\BALL_BALANCE\pid\pid.cpp" />
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\BALL_BALANCE\camera\camera.hpp" />
+    <ClInclude Include="..\BALL_BALANCE\pid\pid.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -28,6 +28,7 @@ namespace BALL_BALANCE {
 	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+#pragma region auto_code
 	public:
 		MyForm(void)
 		{
@@ -60,7 +61,8 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::Timer^  timerUART_Receive;
 	private: System::Windows::Forms::Button^  bSEND;
 	private: ZedGraph::ZedGraphControl^  zedGraphControl1;
-	private: System::Windows::Forms::Timer^  timerGraph;
+	private: System::Windows::Forms::Timer^  timerProcessing;
+
 	private: System::Windows::Forms::TextBox^  txtSetpointX;
 
 	private: System::Windows::Forms::Label^  label1;
@@ -91,7 +93,8 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::Label^  label9;
-	private: System::Windows::Forms::Button^  bSTART;
+	private: System::Windows::Forms::Button^  bSTART_CAM;
+
 
 
 	private: System::Windows::Forms::Label^  label10;
@@ -120,6 +123,18 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::TrackBar^  trackBar2;
 	private: System::Windows::Forms::TrackBar^  trackBar3;
 	private: System::Windows::Forms::Button^  bCALIB;
+	private: System::Windows::Forms::TrackBar^  trackBar4;
+	private: System::Windows::Forms::TrackBar^  trackBar5;
+	private: System::Windows::Forms::TrackBar^  trackBar6;
+	private: System::Windows::Forms::GroupBox^  PIDX;
+	private: System::Windows::Forms::GroupBox^  groupBox2;
+	private: System::Windows::Forms::GroupBox^  groupBox3;
+	private: System::Windows::Forms::Button^  bSetCrop;
+private: System::Windows::Forms::Button^  bSTART_GRAPH;
+
+private: System::Windows::Forms::Button^  bSTART_PID;
+private: System::Windows::Forms::TextBox^  txtTimeProcess;
+
 
 
 
@@ -134,7 +149,7 @@ namespace BALL_BALANCE {
 		/// <summary>
 		/// Required designer variable->
 		/// </summary>
-
+#pragma endregion
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -153,7 +168,7 @@ namespace BALL_BALANCE {
 			this->timerUART_Receive = (gcnew System::Windows::Forms::Timer(this->components));
 			this->bSEND = (gcnew System::Windows::Forms::Button());
 			this->zedGraphControl1 = (gcnew ZedGraph::ZedGraphControl());
-			this->timerGraph = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timerProcessing = (gcnew System::Windows::Forms::Timer(this->components));
 			this->txtSetpointX = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -169,7 +184,7 @@ namespace BALL_BALANCE {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->bSTART = (gcnew System::Windows::Forms::Button());
+			this->bSTART_CAM = (gcnew System::Windows::Forms::Button());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->txtPIDY = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
@@ -190,30 +205,46 @@ namespace BALL_BALANCE {
 			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
 			this->trackBar3 = (gcnew System::Windows::Forms::TrackBar());
 			this->bCALIB = (gcnew System::Windows::Forms::Button());
+			this->trackBar4 = (gcnew System::Windows::Forms::TrackBar());
+			this->trackBar5 = (gcnew System::Windows::Forms::TrackBar());
+			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
+			this->PIDX = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->txtTimeProcess = (gcnew System::Windows::Forms::TextBox());
+			this->bSTART_GRAPH = (gcnew System::Windows::Forms::Button());
+			this->bSTART_PID = (gcnew System::Windows::Forms::Button());
+			this->bSetCrop = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar5))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar6))->BeginInit();
+			this->PIDX->SuspendLayout();
+			this->groupBox2->SuspendLayout();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// cbCOMLIST
 			// 
 			this->cbCOMLIST->FormattingEnabled = true;
-			this->cbCOMLIST->Location = System::Drawing::Point(12, 12);
+			this->cbCOMLIST->Location = System::Drawing::Point(11, 19);
 			this->cbCOMLIST->Name = L"cbCOMLIST";
 			this->cbCOMLIST->Size = System::Drawing::Size(121, 21);
 			this->cbCOMLIST->TabIndex = 0;
 			// 
 			// txtRECEIVE
 			// 
-			this->txtRECEIVE->Location = System::Drawing::Point(12, 73);
+			this->txtRECEIVE->Location = System::Drawing::Point(11, 80);
 			this->txtRECEIVE->Name = L"txtRECEIVE";
 			this->txtRECEIVE->Size = System::Drawing::Size(121, 20);
 			this->txtRECEIVE->TabIndex = 1;
 			// 
 			// bCONNECT
 			// 
-			this->bCONNECT->Location = System::Drawing::Point(139, 12);
+			this->bCONNECT->Location = System::Drawing::Point(138, 19);
 			this->bCONNECT->Name = L"bCONNECT";
 			this->bCONNECT->Size = System::Drawing::Size(93, 23);
 			this->bCONNECT->TabIndex = 2;
@@ -231,11 +262,12 @@ namespace BALL_BALANCE {
 			// 
 			// txtSEND
 			// 
-			this->txtSEND->Location = System::Drawing::Point(13, 41);
+			this->txtSEND->Location = System::Drawing::Point(12, 48);
 			this->txtSEND->Name = L"txtSEND";
 			this->txtSEND->Size = System::Drawing::Size(120, 20);
 			this->txtSEND->TabIndex = 3;
 			this->txtSEND->Text = L"90:60:120:90:90:110$";
+			this->txtSEND->TextChanged += gcnew System::EventHandler(this, &MyForm::txtSEND_TextChanged);
 			// 
 			// timerUART_Receive
 			// 
@@ -243,7 +275,7 @@ namespace BALL_BALANCE {
 			// 
 			// bSEND
 			// 
-			this->bSEND->Location = System::Drawing::Point(139, 41);
+			this->bSEND->Location = System::Drawing::Point(138, 48);
 			this->bSEND->Name = L"bSEND";
 			this->bSEND->Size = System::Drawing::Size(93, 23);
 			this->bSEND->TabIndex = 4;
@@ -253,7 +285,7 @@ namespace BALL_BALANCE {
 			// 
 			// zedGraphControl1
 			// 
-			this->zedGraphControl1->Location = System::Drawing::Point(327, 10);
+			this->zedGraphControl1->Location = System::Drawing::Point(467, 12);
 			this->zedGraphControl1->Name = L"zedGraphControl1";
 			this->zedGraphControl1->ScrollGrace = 0;
 			this->zedGraphControl1->ScrollMaxX = 0;
@@ -262,12 +294,12 @@ namespace BALL_BALANCE {
 			this->zedGraphControl1->ScrollMinX = 0;
 			this->zedGraphControl1->ScrollMinY = 0;
 			this->zedGraphControl1->ScrollMinY2 = 0;
-			this->zedGraphControl1->Size = System::Drawing::Size(615, 316);
+			this->zedGraphControl1->Size = System::Drawing::Size(540, 524);
 			this->zedGraphControl1->TabIndex = 5;
 			// 
-			// timerGraph
+			// timerProcessing
 			// 
-			this->timerGraph->Tick += gcnew System::EventHandler(this, &MyForm::eTimerGraph);
+			this->timerProcessing->Tick += gcnew System::EventHandler(this, &MyForm::etimerProcessing);
 			// 
 			// txtSetpointX
 			// 
@@ -392,15 +424,15 @@ namespace BALL_BALANCE {
 			this->label9->TabIndex = 21;
 			this->label9->Text = L"KD";
 			// 
-			// bSTART
+			// bSTART_CAM
 			// 
-			this->bSTART->Location = System::Drawing::Point(139, 70);
-			this->bSTART->Name = L"bSTART";
-			this->bSTART->Size = System::Drawing::Size(93, 23);
-			this->bSTART->TabIndex = 22;
-			this->bSTART->Text = L"START";
-			this->bSTART->UseVisualStyleBackColor = true;
-			this->bSTART->Click += gcnew System::EventHandler(this, &MyForm::bSTART_Click);
+			this->bSTART_CAM->Location = System::Drawing::Point(237, 19);
+			this->bSTART_CAM->Name = L"bSTART_CAM";
+			this->bSTART_CAM->Size = System::Drawing::Size(93, 23);
+			this->bSTART_CAM->TabIndex = 22;
+			this->bSTART_CAM->Text = L"START CAM";
+			this->bSTART_CAM->UseVisualStyleBackColor = true;
+			this->bSTART_CAM->Click += gcnew System::EventHandler(this, &MyForm::bSTART_Click);
 			// 
 			// label10
 			// 
@@ -491,9 +523,9 @@ namespace BALL_BALANCE {
 			this->groupBox1->Controls->Add(this->txtErrY);
 			this->groupBox1->Controls->Add(this->label7);
 			this->groupBox1->Controls->Add(this->label5);
-			this->groupBox1->Location = System::Drawing::Point(13, 99);
+			this->groupBox1->Location = System::Drawing::Point(12, 159);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(308, 227);
+			this->groupBox1->Size = System::Drawing::Size(331, 227);
 			this->groupBox1->TabIndex = 27;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"PARAM";
@@ -542,7 +574,7 @@ namespace BALL_BALANCE {
 			// 
 			// bSCROLL
 			// 
-			this->bSCROLL->Location = System::Drawing::Point(238, 70);
+			this->bSCROLL->Location = System::Drawing::Point(335, 107);
 			this->bSCROLL->Name = L"bSCROLL";
 			this->bSCROLL->Size = System::Drawing::Size(83, 23);
 			this->bSCROLL->TabIndex = 22;
@@ -552,7 +584,7 @@ namespace BALL_BALANCE {
 			// 
 			// bSETBALL
 			// 
-			this->bSETBALL->Location = System::Drawing::Point(238, 41);
+			this->bSETBALL->Location = System::Drawing::Point(336, 78);
 			this->bSETBALL->Name = L"bSETBALL";
 			this->bSETBALL->Size = System::Drawing::Size(83, 23);
 			this->bSETBALL->TabIndex = 22;
@@ -562,60 +594,160 @@ namespace BALL_BALANCE {
 			// 
 			// trackBar1
 			// 
-			this->trackBar1->Location = System::Drawing::Point(13, 332);
+			this->trackBar1->Location = System::Drawing::Point(17, 18);
 			this->trackBar1->Maximum = 1000;
 			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Size = System::Drawing::Size(308, 45);
+			this->trackBar1->Size = System::Drawing::Size(170, 45);
 			this->trackBar1->TabIndex = 28;
 			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
 			// 
 			// trackBar2
 			// 
-			this->trackBar2->Location = System::Drawing::Point(13, 373);
+			this->trackBar2->Location = System::Drawing::Point(17, 59);
 			this->trackBar2->Maximum = 1000;
 			this->trackBar2->Name = L"trackBar2";
-			this->trackBar2->Size = System::Drawing::Size(308, 45);
+			this->trackBar2->Size = System::Drawing::Size(170, 45);
 			this->trackBar2->TabIndex = 29;
 			this->trackBar2->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar2_Scroll);
 			// 
 			// trackBar3
 			// 
-			this->trackBar3->Location = System::Drawing::Point(13, 409);
+			this->trackBar3->Location = System::Drawing::Point(17, 100);
 			this->trackBar3->Maximum = 10000;
 			this->trackBar3->Name = L"trackBar3";
-			this->trackBar3->Size = System::Drawing::Size(308, 45);
+			this->trackBar3->Size = System::Drawing::Size(170, 45);
 			this->trackBar3->TabIndex = 30;
 			this->trackBar3->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar3_Scroll);
 			// 
 			// bCALIB
 			// 
-			this->bCALIB->Location = System::Drawing::Point(238, 12);
+			this->bCALIB->Location = System::Drawing::Point(336, 48);
 			this->bCALIB->Name = L"bCALIB";
-			this->bCALIB->Size = System::Drawing::Size(82, 22);
+			this->bCALIB->Size = System::Drawing::Size(82, 24);
 			this->bCALIB->TabIndex = 31;
 			this->bCALIB->Text = L"CALIB";
 			this->bCALIB->UseVisualStyleBackColor = true;
 			this->bCALIB->Click += gcnew System::EventHandler(this, &MyForm::bCALIB_Click);
 			// 
+			// trackBar4
+			// 
+			this->trackBar4->Location = System::Drawing::Point(12, 19);
+			this->trackBar4->Maximum = 1000;
+			this->trackBar4->Name = L"trackBar4";
+			this->trackBar4->Size = System::Drawing::Size(170, 45);
+			this->trackBar4->TabIndex = 28;
+			this->trackBar4->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar4_Scroll);
+			// 
+			// trackBar5
+			// 
+			this->trackBar5->Location = System::Drawing::Point(12, 60);
+			this->trackBar5->Maximum = 1000;
+			this->trackBar5->Name = L"trackBar5";
+			this->trackBar5->Size = System::Drawing::Size(170, 45);
+			this->trackBar5->TabIndex = 29;
+			this->trackBar5->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar5_Scroll);
+			// 
+			// trackBar6
+			// 
+			this->trackBar6->Location = System::Drawing::Point(12, 96);
+			this->trackBar6->Maximum = 10000;
+			this->trackBar6->Name = L"trackBar6";
+			this->trackBar6->Size = System::Drawing::Size(170, 45);
+			this->trackBar6->TabIndex = 30;
+			this->trackBar6->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar6_Scroll);
+			// 
+			// PIDX
+			// 
+			this->PIDX->Controls->Add(this->trackBar3);
+			this->PIDX->Controls->Add(this->trackBar2);
+			this->PIDX->Controls->Add(this->trackBar1);
+			this->PIDX->Location = System::Drawing::Point(12, 392);
+			this->PIDX->Name = L"PIDX";
+			this->PIDX->Size = System::Drawing::Size(197, 142);
+			this->PIDX->TabIndex = 32;
+			this->PIDX->TabStop = false;
+			this->PIDX->Text = L"X PID PARAMS";
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->trackBar6);
+			this->groupBox2->Controls->Add(this->trackBar5);
+			this->groupBox2->Controls->Add(this->trackBar4);
+			this->groupBox2->Location = System::Drawing::Point(215, 395);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(188, 142);
+			this->groupBox2->TabIndex = 33;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Y PID PARAMS";
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->txtTimeProcess);
+			this->groupBox3->Controls->Add(this->bSTART_GRAPH);
+			this->groupBox3->Controls->Add(this->bSTART_PID);
+			this->groupBox3->Controls->Add(this->bSetCrop);
+			this->groupBox3->Controls->Add(this->bCALIB);
+			this->groupBox3->Controls->Add(this->cbCOMLIST);
+			this->groupBox3->Controls->Add(this->txtRECEIVE);
+			this->groupBox3->Controls->Add(this->bCONNECT);
+			this->groupBox3->Controls->Add(this->txtSEND);
+			this->groupBox3->Controls->Add(this->bSETBALL);
+			this->groupBox3->Controls->Add(this->bSEND);
+			this->groupBox3->Controls->Add(this->bSCROLL);
+			this->groupBox3->Controls->Add(this->bSTART_CAM);
+			this->groupBox3->Location = System::Drawing::Point(12, 12);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(449, 141);
+			this->groupBox3->TabIndex = 34;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"CONTROL";
+			// 
+			// txtTimeProcess
+			// 
+			this->txtTimeProcess->Location = System::Drawing::Point(237, 110);
+			this->txtTimeProcess->Name = L"txtTimeProcess";
+			this->txtTimeProcess->Size = System::Drawing::Size(92, 20);
+			this->txtTimeProcess->TabIndex = 35;
+			// 
+			// bSTART_GRAPH
+			// 
+			this->bSTART_GRAPH->Location = System::Drawing::Point(237, 78);
+			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
+			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
+			this->bSTART_GRAPH->TabIndex = 37;
+			this->bSTART_GRAPH->Text = L"START GRAPH";
+			this->bSTART_GRAPH->UseVisualStyleBackColor = true;
+			this->bSTART_GRAPH->Click += gcnew System::EventHandler(this, &MyForm::bSTART_GRAPH_Click);
+			// 
+			// bSTART_PID
+			// 
+			this->bSTART_PID->Location = System::Drawing::Point(237, 48);
+			this->bSTART_PID->Name = L"bSTART_PID";
+			this->bSTART_PID->Size = System::Drawing::Size(93, 24);
+			this->bSTART_PID->TabIndex = 36;
+			this->bSTART_PID->Text = L"START PID";
+			this->bSTART_PID->UseVisualStyleBackColor = true;
+			this->bSTART_PID->Click += gcnew System::EventHandler(this, &MyForm::bSTART_PID_Click);
+			// 
+			// bSetCrop
+			// 
+			this->bSetCrop->Location = System::Drawing::Point(336, 19);
+			this->bSetCrop->Name = L"bSetCrop";
+			this->bSetCrop->Size = System::Drawing::Size(83, 25);
+			this->bSetCrop->TabIndex = 35;
+			this->bSetCrop->Text = L"SET CROP";
+			this->bSetCrop->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(954, 466);
-			this->Controls->Add(this->bCALIB);
-			this->Controls->Add(this->trackBar3);
-			this->Controls->Add(this->trackBar2);
-			this->Controls->Add(this->trackBar1);
+			this->ClientSize = System::Drawing::Size(1019, 541);
+			this->Controls->Add(this->groupBox3);
+			this->Controls->Add(this->groupBox2);
+			this->Controls->Add(this->PIDX);
 			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->bSETBALL);
-			this->Controls->Add(this->bSCROLL);
-			this->Controls->Add(this->bSTART);
 			this->Controls->Add(this->zedGraphControl1);
-			this->Controls->Add(this->bSEND);
-			this->Controls->Add(this->txtSEND);
-			this->Controls->Add(this->bCONNECT);
-			this->Controls->Add(this->txtRECEIVE);
-			this->Controls->Add(this->cbCOMLIST);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -624,8 +756,16 @@ namespace BALL_BALANCE {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar5))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar6))->EndInit();
+			this->PIDX->ResumeLayout(false);
+			this->PIDX->PerformLayout();
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -643,6 +783,7 @@ namespace BALL_BALANCE {
 		LineItem^ PosYSetpointCurve;
 
 		ZedGraph::Scale^ xScale;
+		ZedGraph::Scale^ yScale;
 	private:
 		double posX = 0;
 		double posY = 0;
@@ -673,6 +814,7 @@ namespace BALL_BALANCE {
 	{
 		myPane = zedGraphControl1->GraphPane;
 		xScale = zedGraphControl1->GraphPane->XAxis->Scale;
+		yScale = zedGraphControl1->GraphPane->YAxis->Scale;
 		myPane->Title->Text = "SPEED-MOTOR";
 		myPane->XAxis->Title->Text = "SEC(s)";
 		myPane->YAxis->Title->Text = "RPM(v/p)";
@@ -681,10 +823,11 @@ namespace BALL_BALANCE {
 
 		LineItem^ curve1 = myPane->AddCurve("SET-SPEED", list1, Color::Red, SymbolType::None);
 		LineItem^ curve2 = myPane->AddCurve("ACT-SPEED", list2, Color::Blue, SymbolType::None);
-		myPane->XAxis->Scale->Min = 0;
-		myPane->XAxis->Scale->Max = 30;
-		myPane->XAxis->Scale->MinorStep = 1;
-		myPane->XAxis->Scale->MajorStep = 5;
+		//myPane->XAxis->Scale->Min = 0;
+		//myPane->XAxis->Scale->Max = 30;
+		//myPane->XAxis->Scale->MinorStep = 1;
+		//myPane->XAxis->Scale->MajorStep = 5;
+		myPane->IsAlignGrids = true;
 		zedGraphControl1->AxisChange();
 	}
 	private: void draw(double x, double y)
@@ -704,14 +847,24 @@ namespace BALL_BALANCE {
 		}
 		zedGraphControl1->GraphPane->CurveList->Clear();
 
-		PosXList->Add(timeGraph, x);
-		PosYList->Add(timeGraph, y);
-		PosXSetpointList->Add(timeGraph, setpointX);
-		PosYSetpointList->Add(timeGraph, setpointY);
-		PosXCurve = myPane->AddCurve("Pos X", PosXList, Color::Red, SymbolType::Plus);
+		/*PosXList->Add(timeGraph, x);
+		PosYList->Add(timeGraph, y);*/
+		PosYList->Clear();
+		PosYList->Add(x, y);
+		
+		//PosXSetpointList->Add(timeGraph, setpointX);
+		//PosYSetpointList->Add(timeGraph, setpointY);
+		PosYSetpointList->Clear();
+		PosYSetpointList->Add(setpointX, setpointY);
+
+	/*	PosXCurve = myPane->AddCurve("Pos X", PosXList, Color::Red, SymbolType::Plus);
 		PosYCurve = myPane->AddCurve("Pos Y", PosYList, Color::Red, SymbolType::Circle);
 		PosXSetpointCurve = myPane->AddCurve("Pos Set point X", PosXSetpointList, Color::Blue, SymbolType::Plus);
-		PosYSetpointCurve = myPane->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue, SymbolType::Circle);
+		PosYSetpointCurve = myPane->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue, SymbolType::Circle);*/
+
+		PosYCurve = myPane->AddCurve("Ball Position", PosYList, Color::Red, SymbolType::Circle);
+		PosYSetpointCurve = myPane->AddCurve("Set point", PosYSetpointList, Color::Blue, SymbolType::Square);
+
 		zedGraphControl1->AxisChange();
 		zedGraphControl1->Invalidate();
 	}
@@ -720,22 +873,35 @@ namespace BALL_BALANCE {
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 		findPorts();
 		initGraph();
-		txtSetpointX->Text = "190";
-		txtSetpointY->Text = "130";
+		txtSetpointX->Text = "198";
+		txtSetpointY->Text = "214";
 		txtErrX->Text = "0";
 		txtErrY->Text = "0";
-		txtSEND->Text = "90:60:150:90:120:110$";
-		trackBar1->Value = 5;
+		txtSEND->Text = "@0:0$";
+		trackBar1->Value = 0;
 		trackBar2->Value = 0;
 		trackBar3->Value = 0;
+		trackBar4->Value = 5;
+		trackBar5->Value = 0;
+		trackBar6->Value = 0;
 
-
-		txtKP2->Text = "0";
-		txtKI2->Text = "0";
-		txtKD2->Text = "0";
 		txtKP1->Text = trackBar1->Value.ToString();
 		txtKI1->Text = trackBar2->Value.ToString();
 		txtKD1->Text = trackBar3->Value.ToString();
+		txtKP2->Text = trackBar4->Value.ToString();
+		txtKI2->Text = trackBar5->Value.ToString();
+		txtKD2->Text = trackBar6->Value.ToString();
+
+		camera.setSize(640, 480);
+		camera.setHSVParam(0, 84, 31, 255, 153, 255);
+		camera.setCropFrame(118, 16, 400, 400);
+		camera.applyCropFrame();
+		timerProcessing->Interval = 1;
+
+		xScale->Max = 400;
+		xScale->Min = 0;
+		yScale->Max = 400;
+		yScale->Min = 0;
 
 	}
 	private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -767,24 +933,7 @@ namespace BALL_BALANCE {
 
 	private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e) 
 	{
-		pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 100);
-		pidX.setPIDPeriod(5);
-		pidX.setPIDOutputLimit(-20, 20);
-		pidX.compute(errX);
-
-		pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 100);
-		pidY.setPIDPeriod(5);
-		pidY.setPIDOutputLimit(-7, 7);
-		pidY.compute(errY);
-
-		txtPIDX->Text = (220 - (int)pidX.getOutput(110)).ToString();
-		txtPIDY->Text = ((int)pidY.getOutput(120)).ToString();
-
-		txtSEND->Text = "@90:60:150:90:" + txtPIDY->Text + ":" + txtPIDX->Text + "$";
-		if (txtSEND->Text != "" && serialPort->IsOpen == true)
-		{
-			serialPort->Write(txtSEND->Text);
-		}
+		txtSEND->Text = "@" + txtPIDY->Text + ":" + txtPIDX->Text + "$";
 	}
 	private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
 		if (serialPort->IsOpen == true)
@@ -797,8 +946,8 @@ namespace BALL_BALANCE {
 	private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (bSEND->Text == "SEND")
 		{
-			timerUART_Send->Interval = 5;
-			timerUART_Send->Start();
+			timerUART_Send->Interval = 1;
+			timerUART_Send->Start(); 
 			bSEND->Text = "STOP SEND";
 		}
 		else
@@ -809,7 +958,7 @@ namespace BALL_BALANCE {
 	}
 
 
-	private: System::Void eTimerGraph(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void etimerProcessing(System::Object^  sender, System::EventArgs^  e) {
 		camera.getFPS_start();
 		camera.getFrame();
 		camera.detectBall();
@@ -819,34 +968,46 @@ namespace BALL_BALANCE {
 		setpointX = System::Convert::ToDouble(txtSetpointX->Text);
 		setpointY = System::Convert::ToDouble(txtSetpointY->Text);
 		errX = setpointX - posX;
-		errY = setpointY - posX;
-			
+		errY = setpointY - posY;
+
 		txtErrX->Text = errX.ToString();
 		txtErrY->Text = errY.ToString();
 		txtPosX->Text = posX.ToString();
 		txtPosY->Text = posY.ToString();
+		if (bSTART_PID->Text == "STOP PID")
+		{
+			pidX.setPIDPeriod(1 / camera.fps_);
+			pidX.setPIDOutputLimit(-10, 10);
+			pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
+			pidX.compute(errX);
 
-		if (camera.getErrorStr() == "Tracking Object")
+			pidY.setPIDPeriod(1 / camera.fps_);
+			pidY.setPIDOutputLimit(-10, 10);
+			pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
+			pidY.compute(errY);
+
+			txtPIDX->Text = ((int)pidX.getOutput(0)).ToString();
+			txtPIDY->Text = (-(int)pidY.getOutput(0)).ToString();
+		}
+		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
 		{
 			draw(posX, posY);
-			timeGraph++;
+			//timeGraph++;
 		}
-		camera.showCamera(2);
+		camera.showCamera(1);
 		camera.getFPS_end();
+		txtTimeProcess->Text = ((int)(1000 / camera.fps_)).ToString() + " ms";
 	}
 	private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (bSTART->Text == "START")
+		if (bSTART_CAM->Text == "START CAM")
 		{
-			camera.setSize(640, 480);
-			camera.setHSVParam(0, 84, 138, 255, 180, 255);
-			timerGraph->Interval = 1;
-			timerGraph->Start();
-			bSTART->Text = "STOP";
+			timerProcessing->Start();
+			bSTART_CAM->Text = "STOP CAM";
 		}
 		else
 		{
-			bSTART->Text = "START";
-			timerGraph->Stop();
+			bSTART_CAM->Text = "START CAM";
+			timerProcessing->Stop();
 		}
 		
 
@@ -883,6 +1044,41 @@ private: System::Void trackBar3_Scroll(System::Object^  sender, System::EventArg
 }
 private: System::Void bCALIB_Click(System::Object^  sender, System::EventArgs^  e) {
 	camera.createTrackbars();
+}
+private: System::Void txtSEND_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (txtSEND->Text != "" && serialPort->IsOpen == true)
+	{
+		serialPort->Write(txtSEND->Text);
+	}
+}
+private: System::Void trackBar4_Scroll(System::Object^  sender, System::EventArgs^  e) {
+	txtKP2->Text = trackBar4->Value.ToString();
+}
+private: System::Void trackBar5_Scroll(System::Object^  sender, System::EventArgs^  e) {
+	txtKI2->Text = trackBar5->Value.ToString();
+}
+private: System::Void trackBar6_Scroll(System::Object^  sender, System::EventArgs^  e) {
+	txtKD2->Text = trackBar6->Value.ToString();
+}
+private: System::Void bSTART_PID_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_PID->Text == "START PID")
+	{
+		bSTART_PID->Text = "STOP PID";
+	}
+	else
+	{
+		bSTART_PID->Text = "START PID";
+	}
+}
+private: System::Void bSTART_GRAPH_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_GRAPH->Text == "START GRAPH")
+	{
+		bSTART_GRAPH->Text = "STOP GRAPH";
+	}
+	else
+	{
+		bSTART_GRAPH->Text = "START GRAPH";
+	}
 }
 };
 }

@@ -11,7 +11,7 @@
 
 class Camera
 {
-
+	static void callback_func(int, void*);
 public:
     Camera(int id);
     ~Camera();
@@ -25,11 +25,12 @@ public:
 	void createTrackbars();
 
 	void setHSVParam(int lowH, int highH, int lowS, int highS, int lowV, int highV);
-
+	void setCropFrame(int PointX, int PointY, int width, int height);
+	void applyCropFrame();
 	void getFPS_start();
 	void getFPS_end();
 
-	int fps_;
+	double fps_;
 
     bool fail();
     std::string getErrorStr();
@@ -39,7 +40,7 @@ private:
 	void drawObject(int x, int y, cv::Mat &frame);
 	void morphOps(cv::Mat &thresh);
 	void trackFilteredObject(int & x, int & y, cv::Mat threshold, cv::Mat & cameraFeed);
-
+	
 	std::string intToString(int number);
 
     void setFail();
@@ -71,7 +72,8 @@ private:
 
     cv::VideoCapture camera_;       // Web camera
 
-    cv::Mat imgOriginal_;           // New frame from camera
+	cv::Mat imgFullframe_;           // New frame from camera
+    cv::Mat imgOriginal_;           // cropped frame for processing
     cv::Mat imgHSV_;                // Original, converted to HSV
     cv::Mat imgThresholded_;        // Thresholded HSV image
 
@@ -85,8 +87,11 @@ private:
     bool fail_;                     // True on fail
     std::string errorString_;       // If fail_ is true, here is a valid reason of the error
 
-
+	cv::Rect myROI;
+	int xcrop_;
+	int ycrop_;
+	int widthcrop_;
+	int heightcrop_;
 
 };
-
 #endif // CAMERA_HPP
