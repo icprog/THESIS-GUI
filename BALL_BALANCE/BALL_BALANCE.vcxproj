@@ -148,11 +148,31 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera\camera.cpp" />
+    <ClCompile Include="eFLL\Fuzzy.cpp" />
+    <ClCompile Include="eFLL\FuzzyComposition.cpp" />
+    <ClCompile Include="eFLL\FuzzyInput.cpp" />
+    <ClCompile Include="eFLL\FuzzyIO.cpp" />
+    <ClCompile Include="eFLL\FuzzyOutput.cpp" />
+    <ClCompile Include="eFLL\FuzzyRule.cpp" />
+    <ClCompile Include="eFLL\FuzzyRuleAntecedent.cpp" />
+    <ClCompile Include="eFLL\FuzzyRuleConsequent.cpp" />
+    <ClCompile Include="eFLL\FuzzySet.cpp" />
+    <ClCompile Include="eFLL\fuzzy_ball_and_plate.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="pid\pid.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera\camera.hpp" />
+    <ClInclude Include="eFLL\Fuzzy.h" />
+    <ClInclude Include="eFLL\FuzzyComposition.h" />
+    <ClInclude Include="eFLL\FuzzyInput.h" />
+    <ClInclude Include="eFLL\FuzzyIO.h" />
+    <ClInclude Include="eFLL\FuzzyOutput.h" />
+    <ClInclude Include="eFLL\FuzzyRule.h" />
+    <ClInclude Include="eFLL\FuzzyRuleAntecedent.h" />
+    <ClInclude Include="eFLL\FuzzyRuleConsequent.h" />
+    <ClInclude Include="eFLL\FuzzySet.h" />
+    <ClInclude Include="eFLL\fuzzy_ball_and_plate.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

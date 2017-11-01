@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="eFLL">
+      <UniqueIdentifier>{709ada45-f389-4e92-b0db-b0b73db0132f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp">
@@ -24,6 +27,36 @@
     <ClCompile Include="pid\pid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="eFLL\Fuzzy.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\fuzzy_ball_and_plate.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\FuzzyComposition.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\FuzzyInput.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\FuzzyIO.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\FuzzyOutput.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\FuzzyRule.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\FuzzyRuleAntecedent.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\FuzzyRuleConsequent.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
+    <ClCompile Include="eFLL\FuzzySet.cpp">
+      <Filter>eFLL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -34,6 +67,36 @@
     </ClInclude>
     <ClInclude Include="pid\pid.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\Fuzzy.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\fuzzy_ball_and_plate.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\FuzzyComposition.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\FuzzyInput.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\FuzzyIO.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\FuzzyOutput.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\FuzzyRule.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\FuzzyRuleAntecedent.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\FuzzyRuleConsequent.h">
+      <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="eFLL\FuzzySet.h">
+      <Filter>eFLL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

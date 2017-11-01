@@ -294,10 +294,13 @@ void Camera::applyCropFrame()
 void
 Camera::getFPS_end()
 {
+	//fps_ = (long double)(clock() - start_2) * 1000 / CLOCKS_PER_SEC;
+	//fps_ = 1 / fps_;
 	fps_ = cv::getTickFrequency() / (cv::getTickCount() - start_);
 }
 void
 Camera::getFPS_start()
 {
+	//start_2 = clock();
 	start_ = cv::getTickCount();
 }

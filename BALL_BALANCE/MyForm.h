@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 #include <iostream>
-
+#include "eFLL/fuzzy_ball_and_plate.h"
 
 namespace BALL_BALANCE {
 
@@ -98,9 +98,11 @@ namespace BALL_BALANCE {
 
 
 	private: System::Windows::Forms::Label^  label10;
-	private: System::Windows::Forms::TextBox^  txtPIDY;
+	private: System::Windows::Forms::TextBox^  txtANGLE_Y;
+
 	private: System::Windows::Forms::Label^  label11;
-	private: System::Windows::Forms::TextBox^  txtPIDX;
+	private: System::Windows::Forms::TextBox^  txtANGLE_X;
+
 
 
 
@@ -134,6 +136,20 @@ private: System::Windows::Forms::Button^  bSTART_GRAPH;
 
 private: System::Windows::Forms::Button^  bSTART_PID;
 private: System::Windows::Forms::TextBox^  txtTimeProcess;
+private: System::Windows::Forms::Label^  label15;
+private: System::Windows::Forms::Button^  bSTART_FUZZY;
+private: System::Windows::Forms::Label^  label18;
+private: System::Windows::Forms::Label^  label17;
+private: System::Windows::Forms::Label^  label16;
+private: System::Windows::Forms::TextBox^  txtScaleOut;
+
+private: System::Windows::Forms::TextBox^  txtScaleVel;
+
+
+private: System::Windows::Forms::TextBox^  txtScaleErr;
+
+
+
 
 
 
@@ -186,13 +202,19 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->bSTART_CAM = (gcnew System::Windows::Forms::Button());
 			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->txtPIDY = (gcnew System::Windows::Forms::TextBox());
+			this->txtANGLE_Y = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->txtPIDX = (gcnew System::Windows::Forms::TextBox());
+			this->txtANGLE_X = (gcnew System::Windows::Forms::TextBox());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->txtScaleOut = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleVel = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleErr = (gcnew System::Windows::Forms::TextBox());
 			this->txtKD2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKP2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKI2 = (gcnew System::Windows::Forms::TextBox());
@@ -211,6 +233,8 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			this->PIDX = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->bSTART_FUZZY = (gcnew System::Windows::Forms::Button());
+			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->txtTimeProcess = (gcnew System::Windows::Forms::TextBox());
 			this->bSTART_GRAPH = (gcnew System::Windows::Forms::Button());
 			this->bSTART_PID = (gcnew System::Windows::Forms::Button());
@@ -437,34 +461,34 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(202, 109);
+			this->label10->Location = System::Drawing::Point(181, 109);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(35, 13);
+			this->label10->Size = System::Drawing::Size(53, 13);
 			this->label10->TabIndex = 26;
-			this->label10->Text = L"PID Y";
+			this->label10->Text = L"ANGLE Y";
 			// 
-			// txtPIDY
+			// txtANGLE_Y
 			// 
-			this->txtPIDY->Location = System::Drawing::Point(243, 106);
-			this->txtPIDY->Name = L"txtPIDY";
-			this->txtPIDY->Size = System::Drawing::Size(46, 20);
-			this->txtPIDY->TabIndex = 25;
+			this->txtANGLE_Y->Location = System::Drawing::Point(243, 106);
+			this->txtANGLE_Y->Name = L"txtANGLE_Y";
+			this->txtANGLE_Y->Size = System::Drawing::Size(46, 20);
+			this->txtANGLE_Y->TabIndex = 25;
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(51, 109);
+			this->label11->Location = System::Drawing::Point(30, 109);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(35, 13);
+			this->label11->Size = System::Drawing::Size(53, 13);
 			this->label11->TabIndex = 24;
-			this->label11->Text = L"PID X";
+			this->label11->Text = L"ANGLE X";
 			// 
-			// txtPIDX
+			// txtANGLE_X
 			// 
-			this->txtPIDX->Location = System::Drawing::Point(92, 106);
-			this->txtPIDX->Name = L"txtPIDX";
-			this->txtPIDX->Size = System::Drawing::Size(46, 20);
-			this->txtPIDX->TabIndex = 23;
+			this->txtANGLE_X->Location = System::Drawing::Point(92, 106);
+			this->txtANGLE_X->Name = L"txtANGLE_X";
+			this->txtANGLE_X->Size = System::Drawing::Size(46, 20);
+			this->txtANGLE_X->TabIndex = 23;
 			// 
 			// label12
 			// 
@@ -495,6 +519,12 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label18);
+			this->groupBox1->Controls->Add(this->label17);
+			this->groupBox1->Controls->Add(this->label16);
+			this->groupBox1->Controls->Add(this->txtScaleOut);
+			this->groupBox1->Controls->Add(this->txtScaleVel);
+			this->groupBox1->Controls->Add(this->txtScaleErr);
 			this->groupBox1->Controls->Add(this->txtKD2);
 			this->groupBox1->Controls->Add(this->txtKP2);
 			this->groupBox1->Controls->Add(this->txtKI2);
@@ -504,11 +534,11 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			this->groupBox1->Controls->Add(this->txtPosY);
 			this->groupBox1->Controls->Add(this->label10);
 			this->groupBox1->Controls->Add(this->txtSetpointX);
-			this->groupBox1->Controls->Add(this->txtPIDY);
+			this->groupBox1->Controls->Add(this->txtANGLE_Y);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->label11);
 			this->groupBox1->Controls->Add(this->txtSetpointY);
-			this->groupBox1->Controls->Add(this->txtPIDX);
+			this->groupBox1->Controls->Add(this->txtANGLE_X);
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->txtPosX);
 			this->groupBox1->Controls->Add(this->label14);
@@ -525,10 +555,58 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Location = System::Drawing::Point(12, 159);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(331, 227);
+			this->groupBox1->Size = System::Drawing::Size(419, 227);
 			this->groupBox1->TabIndex = 27;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"PARAM";
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(295, 110);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(54, 13);
+			this->label18->TabIndex = 34;
+			this->label18->Text = L"Scale Out";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(295, 87);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(52, 13);
+			this->label17->TabIndex = 34;
+			this->label17->Text = L"Scale Vel";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(295, 58);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(50, 13);
+			this->label16->TabIndex = 34;
+			this->label16->Text = L"Scale Err";
+			// 
+			// txtScaleOut
+			// 
+			this->txtScaleOut->Location = System::Drawing::Point(356, 110);
+			this->txtScaleOut->Name = L"txtScaleOut";
+			this->txtScaleOut->Size = System::Drawing::Size(57, 20);
+			this->txtScaleOut->TabIndex = 33;
+			// 
+			// txtScaleVel
+			// 
+			this->txtScaleVel->Location = System::Drawing::Point(356, 84);
+			this->txtScaleVel->Name = L"txtScaleVel";
+			this->txtScaleVel->Size = System::Drawing::Size(57, 20);
+			this->txtScaleVel->TabIndex = 33;
+			// 
+			// txtScaleErr
+			// 
+			this->txtScaleErr->Location = System::Drawing::Point(356, 58);
+			this->txtScaleErr->Name = L"txtScaleErr";
+			this->txtScaleErr->Size = System::Drawing::Size(57, 20);
+			this->txtScaleErr->TabIndex = 33;
 			// 
 			// txtKD2
 			// 
@@ -682,6 +760,8 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->bSTART_FUZZY);
+			this->groupBox3->Controls->Add(this->label15);
 			this->groupBox3->Controls->Add(this->txtTimeProcess);
 			this->groupBox3->Controls->Add(this->bSTART_GRAPH);
 			this->groupBox3->Controls->Add(this->bSTART_PID);
@@ -702,16 +782,35 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"CONTROL";
 			// 
+			// bSTART_FUZZY
+			// 
+			this->bSTART_FUZZY->Location = System::Drawing::Point(239, 78);
+			this->bSTART_FUZZY->Name = L"bSTART_FUZZY";
+			this->bSTART_FUZZY->Size = System::Drawing::Size(90, 23);
+			this->bSTART_FUZZY->TabIndex = 39;
+			this->bSTART_FUZZY->Text = L"START FUZZY";
+			this->bSTART_FUZZY->UseVisualStyleBackColor = true;
+			this->bSTART_FUZZY->Click += gcnew System::EventHandler(this, &MyForm::bSTART_FUZZY_Click);
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(14, 109);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(72, 13);
+			this->label15->TabIndex = 38;
+			this->label15->Text = L"Sampling time";
+			// 
 			// txtTimeProcess
 			// 
-			this->txtTimeProcess->Location = System::Drawing::Point(237, 110);
+			this->txtTimeProcess->Location = System::Drawing::Point(92, 106);
 			this->txtTimeProcess->Name = L"txtTimeProcess";
-			this->txtTimeProcess->Size = System::Drawing::Size(92, 20);
+			this->txtTimeProcess->Size = System::Drawing::Size(40, 20);
 			this->txtTimeProcess->TabIndex = 35;
 			// 
 			// bSTART_GRAPH
 			// 
-			this->bSTART_GRAPH->Location = System::Drawing::Point(237, 78);
+			this->bSTART_GRAPH->Location = System::Drawing::Point(237, 106);
 			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
 			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
 			this->bSTART_GRAPH->TabIndex = 37;
@@ -742,7 +841,7 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1019, 541);
+			this->ClientSize = System::Drawing::Size(1019, 553);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->PIDX);
@@ -793,7 +892,13 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 		double setpointX = 0;
 		double setpointY = 0;
 		bool SCROLL_GRAPH = false;
-
+		double pre_errX = 0;
+		double pre_errY = 0;
+		double velX = 0;
+		double velY = 0;
+		int scale_err = 1;
+		int scale_vel = 1;
+		int scale_out = 1;
 		//===============================================
 		//=======CODE START HERE=========================
 
@@ -875,6 +980,9 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 		initGraph();
 		txtSetpointX->Text = "198";
 		txtSetpointY->Text = "214";
+		txtScaleErr->Text = "200";
+		txtScaleVel->Text = "200";
+		txtScaleOut->Text = "10";
 		txtErrX->Text = "0";
 		txtErrY->Text = "0";
 		txtSEND->Text = "@0:0$";
@@ -902,6 +1010,7 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 		xScale->Min = 0;
 		yScale->Max = 400;
 		yScale->Min = 0;
+		Init_Fuzzy();
 
 	}
 	private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -933,7 +1042,7 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 
 	private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e) 
 	{
-		txtSEND->Text = "@" + txtPIDY->Text + ":" + txtPIDX->Text + "$";
+		txtSEND->Text = "@" + txtANGLE_Y->Text + ":" + txtANGLE_X->Text + "$";
 	}
 	private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
 		if (serialPort->IsOpen == true)
@@ -965,16 +1074,17 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 
 		posX = camera.getX();
 		posY = camera.getY();
-		setpointX = System::Convert::ToDouble(txtSetpointX->Text);
-		setpointY = System::Convert::ToDouble(txtSetpointY->Text);
+
 		errX = setpointX - posX;
 		errY = setpointY - posY;
 
-		txtErrX->Text = errX.ToString();
-		txtErrY->Text = errY.ToString();
-		txtPosX->Text = posX.ToString();
-		txtPosY->Text = posY.ToString();
-		if (bSTART_PID->Text == "STOP PID")
+		velX = errX - pre_errX;
+		velY = errY - pre_errY;
+
+		pre_errX = errX;
+		pre_errY = errY;
+
+		if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
 		{
 			pidX.setPIDPeriod(1 / camera.fps_);
 			pidX.setPIDOutputLimit(-10, 10);
@@ -986,17 +1096,34 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 			pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
 			pidY.compute(errY);
 
-			txtPIDX->Text = ((int)pidX.getOutput(0)).ToString();
-			txtPIDY->Text = (-(int)pidY.getOutput(0)).ToString();
+			txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
+			txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
+		}
+		if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
+		{
+			scale_err = System::Convert::ToInt16(txtScaleErr->Text);
+			scale_vel = System::Convert::ToInt16(txtScaleVel->Text);
+			scale_out = System::Convert::ToInt16(txtScaleOut->Text);
+			txtANGLE_X->Text = Fuzzy_OutPut((int)errX, (int)velX, scale_err, scale_vel, scale_out, -10, 10).ToString();
+			txtANGLE_Y->Text = Fuzzy_OutPut((int)errY, (int)velY, scale_err, scale_vel, scale_out, -10, 10).ToString();
 		}
 		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
 		{
 			draw(posX, posY);
 			//timeGraph++;
 		}
-		camera.showCamera(1);
-		camera.getFPS_end();
+		if (bSETBALL->Text == "SET BALL"  && camera.getErrorStr() == "Tracking Object")
+		{
+			txtSetpointX->Text = posX.ToString();
+			txtSetpointY->Text = posY.ToString();
+		}
+		txtErrX->Text = errX.ToString();
+		txtErrY->Text = errY.ToString();
+		txtPosX->Text = posX.ToString();
+		txtPosY->Text = posY.ToString();
 		txtTimeProcess->Text = ((int)(1000 / camera.fps_)).ToString() + " ms";
+		camera.showCamera(2);
+		camera.getFPS_end();
 	}
 	private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (bSTART_CAM->Text == "START CAM")
@@ -1027,10 +1154,16 @@ private: System::Windows::Forms::TextBox^  txtTimeProcess;
 
 	}
 private: System::Void bSETBALL_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (camera.getErrorStr() == "Tracking Object")
+	if (bSETBALL->Text == "SET BALL")
 	{
-		txtSetpointX->Text = posX.ToString();
-		txtSetpointY->Text = posY.ToString();
+		bSETBALL->Text = "GET BALL";
+		setpointX = System::Convert::ToDouble(txtSetpointX->Text);
+		setpointY = System::Convert::ToDouble(txtSetpointY->Text);
+	}
+	else
+	{
+		bSETBALL->Text = "SET BALL";
+
 	}
 }
 private: System::Void trackBar1_Scroll(System::Object^  sender, System::EventArgs^  e) {
@@ -1078,6 +1211,16 @@ private: System::Void bSTART_GRAPH_Click(System::Object^  sender, System::EventA
 	else
 	{
 		bSTART_GRAPH->Text = "START GRAPH";
+	}
+}
+private: System::Void bSTART_FUZZY_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_FUZZY->Text == "START FUZZY")
+	{
+		bSTART_FUZZY->Text = "STOP FUZZY";
+	}
+	else
+	{
+		bSTART_FUZZY->Text = "START FUZZY";
 	}
 }
 };

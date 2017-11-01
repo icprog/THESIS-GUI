@@ -8,7 +8,7 @@
 
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
-
+#include <time.h>
 class Camera
 {
 	static void callback_func(int, void*);
@@ -66,7 +66,7 @@ private:
 
 
 	int64 start_;
-
+	clock_t start_2;
 	int x_;                         // If coordinates' values equal to (-1), it means
     int y_;                         // that there is no object on the frame
 
