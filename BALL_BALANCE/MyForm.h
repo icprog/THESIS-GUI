@@ -147,6 +147,16 @@ private: System::Windows::Forms::TextBox^  txtScaleVel;
 
 
 private: System::Windows::Forms::TextBox^  txtScaleErr;
+private: System::Windows::Forms::GroupBox^  groupBox4;
+private: System::Windows::Forms::Button^  button2;
+private: System::Windows::Forms::Button^  button1;
+private: System::Windows::Forms::GroupBox^  groupBox5;
+private: System::Windows::Forms::GroupBox^  groupBox6;
+private: System::Windows::Forms::GroupBox^  groupBox7;
+private: System::Windows::Forms::Button^  button4;
+private: System::Windows::Forms::Button^  button3;
+private: System::Windows::Forms::Label^  label19;
+private: System::Windows::Forms::TextBox^  textBox1;
 
 
 
@@ -239,6 +249,16 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			this->bSTART_GRAPH = (gcnew System::Windows::Forms::Button());
 			this->bSTART_PID = (gcnew System::Windows::Forms::Button());
 			this->bSetCrop = (gcnew System::Windows::Forms::Button());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox7 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -249,6 +269,10 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			this->PIDX->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
+			this->groupBox4->SuspendLayout();
+			this->groupBox5->SuspendLayout();
+			this->groupBox6->SuspendLayout();
+			this->groupBox7->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// cbCOMLIST
@@ -309,7 +333,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// zedGraphControl1
 			// 
-			this->zedGraphControl1->Location = System::Drawing::Point(467, 12);
+			this->zedGraphControl1->Location = System::Drawing::Point(463, 12);
 			this->zedGraphControl1->Name = L"zedGraphControl1";
 			this->zedGraphControl1->ScrollGrace = 0;
 			this->zedGraphControl1->ScrollMaxX = 0;
@@ -318,7 +342,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			this->zedGraphControl1->ScrollMinX = 0;
 			this->zedGraphControl1->ScrollMinY = 0;
 			this->zedGraphControl1->ScrollMinY2 = 0;
-			this->zedGraphControl1->Size = System::Drawing::Size(540, 524);
+			this->zedGraphControl1->Size = System::Drawing::Size(421, 310);
 			this->zedGraphControl1->TabIndex = 5;
 			// 
 			// timerProcessing
@@ -424,7 +448,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(65, 135);
+			this->label7->Location = System::Drawing::Point(26, 50);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(21, 13);
 			this->label7->TabIndex = 19;
@@ -433,7 +457,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(65, 163);
+			this->label8->Location = System::Drawing::Point(26, 78);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(17, 13);
 			this->label8->TabIndex = 20;
@@ -442,7 +466,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(65, 190);
+			this->label9->Location = System::Drawing::Point(26, 105);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(22, 13);
 			this->label9->TabIndex = 21;
@@ -450,7 +474,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// bSTART_CAM
 			// 
-			this->bSTART_CAM->Location = System::Drawing::Point(237, 19);
+			this->bSTART_CAM->Location = System::Drawing::Point(6, 19);
 			this->bSTART_CAM->Name = L"bSTART_CAM";
 			this->bSTART_CAM->Size = System::Drawing::Size(93, 23);
 			this->bSTART_CAM->TabIndex = 22;
@@ -493,7 +517,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(216, 136);
+			this->label12->Location = System::Drawing::Point(106, 51);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(21, 13);
 			this->label12->TabIndex = 19;
@@ -502,7 +526,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(216, 164);
+			this->label13->Location = System::Drawing::Point(106, 79);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(17, 13);
 			this->label13->TabIndex = 20;
@@ -511,7 +535,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(216, 191);
+			this->label14->Location = System::Drawing::Point(106, 106);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(22, 13);
 			this->label14->TabIndex = 21;
@@ -519,43 +543,29 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->label18);
-			this->groupBox1->Controls->Add(this->label17);
-			this->groupBox1->Controls->Add(this->label16);
-			this->groupBox1->Controls->Add(this->txtScaleOut);
-			this->groupBox1->Controls->Add(this->txtScaleVel);
-			this->groupBox1->Controls->Add(this->txtScaleErr);
-			this->groupBox1->Controls->Add(this->txtKD2);
-			this->groupBox1->Controls->Add(this->txtKP2);
-			this->groupBox1->Controls->Add(this->txtKI2);
-			this->groupBox1->Controls->Add(this->txtKD1);
-			this->groupBox1->Controls->Add(this->txtKP1);
-			this->groupBox1->Controls->Add(this->txtKI1);
 			this->groupBox1->Controls->Add(this->txtPosY);
 			this->groupBox1->Controls->Add(this->label10);
 			this->groupBox1->Controls->Add(this->txtSetpointX);
+			this->groupBox1->Controls->Add(this->label15);
 			this->groupBox1->Controls->Add(this->txtANGLE_Y);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->label11);
 			this->groupBox1->Controls->Add(this->txtSetpointY);
 			this->groupBox1->Controls->Add(this->txtANGLE_X);
+			this->groupBox1->Controls->Add(this->txtTimeProcess);
+			this->groupBox1->Controls->Add(this->bSTART_GRAPH);
 			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->bSCROLL);
 			this->groupBox1->Controls->Add(this->txtPosX);
-			this->groupBox1->Controls->Add(this->label14);
 			this->groupBox1->Controls->Add(this->label3);
-			this->groupBox1->Controls->Add(this->label9);
 			this->groupBox1->Controls->Add(this->label4);
-			this->groupBox1->Controls->Add(this->label13);
 			this->groupBox1->Controls->Add(this->txtErrX);
-			this->groupBox1->Controls->Add(this->label8);
 			this->groupBox1->Controls->Add(this->label6);
-			this->groupBox1->Controls->Add(this->label12);
 			this->groupBox1->Controls->Add(this->txtErrY);
-			this->groupBox1->Controls->Add(this->label7);
 			this->groupBox1->Controls->Add(this->label5);
-			this->groupBox1->Location = System::Drawing::Point(12, 159);
+			this->groupBox1->Location = System::Drawing::Point(12, 134);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(419, 227);
+			this->groupBox1->Size = System::Drawing::Size(445, 188);
 			this->groupBox1->TabIndex = 27;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"PARAM";
@@ -563,7 +573,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label18
 			// 
 			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(295, 110);
+			this->label18->Location = System::Drawing::Point(125, 84);
 			this->label18->Name = L"label18";
 			this->label18->Size = System::Drawing::Size(54, 13);
 			this->label18->TabIndex = 34;
@@ -572,7 +582,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(295, 87);
+			this->label17->Location = System::Drawing::Point(125, 61);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(52, 13);
 			this->label17->TabIndex = 34;
@@ -581,7 +591,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(295, 58);
+			this->label16->Location = System::Drawing::Point(125, 32);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(50, 13);
 			this->label16->TabIndex = 34;
@@ -589,72 +599,72 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// txtScaleOut
 			// 
-			this->txtScaleOut->Location = System::Drawing::Point(356, 110);
+			this->txtScaleOut->Location = System::Drawing::Point(186, 84);
 			this->txtScaleOut->Name = L"txtScaleOut";
 			this->txtScaleOut->Size = System::Drawing::Size(57, 20);
 			this->txtScaleOut->TabIndex = 33;
 			// 
 			// txtScaleVel
 			// 
-			this->txtScaleVel->Location = System::Drawing::Point(356, 84);
+			this->txtScaleVel->Location = System::Drawing::Point(186, 58);
 			this->txtScaleVel->Name = L"txtScaleVel";
 			this->txtScaleVel->Size = System::Drawing::Size(57, 20);
 			this->txtScaleVel->TabIndex = 33;
 			// 
 			// txtScaleErr
 			// 
-			this->txtScaleErr->Location = System::Drawing::Point(356, 58);
+			this->txtScaleErr->Location = System::Drawing::Point(186, 32);
 			this->txtScaleErr->Name = L"txtScaleErr";
 			this->txtScaleErr->Size = System::Drawing::Size(57, 20);
 			this->txtScaleErr->TabIndex = 33;
 			// 
 			// txtKD2
 			// 
-			this->txtKD2->Location = System::Drawing::Point(243, 184);
+			this->txtKD2->Location = System::Drawing::Point(133, 99);
 			this->txtKD2->Name = L"txtKD2";
 			this->txtKD2->Size = System::Drawing::Size(46, 20);
 			this->txtKD2->TabIndex = 32;
 			// 
 			// txtKP2
 			// 
-			this->txtKP2->Location = System::Drawing::Point(243, 132);
+			this->txtKP2->Location = System::Drawing::Point(133, 47);
 			this->txtKP2->Name = L"txtKP2";
 			this->txtKP2->Size = System::Drawing::Size(46, 20);
 			this->txtKP2->TabIndex = 30;
 			// 
 			// txtKI2
 			// 
-			this->txtKI2->Location = System::Drawing::Point(243, 158);
+			this->txtKI2->Location = System::Drawing::Point(133, 73);
 			this->txtKI2->Name = L"txtKI2";
 			this->txtKI2->Size = System::Drawing::Size(46, 20);
 			this->txtKI2->TabIndex = 31;
 			// 
 			// txtKD1
 			// 
-			this->txtKD1->Location = System::Drawing::Point(92, 184);
+			this->txtKD1->Location = System::Drawing::Point(53, 99);
 			this->txtKD1->Name = L"txtKD1";
 			this->txtKD1->Size = System::Drawing::Size(46, 20);
 			this->txtKD1->TabIndex = 29;
 			// 
 			// txtKP1
 			// 
-			this->txtKP1->Location = System::Drawing::Point(92, 132);
+			this->txtKP1->Location = System::Drawing::Point(53, 47);
 			this->txtKP1->Name = L"txtKP1";
 			this->txtKP1->Size = System::Drawing::Size(46, 20);
 			this->txtKP1->TabIndex = 27;
 			// 
 			// txtKI1
 			// 
-			this->txtKI1->Location = System::Drawing::Point(92, 158);
+			this->txtKI1->Location = System::Drawing::Point(53, 73);
 			this->txtKI1->Name = L"txtKI1";
 			this->txtKI1->Size = System::Drawing::Size(46, 20);
 			this->txtKI1->TabIndex = 28;
 			// 
 			// bSCROLL
 			// 
-			this->bSCROLL->Location = System::Drawing::Point(335, 107);
+			this->bSCROLL->Location = System::Drawing::Point(299, 54);
 			this->bSCROLL->Name = L"bSCROLL";
-			this->bSCROLL->Size = System::Drawing::Size(83, 23);
+			this->bSCROLL->Size = System::Drawing::Size(93, 23);
 			this->bSCROLL->TabIndex = 22;
 			this->bSCROLL->Text = L"SCROLL";
 			this->bSCROLL->UseVisualStyleBackColor = true;
@@ -662,9 +672,9 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// bSETBALL
 			// 
-			this->bSETBALL->Location = System::Drawing::Point(336, 78);
+			this->bSETBALL->Location = System::Drawing::Point(105, 48);
 			this->bSETBALL->Name = L"bSETBALL";
-			this->bSETBALL->Size = System::Drawing::Size(83, 23);
+			this->bSETBALL->Size = System::Drawing::Size(93, 24);
 			this->bSETBALL->TabIndex = 22;
 			this->bSETBALL->Text = L"SET BALL";
 			this->bSETBALL->UseVisualStyleBackColor = true;
@@ -699,9 +709,9 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// bCALIB
 			// 
-			this->bCALIB->Location = System::Drawing::Point(336, 48);
+			this->bCALIB->Location = System::Drawing::Point(7, 48);
 			this->bCALIB->Name = L"bCALIB";
-			this->bCALIB->Size = System::Drawing::Size(82, 24);
+			this->bCALIB->Size = System::Drawing::Size(92, 24);
 			this->bCALIB->TabIndex = 31;
 			this->bCALIB->Text = L"CALIB";
 			this->bCALIB->UseVisualStyleBackColor = true;
@@ -739,7 +749,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			this->PIDX->Controls->Add(this->trackBar3);
 			this->PIDX->Controls->Add(this->trackBar2);
 			this->PIDX->Controls->Add(this->trackBar1);
-			this->PIDX->Location = System::Drawing::Point(12, 392);
+			this->PIDX->Location = System::Drawing::Point(195, 18);
 			this->PIDX->Name = L"PIDX";
 			this->PIDX->Size = System::Drawing::Size(197, 142);
 			this->PIDX->TabIndex = 32;
@@ -751,7 +761,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			this->groupBox2->Controls->Add(this->trackBar6);
 			this->groupBox2->Controls->Add(this->trackBar5);
 			this->groupBox2->Controls->Add(this->trackBar4);
-			this->groupBox2->Location = System::Drawing::Point(215, 395);
+			this->groupBox2->Location = System::Drawing::Point(413, 18);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(188, 142);
 			this->groupBox2->TabIndex = 33;
@@ -760,31 +770,21 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// groupBox3
 			// 
-			this->groupBox3->Controls->Add(this->bSTART_FUZZY);
-			this->groupBox3->Controls->Add(this->label15);
-			this->groupBox3->Controls->Add(this->txtTimeProcess);
-			this->groupBox3->Controls->Add(this->bSTART_GRAPH);
-			this->groupBox3->Controls->Add(this->bSTART_PID);
-			this->groupBox3->Controls->Add(this->bSetCrop);
-			this->groupBox3->Controls->Add(this->bCALIB);
 			this->groupBox3->Controls->Add(this->cbCOMLIST);
 			this->groupBox3->Controls->Add(this->txtRECEIVE);
 			this->groupBox3->Controls->Add(this->bCONNECT);
 			this->groupBox3->Controls->Add(this->txtSEND);
-			this->groupBox3->Controls->Add(this->bSETBALL);
 			this->groupBox3->Controls->Add(this->bSEND);
-			this->groupBox3->Controls->Add(this->bSCROLL);
-			this->groupBox3->Controls->Add(this->bSTART_CAM);
 			this->groupBox3->Location = System::Drawing::Point(12, 12);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(449, 141);
+			this->groupBox3->Size = System::Drawing::Size(234, 116);
 			this->groupBox3->TabIndex = 34;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"CONTROL";
 			// 
 			// bSTART_FUZZY
 			// 
-			this->bSTART_FUZZY->Location = System::Drawing::Point(239, 78);
+			this->bSTART_FUZZY->Location = System::Drawing::Point(6, 19);
 			this->bSTART_FUZZY->Name = L"bSTART_FUZZY";
 			this->bSTART_FUZZY->Size = System::Drawing::Size(90, 23);
 			this->bSTART_FUZZY->TabIndex = 39;
@@ -795,22 +795,22 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(14, 109);
+			this->label15->Location = System::Drawing::Point(152, 164);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(72, 13);
+			this->label15->Size = System::Drawing::Size(91, 13);
 			this->label15->TabIndex = 38;
-			this->label15->Text = L"Sampling time";
+			this->label15->Text = L"SAMPLING TIME";
 			// 
 			// txtTimeProcess
 			// 
-			this->txtTimeProcess->Location = System::Drawing::Point(92, 106);
+			this->txtTimeProcess->Location = System::Drawing::Point(249, 161);
 			this->txtTimeProcess->Name = L"txtTimeProcess";
 			this->txtTimeProcess->Size = System::Drawing::Size(40, 20);
 			this->txtTimeProcess->TabIndex = 35;
 			// 
 			// bSTART_GRAPH
 			// 
-			this->bSTART_GRAPH->Location = System::Drawing::Point(237, 106);
+			this->bSTART_GRAPH->Location = System::Drawing::Point(299, 24);
 			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
 			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
 			this->bSTART_GRAPH->TabIndex = 37;
@@ -820,7 +820,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// bSTART_PID
 			// 
-			this->bSTART_PID->Location = System::Drawing::Point(237, 48);
+			this->bSTART_PID->Location = System::Drawing::Point(6, 18);
 			this->bSTART_PID->Name = L"bSTART_PID";
 			this->bSTART_PID->Size = System::Drawing::Size(93, 24);
 			this->bSTART_PID->TabIndex = 36;
@@ -830,21 +830,144 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			// 
 			// bSetCrop
 			// 
-			this->bSetCrop->Location = System::Drawing::Point(336, 19);
+			this->bSetCrop->Location = System::Drawing::Point(6, 78);
 			this->bSetCrop->Name = L"bSetCrop";
-			this->bSetCrop->Size = System::Drawing::Size(83, 25);
+			this->bSetCrop->Size = System::Drawing::Size(93, 25);
 			this->bSetCrop->TabIndex = 35;
 			this->bSetCrop->Text = L"SET CROP";
 			this->bSetCrop->UseVisualStyleBackColor = true;
+			this->bSetCrop->Click += gcnew System::EventHandler(this, &MyForm::bSetCrop_Click);
+			// 
+			// groupBox4
+			// 
+			this->groupBox4->Controls->Add(this->button2);
+			this->groupBox4->Controls->Add(this->button1);
+			this->groupBox4->Controls->Add(this->bSTART_CAM);
+			this->groupBox4->Controls->Add(this->bCALIB);
+			this->groupBox4->Controls->Add(this->bSetCrop);
+			this->groupBox4->Controls->Add(this->bSETBALL);
+			this->groupBox4->Location = System::Drawing::Point(255, 12);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(202, 116);
+			this->groupBox4->TabIndex = 35;
+			this->groupBox4->TabStop = false;
+			this->groupBox4->Text = L"CAMERA";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(105, 19);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(93, 23);
+			this->button1->TabIndex = 36;
+			this->button1->Text = L"DETECT BALL";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(105, 78);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(93, 26);
+			this->button2->TabIndex = 37;
+			this->button2->Text = L"GET BALL";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
+			// groupBox5
+			// 
+			this->groupBox5->Controls->Add(this->bSTART_PID);
+			this->groupBox5->Controls->Add(this->txtKP1);
+			this->groupBox5->Controls->Add(this->label7);
+			this->groupBox5->Controls->Add(this->label8);
+			this->groupBox5->Controls->Add(this->label9);
+			this->groupBox5->Controls->Add(this->txtKI1);
+			this->groupBox5->Controls->Add(this->groupBox2);
+			this->groupBox5->Controls->Add(this->txtKD2);
+			this->groupBox5->Controls->Add(this->txtKD1);
+			this->groupBox5->Controls->Add(this->PIDX);
+			this->groupBox5->Controls->Add(this->txtKP2);
+			this->groupBox5->Controls->Add(this->txtKI2);
+			this->groupBox5->Controls->Add(this->label12);
+			this->groupBox5->Controls->Add(this->label13);
+			this->groupBox5->Controls->Add(this->label14);
+			this->groupBox5->Location = System::Drawing::Point(12, 328);
+			this->groupBox5->Name = L"groupBox5";
+			this->groupBox5->Size = System::Drawing::Size(607, 169);
+			this->groupBox5->TabIndex = 40;
+			this->groupBox5->TabStop = false;
+			this->groupBox5->Text = L"PID";
+			// 
+			// groupBox6
+			// 
+			this->groupBox6->Controls->Add(this->bSTART_FUZZY);
+			this->groupBox6->Controls->Add(this->label18);
+			this->groupBox6->Controls->Add(this->txtScaleVel);
+			this->groupBox6->Controls->Add(this->txtScaleErr);
+			this->groupBox6->Controls->Add(this->label17);
+			this->groupBox6->Controls->Add(this->txtScaleOut);
+			this->groupBox6->Controls->Add(this->label16);
+			this->groupBox6->Location = System::Drawing::Point(625, 328);
+			this->groupBox6->Name = L"groupBox6";
+			this->groupBox6->Size = System::Drawing::Size(356, 169);
+			this->groupBox6->TabIndex = 41;
+			this->groupBox6->TabStop = false;
+			this->groupBox6->Text = L"FUZZY";
+			// 
+			// groupBox7
+			// 
+			this->groupBox7->Controls->Add(this->button4);
+			this->groupBox7->Controls->Add(this->button3);
+			this->groupBox7->Controls->Add(this->label19);
+			this->groupBox7->Controls->Add(this->textBox1);
+			this->groupBox7->Location = System::Drawing::Point(895, 37);
+			this->groupBox7->Name = L"groupBox7";
+			this->groupBox7->Size = System::Drawing::Size(181, 79);
+			this->groupBox7->TabIndex = 42;
+			this->groupBox7->TabStop = false;
+			this->groupBox7->Text = L"DATA";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(75, 19);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(98, 20);
+			this->textBox1->TabIndex = 0;
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(6, 22);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(63, 13);
+			this->label19->TabIndex = 1;
+			this->label19->Text = L"FILE NAME";
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(6, 45);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(80, 27);
+			this->button3->TabIndex = 2;
+			this->button3->Text = L"IMPORT";
+			this->button3->UseVisualStyleBackColor = true;
+			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(93, 45);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(80, 27);
+			this->button4->TabIndex = 2;
+			this->button4->Text = L"EXPORT";
+			this->button4->UseVisualStyleBackColor = true;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1019, 553);
+			this->ClientSize = System::Drawing::Size(1129, 509);
+			this->Controls->Add(this->groupBox7);
+			this->Controls->Add(this->groupBox6);
+			this->Controls->Add(this->groupBox5);
+			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox3);
-			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->PIDX);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->zedGraphControl1);
 			this->Name = L"MyForm";
@@ -864,6 +987,13 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			this->groupBox2->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
+			this->groupBox4->ResumeLayout(false);
+			this->groupBox5->ResumeLayout(false);
+			this->groupBox5->PerformLayout();
+			this->groupBox6->ResumeLayout(false);
+			this->groupBox6->PerformLayout();
+			this->groupBox7->ResumeLayout(false);
+			this->groupBox7->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -1078,8 +1208,8 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 		errX = setpointX - posX;
 		errY = setpointY - posY;
 
-		velX = errX - pre_errX;
-		velY = errY - pre_errY;
+		velX = (errX - pre_errX)*30;
+		velY = (errY - pre_errY)*30;
 
 		pre_errX = errX;
 		pre_errY = errY;
@@ -1105,7 +1235,7 @@ private: System::Windows::Forms::TextBox^  txtScaleErr;
 			scale_vel = System::Convert::ToInt16(txtScaleVel->Text);
 			scale_out = System::Convert::ToInt16(txtScaleOut->Text);
 			txtANGLE_X->Text = Fuzzy_OutPut((int)errX, (int)velX, scale_err, scale_vel, scale_out, -10, 10).ToString();
-			txtANGLE_Y->Text = Fuzzy_OutPut((int)errY, (int)velY, scale_err, scale_vel, scale_out, -10, 10).ToString();
+			txtANGLE_Y->Text = (-Fuzzy_OutPut((int)errY, (int)velY, scale_err, scale_vel, scale_out, -10, 10)).ToString();
 		}
 		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
 		{
@@ -1222,6 +1352,8 @@ private: System::Void bSTART_FUZZY_Click(System::Object^  sender, System::EventA
 	{
 		bSTART_FUZZY->Text = "START FUZZY";
 	}
+}
+private: System::Void bSetCrop_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
