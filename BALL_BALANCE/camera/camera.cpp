@@ -105,10 +105,20 @@ Camera::showCamera(int id)
 	putText(imgFullframe_, "X : " + intToString((int)x_), cv::Point(0, 60), 2, 1, cv::Scalar(0, 255, 0), 2);
 	putText(imgFullframe_, "Y : " + intToString((int)y_), cv::Point(0, 90), 2, 1, cv::Scalar(0, 255, 0), 2);
 	putText(imgFullframe_, "FPS : " + intToString((int)fps_), cv::Point(0, 30), 2, 1, cv::Scalar(0, 255, 0), 2);
-	if(id==2)
+	if(id == 0 || id==2)
 		cv::imshow("Threshold", imgThresholded_); // Showing the original image
-	if(id==1 || id == 2)
+	if(id == 1 || id == 2)
 		cv::imshow("Original", imgFullframe_); // Showing the original image		
+}
+void
+Camera::unshowCamera(int id)
+{
+	if (id == 0)
+		cv::destroyWindow("Threshold");
+	else if (id == 1)
+		cv::destroyWindow("Original");
+	else if (id == 2)
+		cv::destroyAllWindows();
 }
 int
 Camera::getX()

@@ -93,7 +93,8 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::Label^  label9;
-	private: System::Windows::Forms::Button^  bSTART_CAM;
+	private: System::Windows::Forms::Button^  bSTART;
+
 
 
 
@@ -151,8 +152,11 @@ private: System::Windows::Forms::TextBox^  txtScaleErr1;
 
 
 private: System::Windows::Forms::GroupBox^  groupBox4;
-private: System::Windows::Forms::Button^  button2;
-private: System::Windows::Forms::Button^  button1;
+private: System::Windows::Forms::Button^  bGetBall;
+private: System::Windows::Forms::Button^  bShowCam;
+
+
+
 private: System::Windows::Forms::GroupBox^  groupBox5;
 private: System::Windows::Forms::GroupBox^  groupBox6;
 private: System::Windows::Forms::GroupBox^  groupBox7;
@@ -173,6 +177,8 @@ private: System::Windows::Forms::TextBox^  txtScaleOut3;
 
 private: System::Windows::Forms::TextBox^  txtScaleOut2;
 private: System::Windows::Forms::Button^  bSetFuzzyScale;
+private: System::Windows::Forms::Button^  bSetPIDFactor;
+
 
 
 
@@ -227,7 +233,7 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->bSTART_CAM = (gcnew System::Windows::Forms::Button());
+			this->bSTART = (gcnew System::Windows::Forms::Button());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->txtANGLE_Y = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
@@ -267,8 +273,8 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			this->bSTART_PID = (gcnew System::Windows::Forms::Button());
 			this->bSetCrop = (gcnew System::Windows::Forms::Button());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->bGetBall = (gcnew System::Windows::Forms::Button());
+			this->bShowCam = (gcnew System::Windows::Forms::Button());
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
 			this->bSetFuzzyScale = (gcnew System::Windows::Forms::Button());
@@ -283,6 +289,7 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->bSetPIDFactor = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -357,7 +364,7 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			// 
 			// zedGraphControl1
 			// 
-			this->zedGraphControl1->Location = System::Drawing::Point(463, 12);
+			this->zedGraphControl1->Location = System::Drawing::Point(432, 12);
 			this->zedGraphControl1->Name = L"zedGraphControl1";
 			this->zedGraphControl1->ScrollGrace = 0;
 			this->zedGraphControl1->ScrollMaxX = 0;
@@ -366,7 +373,7 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			this->zedGraphControl1->ScrollMinX = 0;
 			this->zedGraphControl1->ScrollMinY = 0;
 			this->zedGraphControl1->ScrollMinY2 = 0;
-			this->zedGraphControl1->Size = System::Drawing::Size(421, 310);
+			this->zedGraphControl1->Size = System::Drawing::Size(468, 310);
 			this->zedGraphControl1->TabIndex = 5;
 			// 
 			// timerProcessing
@@ -496,15 +503,15 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			this->label9->TabIndex = 21;
 			this->label9->Text = L"KD";
 			// 
-			// bSTART_CAM
+			// bSTART
 			// 
-			this->bSTART_CAM->Location = System::Drawing::Point(6, 19);
-			this->bSTART_CAM->Name = L"bSTART_CAM";
-			this->bSTART_CAM->Size = System::Drawing::Size(93, 23);
-			this->bSTART_CAM->TabIndex = 22;
-			this->bSTART_CAM->Text = L"START CAM";
-			this->bSTART_CAM->UseVisualStyleBackColor = true;
-			this->bSTART_CAM->Click += gcnew System::EventHandler(this, &MyForm::bSTART_Click);
+			this->bSTART->Location = System::Drawing::Point(6, 19);
+			this->bSTART->Name = L"bSTART";
+			this->bSTART->Size = System::Drawing::Size(93, 23);
+			this->bSTART->TabIndex = 22;
+			this->bSTART->Text = L"START";
+			this->bSTART->UseVisualStyleBackColor = true;
+			this->bSTART->Click += gcnew System::EventHandler(this, &MyForm::bSTART_Click);
 			// 
 			// label10
 			// 
@@ -867,39 +874,42 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			// 
 			// groupBox4
 			// 
-			this->groupBox4->Controls->Add(this->button2);
-			this->groupBox4->Controls->Add(this->button1);
-			this->groupBox4->Controls->Add(this->bSTART_CAM);
+			this->groupBox4->Controls->Add(this->bGetBall);
+			this->groupBox4->Controls->Add(this->bShowCam);
+			this->groupBox4->Controls->Add(this->bSTART);
 			this->groupBox4->Controls->Add(this->bCALIB);
 			this->groupBox4->Controls->Add(this->bSetCrop);
 			this->groupBox4->Controls->Add(this->bSETBALL);
-			this->groupBox4->Location = System::Drawing::Point(255, 12);
+			this->groupBox4->Location = System::Drawing::Point(224, 12);
 			this->groupBox4->Name = L"groupBox4";
 			this->groupBox4->Size = System::Drawing::Size(202, 116);
 			this->groupBox4->TabIndex = 35;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"CAMERA";
 			// 
-			// button2
+			// bGetBall
 			// 
-			this->button2->Location = System::Drawing::Point(105, 78);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(93, 26);
-			this->button2->TabIndex = 37;
-			this->button2->Text = L"GET BALL";
-			this->button2->UseVisualStyleBackColor = true;
+			this->bGetBall->Location = System::Drawing::Point(105, 78);
+			this->bGetBall->Name = L"bGetBall";
+			this->bGetBall->Size = System::Drawing::Size(93, 26);
+			this->bGetBall->TabIndex = 37;
+			this->bGetBall->Text = L"GET BALL";
+			this->bGetBall->UseVisualStyleBackColor = true;
+			this->bGetBall->Click += gcnew System::EventHandler(this, &MyForm::bGetBall_Click);
 			// 
-			// button1
+			// bShowCam
 			// 
-			this->button1->Location = System::Drawing::Point(105, 19);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(93, 23);
-			this->button1->TabIndex = 36;
-			this->button1->Text = L"DETECT BALL";
-			this->button1->UseVisualStyleBackColor = true;
+			this->bShowCam->Location = System::Drawing::Point(105, 19);
+			this->bShowCam->Name = L"bShowCam";
+			this->bShowCam->Size = System::Drawing::Size(93, 23);
+			this->bShowCam->TabIndex = 36;
+			this->bShowCam->Text = L"SHOW CAM";
+			this->bShowCam->UseVisualStyleBackColor = true;
+			this->bShowCam->Click += gcnew System::EventHandler(this, &MyForm::bShowCam_Click);
 			// 
 			// groupBox5
 			// 
+			this->groupBox5->Controls->Add(this->bSetPIDFactor);
 			this->groupBox5->Controls->Add(this->bSTART_PID);
 			this->groupBox5->Controls->Add(this->txtKP1);
 			this->groupBox5->Controls->Add(this->label7);
@@ -1009,12 +1019,13 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			this->groupBox7->Controls->Add(this->button3);
 			this->groupBox7->Controls->Add(this->label19);
 			this->groupBox7->Controls->Add(this->textBox1);
-			this->groupBox7->Location = System::Drawing::Point(890, 12);
+			this->groupBox7->Location = System::Drawing::Point(311, 177);
 			this->groupBox7->Name = L"groupBox7";
 			this->groupBox7->Size = System::Drawing::Size(181, 79);
 			this->groupBox7->TabIndex = 42;
 			this->groupBox7->TabStop = false;
 			this->groupBox7->Text = L"DATA";
+			this->groupBox7->Visible = false;
 			// 
 			// button4
 			// 
@@ -1049,6 +1060,16 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(98, 20);
 			this->textBox1->TabIndex = 0;
+			// 
+			// bSetPIDFactor
+			// 
+			this->bSetPIDFactor->Location = System::Drawing::Point(105, 18);
+			this->bSetPIDFactor->Name = L"bSetPIDFactor";
+			this->bSetPIDFactor->Size = System::Drawing::Size(84, 23);
+			this->bSetPIDFactor->TabIndex = 37;
+			this->bSetPIDFactor->Text = L"SET";
+			this->bSetPIDFactor->UseVisualStyleBackColor = true;
+			this->bSetPIDFactor->Click += gcnew System::EventHandler(this, &MyForm::bSetPIDFactor_Click);
 			// 
 			// MyForm
 			// 
@@ -1096,12 +1117,19 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 		GraphPane^ myPane = gcnew GraphPane();
 		PointPairList^ PosXList = gcnew PointPairList();
 		PointPairList^ PosYList = gcnew PointPairList();
+		PointPairList^ PosXYList = gcnew PointPairList();
+		
 		PointPairList^ PosXSetpointList = gcnew PointPairList();
 		PointPairList^ PosYSetpointList = gcnew PointPairList();
+		PointPairList^ PosXYSetpointList = gcnew PointPairList();
+
 		LineItem^ PosXCurve;
 		LineItem^ PosYCurve;
+		LineItem^ PosXYCurve;
+
 		LineItem^ PosXSetpointCurve;
 		LineItem^ PosYSetpointCurve;
+		LineItem^ PosXYSetpointCurve;
 
 		ZedGraph::Scale^ xScale;
 		ZedGraph::Scale^ yScale;
@@ -1124,7 +1152,12 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 		double scale_errY = 1;
 		double scale_velY = 1;
 		double scale_outY = 1;
-
+		double KpX = 0;
+		double KiX = 0;
+		double KdX = 0;
+		double KpY = 0;
+		double KiY = 0;
+		double KdY = 0;
 		//===============================================
 		//=======CODE START HERE=========================
 
@@ -1146,56 +1179,60 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 		myPane = zedGraphControl1->GraphPane;
 		xScale = zedGraphControl1->GraphPane->XAxis->Scale;
 		yScale = zedGraphControl1->GraphPane->YAxis->Scale;
-		myPane->Title->Text = "SPEED-MOTOR";
-		myPane->XAxis->Title->Text = "SEC(s)";
-		myPane->YAxis->Title->Text = "RPM(v/p)";
-		RollingPointPairList^ list1 = gcnew RollingPointPairList(6000);
-		RollingPointPairList^ list2 = gcnew RollingPointPairList(6000);
+		myPane->Title->Text = "X-Y GRAPH";
+		myPane->XAxis->Title->Text = "X";
+		myPane->YAxis->Title->Text = "Y";
+		RollingPointPairList^ list1 = gcnew RollingPointPairList(2000);
+		RollingPointPairList^ list2 = gcnew RollingPointPairList(2000);
 
 		LineItem^ curve1 = myPane->AddCurve("SET-SPEED", list1, Color::Red, SymbolType::None);
 		LineItem^ curve2 = myPane->AddCurve("ACT-SPEED", list2, Color::Blue, SymbolType::None);
-		//myPane->XAxis->Scale->Min = 0;
-		//myPane->XAxis->Scale->Max = 30;
-		//myPane->XAxis->Scale->MinorStep = 1;
-		//myPane->XAxis->Scale->MajorStep = 5;
+		xScale->Max = 400;
+		xScale->Min = 0;
+		yScale->Max = 400;
+		yScale->Min = 0;
 		myPane->IsAlignGrids = true;
 		zedGraphControl1->AxisChange();
 	}
 	private: void draw(double x, double y)
 	{
-		if (timeGraph > xScale->Max - xScale->MajorStep)
-		{
-			if (SCROLL_GRAPH)
-			{
-				xScale->Max = timeGraph + xScale->MajorStep;
-				xScale->Min = xScale->Max - 30.0;
-			}
-			else
-			{
-				xScale->Max = timeGraph + xScale->MajorStep;
-				xScale->Min = 0;
-			}
-		}
 		zedGraphControl1->GraphPane->CurveList->Clear();
+		if (bSCROLL->Text == "SCROLL")
+		{
+			PosXYList->Clear();
+			PosXYList->Add(x, y);
+			
+			PosXYSetpointList->Clear();
+			PosXYSetpointList->Add(setpointX, setpointY);
 
-		/*PosXList->Add(timeGraph, x);
-		PosYList->Add(timeGraph, y);*/
-		PosYList->Clear();
-		PosYList->Add(x, y);
-		
-		//PosXSetpointList->Add(timeGraph, setpointX);
-		//PosYSetpointList->Add(timeGraph, setpointY);
-		PosYSetpointList->Clear();
-		PosYSetpointList->Add(setpointX, setpointY);
+			PosXYCurve = myPane->AddCurve("Ball Position", PosXYList, Color::Red, SymbolType::Circle);
+			PosXYSetpointCurve = myPane->AddCurve("Set point", PosXYSetpointList, Color::Blue, SymbolType::Square);
+			timeGraph = 0;
+		}
+		else
+		{
+			if (timeGraph > xScale->Max - 1)
+			{
+				timeGraph = 0;
+				PosXList->Clear();
+				PosYList->Clear();
 
-	/*	PosXCurve = myPane->AddCurve("Pos X", PosXList, Color::Red, SymbolType::Plus);
-		PosYCurve = myPane->AddCurve("Pos Y", PosYList, Color::Red, SymbolType::Circle);
-		PosXSetpointCurve = myPane->AddCurve("Pos Set point X", PosXSetpointList, Color::Blue, SymbolType::Plus);
-		PosYSetpointCurve = myPane->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue, SymbolType::Circle);*/
+				PosXSetpointList->Clear();
+				PosYSetpointList->Clear();
+			}
+			PosXList->Add(timeGraph, x);
+			PosYList->Add(timeGraph, y);
 
-		PosYCurve = myPane->AddCurve("Ball Position", PosYList, Color::Red, SymbolType::Circle);
-		PosYSetpointCurve = myPane->AddCurve("Set point", PosYSetpointList, Color::Blue, SymbolType::Square);
+			PosXSetpointList->Add(timeGraph, setpointX);
+			PosYSetpointList->Add(timeGraph, setpointY);
 
+			PosXCurve = myPane->AddCurve("Pos X", PosXList, Color::Red);
+			PosYCurve = myPane->AddCurve("Pos Y", PosYList, Color::Blue);
+			PosXSetpointCurve = myPane->AddCurve("Pos Set point X", PosXSetpointList, Color::Red);
+			PosYSetpointCurve = myPane->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue);
+
+			timeGraph++;
+		}
 		zedGraphControl1->AxisChange();
 		zedGraphControl1->Invalidate();
 	}
@@ -1209,19 +1246,15 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 		txtErrX->Text = "0";
 		txtErrY->Text = "0";
 		txtSEND->Text = "@0:0$";
-		trackBar1->Value = 0;
-		trackBar2->Value = 0;
-		trackBar3->Value = 0;
-		trackBar4->Value = 5;
-		trackBar5->Value = 0;
-		trackBar6->Value = 0;
 
-		txtKP1->Text = trackBar1->Value.ToString();
-		txtKI1->Text = trackBar2->Value.ToString();
-		txtKD1->Text = trackBar3->Value.ToString();
-		txtKP2->Text = trackBar4->Value.ToString();
-		txtKI2->Text = trackBar5->Value.ToString();
-		txtKD2->Text = trackBar6->Value.ToString();
+		txtKP1->Text = "0";
+		txtKI1->Text = "0";
+		txtKD1->Text = "0";
+		txtKP2->Text = "0";
+		txtKI2->Text = "0";
+		txtKD2->Text = "0";
+
+
 
 		camera.setSize(640, 480);
 		camera.setHSVParam(0, 84, 31, 255, 153, 255);
@@ -1229,10 +1262,6 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 		camera.applyCropFrame();
 		timerProcessing->Interval = 1;
 
-		xScale->Max = 400;
-		xScale->Min = 0;
-		yScale->Max = 400;
-		yScale->Min = 0;
 		Init_Fuzzy();
 
 	}
@@ -1260,6 +1289,7 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 		else
 		{
 			MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
+			findPorts();
 		}
 	}
 
@@ -1276,11 +1306,15 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 
 
 	private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (bSEND->Text == "SEND")
+		if (bSEND->Text == "SEND" && bCONNECT->Text == "DISCONNECT")
 		{
 			timerUART_Send->Interval = 1;
 			timerUART_Send->Start(); 
 			bSEND->Text = "STOP SEND";
+		}
+		else if (bCONNECT->Text == "CONNECT")
+		{
+			MessageBox::Show("Please connect port !!!");
 		}
 		else
 		{
@@ -1331,9 +1365,8 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
 		{
 			draw(posX, posY);
-			//timeGraph++;
 		}
-		if (bSETBALL->Text == "SET BALL"  && camera.getErrorStr() == "Tracking Object")
+		if (bGetBall->Text == "UNGET BALL" /* && camera.getErrorStr() == "Tracking Object" */)
 		{
 			txtSetpointX->Text = posX.ToString();
 			txtSetpointY->Text = posY.ToString();
@@ -1342,19 +1375,22 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 		txtErrY->Text = errY.ToString();
 		txtPosX->Text = posX.ToString();
 		txtPosY->Text = posY.ToString();
-		txtTimeProcess->Text = ((int)(1000 / camera.fps_)).ToString() + " ms";
-		camera.showCamera(2);
+		if (bShowCam->Text == "UNSHOW CAM")
+		{
+			camera.showCamera(2);
+		}
 		camera.getFPS_end();
+		txtTimeProcess->Text = ((int)(1000 / camera.fps_)).ToString() + " ms";
 	}
 	private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (bSTART_CAM->Text == "START CAM")
+		if (bSTART->Text == "START")
 		{
 			timerProcessing->Start();
-			bSTART_CAM->Text = "STOP CAM";
+			bSTART->Text = "STOP";
 		}
 		else
 		{
-			bSTART_CAM->Text = "START CAM";
+			bSTART->Text = "START";
 			timerProcessing->Stop();
 		}
 		
@@ -1364,28 +1400,33 @@ private: System::Windows::Forms::Button^  bSetFuzzyScale;
 	private: System::Void bSCROLL_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (bSCROLL->Text == "SCROLL")
 		{
-			SCROLL_GRAPH = true;
 			bSCROLL->Text = "BLOCK";
+
+			myPane->Title->Text = "TIMELINE GRAPH";
+			myPane->XAxis->Title->Text = "TIME";
+			myPane->YAxis->Title->Text = "POSTION";
+			xScale->Max = 1000;
+			timeGraph = 0;
+			PosXList->Clear();
+			PosYList->Clear();
+
+			PosXSetpointList->Clear();
+			PosYSetpointList->Clear();
 		}
 		else
 		{
-			SCROLL_GRAPH = false;
 			bSCROLL->Text = "SCROLL";
+
+			myPane->Title->Text = "X-Y GRAPH";
+			myPane->XAxis->Title->Text = "X";
+			myPane->YAxis->Title->Text = "Y";
+			xScale->Max = 400;
 		}
 
 	}
 private: System::Void bSETBALL_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (bSETBALL->Text == "SET BALL")
-	{
-		bSETBALL->Text = "GET BALL";
 		setpointX = System::Convert::ToDouble(txtSetpointX->Text);
 		setpointY = System::Convert::ToDouble(txtSetpointY->Text);
-	}
-	else
-	{
-		bSETBALL->Text = "SET BALL";
-
-	}
 }
 private: System::Void trackBar1_Scroll(System::Object^  sender, System::EventArgs^  e) {
 	txtKP1->Text = trackBar1->Value.ToString();
@@ -1469,6 +1510,47 @@ private: System::Void bSetFuzzyScale_Click(System::Object^  sender, System::Even
 		scale_outY = System::Convert::ToDouble(txtScaleOut2->Text) / System::Convert::ToDouble(txtScaleOut3->Text);
 	}
 
+
+}
+
+private: System::Void bGetBall_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bGetBall->Text == "GET BALL")
+	{
+		bGetBall->Text = "UNGET BALL";
+	}
+	else
+	{
+		bGetBall->Text = "GET BALL";
+	}
+}
+
+private: System::Void bShowCam_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bShowCam->Text == "SHOW CAM")
+	{
+		bShowCam->Text = "UNSHOW CAM";
+	}
+	else
+	{
+		bShowCam->Text = "SHOW CAM";
+		camera.unshowCamera(2);
+	}
+}
+private: System::Void bSetPIDFactor_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (txtKP1->Text == "" || txtKI1->Text == "" || txtKD1->Text == "" ||
+		txtKP2->Text == "" || txtKI2->Text == "" || txtKD2->Text == ""
+		)
+	{
+		MessageBox::Show("Invalid input !!!! 'All input must be not null.");
+	}
+	else
+	{
+		KpX = System::Convert::ToDouble(txtKP1->Text);
+		KiX = System::Convert::ToDouble(txtKI1->Text);
+		KdX = System::Convert::ToDouble(txtKD1->Text);
+		KpY = System::Convert::ToDouble(txtKP2->Text);
+		KiY = System::Convert::ToDouble(txtKI2->Text);
+		KdY = System::Convert::ToDouble(txtKD2->Text);
+	}
 
 }
 };

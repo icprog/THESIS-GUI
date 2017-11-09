@@ -20,6 +20,7 @@ public:
     void getFrame();
 	void detectBall();
 	void showCamera(int id);
+	void unshowCamera(int id);
 	int getX();
     int getY();
 	void createTrackbars();
