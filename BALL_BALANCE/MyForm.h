@@ -1226,10 +1226,10 @@ private: System::Windows::Forms::Button^  bSetPIDFactor;
 			PosXSetpointList->Add(timeGraph, setpointX);
 			PosYSetpointList->Add(timeGraph, setpointY);
 
-			PosXCurve = myPane->AddCurve("Pos X", PosXList, Color::Red);
-			PosYCurve = myPane->AddCurve("Pos Y", PosYList, Color::Blue);
-			PosXSetpointCurve = myPane->AddCurve("Pos Set point X", PosXSetpointList, Color::Red);
-			PosYSetpointCurve = myPane->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue);
+			PosXCurve = myPane->AddCurve("Pos X", PosXList, Color::Red, SymbolType::Circle);
+			PosYCurve = myPane->AddCurve("Pos Y", PosYList, Color::Blue, SymbolType::Circle);
+			PosXSetpointCurve = myPane->AddCurve("Pos Set point X", PosXSetpointList, Color::Red, SymbolType::Default);
+			PosYSetpointCurve = myPane->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue, SymbolType::Default);
 
 			timeGraph++;
 		}
