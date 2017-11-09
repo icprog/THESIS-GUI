@@ -13,5 +13,5 @@
 
 //using namespace std;
 void Init_Fuzzy();
-int Fuzzy_OutPut(int error, int velocity, int scale_err, int scale_vel, int scale_output, int min_out, int max_out);
+int Fuzzy_OutPut(float error, float velocity, float scale_err, float scale_vel, float scale_output, int min_out, int max_out);
 int limit_output(int value, int min, int max);

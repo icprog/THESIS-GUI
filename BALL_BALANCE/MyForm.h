@@ -141,12 +141,15 @@ private: System::Windows::Forms::Button^  bSTART_FUZZY;
 private: System::Windows::Forms::Label^  label18;
 private: System::Windows::Forms::Label^  label17;
 private: System::Windows::Forms::Label^  label16;
-private: System::Windows::Forms::TextBox^  txtScaleOut;
+private: System::Windows::Forms::TextBox^  txtScaleOut1;
 
-private: System::Windows::Forms::TextBox^  txtScaleVel;
+private: System::Windows::Forms::TextBox^  txtScaleVel1;
 
 
-private: System::Windows::Forms::TextBox^  txtScaleErr;
+private: System::Windows::Forms::TextBox^  txtScaleErr1;
+
+
+
 private: System::Windows::Forms::GroupBox^  groupBox4;
 private: System::Windows::Forms::Button^  button2;
 private: System::Windows::Forms::Button^  button1;
@@ -157,6 +160,20 @@ private: System::Windows::Forms::Button^  button4;
 private: System::Windows::Forms::Button^  button3;
 private: System::Windows::Forms::Label^  label19;
 private: System::Windows::Forms::TextBox^  textBox1;
+private: System::Windows::Forms::TextBox^  txtScaleVel3;
+
+private: System::Windows::Forms::TextBox^  txtScaleVel2;
+
+private: System::Windows::Forms::TextBox^  txtScaleErr3;
+
+private: System::Windows::Forms::TextBox^  txtScaleErr2;
+private: System::Windows::Forms::TextBox^  txtScaleOut3;
+
+
+
+private: System::Windows::Forms::TextBox^  txtScaleOut2;
+private: System::Windows::Forms::Button^  bSetFuzzyScale;
+
 
 
 
@@ -219,19 +236,22 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->txtTimeProcess = (gcnew System::Windows::Forms::TextBox());
+			this->bSTART_GRAPH = (gcnew System::Windows::Forms::Button());
+			this->bSCROLL = (gcnew System::Windows::Forms::Button());
 			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->label17 = (gcnew System::Windows::Forms::Label());
 			this->label16 = (gcnew System::Windows::Forms::Label());
-			this->txtScaleOut = (gcnew System::Windows::Forms::TextBox());
-			this->txtScaleVel = (gcnew System::Windows::Forms::TextBox());
-			this->txtScaleErr = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleOut1 = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleVel1 = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleErr1 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKD2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKP2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKI2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKD1 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKP1 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKI1 = (gcnew System::Windows::Forms::TextBox());
-			this->bSCROLL = (gcnew System::Windows::Forms::Button());
 			this->bSETBALL = (gcnew System::Windows::Forms::Button());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
 			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
@@ -244,21 +264,25 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->bSTART_FUZZY = (gcnew System::Windows::Forms::Button());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->txtTimeProcess = (gcnew System::Windows::Forms::TextBox());
-			this->bSTART_GRAPH = (gcnew System::Windows::Forms::Button());
 			this->bSTART_PID = (gcnew System::Windows::Forms::Button());
 			this->bSetCrop = (gcnew System::Windows::Forms::Button());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
+			this->bSetFuzzyScale = (gcnew System::Windows::Forms::Button());
+			this->txtScaleVel3 = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleVel2 = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleErr3 = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleErr2 = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleOut3 = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleOut2 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox7 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label19 = (gcnew System::Windows::Forms::Label());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -280,19 +304,19 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->cbCOMLIST->FormattingEnabled = true;
 			this->cbCOMLIST->Location = System::Drawing::Point(11, 19);
 			this->cbCOMLIST->Name = L"cbCOMLIST";
-			this->cbCOMLIST->Size = System::Drawing::Size(121, 21);
+			this->cbCOMLIST->Size = System::Drawing::Size(88, 21);
 			this->cbCOMLIST->TabIndex = 0;
 			// 
 			// txtRECEIVE
 			// 
 			this->txtRECEIVE->Location = System::Drawing::Point(11, 80);
 			this->txtRECEIVE->Name = L"txtRECEIVE";
-			this->txtRECEIVE->Size = System::Drawing::Size(121, 20);
+			this->txtRECEIVE->Size = System::Drawing::Size(88, 20);
 			this->txtRECEIVE->TabIndex = 1;
 			// 
 			// bCONNECT
 			// 
-			this->bCONNECT->Location = System::Drawing::Point(138, 19);
+			this->bCONNECT->Location = System::Drawing::Point(109, 20);
 			this->bCONNECT->Name = L"bCONNECT";
 			this->bCONNECT->Size = System::Drawing::Size(93, 23);
 			this->bCONNECT->TabIndex = 2;
@@ -312,9 +336,9 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// 
 			this->txtSEND->Location = System::Drawing::Point(12, 48);
 			this->txtSEND->Name = L"txtSEND";
-			this->txtSEND->Size = System::Drawing::Size(120, 20);
+			this->txtSEND->Size = System::Drawing::Size(87, 20);
 			this->txtSEND->TabIndex = 3;
-			this->txtSEND->Text = L"90:60:120:90:90:110$";
+			this->txtSEND->Text = L"00";
 			this->txtSEND->TextChanged += gcnew System::EventHandler(this, &MyForm::txtSEND_TextChanged);
 			// 
 			// timerUART_Receive
@@ -323,7 +347,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// 
 			// bSEND
 			// 
-			this->bSEND->Location = System::Drawing::Point(138, 48);
+			this->bSEND->Location = System::Drawing::Point(109, 49);
 			this->bSEND->Name = L"bSEND";
 			this->bSEND->Size = System::Drawing::Size(93, 23);
 			this->bSEND->TabIndex = 4;
@@ -368,7 +392,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(163, 31);
+			this->label2->Location = System::Drawing::Point(198, 33);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(74, 13);
 			this->label2->TabIndex = 9;
@@ -376,7 +400,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// 
 			// txtSetpointY
 			// 
-			this->txtSetpointY->Location = System::Drawing::Point(243, 28);
+			this->txtSetpointY->Location = System::Drawing::Point(144, 28);
 			this->txtSetpointY->Name = L"txtSetpointY";
 			this->txtSetpointY->Size = System::Drawing::Size(46, 20);
 			this->txtSetpointY->TabIndex = 8;
@@ -400,7 +424,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(198, 57);
+			this->label4->Location = System::Drawing::Point(198, 59);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(39, 13);
 			this->label4->TabIndex = 13;
@@ -408,7 +432,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// 
 			// txtPosY
 			// 
-			this->txtPosY->Location = System::Drawing::Point(243, 54);
+			this->txtPosY->Location = System::Drawing::Point(144, 54);
 			this->txtPosY->Name = L"txtPosY";
 			this->txtPosY->Size = System::Drawing::Size(46, 20);
 			this->txtPosY->TabIndex = 12;
@@ -416,7 +440,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(181, 83);
+			this->label5->Location = System::Drawing::Point(198, 85);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(56, 13);
 			this->label5->TabIndex = 17;
@@ -424,7 +448,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// 
 			// txtErrY
 			// 
-			this->txtErrY->Location = System::Drawing::Point(243, 80);
+			this->txtErrY->Location = System::Drawing::Point(144, 80);
 			this->txtErrY->Name = L"txtErrY";
 			this->txtErrY->Size = System::Drawing::Size(46, 20);
 			this->txtErrY->TabIndex = 16;
@@ -485,7 +509,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(181, 109);
+			this->label10->Location = System::Drawing::Point(198, 111);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(53, 13);
 			this->label10->TabIndex = 26;
@@ -493,7 +517,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// 
 			// txtANGLE_Y
 			// 
-			this->txtANGLE_Y->Location = System::Drawing::Point(243, 106);
+			this->txtANGLE_Y->Location = System::Drawing::Point(144, 106);
 			this->txtANGLE_Y->Name = L"txtANGLE_Y";
 			this->txtANGLE_Y->Size = System::Drawing::Size(46, 20);
 			this->txtANGLE_Y->TabIndex = 25;
@@ -565,15 +589,51 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Location = System::Drawing::Point(12, 134);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(445, 188);
+			this->groupBox1->Size = System::Drawing::Size(280, 188);
 			this->groupBox1->TabIndex = 27;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"PARAM";
 			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(53, 164);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(91, 13);
+			this->label15->TabIndex = 38;
+			this->label15->Text = L"SAMPLING TIME";
+			// 
+			// txtTimeProcess
+			// 
+			this->txtTimeProcess->Location = System::Drawing::Point(150, 161);
+			this->txtTimeProcess->Name = L"txtTimeProcess";
+			this->txtTimeProcess->Size = System::Drawing::Size(40, 20);
+			this->txtTimeProcess->TabIndex = 35;
+			// 
+			// bSTART_GRAPH
+			// 
+			this->bSTART_GRAPH->Location = System::Drawing::Point(45, 131);
+			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
+			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
+			this->bSTART_GRAPH->TabIndex = 37;
+			this->bSTART_GRAPH->Text = L"START GRAPH";
+			this->bSTART_GRAPH->UseVisualStyleBackColor = true;
+			this->bSTART_GRAPH->Click += gcnew System::EventHandler(this, &MyForm::bSTART_GRAPH_Click);
+			// 
+			// bSCROLL
+			// 
+			this->bSCROLL->Location = System::Drawing::Point(144, 132);
+			this->bSCROLL->Name = L"bSCROLL";
+			this->bSCROLL->Size = System::Drawing::Size(93, 23);
+			this->bSCROLL->TabIndex = 22;
+			this->bSCROLL->Text = L"SCROLL";
+			this->bSCROLL->UseVisualStyleBackColor = true;
+			this->bSCROLL->Click += gcnew System::EventHandler(this, &MyForm::bSCROLL_Click);
+			// 
 			// label18
 			// 
 			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(125, 84);
+			this->label18->Location = System::Drawing::Point(16, 88);
 			this->label18->Name = L"label18";
 			this->label18->Size = System::Drawing::Size(54, 13);
 			this->label18->TabIndex = 34;
@@ -582,7 +642,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(125, 61);
+			this->label17->Location = System::Drawing::Point(16, 65);
 			this->label17->Name = L"label17";
 			this->label17->Size = System::Drawing::Size(52, 13);
 			this->label17->TabIndex = 34;
@@ -591,32 +651,35 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(125, 32);
+			this->label16->Location = System::Drawing::Point(16, 36);
 			this->label16->Name = L"label16";
 			this->label16->Size = System::Drawing::Size(50, 13);
 			this->label16->TabIndex = 34;
 			this->label16->Text = L"Scale Err";
 			// 
-			// txtScaleOut
+			// txtScaleOut1
 			// 
-			this->txtScaleOut->Location = System::Drawing::Point(186, 84);
-			this->txtScaleOut->Name = L"txtScaleOut";
-			this->txtScaleOut->Size = System::Drawing::Size(57, 20);
-			this->txtScaleOut->TabIndex = 33;
+			this->txtScaleOut1->Location = System::Drawing::Point(77, 88);
+			this->txtScaleOut1->Name = L"txtScaleOut1";
+			this->txtScaleOut1->Size = System::Drawing::Size(57, 20);
+			this->txtScaleOut1->TabIndex = 33;
+			this->txtScaleOut1->Text = L"10";
 			// 
-			// txtScaleVel
+			// txtScaleVel1
 			// 
-			this->txtScaleVel->Location = System::Drawing::Point(186, 58);
-			this->txtScaleVel->Name = L"txtScaleVel";
-			this->txtScaleVel->Size = System::Drawing::Size(57, 20);
-			this->txtScaleVel->TabIndex = 33;
+			this->txtScaleVel1->Location = System::Drawing::Point(77, 62);
+			this->txtScaleVel1->Name = L"txtScaleVel1";
+			this->txtScaleVel1->Size = System::Drawing::Size(57, 20);
+			this->txtScaleVel1->TabIndex = 33;
+			this->txtScaleVel1->Text = L"1";
 			// 
-			// txtScaleErr
+			// txtScaleErr1
 			// 
-			this->txtScaleErr->Location = System::Drawing::Point(186, 32);
-			this->txtScaleErr->Name = L"txtScaleErr";
-			this->txtScaleErr->Size = System::Drawing::Size(57, 20);
-			this->txtScaleErr->TabIndex = 33;
+			this->txtScaleErr1->Location = System::Drawing::Point(77, 36);
+			this->txtScaleErr1->Name = L"txtScaleErr1";
+			this->txtScaleErr1->Size = System::Drawing::Size(57, 20);
+			this->txtScaleErr1->TabIndex = 33;
+			this->txtScaleErr1->Text = L"1";
 			// 
 			// txtKD2
 			// 
@@ -659,16 +722,6 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->txtKI1->Name = L"txtKI1";
 			this->txtKI1->Size = System::Drawing::Size(46, 20);
 			this->txtKI1->TabIndex = 28;
-			// 
-			// bSCROLL
-			// 
-			this->bSCROLL->Location = System::Drawing::Point(299, 54);
-			this->bSCROLL->Name = L"bSCROLL";
-			this->bSCROLL->Size = System::Drawing::Size(93, 23);
-			this->bSCROLL->TabIndex = 22;
-			this->bSCROLL->Text = L"SCROLL";
-			this->bSCROLL->UseVisualStyleBackColor = true;
-			this->bSCROLL->Click += gcnew System::EventHandler(this, &MyForm::bSCROLL_Click);
 			// 
 			// bSETBALL
 			// 
@@ -761,7 +814,7 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->groupBox2->Controls->Add(this->trackBar6);
 			this->groupBox2->Controls->Add(this->trackBar5);
 			this->groupBox2->Controls->Add(this->trackBar4);
-			this->groupBox2->Location = System::Drawing::Point(413, 18);
+			this->groupBox2->Location = System::Drawing::Point(395, 18);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(188, 142);
 			this->groupBox2->TabIndex = 33;
@@ -777,46 +830,20 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->groupBox3->Controls->Add(this->bSEND);
 			this->groupBox3->Location = System::Drawing::Point(12, 12);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(234, 116);
+			this->groupBox3->Size = System::Drawing::Size(210, 116);
 			this->groupBox3->TabIndex = 34;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"CONTROL";
 			// 
 			// bSTART_FUZZY
 			// 
-			this->bSTART_FUZZY->Location = System::Drawing::Point(6, 19);
+			this->bSTART_FUZZY->Location = System::Drawing::Point(19, 114);
 			this->bSTART_FUZZY->Name = L"bSTART_FUZZY";
 			this->bSTART_FUZZY->Size = System::Drawing::Size(90, 23);
 			this->bSTART_FUZZY->TabIndex = 39;
 			this->bSTART_FUZZY->Text = L"START FUZZY";
 			this->bSTART_FUZZY->UseVisualStyleBackColor = true;
 			this->bSTART_FUZZY->Click += gcnew System::EventHandler(this, &MyForm::bSTART_FUZZY_Click);
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(152, 164);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(91, 13);
-			this->label15->TabIndex = 38;
-			this->label15->Text = L"SAMPLING TIME";
-			// 
-			// txtTimeProcess
-			// 
-			this->txtTimeProcess->Location = System::Drawing::Point(249, 161);
-			this->txtTimeProcess->Name = L"txtTimeProcess";
-			this->txtTimeProcess->Size = System::Drawing::Size(40, 20);
-			this->txtTimeProcess->TabIndex = 35;
-			// 
-			// bSTART_GRAPH
-			// 
-			this->bSTART_GRAPH->Location = System::Drawing::Point(299, 24);
-			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
-			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
-			this->bSTART_GRAPH->TabIndex = 37;
-			this->bSTART_GRAPH->Text = L"START GRAPH";
-			this->bSTART_GRAPH->UseVisualStyleBackColor = true;
-			this->bSTART_GRAPH->Click += gcnew System::EventHandler(this, &MyForm::bSTART_GRAPH_Click);
 			// 
 			// bSTART_PID
 			// 
@@ -853,15 +880,6 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"CAMERA";
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(105, 19);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(93, 23);
-			this->button1->TabIndex = 36;
-			this->button1->Text = L"DETECT BALL";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
 			// button2
 			// 
 			this->button2->Location = System::Drawing::Point(105, 78);
@@ -870,6 +888,15 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->button2->TabIndex = 37;
 			this->button2->Text = L"GET BALL";
 			this->button2->UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(105, 19);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(93, 23);
+			this->button1->TabIndex = 36;
+			this->button1->Text = L"DETECT BALL";
+			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// groupBox5
 			// 
@@ -890,26 +917,91 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->groupBox5->Controls->Add(this->label14);
 			this->groupBox5->Location = System::Drawing::Point(12, 328);
 			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(607, 169);
+			this->groupBox5->Size = System::Drawing::Size(594, 169);
 			this->groupBox5->TabIndex = 40;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"PID";
 			// 
 			// groupBox6
 			// 
+			this->groupBox6->Controls->Add(this->bSetFuzzyScale);
 			this->groupBox6->Controls->Add(this->bSTART_FUZZY);
 			this->groupBox6->Controls->Add(this->label18);
-			this->groupBox6->Controls->Add(this->txtScaleVel);
-			this->groupBox6->Controls->Add(this->txtScaleErr);
+			this->groupBox6->Controls->Add(this->txtScaleVel3);
+			this->groupBox6->Controls->Add(this->txtScaleVel2);
+			this->groupBox6->Controls->Add(this->txtScaleVel1);
+			this->groupBox6->Controls->Add(this->txtScaleErr3);
+			this->groupBox6->Controls->Add(this->txtScaleErr2);
+			this->groupBox6->Controls->Add(this->txtScaleErr1);
 			this->groupBox6->Controls->Add(this->label17);
-			this->groupBox6->Controls->Add(this->txtScaleOut);
+			this->groupBox6->Controls->Add(this->txtScaleOut3);
+			this->groupBox6->Controls->Add(this->txtScaleOut2);
+			this->groupBox6->Controls->Add(this->txtScaleOut1);
 			this->groupBox6->Controls->Add(this->label16);
 			this->groupBox6->Location = System::Drawing::Point(625, 328);
 			this->groupBox6->Name = L"groupBox6";
-			this->groupBox6->Size = System::Drawing::Size(356, 169);
+			this->groupBox6->Size = System::Drawing::Size(275, 169);
 			this->groupBox6->TabIndex = 41;
 			this->groupBox6->TabStop = false;
 			this->groupBox6->Text = L"FUZZY";
+			// 
+			// bSetFuzzyScale
+			// 
+			this->bSetFuzzyScale->Location = System::Drawing::Point(119, 115);
+			this->bSetFuzzyScale->Name = L"bSetFuzzyScale";
+			this->bSetFuzzyScale->Size = System::Drawing::Size(84, 21);
+			this->bSetFuzzyScale->TabIndex = 40;
+			this->bSetFuzzyScale->Text = L"SET";
+			this->bSetFuzzyScale->UseVisualStyleBackColor = true;
+			this->bSetFuzzyScale->Click += gcnew System::EventHandler(this, &MyForm::bSetFuzzyScale_Click);
+			// 
+			// txtScaleVel3
+			// 
+			this->txtScaleVel3->Location = System::Drawing::Point(203, 61);
+			this->txtScaleVel3->Name = L"txtScaleVel3";
+			this->txtScaleVel3->Size = System::Drawing::Size(57, 20);
+			this->txtScaleVel3->TabIndex = 33;
+			this->txtScaleVel3->Text = L"200";
+			// 
+			// txtScaleVel2
+			// 
+			this->txtScaleVel2->Location = System::Drawing::Point(140, 61);
+			this->txtScaleVel2->Name = L"txtScaleVel2";
+			this->txtScaleVel2->Size = System::Drawing::Size(57, 20);
+			this->txtScaleVel2->TabIndex = 33;
+			this->txtScaleVel2->Text = L"1";
+			// 
+			// txtScaleErr3
+			// 
+			this->txtScaleErr3->Location = System::Drawing::Point(203, 35);
+			this->txtScaleErr3->Name = L"txtScaleErr3";
+			this->txtScaleErr3->Size = System::Drawing::Size(57, 20);
+			this->txtScaleErr3->TabIndex = 33;
+			this->txtScaleErr3->Text = L"200";
+			// 
+			// txtScaleErr2
+			// 
+			this->txtScaleErr2->Location = System::Drawing::Point(140, 35);
+			this->txtScaleErr2->Name = L"txtScaleErr2";
+			this->txtScaleErr2->Size = System::Drawing::Size(57, 20);
+			this->txtScaleErr2->TabIndex = 33;
+			this->txtScaleErr2->Text = L"1";
+			// 
+			// txtScaleOut3
+			// 
+			this->txtScaleOut3->Location = System::Drawing::Point(203, 87);
+			this->txtScaleOut3->Name = L"txtScaleOut3";
+			this->txtScaleOut3->Size = System::Drawing::Size(57, 20);
+			this->txtScaleOut3->TabIndex = 33;
+			this->txtScaleOut3->Text = L"1";
+			// 
+			// txtScaleOut2
+			// 
+			this->txtScaleOut2->Location = System::Drawing::Point(140, 87);
+			this->txtScaleOut2->Name = L"txtScaleOut2";
+			this->txtScaleOut2->Size = System::Drawing::Size(57, 20);
+			this->txtScaleOut2->TabIndex = 33;
+			this->txtScaleOut2->Text = L"10";
 			// 
 			// groupBox7
 			// 
@@ -917,28 +1009,21 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->groupBox7->Controls->Add(this->button3);
 			this->groupBox7->Controls->Add(this->label19);
 			this->groupBox7->Controls->Add(this->textBox1);
-			this->groupBox7->Location = System::Drawing::Point(895, 37);
+			this->groupBox7->Location = System::Drawing::Point(890, 12);
 			this->groupBox7->Name = L"groupBox7";
 			this->groupBox7->Size = System::Drawing::Size(181, 79);
 			this->groupBox7->TabIndex = 42;
 			this->groupBox7->TabStop = false;
 			this->groupBox7->Text = L"DATA";
 			// 
-			// textBox1
+			// button4
 			// 
-			this->textBox1->Location = System::Drawing::Point(75, 19);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(98, 20);
-			this->textBox1->TabIndex = 0;
-			// 
-			// label19
-			// 
-			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(6, 22);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(63, 13);
-			this->label19->TabIndex = 1;
-			this->label19->Text = L"FILE NAME";
+			this->button4->Location = System::Drawing::Point(93, 45);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(80, 27);
+			this->button4->TabIndex = 2;
+			this->button4->Text = L"EXPORT";
+			this->button4->UseVisualStyleBackColor = true;
 			// 
 			// button3
 			// 
@@ -949,14 +1034,21 @@ private: System::Windows::Forms::TextBox^  textBox1;
 			this->button3->Text = L"IMPORT";
 			this->button3->UseVisualStyleBackColor = true;
 			// 
-			// button4
+			// label19
 			// 
-			this->button4->Location = System::Drawing::Point(93, 45);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(80, 27);
-			this->button4->TabIndex = 2;
-			this->button4->Text = L"EXPORT";
-			this->button4->UseVisualStyleBackColor = true;
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(6, 22);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(63, 13);
+			this->label19->TabIndex = 1;
+			this->label19->Text = L"FILE NAME";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(75, 19);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(98, 20);
+			this->textBox1->TabIndex = 0;
 			// 
 			// MyForm
 			// 
@@ -1026,9 +1118,13 @@ private: System::Windows::Forms::TextBox^  textBox1;
 		double pre_errY = 0;
 		double velX = 0;
 		double velY = 0;
-		int scale_err = 1;
-		int scale_vel = 1;
-		int scale_out = 1;
+		double scale_errX = 1;
+		double scale_velX = 1;
+		double scale_outX = 1;
+		double scale_errY = 1;
+		double scale_velY = 1;
+		double scale_outY = 1;
+
 		//===============================================
 		//=======CODE START HERE=========================
 
@@ -1110,9 +1206,6 @@ private: System::Windows::Forms::TextBox^  textBox1;
 		initGraph();
 		txtSetpointX->Text = "198";
 		txtSetpointY->Text = "214";
-		txtScaleErr->Text = "200";
-		txtScaleVel->Text = "200";
-		txtScaleOut->Text = "10";
 		txtErrX->Text = "0";
 		txtErrY->Text = "0";
 		txtSEND->Text = "@0:0$";
@@ -1231,11 +1324,9 @@ private: System::Windows::Forms::TextBox^  textBox1;
 		}
 		if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
 		{
-			scale_err = System::Convert::ToInt16(txtScaleErr->Text);
-			scale_vel = System::Convert::ToInt16(txtScaleVel->Text);
-			scale_out = System::Convert::ToInt16(txtScaleOut->Text);
-			txtANGLE_X->Text = Fuzzy_OutPut((int)errX, (int)velX, scale_err, scale_vel, scale_out, -10, 10).ToString();
-			txtANGLE_Y->Text = (-Fuzzy_OutPut((int)errY, (int)velY, scale_err, scale_vel, scale_out, -10, 10)).ToString();
+			txtANGLE_X->Text = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
+			txtANGLE_Y->Text = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
+			//txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
 		}
 		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
 		{
@@ -1354,6 +1445,31 @@ private: System::Void bSTART_FUZZY_Click(System::Object^  sender, System::EventA
 	}
 }
 private: System::Void bSetCrop_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void bSetFuzzyScale_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (txtScaleErr1->Text == "" || txtScaleErr2->Text == "" || txtScaleErr3->Text == "" ||
+		txtScaleErr1->Text == "0" || txtScaleErr2->Text == "0" || txtScaleErr3->Text == "0" ||
+		txtScaleVel1->Text == "" || txtScaleVel2->Text == "" || txtScaleVel3->Text == "" ||
+		txtScaleVel1->Text == "0" || txtScaleVel2->Text == "0" || txtScaleVel3->Text == "0" ||
+		txtScaleOut1->Text == "" || txtScaleOut2->Text == "" || txtScaleOut3->Text == "" ||
+		txtScaleOut1->Text == "0" || txtScaleOut2->Text == "0" || txtScaleOut3->Text == "0"
+		)
+	{
+		MessageBox::Show("Invalid input !!!! 'All input must be not null and zero.");
+	}
+	else
+	{
+		scale_errX = System::Convert::ToDouble(txtScaleErr1->Text) / System::Convert::ToDouble(txtScaleErr3->Text);
+		scale_errY = System::Convert::ToDouble(txtScaleErr2->Text) / System::Convert::ToDouble(txtScaleErr3->Text);
+
+		scale_velX = System::Convert::ToDouble(txtScaleVel1->Text) / System::Convert::ToDouble(txtScaleVel3->Text);
+		scale_velY = System::Convert::ToDouble(txtScaleVel2->Text) / System::Convert::ToDouble(txtScaleVel3->Text);
+
+		scale_outX = System::Convert::ToDouble(txtScaleOut1->Text) / System::Convert::ToDouble(txtScaleOut3->Text);
+		scale_outY = System::Convert::ToDouble(txtScaleOut2->Text) / System::Convert::ToDouble(txtScaleOut3->Text);
+	}
+
+
 }
 };
 }

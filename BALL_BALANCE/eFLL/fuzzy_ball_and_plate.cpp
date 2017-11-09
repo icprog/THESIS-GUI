@@ -209,17 +209,17 @@ void Init_Fuzzy()
     fuzzy->addFuzzyRule(fuzzyRule25);
 }
 
-int Fuzzy_OutPut(int error, int velocity, int scale_err, int scale_vel, int scale_output, int min_out, int max_out)
+int Fuzzy_OutPut(float error, float velocity, float scale_err, float scale_vel, float scale_output, int min_out, int max_out)
 {
-    float err = (float)error / (float)scale_err;
-    float vel = (float)velocity / (float)scale_vel;
+	float err =  error *  scale_err;
+	float vel =  velocity *  scale_vel;
 
     fuzzy->setInput(1, err);
     fuzzy->setInput(2, vel);
 
     fuzzy->fuzzify();
 
-    float output = fuzzy->defuzzify(1);
+	float output = fuzzy->defuzzify(1);
     //cout << " Err : "<< err_NL->getPertinence() << " " << err_NS->getPertinence() << " " << err_Z->getPertinence() << " " << err_PS->getPertinence() << " " << err_PL->getPertinence() << " " << endl;
     //cout << " Vel : "<< vel_NL->getPertinence() << " " << vel_NS->getPertinence() << " " << vel_Z->getPertinence() << " " << vel_PS->getPertinence() << " " << vel_PL->getPertinence() << " " << endl;
     //cout << " Angle: "<< output << endl;
