@@ -252,10 +252,10 @@ Camera::createTrackbars(){
     cv::createTrackbar( "S_MAX", "TB", &highS_, 255);
     cv::createTrackbar( "V_MIN", "TB", &lowV_, 255);
     cv::createTrackbar( "V_MAX", "TB", &highV_, 255);
-	cv::createTrackbar("X", "TB", &xcrop_, width_);
-	cv::createTrackbar("Y", "TB", &ycrop_, height_);
-	cv::createTrackbar("WIDTH", "TB", &widthcrop_, width_);
-	cv::createTrackbar("HEIGHT", "TB", &heightcrop_, height_);
+	cv::createTrackbar("X", "TB", &myROI.x, width_);
+	cv::createTrackbar("Y", "TB", &myROI.y, height_);
+	cv::createTrackbar("WIDTH", "TB", &myROI.width, width_);
+	cv::createTrackbar("HEIGHT", "TB", &myROI.height, height_);
 }
 
 
