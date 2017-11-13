@@ -101,7 +101,7 @@ void
 Camera::showCamera(int id)
 {
 	//rectangle(img, textOrg + Point(0, baseline),textOrg + Point(textSize.width, -textSize.height),Scalar(0, 0, 255));
-	rectangle(imgFullframe_, cv::Point(xcrop_, ycrop_), cv::Point(xcrop_+widthcrop_, ycrop_+heightcrop_), cv::Scalar(255, 0, 0),2);
+	rectangle(imgFullframe_, cv::Point(myROI.x, myROI.y), cv::Point(myROI.x+ myROI.width, myROI.y+ myROI.height), cv::Scalar(255, 0, 0),2);
 	putText(imgFullframe_, "X : " + intToString((int)x_), cv::Point(0, 60), 2, 1, cv::Scalar(0, 255, 0), 2);
 	putText(imgFullframe_, "Y : " + intToString((int)y_), cv::Point(0, 90), 2, 1, cv::Scalar(0, 255, 0), 2);
 	putText(imgFullframe_, "FPS : " + intToString((int)fps_), cv::Point(0, 30), 2, 1, cv::Scalar(0, 255, 0), 2);

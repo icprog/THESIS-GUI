@@ -178,6 +178,7 @@ private: System::Windows::Forms::TextBox^  txtScaleOut3;
 private: System::Windows::Forms::TextBox^  txtScaleOut2;
 private: System::Windows::Forms::Button^  bSetFuzzyScale;
 private: System::Windows::Forms::Button^  bSetPIDFactor;
+private: System::Windows::Forms::Button^  bClose;
 
 
 
@@ -276,6 +277,7 @@ private: System::Windows::Forms::Button^  bSetPIDFactor;
 			this->bGetBall = (gcnew System::Windows::Forms::Button());
 			this->bShowCam = (gcnew System::Windows::Forms::Button());
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->bSetPIDFactor = (gcnew System::Windows::Forms::Button());
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
 			this->bSetFuzzyScale = (gcnew System::Windows::Forms::Button());
 			this->txtScaleVel3 = (gcnew System::Windows::Forms::TextBox());
@@ -289,7 +291,7 @@ private: System::Windows::Forms::Button^  bSetPIDFactor;
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->bSetPIDFactor = (gcnew System::Windows::Forms::Button());
+			this->bClose = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -932,6 +934,16 @@ private: System::Windows::Forms::Button^  bSetPIDFactor;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"PID";
 			// 
+			// bSetPIDFactor
+			// 
+			this->bSetPIDFactor->Location = System::Drawing::Point(105, 18);
+			this->bSetPIDFactor->Name = L"bSetPIDFactor";
+			this->bSetPIDFactor->Size = System::Drawing::Size(84, 23);
+			this->bSetPIDFactor->TabIndex = 37;
+			this->bSetPIDFactor->Text = L"SET";
+			this->bSetPIDFactor->UseVisualStyleBackColor = true;
+			this->bSetPIDFactor->Click += gcnew System::EventHandler(this, &MyForm::bSetPIDFactor_Click);
+			// 
 			// groupBox6
 			// 
 			this->groupBox6->Controls->Add(this->bSetFuzzyScale);
@@ -1019,7 +1031,7 @@ private: System::Windows::Forms::Button^  bSetPIDFactor;
 			this->groupBox7->Controls->Add(this->button3);
 			this->groupBox7->Controls->Add(this->label19);
 			this->groupBox7->Controls->Add(this->textBox1);
-			this->groupBox7->Location = System::Drawing::Point(311, 177);
+			this->groupBox7->Location = System::Drawing::Point(906, 12);
 			this->groupBox7->Name = L"groupBox7";
 			this->groupBox7->Size = System::Drawing::Size(181, 79);
 			this->groupBox7->TabIndex = 42;
@@ -1061,21 +1073,22 @@ private: System::Windows::Forms::Button^  bSetPIDFactor;
 			this->textBox1->Size = System::Drawing::Size(98, 20);
 			this->textBox1->TabIndex = 0;
 			// 
-			// bSetPIDFactor
+			// bClose
 			// 
-			this->bSetPIDFactor->Location = System::Drawing::Point(105, 18);
-			this->bSetPIDFactor->Name = L"bSetPIDFactor";
-			this->bSetPIDFactor->Size = System::Drawing::Size(84, 23);
-			this->bSetPIDFactor->TabIndex = 37;
-			this->bSetPIDFactor->Text = L"SET";
-			this->bSetPIDFactor->UseVisualStyleBackColor = true;
-			this->bSetPIDFactor->Click += gcnew System::EventHandler(this, &MyForm::bSetPIDFactor_Click);
+			this->bClose->Location = System::Drawing::Point(310, 157);
+			this->bClose->Name = L"bClose";
+			this->bClose->Size = System::Drawing::Size(109, 36);
+			this->bClose->TabIndex = 43;
+			this->bClose->Text = L"CLOSE";
+			this->bClose->UseVisualStyleBackColor = true;
+			this->bClose->Click += gcnew System::EventHandler(this, &MyForm::bClose_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1129, 509);
+			this->ClientSize = System::Drawing::Size(1102, 509);
+			this->Controls->Add(this->bClose);
 			this->Controls->Add(this->groupBox7);
 			this->Controls->Add(this->groupBox6);
 			this->Controls->Add(this->groupBox5);
@@ -1358,8 +1371,9 @@ private: System::Windows::Forms::Button^  bSetPIDFactor;
 		}
 		if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
 		{
-			txtANGLE_X->Text = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
+			//txtANGLE_X->Text = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
 			txtANGLE_Y->Text = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
+			txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10).ToString();
 			//txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
 		}
 		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
@@ -1552,6 +1566,9 @@ private: System::Void bSetPIDFactor_Click(System::Object^  sender, System::Event
 		KdY = System::Convert::ToDouble(txtKD2->Text);
 	}
 
+}
+private: System::Void bClose_Click(System::Object^  sender, System::EventArgs^  e) {
+	Application::Exit();
 }
 };
 }
