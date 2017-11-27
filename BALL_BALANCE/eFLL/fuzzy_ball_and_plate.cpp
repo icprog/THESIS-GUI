@@ -30,19 +30,19 @@ void Init_Fuzzy()
     fuzzy->addFuzzyInput(error_in_postion); // Adding FuzzyInput to fuzzy
 
     // variables for input : change in errors ===============================
-    FuzzySet* vel_NL = new FuzzySet(-1, -1, -0.75, -0.25);
+    FuzzySet* vel_NL = new FuzzySet(-1, -1, -0.85, -0.4);
     change_in_error->addFuzzySet(vel_NL);
 
-    FuzzySet* vel_NS = new FuzzySet(-0.75, -0.25, -0.25, -0.05);
+    FuzzySet* vel_NS = new FuzzySet(-0.85, -0.4, -0.4, -0.08);
     change_in_error->addFuzzySet(vel_NS);
 
-    FuzzySet* vel_Z = new FuzzySet(-0.25, -0.05, 0.05, 0.25);
+    FuzzySet* vel_Z = new FuzzySet(-0.4, -0.08, 0.08, 0.4);
     change_in_error->addFuzzySet(vel_Z);
 
-    FuzzySet* vel_PS = new FuzzySet(0.05, 0.25, 0.25, 0.75);
+    FuzzySet* vel_PS = new FuzzySet(0.08, 0.4, 0.4, 0.85);
     change_in_error->addFuzzySet(vel_PS);
 
-    FuzzySet* vel_PL = new FuzzySet(0.25, 0.75, 1, 1);
+    FuzzySet* vel_PL = new FuzzySet(0.4, 0.85, 1, 1);
     change_in_error->addFuzzySet(vel_PL);
 
     fuzzy->addFuzzyInput(change_in_error); // Adding FuzzyInput to fuzzy

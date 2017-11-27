@@ -179,6 +179,8 @@ private: System::Windows::Forms::TextBox^  txtScaleOut2;
 private: System::Windows::Forms::Button^  bSetFuzzyScale;
 private: System::Windows::Forms::Button^  bSetPIDFactor;
 private: System::Windows::Forms::Button^  bClose;
+private: System::Windows::Forms::TrackBar^  tbAngleX;
+private: System::Windows::Forms::TrackBar^  tbAngleY;
 
 
 
@@ -292,6 +294,8 @@ private: System::Windows::Forms::Button^  bClose;
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->bClose = (gcnew System::Windows::Forms::Button());
+			this->tbAngleX = (gcnew System::Windows::Forms::TrackBar());
+			this->tbAngleY = (gcnew System::Windows::Forms::TrackBar());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -306,6 +310,8 @@ private: System::Windows::Forms::Button^  bClose;
 			this->groupBox5->SuspendLayout();
 			this->groupBox6->SuspendLayout();
 			this->groupBox7->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// cbCOMLIST
@@ -983,7 +989,7 @@ private: System::Windows::Forms::Button^  bClose;
 			this->txtScaleVel3->Name = L"txtScaleVel3";
 			this->txtScaleVel3->Size = System::Drawing::Size(57, 20);
 			this->txtScaleVel3->TabIndex = 33;
-			this->txtScaleVel3->Text = L"200";
+			this->txtScaleVel3->Text = L"650";
 			// 
 			// txtScaleVel2
 			// 
@@ -1083,11 +1089,33 @@ private: System::Windows::Forms::Button^  bClose;
 			this->bClose->UseVisualStyleBackColor = true;
 			this->bClose->Click += gcnew System::EventHandler(this, &MyForm::bClose_Click);
 			// 
+			// tbAngleX
+			// 
+			this->tbAngleX->LargeChange = 1;
+			this->tbAngleX->Location = System::Drawing::Point(909, 236);
+			this->tbAngleX->Minimum = -10;
+			this->tbAngleX->Name = L"tbAngleX";
+			this->tbAngleX->Size = System::Drawing::Size(177, 45);
+			this->tbAngleX->TabIndex = 44;
+			this->tbAngleX->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleX_Scroll);
+			// 
+			// tbAngleY
+			// 
+			this->tbAngleY->LargeChange = 1;
+			this->tbAngleY->Location = System::Drawing::Point(909, 287);
+			this->tbAngleY->Minimum = -10;
+			this->tbAngleY->Name = L"tbAngleY";
+			this->tbAngleY->Size = System::Drawing::Size(177, 45);
+			this->tbAngleY->TabIndex = 44;
+			this->tbAngleY->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleY_Scroll);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1102, 509);
+			this->Controls->Add(this->tbAngleY);
+			this->Controls->Add(this->tbAngleX);
 			this->Controls->Add(this->bClose);
 			this->Controls->Add(this->groupBox7);
 			this->Controls->Add(this->groupBox6);
@@ -1120,7 +1148,10 @@ private: System::Windows::Forms::Button^  bClose;
 			this->groupBox6->PerformLayout();
 			this->groupBox7->ResumeLayout(false);
 			this->groupBox7->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -1258,6 +1289,8 @@ private: System::Windows::Forms::Button^  bClose;
 		txtSetpointY->Text = "214";
 		txtErrX->Text = "0";
 		txtErrY->Text = "0";
+		txtANGLE_X->Text = "0";
+		txtANGLE_Y->Text = "0";
 		txtSEND->Text = "@0:0$";
 
 		txtKP1->Text = "0";
@@ -1308,7 +1341,7 @@ private: System::Windows::Forms::Button^  bClose;
 
 	private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e) 
 	{
-		txtSEND->Text = "@" + txtANGLE_Y->Text + ":" + txtANGLE_X->Text + "$";
+		txtSEND->Text = "@" + txtANGLE_X->Text + ":" + txtANGLE_Y->Text + "$";
 	}
 	private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
 		if (serialPort->IsOpen == true)
@@ -1348,8 +1381,8 @@ private: System::Windows::Forms::Button^  bClose;
 		errX = setpointX - posX;
 		errY = setpointY - posY;
 
-		velX = (errX - pre_errX)*30;
-		velY = (errY - pre_errY)*30;
+		velX = (errX - pre_errX)*camera.fps_;
+		velY = (errY - pre_errY)*camera.fps_;
 
 		pre_errX = errX;
 		pre_errY = errY;
@@ -1371,9 +1404,9 @@ private: System::Windows::Forms::Button^  bClose;
 		}
 		if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
 		{
-			//txtANGLE_X->Text = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
+			txtANGLE_X->Text = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
 			txtANGLE_Y->Text = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
-			txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10).ToString();
+			//txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
 			//txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
 		}
 		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
@@ -1569,6 +1602,19 @@ private: System::Void bSetPIDFactor_Click(System::Object^  sender, System::Event
 }
 private: System::Void bClose_Click(System::Object^  sender, System::EventArgs^  e) {
 	Application::Exit();
+}
+private: System::Void tbAngleX_Scroll(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_FUZZY->Text == "START FUZZY" && bSTART_PID->Text == "START PID")
+	{
+		txtANGLE_X->Text = tbAngleX->Value.ToString();
+	}
+}
+
+private: System::Void tbAngleY_Scroll(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_FUZZY->Text == "START FUZZY" && bSTART_PID->Text == "START PID")
+	{
+		txtANGLE_Y->Text = tbAngleY->Value.ToString();
+	}
 }
 };
 }

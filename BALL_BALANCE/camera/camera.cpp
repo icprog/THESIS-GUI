@@ -165,8 +165,8 @@ Camera::drawObject(int x, int y, cv::Mat &frame) {
 	//added 'if' and 'else' statements to prevent
 	//memory errors from writing off the screen (ie. (-25,-25) is not within the window!)
 
-	circle(frame, cv::Point(x + xcrop_, y + ycrop_), 30, cv::Scalar(0, 255, 0), 2);
-	circle(frame, cv::Point(x + xcrop_, y + ycrop_), 1, cv::Scalar(0, 255, 0), 2);
+	circle(frame, cv::Point(x + myROI.x, y + myROI.y), 30, cv::Scalar(0, 255, 0), 5);
+	circle(frame, cv::Point(x + myROI.x, y + myROI.y), 1, cv::Scalar(0, 255, 0), 2);
 
 }
 void 
@@ -262,8 +262,8 @@ Camera::createTrackbars(){
     cv::createTrackbar( "S_MAX", "TB", &highS_, 255);
     cv::createTrackbar( "V_MIN", "TB", &lowV_, 255);
     cv::createTrackbar( "V_MAX", "TB", &highV_, 255);
-	cv::createTrackbar("X", "TB", &myROI.x, width_);
-	cv::createTrackbar("Y", "TB", &myROI.y, height_);
+	cv::createTrackbar("X", "TB", &myROI.x, width_/2);
+	cv::createTrackbar("Y", "TB", &myROI.y, height_/2);
 	cv::createTrackbar("WIDTH", "TB", &myROI.width, width_);
 	cv::createTrackbar("HEIGHT", "TB", &myROI.height, height_);
 }
