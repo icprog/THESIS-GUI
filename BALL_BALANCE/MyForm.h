@@ -60,7 +60,8 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::TextBox^  txtSEND;
 	private: System::Windows::Forms::Timer^  timerUART_Receive;
 	private: System::Windows::Forms::Button^  bSEND;
-	private: ZedGraph::ZedGraphControl^  zedGraphControl1;
+	private: ZedGraph::ZedGraphControl^  zedGraphXY;
+
 	private: System::Windows::Forms::Timer^  timerProcessing;
 
 	private: System::Windows::Forms::TextBox^  txtSetpointX;
@@ -122,15 +123,15 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::TextBox^  txtKP1;
 	private: System::Windows::Forms::TextBox^  txtKI1;
 	private: System::Windows::Forms::Button^  bSETBALL;
-	private: System::Windows::Forms::TrackBar^  trackBar1;
-	private: System::Windows::Forms::TrackBar^  trackBar2;
-	private: System::Windows::Forms::TrackBar^  trackBar3;
+
+
+
 	private: System::Windows::Forms::Button^  bCALIB;
-	private: System::Windows::Forms::TrackBar^  trackBar4;
-	private: System::Windows::Forms::TrackBar^  trackBar5;
-	private: System::Windows::Forms::TrackBar^  trackBar6;
-	private: System::Windows::Forms::GroupBox^  PIDX;
-	private: System::Windows::Forms::GroupBox^  groupBox2;
+
+
+
+
+
 	private: System::Windows::Forms::GroupBox^  groupBox3;
 	private: System::Windows::Forms::Button^  bSetCrop;
 private: System::Windows::Forms::Button^  bSTART_GRAPH;
@@ -176,11 +177,26 @@ private: System::Windows::Forms::TextBox^  txtScaleOut3;
 
 
 private: System::Windows::Forms::TextBox^  txtScaleOut2;
-private: System::Windows::Forms::Button^  bSetFuzzyScale;
+private: System::Windows::Forms::Button^  bSetFuzzyScaleXY;
 private: System::Windows::Forms::Button^  bSetPIDFactor;
 private: System::Windows::Forms::Button^  bClose;
 private: System::Windows::Forms::TrackBar^  tbAngleX;
 private: System::Windows::Forms::TrackBar^  tbAngleY;
+private: System::Windows::Forms::TabControl^  tabControlController;
+
+private: System::Windows::Forms::TabPage^  tabPage1;
+private: System::Windows::Forms::TabPage^  tabPage2;
+private: System::Windows::Forms::TabControl^  tabControlGraph;
+private: System::Windows::Forms::TabPage^  tabPageXYGRAPH;
+private: System::Windows::Forms::TabPage^  tabPageTIMEGRAPH;
+
+
+
+private: ZedGraph::ZedGraphControl^  zedGraphY;
+
+private: ZedGraph::ZedGraphControl^  zedGraphX;
+
+private: System::Windows::Forms::TabPage^  tabPage5;
 
 
 
@@ -219,7 +235,7 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->txtSEND = (gcnew System::Windows::Forms::TextBox());
 			this->timerUART_Receive = (gcnew System::Windows::Forms::Timer(this->components));
 			this->bSEND = (gcnew System::Windows::Forms::Button());
-			this->zedGraphControl1 = (gcnew ZedGraph::ZedGraphControl());
+			this->zedGraphXY = (gcnew ZedGraph::ZedGraphControl());
 			this->timerProcessing = (gcnew System::Windows::Forms::Timer(this->components));
 			this->txtSetpointX = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -262,16 +278,9 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->txtKP1 = (gcnew System::Windows::Forms::TextBox());
 			this->txtKI1 = (gcnew System::Windows::Forms::TextBox());
 			this->bSETBALL = (gcnew System::Windows::Forms::Button());
-			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar3 = (gcnew System::Windows::Forms::TrackBar());
 			this->bCALIB = (gcnew System::Windows::Forms::Button());
-			this->trackBar4 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar5 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
-			this->PIDX = (gcnew System::Windows::Forms::GroupBox());
-			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->bClose = (gcnew System::Windows::Forms::Button());
 			this->bSTART_FUZZY = (gcnew System::Windows::Forms::Button());
 			this->bSTART_PID = (gcnew System::Windows::Forms::Button());
 			this->bSetCrop = (gcnew System::Windows::Forms::Button());
@@ -281,7 +290,7 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->bSetPIDFactor = (gcnew System::Windows::Forms::Button());
 			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
-			this->bSetFuzzyScale = (gcnew System::Windows::Forms::Button());
+			this->bSetFuzzyScaleXY = (gcnew System::Windows::Forms::Button());
 			this->txtScaleVel3 = (gcnew System::Windows::Forms::TextBox());
 			this->txtScaleVel2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtScaleErr3 = (gcnew System::Windows::Forms::TextBox());
@@ -293,18 +302,18 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->bClose = (gcnew System::Windows::Forms::Button());
 			this->tbAngleX = (gcnew System::Windows::Forms::TrackBar());
 			this->tbAngleY = (gcnew System::Windows::Forms::TrackBar());
+			this->tabControlController = (gcnew System::Windows::Forms::TabControl());
+			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
+			this->tabControlGraph = (gcnew System::Windows::Forms::TabControl());
+			this->tabPageXYGRAPH = (gcnew System::Windows::Forms::TabPage());
+			this->tabPageTIMEGRAPH = (gcnew System::Windows::Forms::TabPage());
+			this->zedGraphY = (gcnew ZedGraph::ZedGraphControl());
+			this->zedGraphX = (gcnew ZedGraph::ZedGraphControl());
 			this->groupBox1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar6))->BeginInit();
-			this->PIDX->SuspendLayout();
-			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			this->groupBox4->SuspendLayout();
 			this->groupBox5->SuspendLayout();
@@ -312,6 +321,13 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->groupBox7->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
+			this->tabControlController->SuspendLayout();
+			this->tabPage1->SuspendLayout();
+			this->tabPage2->SuspendLayout();
+			this->tabPage5->SuspendLayout();
+			this->tabControlGraph->SuspendLayout();
+			this->tabPageXYGRAPH->SuspendLayout();
+			this->tabPageTIMEGRAPH->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// cbCOMLIST
@@ -370,19 +386,19 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->bSEND->UseVisualStyleBackColor = true;
 			this->bSEND->Click += gcnew System::EventHandler(this, &MyForm::bSEND_Click);
 			// 
-			// zedGraphControl1
+			// zedGraphXY
 			// 
-			this->zedGraphControl1->Location = System::Drawing::Point(432, 12);
-			this->zedGraphControl1->Name = L"zedGraphControl1";
-			this->zedGraphControl1->ScrollGrace = 0;
-			this->zedGraphControl1->ScrollMaxX = 0;
-			this->zedGraphControl1->ScrollMaxY = 0;
-			this->zedGraphControl1->ScrollMaxY2 = 0;
-			this->zedGraphControl1->ScrollMinX = 0;
-			this->zedGraphControl1->ScrollMinY = 0;
-			this->zedGraphControl1->ScrollMinY2 = 0;
-			this->zedGraphControl1->Size = System::Drawing::Size(468, 310);
-			this->zedGraphControl1->TabIndex = 5;
+			this->zedGraphXY->Location = System::Drawing::Point(6, 6);
+			this->zedGraphXY->Name = L"zedGraphXY";
+			this->zedGraphXY->ScrollGrace = 0;
+			this->zedGraphXY->ScrollMaxX = 0;
+			this->zedGraphXY->ScrollMaxY = 0;
+			this->zedGraphXY->ScrollMaxY2 = 0;
+			this->zedGraphXY->ScrollMinX = 0;
+			this->zedGraphXY->ScrollMinY = 0;
+			this->zedGraphXY->ScrollMinY2 = 0;
+			this->zedGraphXY->Size = System::Drawing::Size(478, 346);
+			this->zedGraphXY->TabIndex = 5;
 			// 
 			// timerProcessing
 			// 
@@ -748,33 +764,6 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->bSETBALL->UseVisualStyleBackColor = true;
 			this->bSETBALL->Click += gcnew System::EventHandler(this, &MyForm::bSETBALL_Click);
 			// 
-			// trackBar1
-			// 
-			this->trackBar1->Location = System::Drawing::Point(17, 18);
-			this->trackBar1->Maximum = 1000;
-			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Size = System::Drawing::Size(170, 45);
-			this->trackBar1->TabIndex = 28;
-			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
-			// 
-			// trackBar2
-			// 
-			this->trackBar2->Location = System::Drawing::Point(17, 59);
-			this->trackBar2->Maximum = 1000;
-			this->trackBar2->Name = L"trackBar2";
-			this->trackBar2->Size = System::Drawing::Size(170, 45);
-			this->trackBar2->TabIndex = 29;
-			this->trackBar2->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar2_Scroll);
-			// 
-			// trackBar3
-			// 
-			this->trackBar3->Location = System::Drawing::Point(17, 100);
-			this->trackBar3->Maximum = 10000;
-			this->trackBar3->Name = L"trackBar3";
-			this->trackBar3->Size = System::Drawing::Size(170, 45);
-			this->trackBar3->TabIndex = 30;
-			this->trackBar3->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar3_Scroll);
-			// 
 			// bCALIB
 			// 
 			this->bCALIB->Location = System::Drawing::Point(7, 48);
@@ -785,62 +774,12 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->bCALIB->UseVisualStyleBackColor = true;
 			this->bCALIB->Click += gcnew System::EventHandler(this, &MyForm::bCALIB_Click);
 			// 
-			// trackBar4
-			// 
-			this->trackBar4->Location = System::Drawing::Point(12, 19);
-			this->trackBar4->Maximum = 1000;
-			this->trackBar4->Name = L"trackBar4";
-			this->trackBar4->Size = System::Drawing::Size(170, 45);
-			this->trackBar4->TabIndex = 28;
-			this->trackBar4->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar4_Scroll);
-			// 
-			// trackBar5
-			// 
-			this->trackBar5->Location = System::Drawing::Point(12, 60);
-			this->trackBar5->Maximum = 1000;
-			this->trackBar5->Name = L"trackBar5";
-			this->trackBar5->Size = System::Drawing::Size(170, 45);
-			this->trackBar5->TabIndex = 29;
-			this->trackBar5->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar5_Scroll);
-			// 
-			// trackBar6
-			// 
-			this->trackBar6->Location = System::Drawing::Point(12, 96);
-			this->trackBar6->Maximum = 10000;
-			this->trackBar6->Name = L"trackBar6";
-			this->trackBar6->Size = System::Drawing::Size(170, 45);
-			this->trackBar6->TabIndex = 30;
-			this->trackBar6->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar6_Scroll);
-			// 
-			// PIDX
-			// 
-			this->PIDX->Controls->Add(this->trackBar3);
-			this->PIDX->Controls->Add(this->trackBar2);
-			this->PIDX->Controls->Add(this->trackBar1);
-			this->PIDX->Location = System::Drawing::Point(195, 18);
-			this->PIDX->Name = L"PIDX";
-			this->PIDX->Size = System::Drawing::Size(197, 142);
-			this->PIDX->TabIndex = 32;
-			this->PIDX->TabStop = false;
-			this->PIDX->Text = L"X PID PARAMS";
-			// 
-			// groupBox2
-			// 
-			this->groupBox2->Controls->Add(this->trackBar6);
-			this->groupBox2->Controls->Add(this->trackBar5);
-			this->groupBox2->Controls->Add(this->trackBar4);
-			this->groupBox2->Location = System::Drawing::Point(395, 18);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(188, 142);
-			this->groupBox2->TabIndex = 33;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Y PID PARAMS";
-			// 
 			// groupBox3
 			// 
 			this->groupBox3->Controls->Add(this->cbCOMLIST);
 			this->groupBox3->Controls->Add(this->txtRECEIVE);
 			this->groupBox3->Controls->Add(this->bCONNECT);
+			this->groupBox3->Controls->Add(this->bClose);
 			this->groupBox3->Controls->Add(this->txtSEND);
 			this->groupBox3->Controls->Add(this->bSEND);
 			this->groupBox3->Location = System::Drawing::Point(12, 12);
@@ -849,6 +788,16 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->groupBox3->TabIndex = 34;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"CONTROL";
+			// 
+			// bClose
+			// 
+			this->bClose->Location = System::Drawing::Point(109, 77);
+			this->bClose->Name = L"bClose";
+			this->bClose->Size = System::Drawing::Size(93, 27);
+			this->bClose->TabIndex = 43;
+			this->bClose->Text = L"CLOSE";
+			this->bClose->UseVisualStyleBackColor = true;
+			this->bClose->Click += gcnew System::EventHandler(this, &MyForm::bClose_Click);
 			// 
 			// bSTART_FUZZY
 			// 
@@ -924,18 +873,16 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->groupBox5->Controls->Add(this->label8);
 			this->groupBox5->Controls->Add(this->label9);
 			this->groupBox5->Controls->Add(this->txtKI1);
-			this->groupBox5->Controls->Add(this->groupBox2);
 			this->groupBox5->Controls->Add(this->txtKD2);
 			this->groupBox5->Controls->Add(this->txtKD1);
-			this->groupBox5->Controls->Add(this->PIDX);
 			this->groupBox5->Controls->Add(this->txtKP2);
 			this->groupBox5->Controls->Add(this->txtKI2);
 			this->groupBox5->Controls->Add(this->label12);
 			this->groupBox5->Controls->Add(this->label13);
 			this->groupBox5->Controls->Add(this->label14);
-			this->groupBox5->Location = System::Drawing::Point(12, 328);
+			this->groupBox5->Location = System::Drawing::Point(8, 6);
 			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(594, 169);
+			this->groupBox5->Size = System::Drawing::Size(225, 157);
 			this->groupBox5->TabIndex = 40;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"PID";
@@ -952,7 +899,7 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			// 
 			// groupBox6
 			// 
-			this->groupBox6->Controls->Add(this->bSetFuzzyScale);
+			this->groupBox6->Controls->Add(this->bSetFuzzyScaleXY);
 			this->groupBox6->Controls->Add(this->bSTART_FUZZY);
 			this->groupBox6->Controls->Add(this->label18);
 			this->groupBox6->Controls->Add(this->txtScaleVel3);
@@ -966,22 +913,22 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->groupBox6->Controls->Add(this->txtScaleOut2);
 			this->groupBox6->Controls->Add(this->txtScaleOut1);
 			this->groupBox6->Controls->Add(this->label16);
-			this->groupBox6->Location = System::Drawing::Point(625, 328);
+			this->groupBox6->Location = System::Drawing::Point(11, 6);
 			this->groupBox6->Name = L"groupBox6";
 			this->groupBox6->Size = System::Drawing::Size(275, 169);
 			this->groupBox6->TabIndex = 41;
 			this->groupBox6->TabStop = false;
 			this->groupBox6->Text = L"FUZZY";
 			// 
-			// bSetFuzzyScale
+			// bSetFuzzyScaleXY
 			// 
-			this->bSetFuzzyScale->Location = System::Drawing::Point(119, 115);
-			this->bSetFuzzyScale->Name = L"bSetFuzzyScale";
-			this->bSetFuzzyScale->Size = System::Drawing::Size(84, 21);
-			this->bSetFuzzyScale->TabIndex = 40;
-			this->bSetFuzzyScale->Text = L"SET";
-			this->bSetFuzzyScale->UseVisualStyleBackColor = true;
-			this->bSetFuzzyScale->Click += gcnew System::EventHandler(this, &MyForm::bSetFuzzyScale_Click);
+			this->bSetFuzzyScaleXY->Location = System::Drawing::Point(119, 115);
+			this->bSetFuzzyScaleXY->Name = L"bSetFuzzyScaleXY";
+			this->bSetFuzzyScaleXY->Size = System::Drawing::Size(84, 21);
+			this->bSetFuzzyScaleXY->TabIndex = 40;
+			this->bSetFuzzyScaleXY->Text = L"SET";
+			this->bSetFuzzyScaleXY->UseVisualStyleBackColor = true;
+			this->bSetFuzzyScaleXY->Click += gcnew System::EventHandler(this, &MyForm::bSetFuzzyScaleXY_Click);
 			// 
 			// txtScaleVel3
 			// 
@@ -1037,7 +984,7 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->groupBox7->Controls->Add(this->button3);
 			this->groupBox7->Controls->Add(this->label19);
 			this->groupBox7->Controls->Add(this->textBox1);
-			this->groupBox7->Location = System::Drawing::Point(906, 12);
+			this->groupBox7->Location = System::Drawing::Point(329, 407);
 			this->groupBox7->Name = L"groupBox7";
 			this->groupBox7->Size = System::Drawing::Size(181, 79);
 			this->groupBox7->TabIndex = 42;
@@ -1079,20 +1026,10 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->textBox1->Size = System::Drawing::Size(98, 20);
 			this->textBox1->TabIndex = 0;
 			// 
-			// bClose
-			// 
-			this->bClose->Location = System::Drawing::Point(310, 157);
-			this->bClose->Name = L"bClose";
-			this->bClose->Size = System::Drawing::Size(109, 36);
-			this->bClose->TabIndex = 43;
-			this->bClose->Text = L"CLOSE";
-			this->bClose->UseVisualStyleBackColor = true;
-			this->bClose->Click += gcnew System::EventHandler(this, &MyForm::bClose_Click);
-			// 
 			// tbAngleX
 			// 
 			this->tbAngleX->LargeChange = 1;
-			this->tbAngleX->Location = System::Drawing::Point(909, 236);
+			this->tbAngleX->Location = System::Drawing::Point(41, 37);
 			this->tbAngleX->Minimum = -10;
 			this->tbAngleX->Name = L"tbAngleX";
 			this->tbAngleX->Size = System::Drawing::Size(177, 45);
@@ -1102,43 +1039,135 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			// tbAngleY
 			// 
 			this->tbAngleY->LargeChange = 1;
-			this->tbAngleY->Location = System::Drawing::Point(909, 287);
+			this->tbAngleY->Location = System::Drawing::Point(41, 95);
 			this->tbAngleY->Minimum = -10;
 			this->tbAngleY->Name = L"tbAngleY";
 			this->tbAngleY->Size = System::Drawing::Size(177, 45);
 			this->tbAngleY->TabIndex = 44;
 			this->tbAngleY->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleY_Scroll);
 			// 
+			// tabControlController
+			// 
+			this->tabControlController->Controls->Add(this->tabPage1);
+			this->tabControlController->Controls->Add(this->tabPage2);
+			this->tabControlController->Controls->Add(this->tabPage5);
+			this->tabControlController->Location = System::Drawing::Point(12, 328);
+			this->tabControlController->Name = L"tabControlController";
+			this->tabControlController->SelectedIndex = 0;
+			this->tabControlController->Size = System::Drawing::Size(311, 199);
+			this->tabControlController->TabIndex = 45;
+			// 
+			// tabPage1
+			// 
+			this->tabPage1->Controls->Add(this->groupBox5);
+			this->tabPage1->Location = System::Drawing::Point(4, 22);
+			this->tabPage1->Name = L"tabPage1";
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage1->Size = System::Drawing::Size(303, 173);
+			this->tabPage1->TabIndex = 0;
+			this->tabPage1->Text = L"PID";
+			this->tabPage1->UseVisualStyleBackColor = true;
+			// 
+			// tabPage2
+			// 
+			this->tabPage2->Controls->Add(this->groupBox6);
+			this->tabPage2->Location = System::Drawing::Point(4, 22);
+			this->tabPage2->Name = L"tabPage2";
+			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage2->Size = System::Drawing::Size(303, 173);
+			this->tabPage2->TabIndex = 1;
+			this->tabPage2->Text = L"FUZZY";
+			this->tabPage2->UseVisualStyleBackColor = true;
+			// 
+			// tabPage5
+			// 
+			this->tabPage5->Controls->Add(this->tbAngleX);
+			this->tabPage5->Controls->Add(this->tbAngleY);
+			this->tabPage5->Location = System::Drawing::Point(4, 22);
+			this->tabPage5->Name = L"tabPage5";
+			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage5->Size = System::Drawing::Size(303, 173);
+			this->tabPage5->TabIndex = 2;
+			this->tabPage5->Text = L"MANUAL";
+			this->tabPage5->UseVisualStyleBackColor = true;
+			// 
+			// tabControlGraph
+			// 
+			this->tabControlGraph->Controls->Add(this->tabPageXYGRAPH);
+			this->tabControlGraph->Controls->Add(this->tabPageTIMEGRAPH);
+			this->tabControlGraph->Location = System::Drawing::Point(432, 14);
+			this->tabControlGraph->Name = L"tabControlGraph";
+			this->tabControlGraph->SelectedIndex = 0;
+			this->tabControlGraph->Size = System::Drawing::Size(498, 405);
+			this->tabControlGraph->TabIndex = 46;
+			// 
+			// tabPageXYGRAPH
+			// 
+			this->tabPageXYGRAPH->Controls->Add(this->zedGraphXY);
+			this->tabPageXYGRAPH->Location = System::Drawing::Point(4, 22);
+			this->tabPageXYGRAPH->Name = L"tabPageXYGRAPH";
+			this->tabPageXYGRAPH->Padding = System::Windows::Forms::Padding(3);
+			this->tabPageXYGRAPH->Size = System::Drawing::Size(490, 379);
+			this->tabPageXYGRAPH->TabIndex = 0;
+			this->tabPageXYGRAPH->Text = L"XY GRAPH";
+			this->tabPageXYGRAPH->UseVisualStyleBackColor = true;
+			// 
+			// tabPageTIMEGRAPH
+			// 
+			this->tabPageTIMEGRAPH->Controls->Add(this->zedGraphY);
+			this->tabPageTIMEGRAPH->Controls->Add(this->zedGraphX);
+			this->tabPageTIMEGRAPH->Location = System::Drawing::Point(4, 22);
+			this->tabPageTIMEGRAPH->Name = L"tabPageTIMEGRAPH";
+			this->tabPageTIMEGRAPH->Padding = System::Windows::Forms::Padding(3);
+			this->tabPageTIMEGRAPH->Size = System::Drawing::Size(490, 379);
+			this->tabPageTIMEGRAPH->TabIndex = 1;
+			this->tabPageTIMEGRAPH->Text = L"TIME GRAPH";
+			this->tabPageTIMEGRAPH->UseVisualStyleBackColor = true;
+			// 
+			// zedGraphY
+			// 
+			this->zedGraphY->Location = System::Drawing::Point(6, 178);
+			this->zedGraphY->Name = L"zedGraphY";
+			this->zedGraphY->ScrollGrace = 0;
+			this->zedGraphY->ScrollMaxX = 0;
+			this->zedGraphY->ScrollMaxY = 0;
+			this->zedGraphY->ScrollMaxY2 = 0;
+			this->zedGraphY->ScrollMinX = 0;
+			this->zedGraphY->ScrollMinY = 0;
+			this->zedGraphY->ScrollMinY2 = 0;
+			this->zedGraphY->Size = System::Drawing::Size(478, 174);
+			this->zedGraphY->TabIndex = 1;
+			// 
+			// zedGraphX
+			// 
+			this->zedGraphX->Location = System::Drawing::Point(6, 3);
+			this->zedGraphX->Name = L"zedGraphX";
+			this->zedGraphX->ScrollGrace = 0;
+			this->zedGraphX->ScrollMaxX = 0;
+			this->zedGraphX->ScrollMaxY = 0;
+			this->zedGraphX->ScrollMaxY2 = 0;
+			this->zedGraphX->ScrollMinX = 0;
+			this->zedGraphX->ScrollMinY = 0;
+			this->zedGraphX->ScrollMinY2 = 0;
+			this->zedGraphX->Size = System::Drawing::Size(478, 169);
+			this->zedGraphX->TabIndex = 0;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1102, 509);
-			this->Controls->Add(this->tbAngleY);
-			this->Controls->Add(this->tbAngleX);
-			this->Controls->Add(this->bClose);
+			this->ClientSize = System::Drawing::Size(948, 541);
+			this->Controls->Add(this->tabControlGraph);
+			this->Controls->Add(this->tabControlController);
 			this->Controls->Add(this->groupBox7);
-			this->Controls->Add(this->groupBox6);
-			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->zedGraphControl1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar6))->EndInit();
-			this->PIDX->ResumeLayout(false);
-			this->PIDX->PerformLayout();
-			this->groupBox2->ResumeLayout(false);
-			this->groupBox2->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
 			this->groupBox4->ResumeLayout(false);
@@ -1150,15 +1179,25 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 			this->groupBox7->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->EndInit();
+			this->tabControlController->ResumeLayout(false);
+			this->tabPage1->ResumeLayout(false);
+			this->tabPage2->ResumeLayout(false);
+			this->tabPage5->ResumeLayout(false);
+			this->tabPage5->PerformLayout();
+			this->tabControlGraph->ResumeLayout(false);
+			this->tabPageXYGRAPH->ResumeLayout(false);
+			this->tabPageTIMEGRAPH->ResumeLayout(false);
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
 
 		//===============================================
 		//=====DEFINE====================================
-		GraphPane^ myPane = gcnew GraphPane();
+		GraphPane^ myPaneXY = gcnew GraphPane();
+		GraphPane^ myPaneX = gcnew GraphPane();
+		GraphPane^ myPaneY = gcnew GraphPane();
+
 		PointPairList^ PosXList = gcnew PointPairList();
 		PointPairList^ PosYList = gcnew PointPairList();
 		PointPairList^ PosXYList = gcnew PointPairList();
@@ -1175,8 +1214,15 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 		LineItem^ PosYSetpointCurve;
 		LineItem^ PosXYSetpointCurve;
 
-		ZedGraph::Scale^ xScale;
-		ZedGraph::Scale^ yScale;
+		ZedGraph::Scale^ xScaleXY;
+		ZedGraph::Scale^ yScaleXY;
+
+		ZedGraph::Scale^ xScaleX;
+		ZedGraph::Scale^ yScaleX;
+
+		ZedGraph::Scale^ xScaleY;
+		ZedGraph::Scale^ yScaleY;
+
 	private:
 		double posX = 0;
 		double posY = 0;
@@ -1213,74 +1259,113 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 		// add string array to combobox
 		cbCOMLIST->Items->AddRange(objectArray);
 	}
-
+	
 #pragma endregion
 
 #pragma region PLOTTING GRAPH
 
 	private: void initGraph()
 	{
-		myPane = zedGraphControl1->GraphPane;
-		xScale = zedGraphControl1->GraphPane->XAxis->Scale;
-		yScale = zedGraphControl1->GraphPane->YAxis->Scale;
-		myPane->Title->Text = "X-Y GRAPH";
-		myPane->XAxis->Title->Text = "X";
-		myPane->YAxis->Title->Text = "Y";
-		RollingPointPairList^ list1 = gcnew RollingPointPairList(2000);
-		RollingPointPairList^ list2 = gcnew RollingPointPairList(2000);
+		myPaneXY = zedGraphXY->GraphPane;
+		myPaneX = zedGraphX->GraphPane;
+		myPaneY = zedGraphY->GraphPane;
+		//==================================================
+		xScaleXY = zedGraphXY->GraphPane->XAxis->Scale;
+		yScaleXY = zedGraphXY->GraphPane->YAxis->Scale;
 
-		LineItem^ curve1 = myPane->AddCurve("SET-SPEED", list1, Color::Red, SymbolType::None);
-		LineItem^ curve2 = myPane->AddCurve("ACT-SPEED", list2, Color::Blue, SymbolType::None);
-		xScale->Max = 400;
-		xScale->Min = 0;
-		yScale->Max = 400;
-		yScale->Min = 0;
-		myPane->IsAlignGrids = true;
-		zedGraphControl1->AxisChange();
+		xScaleX = zedGraphX->GraphPane->XAxis->Scale;
+		yScaleX = zedGraphX->GraphPane->YAxis->Scale;
+
+		xScaleY = zedGraphY->GraphPane->XAxis->Scale;
+		yScaleY = zedGraphY->GraphPane->YAxis->Scale;
+		//==================================================
+		//myPaneXY->Title->Text = "X-Y GRAPH";
+		myPaneXY->Title->IsVisible = false;
+		myPaneXY->XAxis->Title->Text = "X";
+		myPaneXY->YAxis->Title->Text = "Y";
+
+		myPaneX->Title->IsVisible = false;
+		myPaneX->XAxis->Title->Text = "Time";
+		myPaneX->YAxis->Title->Text = "X";
+
+		myPaneY->Title->IsVisible = false;
+		myPaneY->XAxis->Title->Text = "Time";
+		myPaneY->YAxis->Title->Text = "Y";
+		//==================================================
+
+		xScaleXY->Max = 400;
+		xScaleXY->Min = 0;
+		yScaleXY->Max = 400;
+		yScaleXY->Min = 0;
+
+		xScaleX->Max = 1000;
+		xScaleX->Min = 0;
+		yScaleX->Max = 400;
+		yScaleX->Min = 0;
+
+		xScaleY->Max = 1000;
+		xScaleY->Min = 0;
+		yScaleY->Max = 400;
+		yScaleY->Min = 0;
+		//====================================================
+		myPaneXY->IsAlignGrids = true;
+		myPaneX->IsAlignGrids = true;
+		myPaneY->IsAlignGrids = true;
+
+		zedGraphXY->AxisChange();
+		zedGraphX->AxisChange();
+		zedGraphY->AxisChange();
+
 	}
-	private: void draw(double x, double y)
+	
+	private: void drawXY(double x, double y)
 	{
-		zedGraphControl1->GraphPane->CurveList->Clear();
-		if (bSCROLL->Text == "SCROLL")
-		{
-			PosXYList->Clear();
-			PosXYList->Add(x, y);
+		zedGraphXY->GraphPane->CurveList->Clear();
+		PosXYList->Clear();
+		PosXYList->Add(x, y);
 			
-			PosXYSetpointList->Clear();
-			PosXYSetpointList->Add(setpointX, setpointY);
+		PosXYSetpointList->Clear();
+		PosXYSetpointList->Add(setpointX, setpointY);
 
-			PosXYCurve = myPane->AddCurve("Ball Position", PosXYList, Color::Red, SymbolType::Circle);
-			PosXYSetpointCurve = myPane->AddCurve("Set point", PosXYSetpointList, Color::Blue, SymbolType::Square);
-			timeGraph = 0;
-		}
-		else
-		{
-			if (timeGraph > xScale->Max - 1)
-			{
-				timeGraph = 0;
-				PosXList->Clear();
-				PosYList->Clear();
+		PosXYCurve = myPaneXY->AddCurve("Ball Position", PosXYList, Color::Red, SymbolType::Default);
+		PosXYSetpointCurve = myPaneXY->AddCurve("Set point", PosXYSetpointList, Color::Blue, SymbolType::Square);
 
-				PosXSetpointList->Clear();
-				PosYSetpointList->Clear();
-			}
-			PosXList->Add(timeGraph, x);
-			PosYList->Add(timeGraph, y);
-
-			PosXSetpointList->Add(timeGraph, setpointX);
-			PosYSetpointList->Add(timeGraph, setpointY);
-
-			PosXCurve = myPane->AddCurve("Pos X", PosXList, Color::Red, SymbolType::Circle);
-			PosYCurve = myPane->AddCurve("Pos Y", PosYList, Color::Blue, SymbolType::Circle);
-			PosXSetpointCurve = myPane->AddCurve("Pos Set point X", PosXSetpointList, Color::Red, SymbolType::Default);
-			PosYSetpointCurve = myPane->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue, SymbolType::Default);
-
-			timeGraph++;
-		}
-		zedGraphControl1->AxisChange();
-		zedGraphControl1->Invalidate();
+		zedGraphXY->AxisChange();
+		zedGraphXY->Invalidate();
 	}
+	private: void drawXYT(double x, double y)
+	{
+		zedGraphX->GraphPane->CurveList->Clear();
+		zedGraphY->GraphPane->CurveList->Clear();
+		if (timeGraph > xScaleX->Max - 1)
+		{
+			timeGraph = 0;
+			PosXList->Clear();
+			PosYList->Clear();
 
+			PosXSetpointList->Clear();
+			PosYSetpointList->Clear();
+		}
+		PosXList->Add(timeGraph, x);
+		PosYList->Add(timeGraph, y);
+
+		PosXSetpointList->Add(timeGraph, setpointX);
+		PosYSetpointList->Add(timeGraph, setpointY);
+
+		PosXCurve = myPaneX->AddCurve("Pos X", PosXList, Color::Red, SymbolType::None);
+		PosXSetpointCurve = myPaneX->AddCurve("Pos Set point X", PosXSetpointList, Color::Blue, SymbolType::None);
+
+		PosYCurve = myPaneY->AddCurve("Pos Y", PosYList, Color::Red, SymbolType::None);
+		PosYSetpointCurve = myPaneY->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue, SymbolType::None);
+
+		timeGraph++;
+
+		zedGraphX->AxisChange();
+		zedGraphY->AxisChange();
+
+		zedGraphX->Invalidate();
+		zedGraphY->Invalidate();
+	}
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 		findPorts();
@@ -1411,7 +1496,18 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 		}
 		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
 		{
-			draw(posX, posY);
+			if (tabPageXYGRAPH->Visible == true)
+			{
+				drawXY(posX, posY);
+			}
+			else if (tabPageTIMEGRAPH->Visible == true)
+			{
+				drawXYT(posX, posY);
+			}
+			else
+			{
+
+			}
 		}
 		if (bGetBall->Text == "UNGET BALL" /* && camera.getErrorStr() == "Tracking Object" */)
 		{
@@ -1449,10 +1545,10 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 		{
 			bSCROLL->Text = "BLOCK";
 
-			myPane->Title->Text = "TIMELINE GRAPH";
-			myPane->XAxis->Title->Text = "TIME";
-			myPane->YAxis->Title->Text = "POSTION";
-			xScale->Max = 1000;
+			myPaneXY->Title->Text = "TIMELINE GRAPH";
+			myPaneXY->XAxis->Title->Text = "TIME";
+			myPaneXY->YAxis->Title->Text = "POSTION";
+			xScaleXY->Max = 1000;
 			timeGraph = 0;
 			PosXList->Clear();
 			PosYList->Clear();
@@ -1464,25 +1560,16 @@ private: System::Windows::Forms::TrackBar^  tbAngleY;
 		{
 			bSCROLL->Text = "SCROLL";
 
-			myPane->Title->Text = "X-Y GRAPH";
-			myPane->XAxis->Title->Text = "X";
-			myPane->YAxis->Title->Text = "Y";
-			xScale->Max = 400;
+			myPaneXY->Title->Text = "X-Y GRAPH";
+			myPaneXY->XAxis->Title->Text = "X";
+			myPaneXY->YAxis->Title->Text = "Y";
+			xScaleXY->Max = 400;
 		}
 
 	}
 private: System::Void bSETBALL_Click(System::Object^  sender, System::EventArgs^  e) {
 		setpointX = System::Convert::ToDouble(txtSetpointX->Text);
 		setpointY = System::Convert::ToDouble(txtSetpointY->Text);
-}
-private: System::Void trackBar1_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	txtKP1->Text = trackBar1->Value.ToString();
-}
-private: System::Void trackBar2_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	txtKI1->Text = trackBar2->Value.ToString();
-}
-private: System::Void trackBar3_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	txtKD1->Text = trackBar3->Value.ToString();
 }
 private: System::Void bCALIB_Click(System::Object^  sender, System::EventArgs^  e) {
 	camera.createTrackbars();
@@ -1492,15 +1579,6 @@ private: System::Void txtSEND_TextChanged(System::Object^  sender, System::Event
 	{
 		serialPort->Write(txtSEND->Text);
 	}
-}
-private: System::Void trackBar4_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	txtKP2->Text = trackBar4->Value.ToString();
-}
-private: System::Void trackBar5_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	txtKI2->Text = trackBar5->Value.ToString();
-}
-private: System::Void trackBar6_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	txtKD2->Text = trackBar6->Value.ToString();
 }
 private: System::Void bSTART_PID_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (bSTART_PID->Text == "START PID")
@@ -1534,7 +1612,7 @@ private: System::Void bSTART_FUZZY_Click(System::Object^  sender, System::EventA
 }
 private: System::Void bSetCrop_Click(System::Object^  sender, System::EventArgs^  e) {
 }
-private: System::Void bSetFuzzyScale_Click(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void bSetFuzzyScaleXY_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (txtScaleErr1->Text == "" || txtScaleErr2->Text == "" || txtScaleErr3->Text == "" ||
 		txtScaleErr1->Text == "0" || txtScaleErr2->Text == "0" || txtScaleErr3->Text == "0" ||
 		txtScaleVel1->Text == "" || txtScaleVel2->Text == "" || txtScaleVel3->Text == "" ||
