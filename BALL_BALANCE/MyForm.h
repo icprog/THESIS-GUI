@@ -67,16 +67,16 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::TextBox^  txtSetpointX;
 
 	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::Label^  label2;
+
 	private: System::Windows::Forms::TextBox^  txtSetpointY;
 
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::TextBox^  txtPosX;
 
-	private: System::Windows::Forms::Label^  label4;
+
 	private: System::Windows::Forms::TextBox^  txtPosY;
 
-	private: System::Windows::Forms::Label^  label5;
+
 	private: System::Windows::Forms::TextBox^  txtErrY;
 
 	private: System::Windows::Forms::Label^  label6;
@@ -99,7 +99,7 @@ namespace BALL_BALANCE {
 
 
 
-	private: System::Windows::Forms::Label^  label10;
+
 	private: System::Windows::Forms::TextBox^  txtANGLE_Y;
 
 	private: System::Windows::Forms::Label^  label11;
@@ -160,11 +160,13 @@ private: System::Windows::Forms::Button^  bShowCam;
 
 private: System::Windows::Forms::GroupBox^  groupBox5;
 private: System::Windows::Forms::GroupBox^  groupBox6;
+private: System::Windows::Forms::Button^  bEXPORT_SETTING;
+private: System::Windows::Forms::Button^  bIMPORT_SETTING;
 
-private: System::Windows::Forms::Button^  button4;
-private: System::Windows::Forms::Button^  button3;
-private: System::Windows::Forms::Label^  label19;
-private: System::Windows::Forms::TextBox^  textBox1;
+
+
+
+
 private: System::Windows::Forms::TextBox^  txtScaleVel3;
 
 private: System::Windows::Forms::TextBox^  txtScaleVel2;
@@ -197,9 +199,12 @@ private: ZedGraph::ZedGraphControl^  zedGraphY;
 private: ZedGraph::ZedGraphControl^  zedGraphX;
 
 private: System::Windows::Forms::TabPage^  tabPage5;
-private: System::Windows::Forms::TabPage^  tabPage3;
-private: System::Windows::Forms::TabPage^  tabPage4;
+private: System::Windows::Forms::TabPage^  tabPage;
+
+
+
 private: System::Windows::Forms::TabPage^  tabPage6;
+private: System::Windows::Forms::Button^  button1;
 
 
 
@@ -242,13 +247,10 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->timerProcessing = (gcnew System::Windows::Forms::Timer(this->components));
 			this->txtSetpointX = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->txtSetpointY = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->txtPosX = (gcnew System::Windows::Forms::TextBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->txtPosY = (gcnew System::Windows::Forms::TextBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->txtErrY = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->txtErrX = (gcnew System::Windows::Forms::TextBox());
@@ -256,7 +258,6 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->bSTART = (gcnew System::Windows::Forms::Button());
-			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->txtANGLE_Y = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->txtANGLE_X = (gcnew System::Windows::Forms::TextBox());
@@ -298,35 +299,32 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->txtScaleErr2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtScaleOut3 = (gcnew System::Windows::Forms::TextBox());
 			this->txtScaleOut2 = (gcnew System::Windows::Forms::TextBox());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->label19 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->bEXPORT_SETTING = (gcnew System::Windows::Forms::Button());
+			this->bIMPORT_SETTING = (gcnew System::Windows::Forms::Button());
 			this->tbAngleX = (gcnew System::Windows::Forms::TrackBar());
 			this->tbAngleY = (gcnew System::Windows::Forms::TrackBar());
 			this->tabControlController = (gcnew System::Windows::Forms::TabControl());
-			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
-			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
-			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
-			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage6 = (gcnew System::Windows::Forms::TabPage());
 			this->tabControlGraph = (gcnew System::Windows::Forms::TabControl());
 			this->tabPageXYGRAPH = (gcnew System::Windows::Forms::TabPage());
 			this->tabPageTIMEGRAPH = (gcnew System::Windows::Forms::TabPage());
 			this->zedGraphY = (gcnew ZedGraph::ZedGraphControl());
 			this->zedGraphX = (gcnew ZedGraph::ZedGraphControl());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox5->SuspendLayout();
 			this->groupBox6->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
 			this->tabControlController->SuspendLayout();
-			this->tabPage2->SuspendLayout();
-			this->tabPage1->SuspendLayout();
+			this->tabPage->SuspendLayout();
 			this->tabPage5->SuspendLayout();
-			this->tabPage3->SuspendLayout();
-			this->tabPage4->SuspendLayout();
+			this->tabPage1->SuspendLayout();
+			this->tabPage2->SuspendLayout();
 			this->tabPage6->SuspendLayout();
 			this->tabControlGraph->SuspendLayout();
 			this->tabPageXYGRAPH->SuspendLayout();
@@ -338,19 +336,19 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->cbCOMLIST->FormattingEnabled = true;
 			this->cbCOMLIST->Location = System::Drawing::Point(15, 20);
 			this->cbCOMLIST->Name = L"cbCOMLIST";
-			this->cbCOMLIST->Size = System::Drawing::Size(88, 21);
+			this->cbCOMLIST->Size = System::Drawing::Size(92, 21);
 			this->cbCOMLIST->TabIndex = 0;
 			// 
 			// txtRECEIVE
 			// 
 			this->txtRECEIVE->Location = System::Drawing::Point(15, 81);
 			this->txtRECEIVE->Name = L"txtRECEIVE";
-			this->txtRECEIVE->Size = System::Drawing::Size(88, 20);
+			this->txtRECEIVE->Size = System::Drawing::Size(92, 20);
 			this->txtRECEIVE->TabIndex = 1;
 			// 
 			// bCONNECT
 			// 
-			this->bCONNECT->Location = System::Drawing::Point(113, 21);
+			this->bCONNECT->Location = System::Drawing::Point(113, 49);
 			this->bCONNECT->Name = L"bCONNECT";
 			this->bCONNECT->Size = System::Drawing::Size(93, 23);
 			this->bCONNECT->TabIndex = 2;
@@ -370,7 +368,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			this->txtSEND->Location = System::Drawing::Point(16, 49);
 			this->txtSEND->Name = L"txtSEND";
-			this->txtSEND->Size = System::Drawing::Size(87, 20);
+			this->txtSEND->Size = System::Drawing::Size(91, 20);
 			this->txtSEND->TabIndex = 3;
 			this->txtSEND->Text = L"00";
 			this->txtSEND->TextChanged += gcnew System::EventHandler(this, &MyForm::txtSEND_TextChanged);
@@ -381,7 +379,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bSEND
 			// 
-			this->bSEND->Location = System::Drawing::Point(113, 50);
+			this->bSEND->Location = System::Drawing::Point(113, 78);
 			this->bSEND->Name = L"bSEND";
 			this->bSEND->Size = System::Drawing::Size(93, 23);
 			this->bSEND->TabIndex = 4;
@@ -409,7 +407,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// txtSetpointX
 			// 
-			this->txtSetpointX->Location = System::Drawing::Point(92, 28);
+			this->txtSetpointX->Location = System::Drawing::Point(117, 28);
 			this->txtSetpointX->Name = L"txtSetpointX";
 			this->txtSetpointX->Size = System::Drawing::Size(46, 20);
 			this->txtSetpointX->TabIndex = 6;
@@ -419,22 +417,13 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(12, 31);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(74, 13);
+			this->label1->Size = System::Drawing::Size(90, 13);
 			this->label1->TabIndex = 7;
-			this->label1->Text = L"SET POINT X";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(198, 33);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(74, 13);
-			this->label2->TabIndex = 9;
-			this->label2->Text = L"SET POINT Y";
+			this->label1->Text = L"SET POINT X - Y";
 			// 
 			// txtSetpointY
 			// 
-			this->txtSetpointY->Location = System::Drawing::Point(144, 28);
+			this->txtSetpointY->Location = System::Drawing::Point(169, 28);
 			this->txtSetpointY->Name = L"txtSetpointY";
 			this->txtSetpointY->Size = System::Drawing::Size(46, 20);
 			this->txtSetpointY->TabIndex = 8;
@@ -444,45 +433,27 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(47, 58);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(39, 13);
+			this->label3->Size = System::Drawing::Size(55, 13);
 			this->label3->TabIndex = 11;
-			this->label3->Text = L"POS X";
+			this->label3->Text = L"POS X - Y";
 			// 
 			// txtPosX
 			// 
-			this->txtPosX->Location = System::Drawing::Point(92, 54);
+			this->txtPosX->Location = System::Drawing::Point(117, 54);
 			this->txtPosX->Name = L"txtPosX";
 			this->txtPosX->Size = System::Drawing::Size(46, 20);
 			this->txtPosX->TabIndex = 10;
 			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(198, 59);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(39, 13);
-			this->label4->TabIndex = 13;
-			this->label4->Text = L"POS Y";
-			// 
 			// txtPosY
 			// 
-			this->txtPosY->Location = System::Drawing::Point(144, 54);
+			this->txtPosY->Location = System::Drawing::Point(169, 54);
 			this->txtPosY->Name = L"txtPosY";
 			this->txtPosY->Size = System::Drawing::Size(46, 20);
 			this->txtPosY->TabIndex = 12;
 			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(198, 85);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(56, 13);
-			this->label5->TabIndex = 17;
-			this->label5->Text = L"ERROR Y";
-			// 
 			// txtErrY
 			// 
-			this->txtErrY->Location = System::Drawing::Point(144, 80);
+			this->txtErrY->Location = System::Drawing::Point(169, 80);
 			this->txtErrY->Name = L"txtErrY";
 			this->txtErrY->Size = System::Drawing::Size(46, 20);
 			this->txtErrY->TabIndex = 16;
@@ -492,13 +463,13 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->label6->AutoSize = true;
 			this->label6->Location = System::Drawing::Point(30, 83);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(56, 13);
+			this->label6->Size = System::Drawing::Size(72, 13);
 			this->label6->TabIndex = 15;
-			this->label6->Text = L"ERROR X";
+			this->label6->Text = L"ERROR X - Y";
 			// 
 			// txtErrX
 			// 
-			this->txtErrX->Location = System::Drawing::Point(92, 80);
+			this->txtErrX->Location = System::Drawing::Point(117, 80);
 			this->txtErrX->Name = L"txtErrX";
 			this->txtErrX->Size = System::Drawing::Size(46, 20);
 			this->txtErrX->TabIndex = 14;
@@ -532,26 +503,17 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bSTART
 			// 
-			this->bSTART->Location = System::Drawing::Point(11, 15);
+			this->bSTART->Location = System::Drawing::Point(113, 18);
 			this->bSTART->Name = L"bSTART";
 			this->bSTART->Size = System::Drawing::Size(93, 23);
 			this->bSTART->TabIndex = 22;
-			this->bSTART->Text = L"START";
+			this->bSTART->Text = L"START CAM";
 			this->bSTART->UseVisualStyleBackColor = true;
 			this->bSTART->Click += gcnew System::EventHandler(this, &MyForm::bSTART_Click);
 			// 
-			// label10
-			// 
-			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(198, 111);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(53, 13);
-			this->label10->TabIndex = 26;
-			this->label10->Text = L"ANGLE Y";
-			// 
 			// txtANGLE_Y
 			// 
-			this->txtANGLE_Y->Location = System::Drawing::Point(144, 106);
+			this->txtANGLE_Y->Location = System::Drawing::Point(169, 106);
 			this->txtANGLE_Y->Name = L"txtANGLE_Y";
 			this->txtANGLE_Y->Size = System::Drawing::Size(46, 20);
 			this->txtANGLE_Y->TabIndex = 25;
@@ -561,13 +523,13 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->label11->AutoSize = true;
 			this->label11->Location = System::Drawing::Point(30, 109);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(53, 13);
+			this->label11->Size = System::Drawing::Size(69, 13);
 			this->label11->TabIndex = 24;
-			this->label11->Text = L"ANGLE X";
+			this->label11->Text = L"ANGLE X - Y";
 			// 
 			// txtANGLE_X
 			// 
-			this->txtANGLE_X->Location = System::Drawing::Point(92, 106);
+			this->txtANGLE_X->Location = System::Drawing::Point(117, 106);
 			this->txtANGLE_X->Name = L"txtANGLE_X";
 			this->txtANGLE_X->Size = System::Drawing::Size(46, 20);
 			this->txtANGLE_X->TabIndex = 23;
@@ -602,7 +564,6 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(this->txtPosY);
-			this->groupBox1->Controls->Add(this->label10);
 			this->groupBox1->Controls->Add(this->txtSetpointX);
 			this->groupBox1->Controls->Add(this->label15);
 			this->groupBox1->Controls->Add(this->txtANGLE_Y);
@@ -611,19 +572,16 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->groupBox1->Controls->Add(this->txtSetpointY);
 			this->groupBox1->Controls->Add(this->txtANGLE_X);
 			this->groupBox1->Controls->Add(this->txtTimeProcess);
-			this->groupBox1->Controls->Add(this->bSTART_GRAPH);
-			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Controls->Add(this->bSCROLL);
 			this->groupBox1->Controls->Add(this->txtPosX);
+			this->groupBox1->Controls->Add(this->bSTART_GRAPH);
 			this->groupBox1->Controls->Add(this->label3);
-			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->txtErrX);
+			this->groupBox1->Controls->Add(this->bSCROLL);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->txtErrY);
-			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Location = System::Drawing::Point(12, 232);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(280, 272);
+			this->groupBox1->Size = System::Drawing::Size(229, 297);
 			this->groupBox1->TabIndex = 27;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"PARAM";
@@ -631,7 +589,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(53, 164);
+			this->label15->Location = System::Drawing::Point(8, 137);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(91, 13);
 			this->label15->TabIndex = 38;
@@ -639,14 +597,14 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// txtTimeProcess
 			// 
-			this->txtTimeProcess->Location = System::Drawing::Point(150, 161);
+			this->txtTimeProcess->Location = System::Drawing::Point(117, 134);
 			this->txtTimeProcess->Name = L"txtTimeProcess";
-			this->txtTimeProcess->Size = System::Drawing::Size(40, 20);
+			this->txtTimeProcess->Size = System::Drawing::Size(46, 20);
 			this->txtTimeProcess->TabIndex = 35;
 			// 
 			// bSTART_GRAPH
 			// 
-			this->bSTART_GRAPH->Location = System::Drawing::Point(45, 131);
+			this->bSTART_GRAPH->Location = System::Drawing::Point(18, 225);
 			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
 			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
 			this->bSTART_GRAPH->TabIndex = 37;
@@ -656,7 +614,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bSCROLL
 			// 
-			this->bSCROLL->Location = System::Drawing::Point(144, 132);
+			this->bSCROLL->Location = System::Drawing::Point(117, 226);
 			this->bSCROLL->Name = L"bSCROLL";
 			this->bSCROLL->Size = System::Drawing::Size(93, 23);
 			this->bSCROLL->TabIndex = 22;
@@ -759,7 +717,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bSETBALL
 			// 
-			this->bSETBALL->Location = System::Drawing::Point(110, 44);
+			this->bSETBALL->Location = System::Drawing::Point(11, 8);
 			this->bSETBALL->Name = L"bSETBALL";
 			this->bSETBALL->Size = System::Drawing::Size(93, 24);
 			this->bSETBALL->TabIndex = 22;
@@ -769,7 +727,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bCALIB
 			// 
-			this->bCALIB->Location = System::Drawing::Point(12, 44);
+			this->bCALIB->Location = System::Drawing::Point(212, 17);
 			this->bCALIB->Name = L"bCALIB";
 			this->bCALIB->Size = System::Drawing::Size(92, 24);
 			this->bCALIB->TabIndex = 31;
@@ -779,9 +737,9 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bClose
 			// 
-			this->bClose->Location = System::Drawing::Point(113, 78);
+			this->bClose->Location = System::Drawing::Point(861, 12);
 			this->bClose->Name = L"bClose";
-			this->bClose->Size = System::Drawing::Size(93, 27);
+			this->bClose->Size = System::Drawing::Size(75, 24);
 			this->bClose->TabIndex = 43;
 			this->bClose->Text = L"CLOSE";
 			this->bClose->UseVisualStyleBackColor = true;
@@ -809,7 +767,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bSetCrop
 			// 
-			this->bSetCrop->Location = System::Drawing::Point(11, 74);
+			this->bSetCrop->Location = System::Drawing::Point(211, 47);
 			this->bSetCrop->Name = L"bSetCrop";
 			this->bSetCrop->Size = System::Drawing::Size(93, 25);
 			this->bSetCrop->TabIndex = 35;
@@ -819,7 +777,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bGetBall
 			// 
-			this->bGetBall->Location = System::Drawing::Point(110, 74);
+			this->bGetBall->Location = System::Drawing::Point(11, 38);
 			this->bGetBall->Name = L"bGetBall";
 			this->bGetBall->Size = System::Drawing::Size(93, 26);
 			this->bGetBall->TabIndex = 37;
@@ -829,7 +787,7 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			// 
 			// bShowCam
 			// 
-			this->bShowCam->Location = System::Drawing::Point(110, 15);
+			this->bShowCam->Location = System::Drawing::Point(212, 78);
 			this->bShowCam->Name = L"bShowCam";
 			this->bShowCam->Size = System::Drawing::Size(93, 23);
 			this->bShowCam->TabIndex = 36;
@@ -951,96 +909,79 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->txtScaleOut2->TabIndex = 33;
 			this->txtScaleOut2->Text = L"10";
 			// 
-			// button4
+			// bEXPORT_SETTING
 			// 
-			this->button4->Location = System::Drawing::Point(119, 52);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(80, 27);
-			this->button4->TabIndex = 2;
-			this->button4->Text = L"EXPORT";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			this->bEXPORT_SETTING->Location = System::Drawing::Point(16, 137);
+			this->bEXPORT_SETTING->Name = L"bEXPORT_SETTING";
+			this->bEXPORT_SETTING->Size = System::Drawing::Size(91, 24);
+			this->bEXPORT_SETTING->TabIndex = 2;
+			this->bEXPORT_SETTING->Text = L"EXPORT";
+			this->bEXPORT_SETTING->UseVisualStyleBackColor = true;
+			this->bEXPORT_SETTING->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
-			// button3
+			// bIMPORT_SETTING
 			// 
-			this->button3->Location = System::Drawing::Point(32, 52);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(80, 27);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"IMPORT";
-			this->button3->UseVisualStyleBackColor = true;
-			// 
-			// label19
-			// 
-			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(32, 29);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(63, 13);
-			this->label19->TabIndex = 1;
-			this->label19->Text = L"FILE NAME";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(101, 26);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(98, 20);
-			this->textBox1->TabIndex = 0;
+			this->bIMPORT_SETTING->Location = System::Drawing::Point(15, 107);
+			this->bIMPORT_SETTING->Name = L"bIMPORT_SETTING";
+			this->bIMPORT_SETTING->Size = System::Drawing::Size(92, 24);
+			this->bIMPORT_SETTING->TabIndex = 2;
+			this->bIMPORT_SETTING->Text = L"IMPORT";
+			this->bIMPORT_SETTING->UseVisualStyleBackColor = true;
+			this->bIMPORT_SETTING->Click += gcnew System::EventHandler(this, &MyForm::bIMPORT_SETTING_Click);
 			// 
 			// tbAngleX
 			// 
 			this->tbAngleX->LargeChange = 1;
-			this->tbAngleX->Location = System::Drawing::Point(41, 37);
+			this->tbAngleX->Location = System::Drawing::Point(59, 10);
 			this->tbAngleX->Minimum = -10;
 			this->tbAngleX->Name = L"tbAngleX";
-			this->tbAngleX->Size = System::Drawing::Size(177, 45);
+			this->tbAngleX->Size = System::Drawing::Size(131, 45);
 			this->tbAngleX->TabIndex = 44;
 			this->tbAngleX->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleX_Scroll);
 			// 
 			// tbAngleY
 			// 
 			this->tbAngleY->LargeChange = 1;
-			this->tbAngleY->Location = System::Drawing::Point(41, 95);
+			this->tbAngleY->Location = System::Drawing::Point(59, 61);
 			this->tbAngleY->Minimum = -10;
 			this->tbAngleY->Name = L"tbAngleY";
-			this->tbAngleY->Size = System::Drawing::Size(177, 45);
+			this->tbAngleY->Size = System::Drawing::Size(131, 45);
 			this->tbAngleY->TabIndex = 44;
 			this->tbAngleY->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleY_Scroll);
 			// 
 			// tabControlController
 			// 
-			this->tabControlController->Controls->Add(this->tabPage2);
-			this->tabControlController->Controls->Add(this->tabPage1);
+			this->tabControlController->Controls->Add(this->tabPage);
 			this->tabControlController->Controls->Add(this->tabPage5);
-			this->tabControlController->Controls->Add(this->tabPage3);
-			this->tabControlController->Controls->Add(this->tabPage4);
+			this->tabControlController->Controls->Add(this->tabPage1);
+			this->tabControlController->Controls->Add(this->tabPage2);
 			this->tabControlController->Controls->Add(this->tabPage6);
 			this->tabControlController->Location = System::Drawing::Point(12, 12);
 			this->tabControlController->Name = L"tabControlController";
 			this->tabControlController->SelectedIndex = 0;
-			this->tabControlController->Size = System::Drawing::Size(352, 214);
+			this->tabControlController->Size = System::Drawing::Size(324, 214);
 			this->tabControlController->TabIndex = 45;
 			// 
-			// tabPage2
+			// tabPage
 			// 
-			this->tabPage2->Controls->Add(this->groupBox6);
-			this->tabPage2->Location = System::Drawing::Point(4, 22);
-			this->tabPage2->Name = L"tabPage2";
-			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(344, 188);
-			this->tabPage2->TabIndex = 1;
-			this->tabPage2->Text = L"FUZZY";
-			this->tabPage2->UseVisualStyleBackColor = true;
-			// 
-			// tabPage1
-			// 
-			this->tabPage1->Controls->Add(this->groupBox5);
-			this->tabPage1->Location = System::Drawing::Point(4, 22);
-			this->tabPage1->Name = L"tabPage1";
-			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(344, 188);
-			this->tabPage1->TabIndex = 0;
-			this->tabPage1->Text = L"PID";
-			this->tabPage1->UseVisualStyleBackColor = true;
+			this->tabPage->Controls->Add(this->bEXPORT_SETTING);
+			this->tabPage->Controls->Add(this->bIMPORT_SETTING);
+			this->tabPage->Controls->Add(this->bSTART);
+			this->tabPage->Controls->Add(this->cbCOMLIST);
+			this->tabPage->Controls->Add(this->bShowCam);
+			this->tabPage->Controls->Add(this->bCONNECT);
+			this->tabPage->Controls->Add(this->bSetCrop);
+			this->tabPage->Controls->Add(this->txtRECEIVE);
+			this->tabPage->Controls->Add(this->bSEND);
+			this->tabPage->Controls->Add(this->bCALIB);
+			this->tabPage->Controls->Add(this->txtSEND);
+			this->tabPage->Location = System::Drawing::Point(4, 22);
+			this->tabPage->Name = L"tabPage";
+			this->tabPage->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage->Size = System::Drawing::Size(316, 188);
+			this->tabPage->TabIndex = 3;
+			this->tabPage->Text = L"SETTING";
+			this->tabPage->UseVisualStyleBackColor = true;
 			// 
 			// tabPage5
 			// 
@@ -1049,62 +990,50 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->tabPage5->Location = System::Drawing::Point(4, 22);
 			this->tabPage5->Name = L"tabPage5";
 			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage5->Size = System::Drawing::Size(344, 188);
+			this->tabPage5->Size = System::Drawing::Size(316, 188);
 			this->tabPage5->TabIndex = 2;
 			this->tabPage5->Text = L"MANUAL";
 			this->tabPage5->UseVisualStyleBackColor = true;
 			// 
-			// tabPage3
+			// tabPage1
 			// 
-			this->tabPage3->Controls->Add(this->cbCOMLIST);
-			this->tabPage3->Controls->Add(this->bCONNECT);
-			this->tabPage3->Controls->Add(this->txtRECEIVE);
-			this->tabPage3->Controls->Add(this->bSEND);
-			this->tabPage3->Controls->Add(this->txtSEND);
-			this->tabPage3->Controls->Add(this->bClose);
-			this->tabPage3->Location = System::Drawing::Point(4, 22);
-			this->tabPage3->Name = L"tabPage3";
-			this->tabPage3->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage3->Size = System::Drawing::Size(344, 188);
-			this->tabPage3->TabIndex = 3;
-			this->tabPage3->Text = L"tabPage3";
-			this->tabPage3->UseVisualStyleBackColor = true;
+			this->tabPage1->Controls->Add(this->groupBox5);
+			this->tabPage1->Location = System::Drawing::Point(4, 22);
+			this->tabPage1->Name = L"tabPage1";
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage1->Size = System::Drawing::Size(316, 188);
+			this->tabPage1->TabIndex = 0;
+			this->tabPage1->Text = L"PID";
+			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
-			// tabPage4
+			// tabPage2
 			// 
-			this->tabPage4->Controls->Add(this->bGetBall);
-			this->tabPage4->Controls->Add(this->bSTART);
-			this->tabPage4->Controls->Add(this->bShowCam);
-			this->tabPage4->Controls->Add(this->bSETBALL);
-			this->tabPage4->Controls->Add(this->bSetCrop);
-			this->tabPage4->Controls->Add(this->bCALIB);
-			this->tabPage4->Location = System::Drawing::Point(4, 22);
-			this->tabPage4->Name = L"tabPage4";
-			this->tabPage4->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage4->Size = System::Drawing::Size(344, 188);
-			this->tabPage4->TabIndex = 4;
-			this->tabPage4->Text = L"tabPage4";
-			this->tabPage4->UseVisualStyleBackColor = true;
+			this->tabPage2->Controls->Add(this->groupBox6);
+			this->tabPage2->Location = System::Drawing::Point(4, 22);
+			this->tabPage2->Name = L"tabPage2";
+			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage2->Size = System::Drawing::Size(316, 188);
+			this->tabPage2->TabIndex = 1;
+			this->tabPage2->Text = L"FUZZY";
+			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// tabPage6
 			// 
-			this->tabPage6->Controls->Add(this->button4);
-			this->tabPage6->Controls->Add(this->button3);
-			this->tabPage6->Controls->Add(this->textBox1);
-			this->tabPage6->Controls->Add(this->label19);
+			this->tabPage6->Controls->Add(this->bSETBALL);
+			this->tabPage6->Controls->Add(this->bGetBall);
 			this->tabPage6->Location = System::Drawing::Point(4, 22);
 			this->tabPage6->Name = L"tabPage6";
 			this->tabPage6->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage6->Size = System::Drawing::Size(344, 188);
+			this->tabPage6->Size = System::Drawing::Size(316, 188);
 			this->tabPage6->TabIndex = 5;
-			this->tabPage6->Text = L"tabPage6";
+			this->tabPage6->Text = L"PLANNING";
 			this->tabPage6->UseVisualStyleBackColor = true;
 			// 
 			// tabControlGraph
 			// 
 			this->tabControlGraph->Controls->Add(this->tabPageXYGRAPH);
 			this->tabControlGraph->Controls->Add(this->tabPageTIMEGRAPH);
-			this->tabControlGraph->Location = System::Drawing::Point(432, 14);
+			this->tabControlGraph->Location = System::Drawing::Point(410, 51);
 			this->tabControlGraph->Name = L"tabControlGraph";
 			this->tabControlGraph->SelectedIndex = 0;
 			this->tabControlGraph->Size = System::Drawing::Size(514, 513);
@@ -1161,14 +1090,25 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			this->zedGraphX->Size = System::Drawing::Size(494, 232);
 			this->zedGraphX->TabIndex = 0;
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(780, 12);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 24);
+			this->button1->TabIndex = 47;
+			this->button1->Text = L"ABOUT ME";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(948, 541);
+			this->ClientSize = System::Drawing::Size(948, 569);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->tabControlGraph);
 			this->Controls->Add(this->tabControlController);
 			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->bClose);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -1181,15 +1121,13 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->EndInit();
 			this->tabControlController->ResumeLayout(false);
-			this->tabPage2->ResumeLayout(false);
-			this->tabPage1->ResumeLayout(false);
+			this->tabPage->ResumeLayout(false);
+			this->tabPage->PerformLayout();
 			this->tabPage5->ResumeLayout(false);
 			this->tabPage5->PerformLayout();
-			this->tabPage3->ResumeLayout(false);
-			this->tabPage3->PerformLayout();
-			this->tabPage4->ResumeLayout(false);
+			this->tabPage1->ResumeLayout(false);
+			this->tabPage2->ResumeLayout(false);
 			this->tabPage6->ResumeLayout(false);
-			this->tabPage6->PerformLayout();
 			this->tabControlGraph->ResumeLayout(false);
 			this->tabPageXYGRAPH->ResumeLayout(false);
 			this->tabPageTIMEGRAPH->ResumeLayout(false);
@@ -1532,14 +1470,14 @@ private: System::Windows::Forms::TabPage^  tabPage6;
 		txtTimeProcess->Text = ((int)(1000 / camera.fps_)).ToString() + " ms";
 	}
 	private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (bSTART->Text == "START")
+		if (bSTART->Text == "START CAM")
 		{
 			timerProcessing->Start();
-			bSTART->Text = "STOP";
+			bSTART->Text = "STOP CAM";
 		}
 		else
 		{
-			bSTART->Text = "START";
+			bSTART->Text = "START CAM";
 			timerProcessing->Stop();
 		}
 		
@@ -1702,16 +1640,56 @@ private: System::Void tbAngleY_Scroll(System::Object^  sender, System::EventArgs
 }
 
 private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-	String^ fileName = "textfile_tt.txt";
 
-	StreamWriter^ sw = gcnew StreamWriter(fileName);
-	sw->WriteLine("A text file is born!");
-	sw->Write("You can use WriteLine");
-	sw->WriteLine("...or just Write");
-	sw->WriteLine("and do {0} output too.", "formatted");
-	sw->WriteLine("You can also send non-text objects:");
-	sw->WriteLine(DateTime::Now);
-	sw->Close();
+	SaveFileDialog^ saveFileDialog1 = gcnew SaveFileDialog();
+	saveFileDialog1->Filter = "Text File|*.txt";
+	saveFileDialog1->Title = "Save setting to file";
+	saveFileDialog1->ShowDialog();
+
+	// If the file name is not an empty string open it for saving.  
+	if (saveFileDialog1->FileName != "")
+	{
+		StreamWriter^ sw = gcnew StreamWriter(saveFileDialog1->FileName);
+		sw->WriteLine("A text file is born!");
+		sw->Write("You can use WriteLine");
+		sw->WriteLine("...or just Write");
+		sw->WriteLine("and do {0} output too.", "formatted");
+		sw->WriteLine("You can also send non-text objects:");
+		sw->WriteLine(DateTime::Now);
+		sw->Close();
+	}
+}
+private: System::Void bIMPORT_SETTING_Click(System::Object^  sender, System::EventArgs^  e) {
+	OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
+	openFileDialog1->Filter = "Text File|*.txt";
+	openFileDialog1->Title = "Load setting file";
+	openFileDialog1->ShowDialog();
+
+	// If the file name is not an empty string open it for saving.  
+	if (openFileDialog1->FileName != "")
+	{
+		try
+		{
+			StreamReader^ din = File::OpenText(openFileDialog1->FileName);
+
+			String^ str;
+			int count = 0;
+			while ((str = din->ReadLine()) != nullptr)
+			{
+				count++;
+				str = "line "+count.ToString()+": {1}" + str;
+			}
+			din->Close();
+			MessageBox::Show(str);
+		}
+		catch (Exception^ e)
+		{
+			if (dynamic_cast<FileNotFoundException^>(e))
+				Console::WriteLine("file '{0}' not found", openFileDialog1->FileName);
+			else
+				Console::WriteLine("problem reading file '{0}'", openFileDialog1->FileName);
+		}
+	}
 }
 };
 }
