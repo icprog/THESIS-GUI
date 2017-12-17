@@ -72,6 +72,10 @@ Camera::getFrame()
 {
     int ret = 0;
     ret = camera_.read(imgFullframe_); // Reading new frame from video stream
+#ifdef DEBUG
+	cv::imshow("Input data", imgFullframe_);
+#endif // DEBUG
+
 	//cv::flip(imgOriginal_, imgOriginal_, 1);
 	imgFullframe_(myROI).copyTo(imgOriginal_);
     if ( !ret )
@@ -80,6 +84,10 @@ Camera::getFrame()
             this->setErrorStr( "Failed to read frame from video stream." );
             return;
     }
+#ifdef DEBUG
+	cv::imshow("Input data cut", imgOriginal_);
+#endif // DEBUG
+
 }
 void
 Camera::detectBall()
@@ -87,7 +95,14 @@ Camera::detectBall()
 	cv::cvtColor(imgOriginal_,imgHSV_,cv::COLOR_BGR2HSV);
 	//filter HSV image between values and store filtered image to
 	//threshold matrix
+#ifdef DEBUG
+	cv::imshow("HSV", imgHSV_);
+#endif // DEBUG
+
 	cv::inRange(imgHSV_,cv::Scalar(lowH_,lowS_,lowV_),cv::Scalar(highH_,highS_,highV_),imgThresholded_);
+#ifdef DEBUG
+	cv::imshow("HSV filter", imgThresholded_);
+#endif // DEBUG
 	//perform morphological operations on thresholded image to eliminate noise
 	//and emphasize the filtered object(s)
 	morphOps(imgThresholded_);
@@ -177,13 +192,24 @@ Camera::morphOps(cv::Mat &thresh) {
 
 	cv::Mat erodeElement = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
 	//dilate with larger element so make sure object is nicely visible
-	cv::Mat dilateElement = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(8, 8));
+	cv::Mat dilateElement = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(10, 10));
 
 	erode(thresh, thresh, erodeElement);
+#ifdef DEBUG
+	cv::imshow("Erosion 1", thresh);
+#endif // DEBUG
 	erode(thresh, thresh, erodeElement);
-
+//#ifdef DEBUG
+//	cv::imshow("Erosion 2", thresh);
+//#endif // DEBUG
+//	dilate(thresh, thresh, dilateElement);
+//#ifdef DEBUG
+//	cv::imshow("Dilation 1", thresh);
+//#endif // DEBUG
 	dilate(thresh, thresh, dilateElement);
-	dilate(thresh, thresh, dilateElement);
+#ifdef DEBUG
+	cv::imshow("Diation 2", thresh);
+#endif // DEBUG
 }
 void 
 Camera::trackFilteredObject(int &x, int &y, cv::Mat threshold, cv::Mat &cameraFeed) {

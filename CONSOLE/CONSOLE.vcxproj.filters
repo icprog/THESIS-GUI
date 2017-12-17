@@ -24,18 +24,12 @@
     <ClCompile Include="..\BALL_BALANCE\pid\pid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\BALL_BALANCE\kalman\kalman.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\BALL_BALANCE\camera\camera.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\BALL_BALANCE\pid\pid.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\BALL_BALANCE\kalman\kalman.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

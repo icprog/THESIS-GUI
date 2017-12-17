@@ -239,6 +239,57 @@ private: System::Windows::Forms::TextBox^  txtDisplayAngle2;
 
 private: System::Windows::Forms::TextBox^  txtDisplayAngle1;
 private: System::Windows::Forms::Button^  bSetScale;
+private: System::Windows::Forms::TabPage^  tabPageMOREGRAPH;
+private: ZedGraph::ZedGraphControl^  zedGraphDEX;
+
+private: ZedGraph::ZedGraphControl^  zedGraphEX;
+private: ZedGraph::ZedGraphControl^  zedGraphEY;
+private: ZedGraph::ZedGraphControl^  zedGraphUX;
+
+
+
+private: ZedGraph::ZedGraphControl^  zedGraphDEY;
+private: ZedGraph::ZedGraphControl^  zedGraphUY;
+
+
+private: System::Windows::Forms::TextBox^  txtAxisMaxUY;
+
+private: System::Windows::Forms::TextBox^  txtAxisMinDEY;
+private: System::Windows::Forms::TextBox^  txtAxisMaxUX;
+
+
+private: System::Windows::Forms::TextBox^  txtAxisMinDEX;
+private: System::Windows::Forms::TextBox^  txtAxisMinUY;
+
+
+private: System::Windows::Forms::TextBox^  txtAxisMaxEY;
+private: System::Windows::Forms::TextBox^  txtAxisMinUX;
+
+
+private: System::Windows::Forms::TextBox^  txtAxisMaxEX;
+private: System::Windows::Forms::TextBox^  txtAxisMAXDEY;
+
+
+private: System::Windows::Forms::TextBox^  txtAxisMinEY;
+private: System::Windows::Forms::TextBox^  txtAxisMaxDEX;
+
+
+private: System::Windows::Forms::TextBox^  txtAxisMinEX;
+private: System::Windows::Forms::TextBox^  txtDErrY;
+
+
+private: System::Windows::Forms::TextBox^  txtDErrX;
+
+private: System::Windows::Forms::Label^  label21;
+private: System::Windows::Forms::Label^  label27;
+private: System::Windows::Forms::Label^  label26;
+private: System::Windows::Forms::Label^  label24;
+private: System::Windows::Forms::Label^  label25;
+private: System::Windows::Forms::Label^  label23;
+private: System::Windows::Forms::Label^  label22;
+
+
+
 
 
 
@@ -300,11 +351,32 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->txtAxisMaxUY = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMinDEY = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMaxUX = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMinDEX = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMinUY = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMaxEY = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMinUX = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMaxEX = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMAXDEY = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMinEY = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMaxDEX = (gcnew System::Windows::Forms::TextBox());
+			this->txtAxisMinEX = (gcnew System::Windows::Forms::TextBox());
+			this->txtDErrY = (gcnew System::Windows::Forms::TextBox());
+			this->txtDErrX = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMaxY = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMaxX = (gcnew System::Windows::Forms::TextBox());
+			this->label21 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->txtAxisMinY = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMinX = (gcnew System::Windows::Forms::TextBox());
+			this->label27 = (gcnew System::Windows::Forms::Label());
+			this->label26 = (gcnew System::Windows::Forms::Label());
+			this->label24 = (gcnew System::Windows::Forms::Label());
+			this->label25 = (gcnew System::Windows::Forms::Label());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label15 = (gcnew System::Windows::Forms::Label());
@@ -363,6 +435,13 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->tabPageTIMEGRAPH = (gcnew System::Windows::Forms::TabPage());
 			this->zedGraphY = (gcnew ZedGraph::ZedGraphControl());
 			this->zedGraphX = (gcnew ZedGraph::ZedGraphControl());
+			this->tabPageMOREGRAPH = (gcnew System::Windows::Forms::TabPage());
+			this->zedGraphUY = (gcnew ZedGraph::ZedGraphControl());
+			this->zedGraphDEY = (gcnew ZedGraph::ZedGraphControl());
+			this->zedGraphEY = (gcnew ZedGraph::ZedGraphControl());
+			this->zedGraphUX = (gcnew ZedGraph::ZedGraphControl());
+			this->zedGraphDEX = (gcnew ZedGraph::ZedGraphControl());
+			this->zedGraphEX = (gcnew ZedGraph::ZedGraphControl());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->txtDisplayAngle6 = (gcnew System::Windows::Forms::TextBox());
@@ -390,6 +469,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->tabControlGraph->SuspendLayout();
 			this->tabPageXYGRAPH->SuspendLayout();
 			this->tabPageTIMEGRAPH->SuspendLayout();
+			this->tabPageMOREGRAPH->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -400,6 +480,8 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->cbCOMLIST->Name = L"cbCOMLIST";
 			this->cbCOMLIST->Size = System::Drawing::Size(92, 21);
 			this->cbCOMLIST->TabIndex = 0;
+			this->cbCOMLIST->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::cbCOMLIST_SelectedIndexChanged);
+			this->cbCOMLIST->Click += gcnew System::EventHandler(this, &MyForm::cbCOMLIST_Click);
 			// 
 			// txtRECEIVE
 			// 
@@ -410,9 +492,9 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bCONNECT
 			// 
-			this->bCONNECT->Location = System::Drawing::Point(113, 20);
+			this->bCONNECT->Location = System::Drawing::Point(106, 19);
 			this->bCONNECT->Name = L"bCONNECT";
-			this->bCONNECT->Size = System::Drawing::Size(93, 23);
+			this->bCONNECT->Size = System::Drawing::Size(93, 24);
 			this->bCONNECT->TabIndex = 2;
 			this->bCONNECT->Text = L"CONNECT";
 			this->bCONNECT->UseVisualStyleBackColor = true;
@@ -441,9 +523,9 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bSEND
 			// 
-			this->bSEND->Location = System::Drawing::Point(113, 49);
+			this->bSEND->Location = System::Drawing::Point(106, 48);
 			this->bSEND->Name = L"bSEND";
-			this->bSEND->Size = System::Drawing::Size(93, 23);
+			this->bSEND->Size = System::Drawing::Size(93, 25);
 			this->bSEND->TabIndex = 4;
 			this->bSEND->Text = L"SEND";
 			this->bSEND->UseVisualStyleBackColor = true;
@@ -575,7 +657,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// txtANGLE_Y
 			// 
-			this->txtANGLE_Y->Location = System::Drawing::Point(159, 105);
+			this->txtANGLE_Y->Location = System::Drawing::Point(159, 132);
 			this->txtANGLE_Y->Name = L"txtANGLE_Y";
 			this->txtANGLE_Y->Size = System::Drawing::Size(46, 20);
 			this->txtANGLE_Y->TabIndex = 25;
@@ -591,7 +673,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// txtANGLE_X
 			// 
-			this->txtANGLE_X->Location = System::Drawing::Point(107, 105);
+			this->txtANGLE_X->Location = System::Drawing::Point(107, 132);
 			this->txtANGLE_X->Name = L"txtANGLE_X";
 			this->txtANGLE_X->Size = System::Drawing::Size(46, 20);
 			this->txtANGLE_X->TabIndex = 23;
@@ -625,21 +707,40 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->txtAxisMaxUY);
+			this->groupBox1->Controls->Add(this->txtAxisMinDEY);
+			this->groupBox1->Controls->Add(this->txtAxisMaxUX);
+			this->groupBox1->Controls->Add(this->txtAxisMinDEX);
+			this->groupBox1->Controls->Add(this->txtAxisMinUY);
+			this->groupBox1->Controls->Add(this->txtAxisMaxEY);
+			this->groupBox1->Controls->Add(this->txtAxisMinUX);
+			this->groupBox1->Controls->Add(this->txtAxisMaxEX);
+			this->groupBox1->Controls->Add(this->txtAxisMAXDEY);
+			this->groupBox1->Controls->Add(this->txtAxisMinEY);
+			this->groupBox1->Controls->Add(this->txtAxisMaxDEX);
+			this->groupBox1->Controls->Add(this->txtAxisMinEX);
+			this->groupBox1->Controls->Add(this->txtDErrY);
+			this->groupBox1->Controls->Add(this->txtDErrX);
 			this->groupBox1->Controls->Add(this->txtAxisMaxY);
 			this->groupBox1->Controls->Add(this->txtAxisMaxX);
+			this->groupBox1->Controls->Add(this->label21);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->txtAxisMinY);
 			this->groupBox1->Controls->Add(this->txtAxisMinX);
 			this->groupBox1->Controls->Add(this->txtPosY);
 			this->groupBox1->Controls->Add(this->txtSetpointX);
+			this->groupBox1->Controls->Add(this->label27);
+			this->groupBox1->Controls->Add(this->label26);
+			this->groupBox1->Controls->Add(this->label24);
+			this->groupBox1->Controls->Add(this->label25);
+			this->groupBox1->Controls->Add(this->label23);
+			this->groupBox1->Controls->Add(this->label22);
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Controls->Add(this->label15);
 			this->groupBox1->Controls->Add(this->txtANGLE_Y);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->txtSetpointY);
 			this->groupBox1->Controls->Add(this->txtANGLE_X);
-			this->groupBox1->Controls->Add(this->txtTimeProcess);
 			this->groupBox1->Controls->Add(this->txtPosX);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->txtErrX);
@@ -647,29 +748,136 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->groupBox1->Controls->Add(this->txtErrY);
 			this->groupBox1->Location = System::Drawing::Point(12, 264);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(219, 214);
+			this->groupBox1->Size = System::Drawing::Size(219, 376);
 			this->groupBox1->TabIndex = 27;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"PARAM";
 			// 
+			// txtAxisMaxUY
+			// 
+			this->txtAxisMaxUY->Location = System::Drawing::Point(159, 340);
+			this->txtAxisMaxUY->Name = L"txtAxisMaxUY";
+			this->txtAxisMaxUY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxUY->TabIndex = 42;
+			// 
+			// txtAxisMinDEY
+			// 
+			this->txtAxisMinDEY->Location = System::Drawing::Point(159, 262);
+			this->txtAxisMinDEY->Name = L"txtAxisMinDEY";
+			this->txtAxisMinDEY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinDEY->TabIndex = 42;
+			// 
+			// txtAxisMaxUX
+			// 
+			this->txtAxisMaxUX->Location = System::Drawing::Point(107, 340);
+			this->txtAxisMaxUX->Name = L"txtAxisMaxUX";
+			this->txtAxisMaxUX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxUX->TabIndex = 42;
+			// 
+			// txtAxisMinDEX
+			// 
+			this->txtAxisMinDEX->Location = System::Drawing::Point(107, 262);
+			this->txtAxisMinDEX->Name = L"txtAxisMinDEX";
+			this->txtAxisMinDEX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinDEX->TabIndex = 42;
+			// 
+			// txtAxisMinUY
+			// 
+			this->txtAxisMinUY->Location = System::Drawing::Point(159, 314);
+			this->txtAxisMinUY->Name = L"txtAxisMinUY";
+			this->txtAxisMinUY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinUY->TabIndex = 42;
+			// 
+			// txtAxisMaxEY
+			// 
+			this->txtAxisMaxEY->Location = System::Drawing::Point(159, 236);
+			this->txtAxisMaxEY->Name = L"txtAxisMaxEY";
+			this->txtAxisMaxEY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxEY->TabIndex = 42;
+			// 
+			// txtAxisMinUX
+			// 
+			this->txtAxisMinUX->Location = System::Drawing::Point(107, 314);
+			this->txtAxisMinUX->Name = L"txtAxisMinUX";
+			this->txtAxisMinUX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinUX->TabIndex = 42;
+			// 
+			// txtAxisMaxEX
+			// 
+			this->txtAxisMaxEX->Location = System::Drawing::Point(107, 236);
+			this->txtAxisMaxEX->Name = L"txtAxisMaxEX";
+			this->txtAxisMaxEX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxEX->TabIndex = 42;
+			// 
+			// txtAxisMAXDEY
+			// 
+			this->txtAxisMAXDEY->Location = System::Drawing::Point(159, 288);
+			this->txtAxisMAXDEY->Name = L"txtAxisMAXDEY";
+			this->txtAxisMAXDEY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMAXDEY->TabIndex = 42;
+			// 
+			// txtAxisMinEY
+			// 
+			this->txtAxisMinEY->Location = System::Drawing::Point(159, 210);
+			this->txtAxisMinEY->Name = L"txtAxisMinEY";
+			this->txtAxisMinEY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinEY->TabIndex = 42;
+			// 
+			// txtAxisMaxDEX
+			// 
+			this->txtAxisMaxDEX->Location = System::Drawing::Point(107, 288);
+			this->txtAxisMaxDEX->Name = L"txtAxisMaxDEX";
+			this->txtAxisMaxDEX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxDEX->TabIndex = 42;
+			// 
+			// txtAxisMinEX
+			// 
+			this->txtAxisMinEX->Location = System::Drawing::Point(107, 210);
+			this->txtAxisMinEX->Name = L"txtAxisMinEX";
+			this->txtAxisMinEX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinEX->TabIndex = 42;
+			// 
+			// txtDErrY
+			// 
+			this->txtDErrY->Location = System::Drawing::Point(159, 105);
+			this->txtDErrY->Name = L"txtDErrY";
+			this->txtDErrY->Size = System::Drawing::Size(46, 20);
+			this->txtDErrY->TabIndex = 41;
+			// 
+			// txtDErrX
+			// 
+			this->txtDErrX->Location = System::Drawing::Point(107, 105);
+			this->txtDErrX->Name = L"txtDErrX";
+			this->txtDErrX->Size = System::Drawing::Size(46, 20);
+			this->txtDErrX->TabIndex = 40;
+			// 
 			// txtAxisMaxY
 			// 
-			this->txtAxisMaxY->Location = System::Drawing::Point(159, 185);
+			this->txtAxisMaxY->Location = System::Drawing::Point(159, 184);
 			this->txtAxisMaxY->Name = L"txtAxisMaxY";
 			this->txtAxisMaxY->Size = System::Drawing::Size(46, 20);
 			this->txtAxisMaxY->TabIndex = 39;
 			// 
 			// txtAxisMaxX
 			// 
-			this->txtAxisMaxX->Location = System::Drawing::Point(107, 185);
+			this->txtAxisMaxX->Location = System::Drawing::Point(107, 184);
 			this->txtAxisMaxX->Name = L"txtAxisMaxX";
 			this->txtAxisMaxX->Size = System::Drawing::Size(46, 20);
 			this->txtAxisMaxX->TabIndex = 39;
 			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->Location = System::Drawing::Point(12, 108);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(95, 13);
+			this->label21->TabIndex = 24;
+			this->label21->Text = L"DERIV  ERR X - Y";
+			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(12, 108);
+			this->label5->Location = System::Drawing::Point(12, 135);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(69, 13);
 			this->label5->TabIndex = 24;
@@ -677,22 +885,76 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// txtAxisMinY
 			// 
-			this->txtAxisMinY->Location = System::Drawing::Point(159, 159);
+			this->txtAxisMinY->Location = System::Drawing::Point(159, 158);
 			this->txtAxisMinY->Name = L"txtAxisMinY";
 			this->txtAxisMinY->Size = System::Drawing::Size(46, 20);
 			this->txtAxisMinY->TabIndex = 39;
 			// 
 			// txtAxisMinX
 			// 
-			this->txtAxisMinX->Location = System::Drawing::Point(107, 159);
+			this->txtAxisMinX->Location = System::Drawing::Point(107, 158);
 			this->txtAxisMinX->Name = L"txtAxisMinX";
 			this->txtAxisMinX->Size = System::Drawing::Size(46, 20);
 			this->txtAxisMinX->TabIndex = 39;
 			// 
+			// label27
+			// 
+			this->label27->AutoSize = true;
+			this->label27->Location = System::Drawing::Point(12, 345);
+			this->label27->Name = L"label27";
+			this->label27->Size = System::Drawing::Size(68, 13);
+			this->label27->TabIndex = 38;
+			this->label27->Text = L"AXIS MAX U";
+			// 
+			// label26
+			// 
+			this->label26->AutoSize = true;
+			this->label26->Location = System::Drawing::Point(12, 323);
+			this->label26->Name = L"label26";
+			this->label26->Size = System::Drawing::Size(65, 13);
+			this->label26->TabIndex = 38;
+			this->label26->Text = L"AXIS MIN U";
+			// 
+			// label24
+			// 
+			this->label24->AutoSize = true;
+			this->label24->Location = System::Drawing::Point(12, 265);
+			this->label24->Name = L"label24";
+			this->label24->Size = System::Drawing::Size(72, 13);
+			this->label24->TabIndex = 38;
+			this->label24->Text = L"AXIS MIN DE";
+			// 
+			// label25
+			// 
+			this->label25->AutoSize = true;
+			this->label25->Location = System::Drawing::Point(12, 293);
+			this->label25->Name = L"label25";
+			this->label25->Size = System::Drawing::Size(75, 13);
+			this->label25->TabIndex = 38;
+			this->label25->Text = L"AXIS MAX DE";
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->Location = System::Drawing::Point(12, 243);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(83, 13);
+			this->label23->TabIndex = 38;
+			this->label23->Text = L"AXIS MAX ERR";
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->Location = System::Drawing::Point(12, 213);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(80, 13);
+			this->label22->TabIndex = 38;
+			this->label22->Text = L"AXIS MIN ERR";
+			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(12, 184);
+			this->label4->Location = System::Drawing::Point(12, 183);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(83, 13);
 			this->label4->TabIndex = 38;
@@ -701,7 +963,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 158);
+			this->label2->Location = System::Drawing::Point(12, 157);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(80, 13);
 			this->label2->TabIndex = 38;
@@ -710,7 +972,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(12, 132);
+			this->label15->Location = System::Drawing::Point(208, 166);
 			this->label15->Name = L"label15";
 			this->label15->Size = System::Drawing::Size(91, 13);
 			this->label15->TabIndex = 38;
@@ -718,16 +980,16 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// txtTimeProcess
 			// 
-			this->txtTimeProcess->Location = System::Drawing::Point(107, 133);
+			this->txtTimeProcess->Location = System::Drawing::Point(211, 189);
 			this->txtTimeProcess->Name = L"txtTimeProcess";
 			this->txtTimeProcess->Size = System::Drawing::Size(46, 20);
 			this->txtTimeProcess->TabIndex = 35;
 			// 
 			// bSTART_GRAPH
 			// 
-			this->bSTART_GRAPH->Location = System::Drawing::Point(16, 488);
+			this->bSTART_GRAPH->Location = System::Drawing::Point(106, 101);
 			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
-			this->bSTART_GRAPH->Size = System::Drawing::Size(98, 24);
+			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
 			this->bSTART_GRAPH->TabIndex = 37;
 			this->bSTART_GRAPH->Text = L"START GRAPH";
 			this->bSTART_GRAPH->UseVisualStyleBackColor = true;
@@ -735,7 +997,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bSCROLL
 			// 
-			this->bSCROLL->Location = System::Drawing::Point(119, 488);
+			this->bSCROLL->Location = System::Drawing::Point(106, 131);
 			this->bSCROLL->Name = L"bSCROLL";
 			this->bSCROLL->Size = System::Drawing::Size(93, 23);
 			this->bSCROLL->TabIndex = 22;
@@ -848,9 +1110,9 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bCALIB
 			// 
-			this->bCALIB->Location = System::Drawing::Point(7, 156);
+			this->bCALIB->Location = System::Drawing::Point(7, 160);
 			this->bCALIB->Name = L"bCALIB";
-			this->bCALIB->Size = System::Drawing::Size(92, 24);
+			this->bCALIB->Size = System::Drawing::Size(92, 25);
 			this->bCALIB->TabIndex = 31;
 			this->bCALIB->Text = L"CALIB";
 			this->bCALIB->UseVisualStyleBackColor = true;
@@ -858,9 +1120,9 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bClose
 			// 
-			this->bClose->Location = System::Drawing::Point(257, 526);
+			this->bClose->Location = System::Drawing::Point(205, 100);
 			this->bClose->Name = L"bClose";
-			this->bClose->Size = System::Drawing::Size(75, 24);
+			this->bClose->Size = System::Drawing::Size(94, 24);
 			this->bClose->TabIndex = 43;
 			this->bClose->Text = L"CLOSE";
 			this->bClose->UseVisualStyleBackColor = true;
@@ -888,7 +1150,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bSetCrop
 			// 
-			this->bSetCrop->Location = System::Drawing::Point(7, 183);
+			this->bSetCrop->Location = System::Drawing::Point(6, 189);
 			this->bSetCrop->Name = L"bSetCrop";
 			this->bSetCrop->Size = System::Drawing::Size(93, 25);
 			this->bSetCrop->TabIndex = 35;
@@ -910,7 +1172,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			this->bShowCam->Location = System::Drawing::Point(7, 130);
 			this->bShowCam->Name = L"bShowCam";
-			this->bShowCam->Size = System::Drawing::Size(93, 23);
+			this->bShowCam->Size = System::Drawing::Size(93, 24);
 			this->bShowCam->TabIndex = 36;
 			this->bShowCam->Text = L"SHOW CAM";
 			this->bShowCam->UseVisualStyleBackColor = true;
@@ -986,9 +1248,9 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bEXPORT_SETTING
 			// 
-			this->bEXPORT_SETTING->Location = System::Drawing::Point(113, 190);
+			this->bEXPORT_SETTING->Location = System::Drawing::Point(205, 49);
 			this->bEXPORT_SETTING->Name = L"bEXPORT_SETTING";
-			this->bEXPORT_SETTING->Size = System::Drawing::Size(91, 24);
+			this->bEXPORT_SETTING->Size = System::Drawing::Size(94, 24);
 			this->bEXPORT_SETTING->TabIndex = 2;
 			this->bEXPORT_SETTING->Text = L"EXPORT";
 			this->bEXPORT_SETTING->UseVisualStyleBackColor = true;
@@ -996,9 +1258,9 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bIMPORT_SETTING
 			// 
-			this->bIMPORT_SETTING->Location = System::Drawing::Point(113, 160);
+			this->bIMPORT_SETTING->Location = System::Drawing::Point(205, 19);
 			this->bIMPORT_SETTING->Name = L"bIMPORT_SETTING";
-			this->bIMPORT_SETTING->Size = System::Drawing::Size(92, 24);
+			this->bIMPORT_SETTING->Size = System::Drawing::Size(94, 24);
 			this->bIMPORT_SETTING->TabIndex = 2;
 			this->bIMPORT_SETTING->Text = L"IMPORT";
 			this->bIMPORT_SETTING->UseVisualStyleBackColor = true;
@@ -1039,14 +1301,21 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// tabPage
 			// 
+			this->tabPage->Controls->Add(this->bSetScale);
+			this->tabPage->Controls->Add(this->button1);
 			this->tabPage->Controls->Add(this->bEXPORT_SETTING);
 			this->tabPage->Controls->Add(this->bIMPORT_SETTING);
+			this->tabPage->Controls->Add(this->txtTimeProcess);
 			this->tabPage->Controls->Add(this->bSTART);
+			this->tabPage->Controls->Add(this->label15);
 			this->tabPage->Controls->Add(this->cbCOMLIST);
+			this->tabPage->Controls->Add(this->bClose);
 			this->tabPage->Controls->Add(this->bShowCam);
 			this->tabPage->Controls->Add(this->bCONNECT);
 			this->tabPage->Controls->Add(this->bSetCrop);
+			this->tabPage->Controls->Add(this->bSCROLL);
 			this->tabPage->Controls->Add(this->txtRECEIVE);
+			this->tabPage->Controls->Add(this->bSTART_GRAPH);
 			this->tabPage->Controls->Add(this->bSEND);
 			this->tabPage->Controls->Add(this->bCALIB);
 			this->tabPage->Controls->Add(this->txtSEND);
@@ -1231,10 +1500,11 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			this->tabControlGraph->Controls->Add(this->tabPageXYGRAPH);
 			this->tabControlGraph->Controls->Add(this->tabPageTIMEGRAPH);
+			this->tabControlGraph->Controls->Add(this->tabPageMOREGRAPH);
 			this->tabControlGraph->Location = System::Drawing::Point(342, 12);
 			this->tabControlGraph->Name = L"tabControlGraph";
 			this->tabControlGraph->SelectedIndex = 0;
-			this->tabControlGraph->Size = System::Drawing::Size(556, 539);
+			this->tabControlGraph->Size = System::Drawing::Size(561, 629);
 			this->tabControlGraph->TabIndex = 46;
 			// 
 			// tabPageXYGRAPH
@@ -1243,7 +1513,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->tabPageXYGRAPH->Location = System::Drawing::Point(4, 22);
 			this->tabPageXYGRAPH->Name = L"tabPageXYGRAPH";
 			this->tabPageXYGRAPH->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageXYGRAPH->Size = System::Drawing::Size(548, 513);
+			this->tabPageXYGRAPH->Size = System::Drawing::Size(553, 603);
 			this->tabPageXYGRAPH->TabIndex = 0;
 			this->tabPageXYGRAPH->Text = L"XY GRAPH";
 			this->tabPageXYGRAPH->UseVisualStyleBackColor = true;
@@ -1255,7 +1525,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->tabPageTIMEGRAPH->Location = System::Drawing::Point(4, 22);
 			this->tabPageTIMEGRAPH->Name = L"tabPageTIMEGRAPH";
 			this->tabPageTIMEGRAPH->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageTIMEGRAPH->Size = System::Drawing::Size(548, 513);
+			this->tabPageTIMEGRAPH->Size = System::Drawing::Size(553, 603);
 			this->tabPageTIMEGRAPH->TabIndex = 1;
 			this->tabPageTIMEGRAPH->Text = L"TIME GRAPH";
 			this->tabPageTIMEGRAPH->UseVisualStyleBackColor = true;
@@ -1288,11 +1558,114 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->zedGraphX->Size = System::Drawing::Size(522, 248);
 			this->zedGraphX->TabIndex = 0;
 			// 
+			// tabPageMOREGRAPH
+			// 
+			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphUY);
+			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphDEY);
+			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphEY);
+			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphUX);
+			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphDEX);
+			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphEX);
+			this->tabPageMOREGRAPH->Location = System::Drawing::Point(4, 22);
+			this->tabPageMOREGRAPH->Name = L"tabPageMOREGRAPH";
+			this->tabPageMOREGRAPH->Padding = System::Windows::Forms::Padding(3);
+			this->tabPageMOREGRAPH->Size = System::Drawing::Size(553, 603);
+			this->tabPageMOREGRAPH->TabIndex = 2;
+			this->tabPageMOREGRAPH->Text = L"MORE GRAPH";
+			this->tabPageMOREGRAPH->UseVisualStyleBackColor = true;
+			this->tabPageMOREGRAPH->Click += gcnew System::EventHandler(this, &MyForm::tabPage3_Click);
+			// 
+			// zedGraphUY
+			// 
+			this->zedGraphUY->Location = System::Drawing::Point(287, 388);
+			this->zedGraphUY->Name = L"zedGraphUY";
+			this->zedGraphUY->ScrollGrace = 0;
+			this->zedGraphUY->ScrollMaxX = 0;
+			this->zedGraphUY->ScrollMaxY = 0;
+			this->zedGraphUY->ScrollMaxY2 = 0;
+			this->zedGraphUY->ScrollMinX = 0;
+			this->zedGraphUY->ScrollMinY = 0;
+			this->zedGraphUY->ScrollMinY2 = 0;
+			this->zedGraphUY->Size = System::Drawing::Size(260, 202);
+			this->zedGraphUY->TabIndex = 5;
+			// 
+			// zedGraphDEY
+			// 
+			this->zedGraphDEY->Location = System::Drawing::Point(287, 189);
+			this->zedGraphDEY->Name = L"zedGraphDEY";
+			this->zedGraphDEY->ScrollGrace = 0;
+			this->zedGraphDEY->ScrollMaxX = 0;
+			this->zedGraphDEY->ScrollMaxY = 0;
+			this->zedGraphDEY->ScrollMaxY2 = 0;
+			this->zedGraphDEY->ScrollMinX = 0;
+			this->zedGraphDEY->ScrollMinY = 0;
+			this->zedGraphDEY->ScrollMinY2 = 0;
+			this->zedGraphDEY->Size = System::Drawing::Size(260, 193);
+			this->zedGraphDEY->TabIndex = 4;
+			this->zedGraphDEY->Load += gcnew System::EventHandler(this, &MyForm::zedGraphControl5_Load);
+			// 
+			// zedGraphEY
+			// 
+			this->zedGraphEY->Location = System::Drawing::Point(287, 6);
+			this->zedGraphEY->Name = L"zedGraphEY";
+			this->zedGraphEY->ScrollGrace = 0;
+			this->zedGraphEY->ScrollMaxX = 0;
+			this->zedGraphEY->ScrollMaxY = 0;
+			this->zedGraphEY->ScrollMaxY2 = 0;
+			this->zedGraphEY->ScrollMinX = 0;
+			this->zedGraphEY->ScrollMinY = 0;
+			this->zedGraphEY->ScrollMinY2 = 0;
+			this->zedGraphEY->Size = System::Drawing::Size(260, 178);
+			this->zedGraphEY->TabIndex = 3;
+			this->zedGraphEY->Load += gcnew System::EventHandler(this, &MyForm::zedGraphControl4_Load);
+			// 
+			// zedGraphUX
+			// 
+			this->zedGraphUX->Location = System::Drawing::Point(6, 388);
+			this->zedGraphUX->Name = L"zedGraphUX";
+			this->zedGraphUX->ScrollGrace = 0;
+			this->zedGraphUX->ScrollMaxX = 0;
+			this->zedGraphUX->ScrollMaxY = 0;
+			this->zedGraphUX->ScrollMaxY2 = 0;
+			this->zedGraphUX->ScrollMinX = 0;
+			this->zedGraphUX->ScrollMinY = 0;
+			this->zedGraphUX->ScrollMinY2 = 0;
+			this->zedGraphUX->Size = System::Drawing::Size(275, 202);
+			this->zedGraphUX->TabIndex = 2;
+			// 
+			// zedGraphDEX
+			// 
+			this->zedGraphDEX->Location = System::Drawing::Point(6, 190);
+			this->zedGraphDEX->Name = L"zedGraphDEX";
+			this->zedGraphDEX->ScrollGrace = 0;
+			this->zedGraphDEX->ScrollMaxX = 0;
+			this->zedGraphDEX->ScrollMaxY = 0;
+			this->zedGraphDEX->ScrollMaxY2 = 0;
+			this->zedGraphDEX->ScrollMinX = 0;
+			this->zedGraphDEX->ScrollMinY = 0;
+			this->zedGraphDEX->ScrollMinY2 = 0;
+			this->zedGraphDEX->Size = System::Drawing::Size(275, 192);
+			this->zedGraphDEX->TabIndex = 1;
+			// 
+			// zedGraphEX
+			// 
+			this->zedGraphEX->Location = System::Drawing::Point(6, 6);
+			this->zedGraphEX->Name = L"zedGraphEX";
+			this->zedGraphEX->ScrollGrace = 0;
+			this->zedGraphEX->ScrollMaxX = 0;
+			this->zedGraphEX->ScrollMaxY = 0;
+			this->zedGraphEX->ScrollMaxY2 = 0;
+			this->zedGraphEX->ScrollMinX = 0;
+			this->zedGraphEX->ScrollMinY = 0;
+			this->zedGraphEX->ScrollMinY2 = 0;
+			this->zedGraphEX->Size = System::Drawing::Size(275, 178);
+			this->zedGraphEX->TabIndex = 0;
+			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(176, 527);
+			this->button1->Location = System::Drawing::Point(205, 131);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 24);
+			this->button1->Size = System::Drawing::Size(94, 24);
 			this->button1->TabIndex = 47;
 			this->button1->Text = L"ABOUT ME";
 			this->button1->UseVisualStyleBackColor = true;
@@ -1356,9 +1729,9 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			// bSetScale
 			// 
-			this->bSetScale->Location = System::Drawing::Point(218, 488);
+			this->bSetScale->Location = System::Drawing::Point(106, 160);
 			this->bSetScale->Name = L"bSetScale";
-			this->bSetScale->Size = System::Drawing::Size(91, 23);
+			this->bSetScale->Size = System::Drawing::Size(93, 25);
 			this->bSetScale->TabIndex = 49;
 			this->bSetScale->Text = L"SET SCALE";
 			this->bSetScale->UseVisualStyleBackColor = true;
@@ -1367,16 +1740,11 @@ private: System::Windows::Forms::Button^  bSetScale;
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(910, 572);
-			this->Controls->Add(this->bSetScale);
+			this->ClientSize = System::Drawing::Size(1096, 653);
 			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->button1);
 			this->Controls->Add(this->tabControlGraph);
 			this->Controls->Add(this->tabControlController);
 			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->bClose);
-			this->Controls->Add(this->bSCROLL);
-			this->Controls->Add(this->bSTART_GRAPH);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -1403,6 +1771,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 			this->tabControlGraph->ResumeLayout(false);
 			this->tabPageXYGRAPH->ResumeLayout(false);
 			this->tabPageTIMEGRAPH->ResumeLayout(false);
+			this->tabPageMOREGRAPH->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->ResumeLayout(false);
@@ -1415,22 +1784,52 @@ private: System::Windows::Forms::Button^  bSetScale;
 		GraphPane^ myPaneXY = gcnew GraphPane();
 		GraphPane^ myPaneX = gcnew GraphPane();
 		GraphPane^ myPaneY = gcnew GraphPane();
+		GraphPane^ myPaneEX = gcnew GraphPane();
+		GraphPane^ myPaneEY = gcnew GraphPane();
+		GraphPane^ myPaneDEX = gcnew GraphPane();
+		GraphPane^ myPaneDEY = gcnew GraphPane();
+		GraphPane^ myPaneUX = gcnew GraphPane();
+		GraphPane^ myPaneUY = gcnew GraphPane();
 
 		PointPairList^ PosXList = gcnew PointPairList();
 		PointPairList^ PosYList = gcnew PointPairList();
 		PointPairList^ PosXYList = gcnew PointPairList();
+		PointPairList^ PosEXList = gcnew PointPairList();
+		PointPairList^ PosEYList = gcnew PointPairList();
+		PointPairList^ PosDEXList = gcnew PointPairList();
+		PointPairList^ PosDEYList = gcnew PointPairList();
+		PointPairList^ PosUXList = gcnew PointPairList();
+		PointPairList^ PosUYList = gcnew PointPairList();
 		
 		PointPairList^ PosXSetpointList = gcnew PointPairList();
 		PointPairList^ PosYSetpointList = gcnew PointPairList();
 		PointPairList^ PosXYSetpointList = gcnew PointPairList();
+		PointPairList^ PosEXSetpointList = gcnew PointPairList();
+		PointPairList^ PosEYSetpointList = gcnew PointPairList();
+		PointPairList^ PosDEXSetpointList = gcnew PointPairList();
+		PointPairList^ PosDEYSetpointList = gcnew PointPairList();
+		PointPairList^ PosUXSetpointList = gcnew PointPairList();
+		PointPairList^ PosUYSetpointList = gcnew PointPairList();
 
 		LineItem^ PosXCurve;
 		LineItem^ PosYCurve;
 		LineItem^ PosXYCurve;
+		LineItem^ PosEXCurve;
+		LineItem^ PosEYCurve;
+		LineItem^ PosDEXCurve;
+		LineItem^ PosDEYCurve;
+		LineItem^ PosUXCurve;
+		LineItem^ PosUYCurve;
 
 		LineItem^ PosXSetpointCurve;
 		LineItem^ PosYSetpointCurve;
 		LineItem^ PosXYSetpointCurve;
+		LineItem^ PosEXSetpointCurve;
+		LineItem^ PosEYSetpointCurve;
+		LineItem^ PosDEXSetpointCurve;
+		LineItem^ PosDEYSetpointCurve;
+		LineItem^ PosUXSetpointCurve;
+		LineItem^ PosUYSetpointCurve;
 
 		ZedGraph::Scale^ xScaleXY;
 		ZedGraph::Scale^ yScaleXY;
@@ -1441,24 +1840,44 @@ private: System::Windows::Forms::Button^  bSetScale;
 		ZedGraph::Scale^ xScaleY;
 		ZedGraph::Scale^ yScaleY;
 
+		ZedGraph::Scale^ xScaleEX;
+		ZedGraph::Scale^ yScaleEX;
+
+		ZedGraph::Scale^ xScaleEY;
+		ZedGraph::Scale^ yScaleEY;
+
+		ZedGraph::Scale^ xScaleDEX;
+		ZedGraph::Scale^ yScaleDEX;
+
+		ZedGraph::Scale^ xScaleDEY;
+		ZedGraph::Scale^ yScaleDEY;
+
+		ZedGraph::Scale^ xScaleUX;
+		ZedGraph::Scale^ yScaleUX;
+
+		ZedGraph::Scale^ xScaleUY;
+		ZedGraph::Scale^ yScaleUY;
+
 	private:
 		double posX = 0;
 		double posY = 0;
 		double errX = 0;
 		double errY = 0;
-		double timeGraph = 0;
-		double setpointX = 0;
-		double setpointY = 0;
-		bool SCROLL_GRAPH = false;
 		double pre_errX = 0;
 		double pre_errY = 0;
 		double velX = 0;
 		double velY = 0;
+		double angleX = 0;
+		double angleY = 0;
+		double timeGraph = 0;
+		double setpointX = 0;
+		double setpointY = 0;
+		bool SCROLL_GRAPH = false;
 		double scale_errX = 1;
-		double scale_velX = 1;
-		double scale_outX = 1;
 		double scale_errY = 1;
+		double scale_velX = 1;
 		double scale_velY = 1;
+		double scale_outX = 1;
 		double scale_outY = 1;
 		double KpX = 0;
 		double KiX = 0;
@@ -1487,6 +1906,12 @@ private: System::Windows::Forms::Button^  bSetScale;
 		myPaneXY = zedGraphXY->GraphPane;
 		myPaneX = zedGraphX->GraphPane;
 		myPaneY = zedGraphY->GraphPane;
+		myPaneEX = zedGraphEX->GraphPane;
+		myPaneEY = zedGraphEY->GraphPane;
+		myPaneDEX = zedGraphDEX->GraphPane;
+		myPaneDEY = zedGraphDEY->GraphPane;
+		myPaneUX = zedGraphUX->GraphPane;
+		myPaneUY = zedGraphUY->GraphPane;
 		//==================================================
 		xScaleXY = zedGraphXY->GraphPane->XAxis->Scale;
 		yScaleXY = zedGraphXY->GraphPane->YAxis->Scale;
@@ -1496,6 +1921,25 @@ private: System::Windows::Forms::Button^  bSetScale;
 
 		xScaleY = zedGraphY->GraphPane->XAxis->Scale;
 		yScaleY = zedGraphY->GraphPane->YAxis->Scale;
+
+		xScaleEX = zedGraphEX->GraphPane->XAxis->Scale;
+		yScaleEX = zedGraphEX->GraphPane->YAxis->Scale;
+
+		xScaleEY = zedGraphEY->GraphPane->XAxis->Scale;
+		yScaleEY = zedGraphEY->GraphPane->YAxis->Scale;
+
+		xScaleDEX = zedGraphDEX->GraphPane->XAxis->Scale;
+		yScaleDEX = zedGraphDEX->GraphPane->YAxis->Scale;
+
+		xScaleDEY = zedGraphDEY->GraphPane->XAxis->Scale;
+		yScaleDEY = zedGraphDEY->GraphPane->YAxis->Scale;
+
+		xScaleUX = zedGraphUX->GraphPane->XAxis->Scale;
+		yScaleUX = zedGraphUX->GraphPane->YAxis->Scale;
+
+		xScaleUY = zedGraphUY->GraphPane->XAxis->Scale;
+		yScaleUY = zedGraphUY->GraphPane->YAxis->Scale;
+
 		//==================================================
 		//myPaneXY->Title->Text = "X-Y GRAPH";
 		myPaneXY->Title->IsVisible = false;
@@ -1509,6 +1953,30 @@ private: System::Windows::Forms::Button^  bSetScale;
 		myPaneY->Title->IsVisible = false;
 		myPaneY->XAxis->Title->Text = "Time";
 		myPaneY->YAxis->Title->Text = "Y";
+
+		myPaneEX->Title->IsVisible = false;
+		myPaneEX->XAxis->Title->Text = "Time";
+		myPaneEX->YAxis->Title->Text = "EX";
+
+		myPaneEY->Title->IsVisible = false;
+		myPaneEY->XAxis->Title->Text = "Time";
+		myPaneEY->YAxis->Title->Text = "EY";
+
+		myPaneDEX->Title->IsVisible = false;
+		myPaneDEX->XAxis->Title->Text = "Time";
+		myPaneDEX->YAxis->Title->Text = "DEX";
+
+		myPaneDEY->Title->IsVisible = false;
+		myPaneDEY->XAxis->Title->Text = "Time";
+		myPaneDEY->YAxis->Title->Text = "DEY";
+
+		myPaneUX->Title->IsVisible = false;
+		myPaneUX->XAxis->Title->Text = "Time";
+		myPaneUX->YAxis->Title->Text = "UX";
+
+		myPaneUY->Title->IsVisible = false;
+		myPaneUY->XAxis->Title->Text = "Time";
+		myPaneUY->YAxis->Title->Text = "UY";
 		//==================================================
 
 		xScaleXY->Max = 400;
@@ -1525,15 +1993,57 @@ private: System::Windows::Forms::Button^  bSetScale;
 		xScaleY->Min = 0;
 		yScaleY->Max = 400;
 		yScaleY->Min = 0;
+
+		xScaleEX->Max = 1000;
+		xScaleEX->Min = 0;
+		yScaleEX->Max = 400;
+		yScaleEX->Min = -400;
+
+		xScaleEY->Max = 1000;
+		xScaleEY->Min = 0;
+		yScaleEY->Max = 400;
+		yScaleEY->Min = -400;
+
+		xScaleDEX->Max = 1000;
+		xScaleDEX->Min = 0;
+		yScaleDEX->Max = 400;
+		yScaleDEX->Min = -400;
+
+		xScaleDEY->Max = 1000;
+		xScaleDEY->Min = 0;
+		yScaleDEY->Max = 400;
+		yScaleDEY->Min = -400;
+
+		xScaleUX->Max = 1000;
+		xScaleUX->Min = 0;
+		yScaleUX->Max = 10;
+		yScaleUX->Min = -10;
+
+		xScaleUY->Max = 1000;
+		xScaleUY->Min = 0;
+		yScaleUY->Max = 10;
+		yScaleUY->Min = -10;
+
 		//====================================================
 		myPaneXY->IsAlignGrids = true;
 		myPaneX->IsAlignGrids = true;
 		myPaneY->IsAlignGrids = true;
+		myPaneEX->IsAlignGrids = true;
+		myPaneEY->IsAlignGrids = true;
+		myPaneDEX->IsAlignGrids = true;
+		myPaneDEY->IsAlignGrids = true;
+		myPaneUX->IsAlignGrids = true;
+		myPaneUY->IsAlignGrids = true;
 
 		zedGraphXY->AxisChange();
 		zedGraphX->AxisChange();
 		zedGraphY->AxisChange();
-
+		zedGraphEX->AxisChange();
+		zedGraphEY->AxisChange();
+		zedGraphDEX->AxisChange();
+		zedGraphDEY->AxisChange();
+		zedGraphUX->AxisChange();
+		zedGraphUY->AxisChange();
 	}
 	
 	private: void drawXY(double x, double y)
@@ -1583,6 +2093,54 @@ private: System::Windows::Forms::Button^  bSetScale;
 
 		zedGraphX->Invalidate();
 		zedGraphY->Invalidate();
+	}
+	private: void drawMORE(double ex, double ey, double dex, double dey, double ux, double uy)
+	{
+		zedGraphEX->GraphPane->CurveList->Clear();
+		zedGraphEY->GraphPane->CurveList->Clear();
+		zedGraphDEX->GraphPane->CurveList->Clear();
+		zedGraphDEY->GraphPane->CurveList->Clear();
+		zedGraphUX->GraphPane->CurveList->Clear();
+		zedGraphUY->GraphPane->CurveList->Clear();
+		if (timeGraph > xScaleEX->Max - 1)
+		{
+			timeGraph = 0;
+			PosEXList->Clear();
+			PosEYList->Clear();
+			PosDEXList->Clear();
+			PosDEYList->Clear();
+			PosUXList->Clear();
+			PosUYList->Clear();
+		}
+		PosEXList->Add(timeGraph, ex);
+		PosEYList->Add(timeGraph, ey);
+		PosDEXList->Add(timeGraph, dex);
+		PosDEYList->Add(timeGraph, dey);
+		PosUXList->Add(timeGraph, ux);
+		PosUYList->Add(timeGraph, uy);
+
+		PosEXCurve = myPaneEX->AddCurve("Pos EX", PosEXList, Color::Red, SymbolType::None);
+		PosEYCurve = myPaneEY->AddCurve("Pos EY", PosEYList, Color::Red, SymbolType::None);
+		PosDEXCurve = myPaneDEX->AddCurve("Pos DEX", PosDEXList, Color::Red, SymbolType::None);
+		PosDEYCurve = myPaneDEY->AddCurve("Pos DEY", PosDEYList, Color::Red, SymbolType::None);
+		PosUXCurve = myPaneUX->AddCurve("Pos UX", PosUXList, Color::Red, SymbolType::None);
+		PosUYCurve = myPaneUY->AddCurve("Pos UY", PosUYList, Color::Red, SymbolType::None);
+
+		timeGraph++;
+
+		zedGraphEX->AxisChange();
+		zedGraphEY->AxisChange();
+		zedGraphDEX->AxisChange();
+		zedGraphDEY->AxisChange();
+		zedGraphUX->AxisChange();
+		zedGraphUY->AxisChange();
+
+		zedGraphEX->Invalidate();
+		zedGraphEY->Invalidate();
+		zedGraphDEX->Invalidate();
+		zedGraphDEY->Invalidate();
+		zedGraphUX->Invalidate();
+		zedGraphUY->Invalidate();
 	}
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
@@ -1638,7 +2196,7 @@ private: System::Windows::Forms::Button^  bSetScale;
 		else
 		{
 			MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
-			findPorts();
+			//findPorts();
 		}
 	}
 
@@ -1707,8 +2265,8 @@ private: System::Windows::Forms::Button^  bSetScale;
 		}
 		if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
 		{
-			txtANGLE_X->Text = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
-			txtANGLE_Y->Text = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
+			angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
+			angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
 			//txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
 			//txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
 		}
@@ -1722,10 +2280,11 @@ private: System::Windows::Forms::Button^  bSetScale;
 			{
 				drawXYT(posX, posY);
 			}
-			else
+			else if (tabPageMOREGRAPH->Visible == true)
 			{
-
+				drawMORE(errX, errY, velX, velY, angleX, angleY);
 			}
+			else {}
 		}
 		if (bGetBall->Text == "UNGET BALL" /* && camera.getErrorStr() == "Tracking Object" */)
 		{
@@ -1736,12 +2295,16 @@ private: System::Windows::Forms::Button^  bSetScale;
 		txtErrY->Text = errY.ToString();
 		txtPosX->Text = posX.ToString();
 		txtPosY->Text = posY.ToString();
+		txtDErrX->Text = velX.ToString();
+		txtDErrY->Text = velY.ToString();
+		txtANGLE_X->Text = angleX.ToString();
+		txtANGLE_Y->Text = angleY.ToString();
 		if (bShowCam->Text == "UNSHOW CAM")
 		{
 			camera.showCamera(2);
 		}
-		//camera.getFPS_end();
-		camera.fps_ = 30;
+		camera.getFPS_end();
+		//camera.fps_ = 30;
 		txtTimeProcess->Text = ((int)(1000 / camera.fps_)).ToString() + " ms";
 	}
 	private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1829,8 +2392,6 @@ private: System::Void bSTART_FUZZY_Click(System::Object^  sender, System::EventA
 		bSTART_FUZZY->Text = "START FUZZY";
 	}
 }
-private: System::Void bSetCrop_Click(System::Object^  sender, System::EventArgs^  e) {
-}
 private: System::Void bSetFuzzyScaleXY_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (txtScaleErr1->Text == "" || txtScaleErr2->Text == "" || txtScaleErr3->Text == "" ||
 		txtScaleErr1->Text == "0" || txtScaleErr2->Text == "0" || txtScaleErr3->Text == "0" ||
@@ -1903,14 +2464,16 @@ private: System::Void bClose_Click(System::Object^  sender, System::EventArgs^  
 private: System::Void tbAngleX_Scroll(System::Object^  sender, System::EventArgs^  e) {
 	if (bSTART_FUZZY->Text == "START FUZZY" && bSTART_PID->Text == "START PID")
 	{
-		txtANGLE_X->Text = tbAngleX->Value.ToString();
+		angleX = tbAngleX->Value;
+		//txtANGLE_X->Text = tbAngleX->Value.ToString();
 	}
 }
 
 private: System::Void tbAngleY_Scroll(System::Object^  sender, System::EventArgs^  e) {
 	if (bSTART_FUZZY->Text == "START FUZZY" && bSTART_PID->Text == "START PID")
 	{
-		txtANGLE_Y->Text = tbAngleY->Value.ToString();
+		//txtANGLE_Y->Text = tbAngleY->Value.ToString();
+		angleY = tbAngleY->Value;
 	}
 }
 
@@ -1965,6 +2528,17 @@ private: System::Void bIMPORT_SETTING_Click(System::Object^  sender, System::Eve
 				Console::WriteLine("problem reading file '{0}'", openFileDialog1->FileName);
 		}
 	}
+}
+private: System::Void zedGraphControl4_Load(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void zedGraphControl5_Load(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void tabPage3_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void cbCOMLIST_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void cbCOMLIST_Click(System::Object^  sender, System::EventArgs^  e) {
+	findPorts();
 }
 };
 }

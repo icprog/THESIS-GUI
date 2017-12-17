@@ -41,11 +41,11 @@ int main(int argc, char* argv[])
 	// >>>> Kalman Filter
 		
 	//================================================
-		camera.showCamera(0);
+	//	camera.showCamera(0);
 		if (waitKey(1) == 27)
 			break;
 		camera.getFPS_end();
-		cout << "MS : " << 1000 / camera.fps_ << endl;
-		printf("Time: %.2fms\n", (long double)(clock() - start)*1000 / CLOCKS_PER_SEC);
+		//cout << "MS : " << 1000 / camera.fps_ << endl;
+		//printf("Time: %.2fms\n", (long double)(clock() - start)*1000 / CLOCKS_PER_SEC);
 	}
 }

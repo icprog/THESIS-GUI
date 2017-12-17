@@ -9,6 +9,8 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include <time.h>
+
+//#define DEBUG
 class Camera
 {
 	static void callback_func(int, void*);
