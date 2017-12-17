@@ -133,7 +133,7 @@ namespace BALL_BALANCE {
 
 
 
-	private: System::Windows::Forms::Button^  bSetCrop;
+
 private: System::Windows::Forms::Button^  bSTART_GRAPH;
 
 private: System::Windows::Forms::Button^  bSTART_PID;
@@ -287,6 +287,15 @@ private: System::Windows::Forms::Label^  label24;
 private: System::Windows::Forms::Label^  label25;
 private: System::Windows::Forms::Label^  label23;
 private: System::Windows::Forms::Label^  label22;
+private: System::Windows::Forms::Label^  label28;
+private: System::Windows::Forms::Label^  label30;
+private: System::Windows::Forms::Label^  label33;
+private: System::Windows::Forms::Label^  label32;
+private: System::Windows::Forms::Label^  label31;
+private: System::Windows::Forms::Label^  label29;
+private: System::Windows::Forms::GroupBox^  groupBox3;
+private: System::Windows::Forms::TextBox^  txtSamplingRate;
+private: System::Windows::Forms::Label^  label34;
 
 
 
@@ -351,6 +360,14 @@ private: System::Windows::Forms::Label^  label22;
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->txtSamplingRate = (gcnew System::Windows::Forms::TextBox());
+			this->txtDErrY = (gcnew System::Windows::Forms::TextBox());
+			this->txtDErrX = (gcnew System::Windows::Forms::TextBox());
+			this->txtTimeProcess = (gcnew System::Windows::Forms::TextBox());
+			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label34 = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->txtAxisMaxUY = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMinDEY = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMaxUX = (gcnew System::Windows::Forms::TextBox());
@@ -363,12 +380,8 @@ private: System::Windows::Forms::Label^  label22;
 			this->txtAxisMinEY = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMaxDEX = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMinEX = (gcnew System::Windows::Forms::TextBox());
-			this->txtDErrY = (gcnew System::Windows::Forms::TextBox());
-			this->txtDErrX = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMaxY = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMaxX = (gcnew System::Windows::Forms::TextBox());
-			this->label21 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->txtAxisMinY = (gcnew System::Windows::Forms::TextBox());
 			this->txtAxisMinX = (gcnew System::Windows::Forms::TextBox());
 			this->label27 = (gcnew System::Windows::Forms::Label());
@@ -379,8 +392,6 @@ private: System::Windows::Forms::Label^  label22;
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->txtTimeProcess = (gcnew System::Windows::Forms::TextBox());
 			this->bSTART_GRAPH = (gcnew System::Windows::Forms::Button());
 			this->bSCROLL = (gcnew System::Windows::Forms::Button());
 			this->label18 = (gcnew System::Windows::Forms::Label());
@@ -400,7 +411,6 @@ private: System::Windows::Forms::Label^  label22;
 			this->bClose = (gcnew System::Windows::Forms::Button());
 			this->bSTART_FUZZY = (gcnew System::Windows::Forms::Button());
 			this->bSTART_PID = (gcnew System::Windows::Forms::Button());
-			this->bSetCrop = (gcnew System::Windows::Forms::Button());
 			this->bGetBall = (gcnew System::Windows::Forms::Button());
 			this->bShowCam = (gcnew System::Windows::Forms::Button());
 			this->bSetPIDFactor = (gcnew System::Windows::Forms::Button());
@@ -417,6 +427,8 @@ private: System::Windows::Forms::Label^  label22;
 			this->tbAngleY = (gcnew System::Windows::Forms::TrackBar());
 			this->tabControlController = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage = (gcnew System::Windows::Forms::TabPage());
+			this->bSetScale = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
 			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
 			this->trackBar4 = (gcnew System::Windows::Forms::TrackBar());
@@ -442,15 +454,20 @@ private: System::Windows::Forms::Label^  label22;
 			this->zedGraphUX = (gcnew ZedGraph::ZedGraphControl());
 			this->zedGraphDEX = (gcnew ZedGraph::ZedGraphControl());
 			this->zedGraphEX = (gcnew ZedGraph::ZedGraphControl());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->label30 = (gcnew System::Windows::Forms::Label());
+			this->label33 = (gcnew System::Windows::Forms::Label());
+			this->label32 = (gcnew System::Windows::Forms::Label());
+			this->label31 = (gcnew System::Windows::Forms::Label());
+			this->label29 = (gcnew System::Windows::Forms::Label());
+			this->label28 = (gcnew System::Windows::Forms::Label());
 			this->txtDisplayAngle6 = (gcnew System::Windows::Forms::TextBox());
 			this->txtDisplayAngle5 = (gcnew System::Windows::Forms::TextBox());
 			this->txtDisplayAngle4 = (gcnew System::Windows::Forms::TextBox());
 			this->txtDisplayAngle3 = (gcnew System::Windows::Forms::TextBox());
 			this->txtDisplayAngle2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtDisplayAngle1 = (gcnew System::Windows::Forms::TextBox());
-			this->bSetScale = (gcnew System::Windows::Forms::Button());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
@@ -471,6 +488,7 @@ private: System::Windows::Forms::Label^  label22;
 			this->tabPageTIMEGRAPH->SuspendLayout();
 			this->tabPageMOREGRAPH->SuspendLayout();
 			this->groupBox2->SuspendLayout();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// cbCOMLIST
@@ -480,8 +498,6 @@ private: System::Windows::Forms::Label^  label22;
 			this->cbCOMLIST->Name = L"cbCOMLIST";
 			this->cbCOMLIST->Size = System::Drawing::Size(92, 21);
 			this->cbCOMLIST->TabIndex = 0;
-			this->cbCOMLIST->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::cbCOMLIST_SelectedIndexChanged);
-			this->cbCOMLIST->Click += gcnew System::EventHandler(this, &MyForm::cbCOMLIST_Click);
 			// 
 			// txtRECEIVE
 			// 
@@ -564,6 +580,7 @@ private: System::Windows::Forms::Label^  label22;
 			this->label1->Size = System::Drawing::Size(90, 13);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"SET POINT X - Y";
+
 			// 
 			// txtSetpointY
 			// 
@@ -575,7 +592,7 @@ private: System::Windows::Forms::Label^  label22;
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 57);
+			this->label3->Location = System::Drawing::Point(12, 56);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(55, 13);
 			this->label3->TabIndex = 11;
@@ -707,36 +724,16 @@ private: System::Windows::Forms::Label^  label22;
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->txtAxisMaxUY);
-			this->groupBox1->Controls->Add(this->txtAxisMinDEY);
-			this->groupBox1->Controls->Add(this->txtAxisMaxUX);
-			this->groupBox1->Controls->Add(this->txtAxisMinDEX);
-			this->groupBox1->Controls->Add(this->txtAxisMinUY);
-			this->groupBox1->Controls->Add(this->txtAxisMaxEY);
-			this->groupBox1->Controls->Add(this->txtAxisMinUX);
-			this->groupBox1->Controls->Add(this->txtAxisMaxEX);
-			this->groupBox1->Controls->Add(this->txtAxisMAXDEY);
-			this->groupBox1->Controls->Add(this->txtAxisMinEY);
-			this->groupBox1->Controls->Add(this->txtAxisMaxDEX);
-			this->groupBox1->Controls->Add(this->txtAxisMinEX);
+			this->groupBox1->Controls->Add(this->txtSamplingRate);
 			this->groupBox1->Controls->Add(this->txtDErrY);
 			this->groupBox1->Controls->Add(this->txtDErrX);
-			this->groupBox1->Controls->Add(this->txtAxisMaxY);
-			this->groupBox1->Controls->Add(this->txtAxisMaxX);
+			this->groupBox1->Controls->Add(this->txtTimeProcess);
 			this->groupBox1->Controls->Add(this->label21);
 			this->groupBox1->Controls->Add(this->label5);
-			this->groupBox1->Controls->Add(this->txtAxisMinY);
-			this->groupBox1->Controls->Add(this->txtAxisMinX);
 			this->groupBox1->Controls->Add(this->txtPosY);
 			this->groupBox1->Controls->Add(this->txtSetpointX);
-			this->groupBox1->Controls->Add(this->label27);
-			this->groupBox1->Controls->Add(this->label26);
-			this->groupBox1->Controls->Add(this->label24);
-			this->groupBox1->Controls->Add(this->label25);
-			this->groupBox1->Controls->Add(this->label23);
-			this->groupBox1->Controls->Add(this->label22);
-			this->groupBox1->Controls->Add(this->label4);
-			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->label34);
+			this->groupBox1->Controls->Add(this->label15);
 			this->groupBox1->Controls->Add(this->txtANGLE_Y);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->txtSetpointY);
@@ -748,94 +745,18 @@ private: System::Windows::Forms::Label^  label22;
 			this->groupBox1->Controls->Add(this->txtErrY);
 			this->groupBox1->Location = System::Drawing::Point(12, 264);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(219, 376);
+			this->groupBox1->Size = System::Drawing::Size(219, 216);
 			this->groupBox1->TabIndex = 27;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"PARAM";
 			// 
-			// txtAxisMaxUY
+			// txtSamplingRate
 			// 
-			this->txtAxisMaxUY->Location = System::Drawing::Point(159, 340);
-			this->txtAxisMaxUY->Name = L"txtAxisMaxUY";
-			this->txtAxisMaxUY->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMaxUY->TabIndex = 42;
-			// 
-			// txtAxisMinDEY
-			// 
-			this->txtAxisMinDEY->Location = System::Drawing::Point(159, 262);
-			this->txtAxisMinDEY->Name = L"txtAxisMinDEY";
-			this->txtAxisMinDEY->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMinDEY->TabIndex = 42;
-			// 
-			// txtAxisMaxUX
-			// 
-			this->txtAxisMaxUX->Location = System::Drawing::Point(107, 340);
-			this->txtAxisMaxUX->Name = L"txtAxisMaxUX";
-			this->txtAxisMaxUX->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMaxUX->TabIndex = 42;
-			// 
-			// txtAxisMinDEX
-			// 
-			this->txtAxisMinDEX->Location = System::Drawing::Point(107, 262);
-			this->txtAxisMinDEX->Name = L"txtAxisMinDEX";
-			this->txtAxisMinDEX->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMinDEX->TabIndex = 42;
-			// 
-			// txtAxisMinUY
-			// 
-			this->txtAxisMinUY->Location = System::Drawing::Point(159, 314);
-			this->txtAxisMinUY->Name = L"txtAxisMinUY";
-			this->txtAxisMinUY->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMinUY->TabIndex = 42;
-			// 
-			// txtAxisMaxEY
-			// 
-			this->txtAxisMaxEY->Location = System::Drawing::Point(159, 236);
-			this->txtAxisMaxEY->Name = L"txtAxisMaxEY";
-			this->txtAxisMaxEY->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMaxEY->TabIndex = 42;
-			// 
-			// txtAxisMinUX
-			// 
-			this->txtAxisMinUX->Location = System::Drawing::Point(107, 314);
-			this->txtAxisMinUX->Name = L"txtAxisMinUX";
-			this->txtAxisMinUX->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMinUX->TabIndex = 42;
-			// 
-			// txtAxisMaxEX
-			// 
-			this->txtAxisMaxEX->Location = System::Drawing::Point(107, 236);
-			this->txtAxisMaxEX->Name = L"txtAxisMaxEX";
-			this->txtAxisMaxEX->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMaxEX->TabIndex = 42;
-			// 
-			// txtAxisMAXDEY
-			// 
-			this->txtAxisMAXDEY->Location = System::Drawing::Point(159, 288);
-			this->txtAxisMAXDEY->Name = L"txtAxisMAXDEY";
-			this->txtAxisMAXDEY->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMAXDEY->TabIndex = 42;
-			// 
-			// txtAxisMinEY
-			// 
-			this->txtAxisMinEY->Location = System::Drawing::Point(159, 210);
-			this->txtAxisMinEY->Name = L"txtAxisMinEY";
-			this->txtAxisMinEY->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMinEY->TabIndex = 42;
-			// 
-			// txtAxisMaxDEX
-			// 
-			this->txtAxisMaxDEX->Location = System::Drawing::Point(107, 288);
-			this->txtAxisMaxDEX->Name = L"txtAxisMaxDEX";
-			this->txtAxisMaxDEX->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMaxDEX->TabIndex = 42;
-			// 
-			// txtAxisMinEX
-			// 
-			this->txtAxisMinEX->Location = System::Drawing::Point(107, 210);
-			this->txtAxisMinEX->Name = L"txtAxisMinEX";
-			this->txtAxisMinEX->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMinEX->TabIndex = 42;
+			this->txtSamplingRate->Location = System::Drawing::Point(159, 158);
+			this->txtSamplingRate->Name = L"txtSamplingRate";
+			this->txtSamplingRate->Size = System::Drawing::Size(46, 20);
+			this->txtSamplingRate->TabIndex = 42;
+			this->txtSamplingRate->TextChanged += gcnew System::EventHandler(this, &MyForm::txtSamplingRate_TextChanged);
 			// 
 			// txtDErrY
 			// 
@@ -851,19 +772,12 @@ private: System::Windows::Forms::Label^  label22;
 			this->txtDErrX->Size = System::Drawing::Size(46, 20);
 			this->txtDErrX->TabIndex = 40;
 			// 
-			// txtAxisMaxY
+			// txtTimeProcess
 			// 
-			this->txtAxisMaxY->Location = System::Drawing::Point(159, 184);
-			this->txtAxisMaxY->Name = L"txtAxisMaxY";
-			this->txtAxisMaxY->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMaxY->TabIndex = 39;
-			// 
-			// txtAxisMaxX
-			// 
-			this->txtAxisMaxX->Location = System::Drawing::Point(107, 184);
-			this->txtAxisMaxX->Name = L"txtAxisMaxX";
-			this->txtAxisMaxX->Size = System::Drawing::Size(46, 20);
-			this->txtAxisMaxX->TabIndex = 39;
+			this->txtTimeProcess->Location = System::Drawing::Point(159, 185);
+			this->txtTimeProcess->Name = L"txtTimeProcess";
+			this->txtTimeProcess->Size = System::Drawing::Size(46, 20);
+			this->txtTimeProcess->TabIndex = 35;
 			// 
 			// label21
 			// 
@@ -877,22 +791,138 @@ private: System::Windows::Forms::Label^  label22;
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(12, 135);
+			this->label5->Location = System::Drawing::Point(12, 134);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(69, 13);
 			this->label5->TabIndex = 24;
 			this->label5->Text = L"ANGLE X - Y";
 			// 
+			// label34
+			// 
+			this->label34->AutoSize = true;
+			this->label34->Location = System::Drawing::Point(12, 186);
+			this->label34->Name = L"label34";
+			this->label34->Size = System::Drawing::Size(106, 13);
+			this->label34->TabIndex = 38;
+			this->label34->Text = L"PROCESSING TIME";
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(12, 160);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(94, 13);
+			this->label15->TabIndex = 38;
+			this->label15->Text = L"SAMPLING RATE";
+			// 
+			// txtAxisMaxUY
+			// 
+			this->txtAxisMaxUY->Location = System::Drawing::Point(157, 201);
+			this->txtAxisMaxUY->Name = L"txtAxisMaxUY";
+			this->txtAxisMaxUY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxUY->TabIndex = 42;
+			// 
+			// txtAxisMinDEY
+			// 
+			this->txtAxisMinDEY->Location = System::Drawing::Point(157, 123);
+			this->txtAxisMinDEY->Name = L"txtAxisMinDEY";
+			this->txtAxisMinDEY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinDEY->TabIndex = 42;
+			// 
+			// txtAxisMaxUX
+			// 
+			this->txtAxisMaxUX->Location = System::Drawing::Point(105, 201);
+			this->txtAxisMaxUX->Name = L"txtAxisMaxUX";
+			this->txtAxisMaxUX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxUX->TabIndex = 42;
+			// 
+			// txtAxisMinDEX
+			// 
+			this->txtAxisMinDEX->Location = System::Drawing::Point(105, 123);
+			this->txtAxisMinDEX->Name = L"txtAxisMinDEX";
+			this->txtAxisMinDEX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinDEX->TabIndex = 42;
+			// 
+			// txtAxisMinUY
+			// 
+			this->txtAxisMinUY->Location = System::Drawing::Point(157, 175);
+			this->txtAxisMinUY->Name = L"txtAxisMinUY";
+			this->txtAxisMinUY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinUY->TabIndex = 42;
+			// 
+			// txtAxisMaxEY
+			// 
+			this->txtAxisMaxEY->Location = System::Drawing::Point(157, 97);
+			this->txtAxisMaxEY->Name = L"txtAxisMaxEY";
+			this->txtAxisMaxEY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxEY->TabIndex = 42;
+			// 
+			// txtAxisMinUX
+			// 
+			this->txtAxisMinUX->Location = System::Drawing::Point(105, 175);
+			this->txtAxisMinUX->Name = L"txtAxisMinUX";
+			this->txtAxisMinUX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinUX->TabIndex = 42;
+			// 
+			// txtAxisMaxEX
+			// 
+			this->txtAxisMaxEX->Location = System::Drawing::Point(105, 97);
+			this->txtAxisMaxEX->Name = L"txtAxisMaxEX";
+			this->txtAxisMaxEX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxEX->TabIndex = 42;
+			// 
+			// txtAxisMAXDEY
+			// 
+			this->txtAxisMAXDEY->Location = System::Drawing::Point(157, 149);
+			this->txtAxisMAXDEY->Name = L"txtAxisMAXDEY";
+			this->txtAxisMAXDEY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMAXDEY->TabIndex = 42;
+			// 
+			// txtAxisMinEY
+			// 
+			this->txtAxisMinEY->Location = System::Drawing::Point(157, 71);
+			this->txtAxisMinEY->Name = L"txtAxisMinEY";
+			this->txtAxisMinEY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinEY->TabIndex = 42;
+			// 
+			// txtAxisMaxDEX
+			// 
+			this->txtAxisMaxDEX->Location = System::Drawing::Point(105, 149);
+			this->txtAxisMaxDEX->Name = L"txtAxisMaxDEX";
+			this->txtAxisMaxDEX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxDEX->TabIndex = 42;
+			// 
+			// txtAxisMinEX
+			// 
+			this->txtAxisMinEX->Location = System::Drawing::Point(105, 71);
+			this->txtAxisMinEX->Name = L"txtAxisMinEX";
+			this->txtAxisMinEX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMinEX->TabIndex = 42;
+			// 
+			// txtAxisMaxY
+			// 
+			this->txtAxisMaxY->Location = System::Drawing::Point(157, 45);
+			this->txtAxisMaxY->Name = L"txtAxisMaxY";
+			this->txtAxisMaxY->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxY->TabIndex = 39;
+			// 
+			// txtAxisMaxX
+			// 
+			this->txtAxisMaxX->Location = System::Drawing::Point(105, 45);
+			this->txtAxisMaxX->Name = L"txtAxisMaxX";
+			this->txtAxisMaxX->Size = System::Drawing::Size(46, 20);
+			this->txtAxisMaxX->TabIndex = 39;
+			// 
 			// txtAxisMinY
 			// 
-			this->txtAxisMinY->Location = System::Drawing::Point(159, 158);
+			this->txtAxisMinY->Location = System::Drawing::Point(157, 19);
 			this->txtAxisMinY->Name = L"txtAxisMinY";
 			this->txtAxisMinY->Size = System::Drawing::Size(46, 20);
 			this->txtAxisMinY->TabIndex = 39;
 			// 
 			// txtAxisMinX
 			// 
-			this->txtAxisMinX->Location = System::Drawing::Point(107, 158);
+			this->txtAxisMinX->Location = System::Drawing::Point(105, 19);
 			this->txtAxisMinX->Name = L"txtAxisMinX";
 			this->txtAxisMinX->Size = System::Drawing::Size(46, 20);
 			this->txtAxisMinX->TabIndex = 39;
@@ -900,7 +930,7 @@ private: System::Windows::Forms::Label^  label22;
 			// label27
 			// 
 			this->label27->AutoSize = true;
-			this->label27->Location = System::Drawing::Point(12, 345);
+			this->label27->Location = System::Drawing::Point(15, 204);
 			this->label27->Name = L"label27";
 			this->label27->Size = System::Drawing::Size(68, 13);
 			this->label27->TabIndex = 38;
@@ -909,7 +939,7 @@ private: System::Windows::Forms::Label^  label22;
 			// label26
 			// 
 			this->label26->AutoSize = true;
-			this->label26->Location = System::Drawing::Point(12, 323);
+			this->label26->Location = System::Drawing::Point(15, 178);
 			this->label26->Name = L"label26";
 			this->label26->Size = System::Drawing::Size(65, 13);
 			this->label26->TabIndex = 38;
@@ -918,7 +948,7 @@ private: System::Windows::Forms::Label^  label22;
 			// label24
 			// 
 			this->label24->AutoSize = true;
-			this->label24->Location = System::Drawing::Point(12, 265);
+			this->label24->Location = System::Drawing::Point(15, 126);
 			this->label24->Name = L"label24";
 			this->label24->Size = System::Drawing::Size(72, 13);
 			this->label24->TabIndex = 38;
@@ -927,7 +957,7 @@ private: System::Windows::Forms::Label^  label22;
 			// label25
 			// 
 			this->label25->AutoSize = true;
-			this->label25->Location = System::Drawing::Point(12, 293);
+			this->label25->Location = System::Drawing::Point(15, 152);
 			this->label25->Name = L"label25";
 			this->label25->Size = System::Drawing::Size(75, 13);
 			this->label25->TabIndex = 38;
@@ -936,7 +966,7 @@ private: System::Windows::Forms::Label^  label22;
 			// label23
 			// 
 			this->label23->AutoSize = true;
-			this->label23->Location = System::Drawing::Point(12, 243);
+			this->label23->Location = System::Drawing::Point(15, 100);
 			this->label23->Name = L"label23";
 			this->label23->Size = System::Drawing::Size(83, 13);
 			this->label23->TabIndex = 38;
@@ -945,7 +975,7 @@ private: System::Windows::Forms::Label^  label22;
 			// label22
 			// 
 			this->label22->AutoSize = true;
-			this->label22->Location = System::Drawing::Point(12, 213);
+			this->label22->Location = System::Drawing::Point(15, 74);
 			this->label22->Name = L"label22";
 			this->label22->Size = System::Drawing::Size(80, 13);
 			this->label22->TabIndex = 38;
@@ -954,7 +984,7 @@ private: System::Windows::Forms::Label^  label22;
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(12, 183);
+			this->label4->Location = System::Drawing::Point(15, 48);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(83, 13);
 			this->label4->TabIndex = 38;
@@ -963,27 +993,11 @@ private: System::Windows::Forms::Label^  label22;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 157);
+			this->label2->Location = System::Drawing::Point(15, 22);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(80, 13);
 			this->label2->TabIndex = 38;
 			this->label2->Text = L"AXIS MIN X - Y";
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(208, 166);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(91, 13);
-			this->label15->TabIndex = 38;
-			this->label15->Text = L"SAMPLING TIME";
-			// 
-			// txtTimeProcess
-			// 
-			this->txtTimeProcess->Location = System::Drawing::Point(211, 189);
-			this->txtTimeProcess->Name = L"txtTimeProcess";
-			this->txtTimeProcess->Size = System::Drawing::Size(46, 20);
-			this->txtTimeProcess->TabIndex = 35;
 			// 
 			// bSTART_GRAPH
 			// 
@@ -1148,16 +1162,6 @@ private: System::Windows::Forms::Label^  label22;
 			this->bSTART_PID->UseVisualStyleBackColor = true;
 			this->bSTART_PID->Click += gcnew System::EventHandler(this, &MyForm::bSTART_PID_Click);
 			// 
-			// bSetCrop
-			// 
-			this->bSetCrop->Location = System::Drawing::Point(6, 189);
-			this->bSetCrop->Name = L"bSetCrop";
-			this->bSetCrop->Size = System::Drawing::Size(93, 25);
-			this->bSetCrop->TabIndex = 35;
-			this->bSetCrop->Text = L"SET CROP";
-			this->bSetCrop->UseVisualStyleBackColor = true;
-			this->bSetCrop->Click += gcnew System::EventHandler(this, &MyForm::bSetCrop_Click);
-			// 
 			// bGetBall
 			// 
 			this->bGetBall->Location = System::Drawing::Point(11, 38);
@@ -1305,14 +1309,11 @@ private: System::Windows::Forms::Label^  label22;
 			this->tabPage->Controls->Add(this->button1);
 			this->tabPage->Controls->Add(this->bEXPORT_SETTING);
 			this->tabPage->Controls->Add(this->bIMPORT_SETTING);
-			this->tabPage->Controls->Add(this->txtTimeProcess);
 			this->tabPage->Controls->Add(this->bSTART);
-			this->tabPage->Controls->Add(this->label15);
 			this->tabPage->Controls->Add(this->cbCOMLIST);
 			this->tabPage->Controls->Add(this->bClose);
 			this->tabPage->Controls->Add(this->bShowCam);
 			this->tabPage->Controls->Add(this->bCONNECT);
-			this->tabPage->Controls->Add(this->bSetCrop);
 			this->tabPage->Controls->Add(this->bSCROLL);
 			this->tabPage->Controls->Add(this->txtRECEIVE);
 			this->tabPage->Controls->Add(this->bSTART_GRAPH);
@@ -1326,6 +1327,24 @@ private: System::Windows::Forms::Label^  label22;
 			this->tabPage->TabIndex = 3;
 			this->tabPage->Text = L"SETTING";
 			this->tabPage->UseVisualStyleBackColor = true;
+			// 
+			// bSetScale
+			// 
+			this->bSetScale->Location = System::Drawing::Point(106, 160);
+			this->bSetScale->Name = L"bSetScale";
+			this->bSetScale->Size = System::Drawing::Size(93, 25);
+			this->bSetScale->TabIndex = 49;
+			this->bSetScale->Text = L"SET SCALE";
+			this->bSetScale->UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(205, 131);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(94, 24);
+			this->button1->TabIndex = 47;
+			this->button1->Text = L"ABOUT ME";
+			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// tabPage5
 			// 
@@ -1573,7 +1592,6 @@ private: System::Windows::Forms::Label^  label22;
 			this->tabPageMOREGRAPH->TabIndex = 2;
 			this->tabPageMOREGRAPH->Text = L"MORE GRAPH";
 			this->tabPageMOREGRAPH->UseVisualStyleBackColor = true;
-			this->tabPageMOREGRAPH->Click += gcnew System::EventHandler(this, &MyForm::tabPage3_Click);
 			// 
 			// zedGraphUY
 			// 
@@ -1602,7 +1620,6 @@ private: System::Windows::Forms::Label^  label22;
 			this->zedGraphDEY->ScrollMinY2 = 0;
 			this->zedGraphDEY->Size = System::Drawing::Size(260, 193);
 			this->zedGraphDEY->TabIndex = 4;
-			this->zedGraphDEY->Load += gcnew System::EventHandler(this, &MyForm::zedGraphControl5_Load);
 			// 
 			// zedGraphEY
 			// 
@@ -1617,7 +1634,6 @@ private: System::Windows::Forms::Label^  label22;
 			this->zedGraphEY->ScrollMinY2 = 0;
 			this->zedGraphEY->Size = System::Drawing::Size(260, 178);
 			this->zedGraphEY->TabIndex = 3;
-			this->zedGraphEY->Load += gcnew System::EventHandler(this, &MyForm::zedGraphControl4_Load);
 			// 
 			// zedGraphUX
 			// 
@@ -1661,17 +1677,14 @@ private: System::Windows::Forms::Label^  label22;
 			this->zedGraphEX->Size = System::Drawing::Size(275, 178);
 			this->zedGraphEX->TabIndex = 0;
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(205, 131);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(94, 24);
-			this->button1->TabIndex = 47;
-			this->button1->Text = L"ABOUT ME";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->label30);
+			this->groupBox2->Controls->Add(this->label33);
+			this->groupBox2->Controls->Add(this->label32);
+			this->groupBox2->Controls->Add(this->label31);
+			this->groupBox2->Controls->Add(this->label29);
+			this->groupBox2->Controls->Add(this->label28);
 			this->groupBox2->Controls->Add(this->txtDisplayAngle6);
 			this->groupBox2->Controls->Add(this->txtDisplayAngle5);
 			this->groupBox2->Controls->Add(this->txtDisplayAngle4);
@@ -1680,67 +1693,147 @@ private: System::Windows::Forms::Label^  label22;
 			this->groupBox2->Controls->Add(this->txtDisplayAngle1);
 			this->groupBox2->Location = System::Drawing::Point(237, 264);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(95, 198);
+			this->groupBox2->Size = System::Drawing::Size(103, 187);
 			this->groupBox2->TabIndex = 48;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"ANGLE 1 - 6 ";
+			this->groupBox2->Text = L"ANGLE";
+			// 
+			// label30
+			// 
+			this->label30->AutoSize = true;
+			this->label30->Location = System::Drawing::Point(3, 79);
+			this->label30->Name = L"label30";
+			this->label30->Size = System::Drawing::Size(52, 13);
+			this->label30->TabIndex = 49;
+			this->label30->Text = L"THETA 3";
+			// 
+			// label33
+			// 
+			this->label33->AutoSize = true;
+			this->label33->Location = System::Drawing::Point(3, 157);
+			this->label33->Name = L"label33";
+			this->label33->Size = System::Drawing::Size(52, 13);
+			this->label33->TabIndex = 49;
+			this->label33->Text = L"THETA 6";
+			// 
+			// label32
+			// 
+			this->label32->AutoSize = true;
+			this->label32->Location = System::Drawing::Point(3, 131);
+			this->label32->Name = L"label32";
+			this->label32->Size = System::Drawing::Size(52, 13);
+			this->label32->TabIndex = 49;
+			this->label32->Text = L"THETA 5";
+			// 
+			// label31
+			// 
+			this->label31->AutoSize = true;
+			this->label31->Location = System::Drawing::Point(3, 105);
+			this->label31->Name = L"label31";
+			this->label31->Size = System::Drawing::Size(52, 13);
+			this->label31->TabIndex = 49;
+			this->label31->Text = L"THETA 4";
+			// 
+			// label29
+			// 
+			this->label29->AutoSize = true;
+			this->label29->Location = System::Drawing::Point(3, 53);
+			this->label29->Name = L"label29";
+			this->label29->Size = System::Drawing::Size(52, 13);
+			this->label29->TabIndex = 49;
+			this->label29->Text = L"THETA 2";
+			// 
+			// label28
+			// 
+			this->label28->AutoSize = true;
+			this->label28->Location = System::Drawing::Point(3, 27);
+			this->label28->Name = L"label28";
+			this->label28->Size = System::Drawing::Size(52, 13);
+			this->label28->TabIndex = 49;
+			this->label28->Text = L"THETA 1";
 			// 
 			// txtDisplayAngle6
 			// 
-			this->txtDisplayAngle6->Location = System::Drawing::Point(5, 157);
+			this->txtDisplayAngle6->Location = System::Drawing::Point(61, 154);
 			this->txtDisplayAngle6->Name = L"txtDisplayAngle6";
-			this->txtDisplayAngle6->Size = System::Drawing::Size(78, 20);
+			this->txtDisplayAngle6->Size = System::Drawing::Size(34, 20);
 			this->txtDisplayAngle6->TabIndex = 0;
 			// 
 			// txtDisplayAngle5
 			// 
-			this->txtDisplayAngle5->Location = System::Drawing::Point(5, 131);
+			this->txtDisplayAngle5->Location = System::Drawing::Point(61, 128);
 			this->txtDisplayAngle5->Name = L"txtDisplayAngle5";
-			this->txtDisplayAngle5->Size = System::Drawing::Size(78, 20);
+			this->txtDisplayAngle5->Size = System::Drawing::Size(34, 20);
 			this->txtDisplayAngle5->TabIndex = 0;
 			// 
 			// txtDisplayAngle4
 			// 
-			this->txtDisplayAngle4->Location = System::Drawing::Point(5, 105);
+			this->txtDisplayAngle4->Location = System::Drawing::Point(61, 102);
 			this->txtDisplayAngle4->Name = L"txtDisplayAngle4";
-			this->txtDisplayAngle4->Size = System::Drawing::Size(78, 20);
+			this->txtDisplayAngle4->Size = System::Drawing::Size(34, 20);
 			this->txtDisplayAngle4->TabIndex = 0;
 			// 
 			// txtDisplayAngle3
 			// 
-			this->txtDisplayAngle3->Location = System::Drawing::Point(5, 79);
+			this->txtDisplayAngle3->Location = System::Drawing::Point(61, 76);
 			this->txtDisplayAngle3->Name = L"txtDisplayAngle3";
-			this->txtDisplayAngle3->Size = System::Drawing::Size(78, 20);
+			this->txtDisplayAngle3->Size = System::Drawing::Size(34, 20);
 			this->txtDisplayAngle3->TabIndex = 0;
 			// 
 			// txtDisplayAngle2
 			// 
-			this->txtDisplayAngle2->Location = System::Drawing::Point(6, 53);
+			this->txtDisplayAngle2->Location = System::Drawing::Point(62, 50);
 			this->txtDisplayAngle2->Name = L"txtDisplayAngle2";
-			this->txtDisplayAngle2->Size = System::Drawing::Size(78, 20);
+			this->txtDisplayAngle2->Size = System::Drawing::Size(34, 20);
 			this->txtDisplayAngle2->TabIndex = 0;
 			// 
 			// txtDisplayAngle1
 			// 
-			this->txtDisplayAngle1->Location = System::Drawing::Point(6, 27);
+			this->txtDisplayAngle1->Location = System::Drawing::Point(62, 24);
 			this->txtDisplayAngle1->Name = L"txtDisplayAngle1";
-			this->txtDisplayAngle1->Size = System::Drawing::Size(78, 20);
+			this->txtDisplayAngle1->Size = System::Drawing::Size(34, 20);
 			this->txtDisplayAngle1->TabIndex = 0;
 			// 
-			// bSetScale
+			// groupBox3
 			// 
-			this->bSetScale->Location = System::Drawing::Point(106, 160);
-			this->bSetScale->Name = L"bSetScale";
-			this->bSetScale->Size = System::Drawing::Size(93, 25);
-			this->bSetScale->TabIndex = 49;
-			this->bSetScale->Text = L"SET SCALE";
-			this->bSetScale->UseVisualStyleBackColor = true;
+			this->groupBox3->Controls->Add(this->txtAxisMaxUY);
+			this->groupBox3->Controls->Add(this->txtAxisMinDEY);
+			this->groupBox3->Controls->Add(this->label2);
+			this->groupBox3->Controls->Add(this->txtAxisMaxUX);
+			this->groupBox3->Controls->Add(this->label4);
+			this->groupBox3->Controls->Add(this->txtAxisMinDEX);
+			this->groupBox3->Controls->Add(this->label22);
+			this->groupBox3->Controls->Add(this->txtAxisMinUY);
+			this->groupBox3->Controls->Add(this->label23);
+			this->groupBox3->Controls->Add(this->txtAxisMaxEY);
+			this->groupBox3->Controls->Add(this->label25);
+			this->groupBox3->Controls->Add(this->txtAxisMinUX);
+			this->groupBox3->Controls->Add(this->label24);
+			this->groupBox3->Controls->Add(this->txtAxisMaxEX);
+			this->groupBox3->Controls->Add(this->label26);
+			this->groupBox3->Controls->Add(this->txtAxisMAXDEY);
+			this->groupBox3->Controls->Add(this->label27);
+			this->groupBox3->Controls->Add(this->txtAxisMinEY);
+			this->groupBox3->Controls->Add(this->txtAxisMinX);
+			this->groupBox3->Controls->Add(this->txtAxisMaxDEX);
+			this->groupBox3->Controls->Add(this->txtAxisMinY);
+			this->groupBox3->Controls->Add(this->txtAxisMinEX);
+			this->groupBox3->Controls->Add(this->txtAxisMaxX);
+			this->groupBox3->Controls->Add(this->txtAxisMaxY);
+			this->groupBox3->Location = System::Drawing::Point(12, 486);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(219, 232);
+			this->groupBox3->TabIndex = 49;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"GRAPH";
+			this->groupBox3->Enter += gcnew System::EventHandler(this, &MyForm::groupBox3_Enter);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1096, 653);
+			this->ClientSize = System::Drawing::Size(915, 750);
+			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->tabControlGraph);
 			this->Controls->Add(this->tabControlController);
@@ -1774,6 +1867,8 @@ private: System::Windows::Forms::Label^  label22;
 			this->tabPageMOREGRAPH->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -1885,6 +1980,8 @@ private: System::Windows::Forms::Label^  label22;
 		double KpY = 0;
 		double KiY = 0;
 		double KdY = 0;
+		int processTime = 0;
+		int samplingRate = 100;
 		//===============================================
 		//=======CODE START HERE=========================
 
@@ -1894,6 +1991,7 @@ private: System::Windows::Forms::Label^  label22;
 		// get port names
 		array<Object^>^ objectArray = serialPort->GetPortNames();
 		// add string array to combobox
+		cbCOMLIST->Items->Clear();
 		cbCOMLIST->Items->AddRange(objectArray);
 	}
 	
@@ -2299,13 +2397,14 @@ private: System::Windows::Forms::Label^  label22;
 		txtDErrY->Text = velY.ToString();
 		txtANGLE_X->Text = angleX.ToString();
 		txtANGLE_Y->Text = angleY.ToString();
+		txtTimeProcess->Text = processTime.ToString() + " ms";
 		if (bShowCam->Text == "UNSHOW CAM")
 		{
 			camera.showCamera(2);
 		}
 		camera.getFPS_end();
 		//camera.fps_ = 30;
-		txtTimeProcess->Text = ((int)(1000 / camera.fps_)).ToString() + " ms";
+		processTime = ((int)(1000 / camera.fps_));
 	}
 	private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (bSTART->Text == "START CAM")
@@ -2529,16 +2628,14 @@ private: System::Void bIMPORT_SETTING_Click(System::Object^  sender, System::Eve
 		}
 	}
 }
-private: System::Void zedGraphControl4_Load(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void groupBox3_Enter(System::Object^  sender, System::EventArgs^  e) {
 }
-private: System::Void zedGraphControl5_Load(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void tabPage3_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void cbCOMLIST_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void cbCOMLIST_Click(System::Object^  sender, System::EventArgs^  e) {
-	findPorts();
+private: System::Void txtSamplingRate_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (txtSamplingRate->Text != "")
+	{
+		samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
+		timerProcessing->Interval = samplingRate;
+	}
 }
 };
 }
