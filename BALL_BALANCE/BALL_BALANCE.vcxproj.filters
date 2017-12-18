@@ -57,6 +57,9 @@
     <ClCompile Include="eFLL\FuzzySet.cpp">
       <Filter>eFLL</Filter>
     </ClCompile>
+    <ClCompile Include="structure\iofile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="eFLL\FuzzySet.h">
       <Filter>eFLL</Filter>
+    </ClInclude>
+    <ClInclude Include="structure\iofile.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,10 @@
 #include <string>
 #include <iostream>
 #include "eFLL/fuzzy_ball_and_plate.h"
-
+#include "structure/iofile.hpp"
+#include<fstream>
+#define PRINTER(name) #name + " " + name.ToString()
+#define READER(name,value) name = value
 namespace BALL_BALANCE {
 
 	using namespace System;
@@ -15,7 +18,7 @@ namespace BALL_BALANCE {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::Threading;
-
+	using namespace System::Collections::Generic;
 	using namespace ZedGraph;
 	using namespace System::IO;
 
@@ -60,7 +63,7 @@ namespace BALL_BALANCE {
 	private: System::Windows::Forms::TextBox^  txtSEND;
 	private: System::Windows::Forms::Timer^  timerUART_Receive;
 	private: System::Windows::Forms::Button^  bSEND;
-	private: ZedGraph::ZedGraphControl^  zedGraphXY;
+
 
 	private: System::Windows::Forms::Timer^  timerProcessing;
 
@@ -188,15 +191,15 @@ private: System::Windows::Forms::TabControl^  tabControlController;
 
 private: System::Windows::Forms::TabPage^  tabPage1;
 private: System::Windows::Forms::TabPage^  tabPage2;
-private: System::Windows::Forms::TabControl^  tabControlGraph;
-private: System::Windows::Forms::TabPage^  tabPageXYGRAPH;
-private: System::Windows::Forms::TabPage^  tabPageTIMEGRAPH;
 
 
 
-private: ZedGraph::ZedGraphControl^  zedGraphY;
 
-private: ZedGraph::ZedGraphControl^  zedGraphX;
+
+
+
+
+
 
 private: System::Windows::Forms::TabPage^  tabPage5;
 private: System::Windows::Forms::TabPage^  tabPage;
@@ -239,17 +242,17 @@ private: System::Windows::Forms::TextBox^  txtDisplayAngle2;
 
 private: System::Windows::Forms::TextBox^  txtDisplayAngle1;
 private: System::Windows::Forms::Button^  bSetScale;
-private: System::Windows::Forms::TabPage^  tabPageMOREGRAPH;
-private: ZedGraph::ZedGraphControl^  zedGraphDEX;
-
-private: ZedGraph::ZedGraphControl^  zedGraphEX;
-private: ZedGraph::ZedGraphControl^  zedGraphEY;
-private: ZedGraph::ZedGraphControl^  zedGraphUX;
 
 
 
-private: ZedGraph::ZedGraphControl^  zedGraphDEY;
-private: ZedGraph::ZedGraphControl^  zedGraphUY;
+
+
+
+
+
+
+
+
 
 
 private: System::Windows::Forms::TextBox^  txtAxisMaxUY;
@@ -296,6 +299,27 @@ private: System::Windows::Forms::Label^  label29;
 private: System::Windows::Forms::GroupBox^  groupBox3;
 private: System::Windows::Forms::TextBox^  txtSamplingRate;
 private: System::Windows::Forms::Label^  label34;
+private: System::Windows::Forms::TabPage^  tabPageMOREGRAPH;
+private: ZedGraph::ZedGraphControl^  zedGraphMore;
+private: System::Windows::Forms::TabPage^  tabPageTIMEGRAPH;
+private: ZedGraph::ZedGraphControl^  zedGraphY;
+private: ZedGraph::ZedGraphControl^  zedGraphX;
+private: System::Windows::Forms::TabPage^  tabPageXYGRAPH;
+private: ZedGraph::ZedGraphControl^  zedGraphXY;
+private: System::Windows::Forms::TabControl^  tabControlGraph;
+private: System::Windows::Forms::Button^  txtImportTrajectory;
+private: System::Windows::Forms::Button^  bSTART_TRACK;
+
+private: System::Windows::Forms::Button^  txtExportTrajectory;
+private: System::Windows::Forms::Timer^  timerTracking;
+private: System::Windows::Forms::TextBox^  txtSpeedChangePoint;
+private: System::Windows::Forms::TextBox^  txtNumOfPoint;
+private: System::Windows::Forms::TextBox^  txtCurrentPointInPlan;
+private: System::Windows::Forms::Timer^  timerCamera;
+private: System::Windows::Forms::Timer^  timerDisplay;
+
+
+
 
 
 
@@ -338,7 +362,6 @@ private: System::Windows::Forms::Label^  label34;
 			this->txtSEND = (gcnew System::Windows::Forms::TextBox());
 			this->timerUART_Receive = (gcnew System::Windows::Forms::Timer(this->components));
 			this->bSEND = (gcnew System::Windows::Forms::Button());
-			this->zedGraphXY = (gcnew ZedGraph::ZedGraphControl());
 			this->timerProcessing = (gcnew System::Windows::Forms::Timer(this->components));
 			this->txtSetpointX = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -442,18 +465,12 @@ private: System::Windows::Forms::Label^  label34;
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage6 = (gcnew System::Windows::Forms::TabPage());
-			this->tabControlGraph = (gcnew System::Windows::Forms::TabControl());
-			this->tabPageXYGRAPH = (gcnew System::Windows::Forms::TabPage());
-			this->tabPageTIMEGRAPH = (gcnew System::Windows::Forms::TabPage());
-			this->zedGraphY = (gcnew ZedGraph::ZedGraphControl());
-			this->zedGraphX = (gcnew ZedGraph::ZedGraphControl());
-			this->tabPageMOREGRAPH = (gcnew System::Windows::Forms::TabPage());
-			this->zedGraphUY = (gcnew ZedGraph::ZedGraphControl());
-			this->zedGraphDEY = (gcnew ZedGraph::ZedGraphControl());
-			this->zedGraphEY = (gcnew ZedGraph::ZedGraphControl());
-			this->zedGraphUX = (gcnew ZedGraph::ZedGraphControl());
-			this->zedGraphDEX = (gcnew ZedGraph::ZedGraphControl());
-			this->zedGraphEX = (gcnew ZedGraph::ZedGraphControl());
+			this->txtCurrentPointInPlan = (gcnew System::Windows::Forms::TextBox());
+			this->txtSpeedChangePoint = (gcnew System::Windows::Forms::TextBox());
+			this->txtNumOfPoint = (gcnew System::Windows::Forms::TextBox());
+			this->bSTART_TRACK = (gcnew System::Windows::Forms::Button());
+			this->txtExportTrajectory = (gcnew System::Windows::Forms::Button());
+			this->txtImportTrajectory = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label30 = (gcnew System::Windows::Forms::Label());
 			this->label33 = (gcnew System::Windows::Forms::Label());
@@ -468,6 +485,17 @@ private: System::Windows::Forms::Label^  label34;
 			this->txtDisplayAngle2 = (gcnew System::Windows::Forms::TextBox());
 			this->txtDisplayAngle1 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->tabPageMOREGRAPH = (gcnew System::Windows::Forms::TabPage());
+			this->zedGraphMore = (gcnew ZedGraph::ZedGraphControl());
+			this->tabPageTIMEGRAPH = (gcnew System::Windows::Forms::TabPage());
+			this->zedGraphY = (gcnew ZedGraph::ZedGraphControl());
+			this->zedGraphX = (gcnew ZedGraph::ZedGraphControl());
+			this->tabPageXYGRAPH = (gcnew System::Windows::Forms::TabPage());
+			this->zedGraphXY = (gcnew ZedGraph::ZedGraphControl());
+			this->tabControlGraph = (gcnew System::Windows::Forms::TabControl());
+			this->timerTracking = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timerCamera = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timerDisplay = (gcnew System::Windows::Forms::Timer(this->components));
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
@@ -483,12 +511,12 @@ private: System::Windows::Forms::Label^  label34;
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
 			this->tabPage6->SuspendLayout();
-			this->tabControlGraph->SuspendLayout();
-			this->tabPageXYGRAPH->SuspendLayout();
-			this->tabPageTIMEGRAPH->SuspendLayout();
-			this->tabPageMOREGRAPH->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
+			this->tabPageMOREGRAPH->SuspendLayout();
+			this->tabPageTIMEGRAPH->SuspendLayout();
+			this->tabPageXYGRAPH->SuspendLayout();
+			this->tabControlGraph->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// cbCOMLIST
@@ -498,6 +526,8 @@ private: System::Windows::Forms::Label^  label34;
 			this->cbCOMLIST->Name = L"cbCOMLIST";
 			this->cbCOMLIST->Size = System::Drawing::Size(92, 21);
 			this->cbCOMLIST->TabIndex = 0;
+			this->cbCOMLIST->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::cbCOMLIST_SelectedIndexChanged);
+			this->cbCOMLIST->Click += gcnew System::EventHandler(this, &MyForm::cbCOMLIST_Click);
 			// 
 			// txtRECEIVE
 			// 
@@ -547,20 +577,6 @@ private: System::Windows::Forms::Label^  label34;
 			this->bSEND->UseVisualStyleBackColor = true;
 			this->bSEND->Click += gcnew System::EventHandler(this, &MyForm::bSEND_Click);
 			// 
-			// zedGraphXY
-			// 
-			this->zedGraphXY->Location = System::Drawing::Point(6, 6);
-			this->zedGraphXY->Name = L"zedGraphXY";
-			this->zedGraphXY->ScrollGrace = 0;
-			this->zedGraphXY->ScrollMaxX = 0;
-			this->zedGraphXY->ScrollMaxY = 0;
-			this->zedGraphXY->ScrollMaxY2 = 0;
-			this->zedGraphXY->ScrollMinX = 0;
-			this->zedGraphXY->ScrollMinY = 0;
-			this->zedGraphXY->ScrollMinY2 = 0;
-			this->zedGraphXY->Size = System::Drawing::Size(536, 501);
-			this->zedGraphXY->TabIndex = 5;
-			// 
 			// timerProcessing
 			// 
 			this->timerProcessing->Tick += gcnew System::EventHandler(this, &MyForm::etimerProcessing);
@@ -580,7 +596,6 @@ private: System::Windows::Forms::Label^  label34;
 			this->label1->Size = System::Drawing::Size(90, 13);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"SET POINT X - Y";
-
 			// 
 			// txtSetpointY
 			// 
@@ -1114,9 +1129,9 @@ private: System::Windows::Forms::Label^  label34;
 			// 
 			// bSETBALL
 			// 
-			this->bSETBALL->Location = System::Drawing::Point(11, 8);
+			this->bSETBALL->Location = System::Drawing::Point(11, 5);
 			this->bSETBALL->Name = L"bSETBALL";
-			this->bSETBALL->Size = System::Drawing::Size(93, 24);
+			this->bSETBALL->Size = System::Drawing::Size(93, 27);
 			this->bSETBALL->TabIndex = 22;
 			this->bSETBALL->Text = L"SET BALL";
 			this->bSETBALL->UseVisualStyleBackColor = true;
@@ -1170,6 +1185,7 @@ private: System::Windows::Forms::Label^  label34;
 			this->bGetBall->TabIndex = 37;
 			this->bGetBall->Text = L"GET BALL";
 			this->bGetBall->UseVisualStyleBackColor = true;
+			this->bGetBall->Visible = false;
 			this->bGetBall->Click += gcnew System::EventHandler(this, &MyForm::bGetBall_Click);
 			// 
 			// bShowCam
@@ -1505,6 +1521,12 @@ private: System::Windows::Forms::Label^  label34;
 			// 
 			// tabPage6
 			// 
+			this->tabPage6->Controls->Add(this->txtCurrentPointInPlan);
+			this->tabPage6->Controls->Add(this->txtSpeedChangePoint);
+			this->tabPage6->Controls->Add(this->txtNumOfPoint);
+			this->tabPage6->Controls->Add(this->bSTART_TRACK);
+			this->tabPage6->Controls->Add(this->txtExportTrajectory);
+			this->tabPage6->Controls->Add(this->txtImportTrajectory);
 			this->tabPage6->Controls->Add(this->bSETBALL);
 			this->tabPage6->Controls->Add(this->bGetBall);
 			this->tabPage6->Location = System::Drawing::Point(4, 22);
@@ -1515,167 +1537,55 @@ private: System::Windows::Forms::Label^  label34;
 			this->tabPage6->Text = L"TRACKING";
 			this->tabPage6->UseVisualStyleBackColor = true;
 			// 
-			// tabControlGraph
+			// txtCurrentPointInPlan
 			// 
-			this->tabControlGraph->Controls->Add(this->tabPageXYGRAPH);
-			this->tabControlGraph->Controls->Add(this->tabPageTIMEGRAPH);
-			this->tabControlGraph->Controls->Add(this->tabPageMOREGRAPH);
-			this->tabControlGraph->Location = System::Drawing::Point(342, 12);
-			this->tabControlGraph->Name = L"tabControlGraph";
-			this->tabControlGraph->SelectedIndex = 0;
-			this->tabControlGraph->Size = System::Drawing::Size(561, 629);
-			this->tabControlGraph->TabIndex = 46;
+			this->txtCurrentPointInPlan->Location = System::Drawing::Point(11, 122);
+			this->txtCurrentPointInPlan->Name = L"txtCurrentPointInPlan";
+			this->txtCurrentPointInPlan->Size = System::Drawing::Size(100, 20);
+			this->txtCurrentPointInPlan->TabIndex = 41;
 			// 
-			// tabPageXYGRAPH
+			// txtSpeedChangePoint
 			// 
-			this->tabPageXYGRAPH->Controls->Add(this->zedGraphXY);
-			this->tabPageXYGRAPH->Location = System::Drawing::Point(4, 22);
-			this->tabPageXYGRAPH->Name = L"tabPageXYGRAPH";
-			this->tabPageXYGRAPH->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageXYGRAPH->Size = System::Drawing::Size(553, 603);
-			this->tabPageXYGRAPH->TabIndex = 0;
-			this->tabPageXYGRAPH->Text = L"XY GRAPH";
-			this->tabPageXYGRAPH->UseVisualStyleBackColor = true;
+			this->txtSpeedChangePoint->Location = System::Drawing::Point(11, 96);
+			this->txtSpeedChangePoint->Name = L"txtSpeedChangePoint";
+			this->txtSpeedChangePoint->Size = System::Drawing::Size(100, 20);
+			this->txtSpeedChangePoint->TabIndex = 41;
 			// 
-			// tabPageTIMEGRAPH
+			// txtNumOfPoint
 			// 
-			this->tabPageTIMEGRAPH->Controls->Add(this->zedGraphY);
-			this->tabPageTIMEGRAPH->Controls->Add(this->zedGraphX);
-			this->tabPageTIMEGRAPH->Location = System::Drawing::Point(4, 22);
-			this->tabPageTIMEGRAPH->Name = L"tabPageTIMEGRAPH";
-			this->tabPageTIMEGRAPH->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageTIMEGRAPH->Size = System::Drawing::Size(553, 603);
-			this->tabPageTIMEGRAPH->TabIndex = 1;
-			this->tabPageTIMEGRAPH->Text = L"TIME GRAPH";
-			this->tabPageTIMEGRAPH->UseVisualStyleBackColor = true;
+			this->txtNumOfPoint->Location = System::Drawing::Point(11, 70);
+			this->txtNumOfPoint->Name = L"txtNumOfPoint";
+			this->txtNumOfPoint->Size = System::Drawing::Size(100, 20);
+			this->txtNumOfPoint->TabIndex = 41;
 			// 
-			// zedGraphY
+			// bSTART_TRACK
 			// 
-			this->zedGraphY->Location = System::Drawing::Point(6, 257);
-			this->zedGraphY->Name = L"zedGraphY";
-			this->zedGraphY->ScrollGrace = 0;
-			this->zedGraphY->ScrollMaxX = 0;
-			this->zedGraphY->ScrollMaxY = 0;
-			this->zedGraphY->ScrollMaxY2 = 0;
-			this->zedGraphY->ScrollMinX = 0;
-			this->zedGraphY->ScrollMinY = 0;
-			this->zedGraphY->ScrollMinY2 = 0;
-			this->zedGraphY->Size = System::Drawing::Size(522, 250);
-			this->zedGraphY->TabIndex = 1;
+			this->bSTART_TRACK->Location = System::Drawing::Point(208, 5);
+			this->bSTART_TRACK->Name = L"bSTART_TRACK";
+			this->bSTART_TRACK->Size = System::Drawing::Size(102, 27);
+			this->bSTART_TRACK->TabIndex = 40;
+			this->bSTART_TRACK->Text = L"START TRACK";
+			this->bSTART_TRACK->UseVisualStyleBackColor = true;
+			this->bSTART_TRACK->Click += gcnew System::EventHandler(this, &MyForm::bSTART_TRACKING_Click);
 			// 
-			// zedGraphX
+			// txtExportTrajectory
 			// 
-			this->zedGraphX->Location = System::Drawing::Point(6, 3);
-			this->zedGraphX->Name = L"zedGraphX";
-			this->zedGraphX->ScrollGrace = 0;
-			this->zedGraphX->ScrollMaxX = 0;
-			this->zedGraphX->ScrollMaxY = 0;
-			this->zedGraphX->ScrollMaxY2 = 0;
-			this->zedGraphX->ScrollMinX = 0;
-			this->zedGraphX->ScrollMinY = 0;
-			this->zedGraphX->ScrollMinY2 = 0;
-			this->zedGraphX->Size = System::Drawing::Size(522, 248);
-			this->zedGraphX->TabIndex = 0;
+			this->txtExportTrajectory->Location = System::Drawing::Point(110, 37);
+			this->txtExportTrajectory->Name = L"txtExportTrajectory";
+			this->txtExportTrajectory->Size = System::Drawing::Size(92, 27);
+			this->txtExportTrajectory->TabIndex = 39;
+			this->txtExportTrajectory->Text = L"EXPORT";
+			this->txtExportTrajectory->UseVisualStyleBackColor = true;
 			// 
-			// tabPageMOREGRAPH
+			// txtImportTrajectory
 			// 
-			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphUY);
-			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphDEY);
-			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphEY);
-			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphUX);
-			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphDEX);
-			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphEX);
-			this->tabPageMOREGRAPH->Location = System::Drawing::Point(4, 22);
-			this->tabPageMOREGRAPH->Name = L"tabPageMOREGRAPH";
-			this->tabPageMOREGRAPH->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageMOREGRAPH->Size = System::Drawing::Size(553, 603);
-			this->tabPageMOREGRAPH->TabIndex = 2;
-			this->tabPageMOREGRAPH->Text = L"MORE GRAPH";
-			this->tabPageMOREGRAPH->UseVisualStyleBackColor = true;
-			// 
-			// zedGraphUY
-			// 
-			this->zedGraphUY->Location = System::Drawing::Point(287, 388);
-			this->zedGraphUY->Name = L"zedGraphUY";
-			this->zedGraphUY->ScrollGrace = 0;
-			this->zedGraphUY->ScrollMaxX = 0;
-			this->zedGraphUY->ScrollMaxY = 0;
-			this->zedGraphUY->ScrollMaxY2 = 0;
-			this->zedGraphUY->ScrollMinX = 0;
-			this->zedGraphUY->ScrollMinY = 0;
-			this->zedGraphUY->ScrollMinY2 = 0;
-			this->zedGraphUY->Size = System::Drawing::Size(260, 202);
-			this->zedGraphUY->TabIndex = 5;
-			// 
-			// zedGraphDEY
-			// 
-			this->zedGraphDEY->Location = System::Drawing::Point(287, 189);
-			this->zedGraphDEY->Name = L"zedGraphDEY";
-			this->zedGraphDEY->ScrollGrace = 0;
-			this->zedGraphDEY->ScrollMaxX = 0;
-			this->zedGraphDEY->ScrollMaxY = 0;
-			this->zedGraphDEY->ScrollMaxY2 = 0;
-			this->zedGraphDEY->ScrollMinX = 0;
-			this->zedGraphDEY->ScrollMinY = 0;
-			this->zedGraphDEY->ScrollMinY2 = 0;
-			this->zedGraphDEY->Size = System::Drawing::Size(260, 193);
-			this->zedGraphDEY->TabIndex = 4;
-			// 
-			// zedGraphEY
-			// 
-			this->zedGraphEY->Location = System::Drawing::Point(287, 6);
-			this->zedGraphEY->Name = L"zedGraphEY";
-			this->zedGraphEY->ScrollGrace = 0;
-			this->zedGraphEY->ScrollMaxX = 0;
-			this->zedGraphEY->ScrollMaxY = 0;
-			this->zedGraphEY->ScrollMaxY2 = 0;
-			this->zedGraphEY->ScrollMinX = 0;
-			this->zedGraphEY->ScrollMinY = 0;
-			this->zedGraphEY->ScrollMinY2 = 0;
-			this->zedGraphEY->Size = System::Drawing::Size(260, 178);
-			this->zedGraphEY->TabIndex = 3;
-			// 
-			// zedGraphUX
-			// 
-			this->zedGraphUX->Location = System::Drawing::Point(6, 388);
-			this->zedGraphUX->Name = L"zedGraphUX";
-			this->zedGraphUX->ScrollGrace = 0;
-			this->zedGraphUX->ScrollMaxX = 0;
-			this->zedGraphUX->ScrollMaxY = 0;
-			this->zedGraphUX->ScrollMaxY2 = 0;
-			this->zedGraphUX->ScrollMinX = 0;
-			this->zedGraphUX->ScrollMinY = 0;
-			this->zedGraphUX->ScrollMinY2 = 0;
-			this->zedGraphUX->Size = System::Drawing::Size(275, 202);
-			this->zedGraphUX->TabIndex = 2;
-			// 
-			// zedGraphDEX
-			// 
-			this->zedGraphDEX->Location = System::Drawing::Point(6, 190);
-			this->zedGraphDEX->Name = L"zedGraphDEX";
-			this->zedGraphDEX->ScrollGrace = 0;
-			this->zedGraphDEX->ScrollMaxX = 0;
-			this->zedGraphDEX->ScrollMaxY = 0;
-			this->zedGraphDEX->ScrollMaxY2 = 0;
-			this->zedGraphDEX->ScrollMinX = 0;
-			this->zedGraphDEX->ScrollMinY = 0;
-			this->zedGraphDEX->ScrollMinY2 = 0;
-			this->zedGraphDEX->Size = System::Drawing::Size(275, 192);
-			this->zedGraphDEX->TabIndex = 1;
-			// 
-			// zedGraphEX
-			// 
-			this->zedGraphEX->Location = System::Drawing::Point(6, 6);
-			this->zedGraphEX->Name = L"zedGraphEX";
-			this->zedGraphEX->ScrollGrace = 0;
-			this->zedGraphEX->ScrollMaxX = 0;
-			this->zedGraphEX->ScrollMaxY = 0;
-			this->zedGraphEX->ScrollMaxY2 = 0;
-			this->zedGraphEX->ScrollMinX = 0;
-			this->zedGraphEX->ScrollMinY = 0;
-			this->zedGraphEX->ScrollMinY2 = 0;
-			this->zedGraphEX->Size = System::Drawing::Size(275, 178);
-			this->zedGraphEX->TabIndex = 0;
+			this->txtImportTrajectory->Location = System::Drawing::Point(110, 5);
+			this->txtImportTrajectory->Name = L"txtImportTrajectory";
+			this->txtImportTrajectory->Size = System::Drawing::Size(92, 27);
+			this->txtImportTrajectory->TabIndex = 38;
+			this->txtImportTrajectory->Text = L"IMPORT";
+			this->txtImportTrajectory->UseVisualStyleBackColor = true;
+			this->txtImportTrajectory->Click += gcnew System::EventHandler(this, &MyForm::txtImportTrajectory_Click);
 			// 
 			// groupBox2
 			// 
@@ -1828,11 +1738,126 @@ private: System::Windows::Forms::Label^  label34;
 			this->groupBox3->Text = L"GRAPH";
 			this->groupBox3->Enter += gcnew System::EventHandler(this, &MyForm::groupBox3_Enter);
 			// 
+			// tabPageMOREGRAPH
+			// 
+			this->tabPageMOREGRAPH->Controls->Add(this->zedGraphMore);
+			this->tabPageMOREGRAPH->Location = System::Drawing::Point(4, 22);
+			this->tabPageMOREGRAPH->Name = L"tabPageMOREGRAPH";
+			this->tabPageMOREGRAPH->Padding = System::Windows::Forms::Padding(3);
+			this->tabPageMOREGRAPH->Size = System::Drawing::Size(553, 560);
+			this->tabPageMOREGRAPH->TabIndex = 2;
+			this->tabPageMOREGRAPH->Text = L"MORE GRAPH";
+			this->tabPageMOREGRAPH->UseVisualStyleBackColor = true;
+			// 
+			// zedGraphMore
+			// 
+			this->zedGraphMore->Location = System::Drawing::Point(6, 6);
+			this->zedGraphMore->Name = L"zedGraphMore";
+			this->zedGraphMore->ScrollGrace = 0;
+			this->zedGraphMore->ScrollMaxX = 0;
+			this->zedGraphMore->ScrollMaxY = 0;
+			this->zedGraphMore->ScrollMaxY2 = 0;
+			this->zedGraphMore->ScrollMinX = 0;
+			this->zedGraphMore->ScrollMinY = 0;
+			this->zedGraphMore->ScrollMinY2 = 0;
+			this->zedGraphMore->Size = System::Drawing::Size(541, 532);
+			this->zedGraphMore->TabIndex = 0;
+			this->zedGraphMore->Load += gcnew System::EventHandler(this, &MyForm::zedGraphEX_Load);
+			// 
+			// tabPageTIMEGRAPH
+			// 
+			this->tabPageTIMEGRAPH->Controls->Add(this->zedGraphY);
+			this->tabPageTIMEGRAPH->Controls->Add(this->zedGraphX);
+			this->tabPageTIMEGRAPH->Location = System::Drawing::Point(4, 22);
+			this->tabPageTIMEGRAPH->Name = L"tabPageTIMEGRAPH";
+			this->tabPageTIMEGRAPH->Padding = System::Windows::Forms::Padding(3);
+			this->tabPageTIMEGRAPH->Size = System::Drawing::Size(553, 560);
+			this->tabPageTIMEGRAPH->TabIndex = 1;
+			this->tabPageTIMEGRAPH->Text = L"TIME GRAPH";
+			this->tabPageTIMEGRAPH->UseVisualStyleBackColor = true;
+			// 
+			// zedGraphY
+			// 
+			this->zedGraphY->Location = System::Drawing::Point(6, 257);
+			this->zedGraphY->Name = L"zedGraphY";
+			this->zedGraphY->ScrollGrace = 0;
+			this->zedGraphY->ScrollMaxX = 0;
+			this->zedGraphY->ScrollMaxY = 0;
+			this->zedGraphY->ScrollMaxY2 = 0;
+			this->zedGraphY->ScrollMinX = 0;
+			this->zedGraphY->ScrollMinY = 0;
+			this->zedGraphY->ScrollMinY2 = 0;
+			this->zedGraphY->Size = System::Drawing::Size(522, 250);
+			this->zedGraphY->TabIndex = 1;
+			// 
+			// zedGraphX
+			// 
+			this->zedGraphX->Location = System::Drawing::Point(6, 3);
+			this->zedGraphX->Name = L"zedGraphX";
+			this->zedGraphX->ScrollGrace = 0;
+			this->zedGraphX->ScrollMaxX = 0;
+			this->zedGraphX->ScrollMaxY = 0;
+			this->zedGraphX->ScrollMaxY2 = 0;
+			this->zedGraphX->ScrollMinX = 0;
+			this->zedGraphX->ScrollMinY = 0;
+			this->zedGraphX->ScrollMinY2 = 0;
+			this->zedGraphX->Size = System::Drawing::Size(522, 248);
+			this->zedGraphX->TabIndex = 0;
+			// 
+			// tabPageXYGRAPH
+			// 
+			this->tabPageXYGRAPH->Controls->Add(this->zedGraphXY);
+			this->tabPageXYGRAPH->Location = System::Drawing::Point(4, 22);
+			this->tabPageXYGRAPH->Name = L"tabPageXYGRAPH";
+			this->tabPageXYGRAPH->Padding = System::Windows::Forms::Padding(3);
+			this->tabPageXYGRAPH->Size = System::Drawing::Size(553, 560);
+			this->tabPageXYGRAPH->TabIndex = 0;
+			this->tabPageXYGRAPH->Text = L"XY GRAPH";
+			this->tabPageXYGRAPH->UseVisualStyleBackColor = true;
+			// 
+			// zedGraphXY
+			// 
+			this->zedGraphXY->Location = System::Drawing::Point(6, 6);
+			this->zedGraphXY->Name = L"zedGraphXY";
+			this->zedGraphXY->ScrollGrace = 0;
+			this->zedGraphXY->ScrollMaxX = 0;
+			this->zedGraphXY->ScrollMaxY = 0;
+			this->zedGraphXY->ScrollMaxY2 = 0;
+			this->zedGraphXY->ScrollMinX = 0;
+			this->zedGraphXY->ScrollMinY = 0;
+			this->zedGraphXY->ScrollMinY2 = 0;
+			this->zedGraphXY->Size = System::Drawing::Size(536, 501);
+			this->zedGraphXY->TabIndex = 5;
+			// 
+			// tabControlGraph
+			// 
+			this->tabControlGraph->Controls->Add(this->tabPageXYGRAPH);
+			this->tabControlGraph->Controls->Add(this->tabPageTIMEGRAPH);
+			this->tabControlGraph->Controls->Add(this->tabPageMOREGRAPH);
+			this->tabControlGraph->Location = System::Drawing::Point(342, 17);
+			this->tabControlGraph->Name = L"tabControlGraph";
+			this->tabControlGraph->SelectedIndex = 0;
+			this->tabControlGraph->Size = System::Drawing::Size(561, 586);
+			this->tabControlGraph->TabIndex = 46;
+			// 
+			// timerTracking
+			// 
+			this->timerTracking->Interval = 1000;
+			this->timerTracking->Tick += gcnew System::EventHandler(this, &MyForm::timerTracking_Tick);
+			// 
+			// timerCamera
+			// 
+			this->timerCamera->Tick += gcnew System::EventHandler(this, &MyForm::timerCamera_Tick);
+			// 
+			// timerDisplay
+			// 
+			this->timerDisplay->Tick += gcnew System::EventHandler(this, &MyForm::timerDisplay_Tick);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(915, 750);
+			this->ClientSize = System::Drawing::Size(946, 679);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->tabControlGraph);
@@ -1861,14 +1886,15 @@ private: System::Windows::Forms::Label^  label34;
 			this->tabPage2->ResumeLayout(false);
 			this->tabPage2->PerformLayout();
 			this->tabPage6->ResumeLayout(false);
-			this->tabControlGraph->ResumeLayout(false);
-			this->tabPageXYGRAPH->ResumeLayout(false);
-			this->tabPageTIMEGRAPH->ResumeLayout(false);
-			this->tabPageMOREGRAPH->ResumeLayout(false);
+			this->tabPage6->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
+			this->tabPageMOREGRAPH->ResumeLayout(false);
+			this->tabPageTIMEGRAPH->ResumeLayout(false);
+			this->tabPageXYGRAPH->ResumeLayout(false);
+			this->tabControlGraph->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -1876,6 +1902,12 @@ private: System::Windows::Forms::Label^  label34;
 
 		//===============================================
 		//=====DEFINE====================================
+
+		// First, clear out any old GraphPane's from the MasterPane collection
+		MasterPane^ masterMore = gcnew MasterPane();
+
+		// Add all the GraphPanes to the MasterPane
+
 		GraphPane^ myPaneXY = gcnew GraphPane();
 		GraphPane^ myPaneX = gcnew GraphPane();
 		GraphPane^ myPaneY = gcnew GraphPane();
@@ -1899,12 +1931,6 @@ private: System::Windows::Forms::Label^  label34;
 		PointPairList^ PosXSetpointList = gcnew PointPairList();
 		PointPairList^ PosYSetpointList = gcnew PointPairList();
 		PointPairList^ PosXYSetpointList = gcnew PointPairList();
-		PointPairList^ PosEXSetpointList = gcnew PointPairList();
-		PointPairList^ PosEYSetpointList = gcnew PointPairList();
-		PointPairList^ PosDEXSetpointList = gcnew PointPairList();
-		PointPairList^ PosDEYSetpointList = gcnew PointPairList();
-		PointPairList^ PosUXSetpointList = gcnew PointPairList();
-		PointPairList^ PosUYSetpointList = gcnew PointPairList();
 
 		LineItem^ PosXCurve;
 		LineItem^ PosYCurve;
@@ -1919,12 +1945,6 @@ private: System::Windows::Forms::Label^  label34;
 		LineItem^ PosXSetpointCurve;
 		LineItem^ PosYSetpointCurve;
 		LineItem^ PosXYSetpointCurve;
-		LineItem^ PosEXSetpointCurve;
-		LineItem^ PosEYSetpointCurve;
-		LineItem^ PosDEXSetpointCurve;
-		LineItem^ PosDEYSetpointCurve;
-		LineItem^ PosUXSetpointCurve;
-		LineItem^ PosUYSetpointCurve;
 
 		ZedGraph::Scale^ xScaleXY;
 		ZedGraph::Scale^ yScaleXY;
@@ -1982,6 +2002,14 @@ private: System::Windows::Forms::Label^  label34;
 		double KdY = 0;
 		int processTime = 0;
 		int samplingRate = 100;
+		int maxTimeCount = 1000;
+		//string data_in_file[2] = { "aaasdaa","aaa" };
+		//List<String^>^ dinosaurs = gcnew List<String^>();
+		int numOfPoint = 0;
+		int speedChangePoint = 1000;
+		List<int>^ trajectoryData1 = gcnew List<int>();
+		List<int>^ trajectoryData2 = gcnew List<int>();
+
 		//===============================================
 		//=======CODE START HERE=========================
 
@@ -2004,12 +2032,24 @@ private: System::Windows::Forms::Label^  label34;
 		myPaneXY = zedGraphXY->GraphPane;
 		myPaneX = zedGraphX->GraphPane;
 		myPaneY = zedGraphY->GraphPane;
-		myPaneEX = zedGraphEX->GraphPane;
-		myPaneEY = zedGraphEY->GraphPane;
-		myPaneDEX = zedGraphDEX->GraphPane;
-		myPaneDEY = zedGraphDEY->GraphPane;
-		myPaneUX = zedGraphUX->GraphPane;
-		myPaneUY = zedGraphUY->GraphPane;
+		masterMore = zedGraphMore->MasterPane;
+		masterMore->PaneList->Clear();
+
+		// Display the MasterPane Title, and set the outer margin to 10 points
+		//masterMore->Title->IsVisible = true;
+		//masterMore->Title->Text = "My MasterPane Title";
+		//masterMore->Margin->All = 50;
+		masterMore->Add(myPaneEX);
+		masterMore->Add(myPaneEY);
+		masterMore->Add(myPaneDEX);
+		masterMore->Add(myPaneDEY);
+		masterMore->Add(myPaneUX);
+		masterMore->Add(myPaneUY);
+
+		// Refigure the axis ranges for the GraphPanes
+		zedGraphMore->AxisChange();
+		Graphics^ g = this->CreateGraphics();
+		masterMore->SetLayout(g, PaneLayout::SquareRowPreferred);
 		//==================================================
 		xScaleXY = zedGraphXY->GraphPane->XAxis->Scale;
 		yScaleXY = zedGraphXY->GraphPane->YAxis->Scale;
@@ -2020,61 +2060,83 @@ private: System::Windows::Forms::Label^  label34;
 		xScaleY = zedGraphY->GraphPane->XAxis->Scale;
 		yScaleY = zedGraphY->GraphPane->YAxis->Scale;
 
-		xScaleEX = zedGraphEX->GraphPane->XAxis->Scale;
-		yScaleEX = zedGraphEX->GraphPane->YAxis->Scale;
-
-		xScaleEY = zedGraphEY->GraphPane->XAxis->Scale;
-		yScaleEY = zedGraphEY->GraphPane->YAxis->Scale;
-
-		xScaleDEX = zedGraphDEX->GraphPane->XAxis->Scale;
-		yScaleDEX = zedGraphDEX->GraphPane->YAxis->Scale;
-
-		xScaleDEY = zedGraphDEY->GraphPane->XAxis->Scale;
-		yScaleDEY = zedGraphDEY->GraphPane->YAxis->Scale;
-
-		xScaleUX = zedGraphUX->GraphPane->XAxis->Scale;
-		yScaleUX = zedGraphUX->GraphPane->YAxis->Scale;
-
-		xScaleUY = zedGraphUY->GraphPane->XAxis->Scale;
-		yScaleUY = zedGraphUY->GraphPane->YAxis->Scale;
-
 		//==================================================
 		//myPaneXY->Title->Text = "X-Y GRAPH";
 		myPaneXY->Title->IsVisible = false;
 		myPaneXY->XAxis->Title->Text = "X";
 		myPaneXY->YAxis->Title->Text = "Y";
+		myPaneXY->XAxis->Title->FontSpec->Size = 25;
+		myPaneXY->YAxis->Title->FontSpec->Size = 25;
+		myPaneXY->XAxis->Scale->FontSpec->Size = 25;
+		myPaneXY->YAxis->Scale->FontSpec->Size = 25;
 
 		myPaneX->Title->IsVisible = false;
 		myPaneX->XAxis->Title->Text = "Time";
 		myPaneX->YAxis->Title->Text = "X";
+		myPaneX->XAxis->Title->FontSpec->Size = 25;
+		myPaneX->YAxis->Title->FontSpec->Size = 25;
+		myPaneX->XAxis->Scale->FontSpec->Size = 25;
+		myPaneX->YAxis->Scale->FontSpec->Size = 25;
 
 		myPaneY->Title->IsVisible = false;
 		myPaneY->XAxis->Title->Text = "Time";
 		myPaneY->YAxis->Title->Text = "Y";
+		myPaneY->XAxis->Title->FontSpec->Size = 25;
+		myPaneY->YAxis->Title->FontSpec->Size = 25;
+		myPaneY->XAxis->Scale->FontSpec->Size = 25;
+		myPaneY->YAxis->Scale->FontSpec->Size = 25;
 
 		myPaneEX->Title->IsVisible = false;
 		myPaneEX->XAxis->Title->Text = "Time";
 		myPaneEX->YAxis->Title->Text = "EX";
+		myPaneEX->XAxis->Title->FontSpec->Size = 25;
+		myPaneEX->YAxis->Title->FontSpec->Size = 25;
+		myPaneEX->XAxis->Scale->FontSpec->Size = 25;
+		myPaneEX->YAxis->Scale->FontSpec->Size = 25;
 
 		myPaneEY->Title->IsVisible = false;
 		myPaneEY->XAxis->Title->Text = "Time";
 		myPaneEY->YAxis->Title->Text = "EY";
+		myPaneEY->XAxis->Title->FontSpec->Size = 25;
+		myPaneEY->YAxis->Title->FontSpec->Size = 25;
+		myPaneEY->XAxis->Scale->FontSpec->Size = 25;
+		myPaneEY->YAxis->Scale->FontSpec->Size = 25;
 
 		myPaneDEX->Title->IsVisible = false;
 		myPaneDEX->XAxis->Title->Text = "Time";
 		myPaneDEX->YAxis->Title->Text = "DEX";
+		myPaneDEX->XAxis->Title->FontSpec->Size = 25;
+		myPaneDEX->YAxis->Title->FontSpec->Size = 25;
+		myPaneDEX->XAxis->Scale->FontSpec->Size = 25;
+		myPaneDEX->YAxis->Scale->FontSpec->Size = 25;
 
 		myPaneDEY->Title->IsVisible = false;
 		myPaneDEY->XAxis->Title->Text = "Time";
 		myPaneDEY->YAxis->Title->Text = "DEY";
+		myPaneDEY->XAxis->Title->FontSpec->Size = 25;
+		myPaneDEY->YAxis->Title->FontSpec->Size = 25;
+		myPaneDEY->XAxis->Scale->FontSpec->Size = 25;
+		myPaneDEY->YAxis->Scale->FontSpec->Size = 25;
 
 		myPaneUX->Title->IsVisible = false;
 		myPaneUX->XAxis->Title->Text = "Time";
 		myPaneUX->YAxis->Title->Text = "UX";
+		myPaneUX->XAxis->Title->FontSpec->Size = 25;
+		myPaneUX->YAxis->Title->FontSpec->Size = 25;
+		myPaneUX->XAxis->Scale->FontSpec->Size = 25;
+		myPaneUX->YAxis->Scale->FontSpec->Size = 25;
 
 		myPaneUY->Title->IsVisible = false;
 		myPaneUY->XAxis->Title->Text = "Time";
 		myPaneUY->YAxis->Title->Text = "UY";
+		myPaneUY->XAxis->Title->FontSpec->Size = 25;
+		myPaneUY->YAxis->Title->FontSpec->Size = 25;
+		myPaneUY->YAxis->Scale->Max = 10;
+		myPaneUY->YAxis->Scale->Min = -10;
+		myPaneUY->XAxis->Scale->Max = maxTimeCount;
+		myPaneUY->XAxis->Scale->Min = 0;
+		myPaneUY->XAxis->Scale->FontSpec->Size = 25;
+		myPaneUY->YAxis->Scale->FontSpec->Size = 25;
 		//==================================================
 
 		xScaleXY->Max = 400;
@@ -2092,36 +2154,6 @@ private: System::Windows::Forms::Label^  label34;
 		yScaleY->Max = 400;
 		yScaleY->Min = 0;
 
-		xScaleEX->Max = 1000;
-		xScaleEX->Min = 0;
-		yScaleEX->Max = 400;
-		yScaleEX->Min = -400;
-
-		xScaleEY->Max = 1000;
-		xScaleEY->Min = 0;
-		yScaleEY->Max = 400;
-		yScaleEY->Min = -400;
-
-		xScaleDEX->Max = 1000;
-		xScaleDEX->Min = 0;
-		yScaleDEX->Max = 400;
-		yScaleDEX->Min = -400;
-
-		xScaleDEY->Max = 1000;
-		xScaleDEY->Min = 0;
-		yScaleDEY->Max = 400;
-		yScaleDEY->Min = -400;
-
-		xScaleUX->Max = 1000;
-		xScaleUX->Min = 0;
-		yScaleUX->Max = 10;
-		yScaleUX->Min = -10;
-
-		xScaleUY->Max = 1000;
-		xScaleUY->Min = 0;
-		yScaleUY->Max = 10;
-		yScaleUY->Min = -10;
-
 		//====================================================
 		myPaneXY->IsAlignGrids = true;
 		myPaneX->IsAlignGrids = true;
@@ -2136,12 +2168,7 @@ private: System::Windows::Forms::Label^  label34;
 		zedGraphXY->AxisChange();
 		zedGraphX->AxisChange();
 		zedGraphY->AxisChange();
-		zedGraphEX->AxisChange();
-		zedGraphEY->AxisChange();
-		zedGraphDEX->AxisChange();
-		zedGraphDEY->AxisChange();
-		zedGraphUX->AxisChange();
-		zedGraphUY->AxisChange();
+		zedGraphMore->AxisChange();
 	}
 	
 	private: void drawXY(double x, double y)
@@ -2194,13 +2221,13 @@ private: System::Windows::Forms::Label^  label34;
 	}
 	private: void drawMORE(double ex, double ey, double dex, double dey, double ux, double uy)
 	{
-		zedGraphEX->GraphPane->CurveList->Clear();
-		zedGraphEY->GraphPane->CurveList->Clear();
-		zedGraphDEX->GraphPane->CurveList->Clear();
-		zedGraphDEY->GraphPane->CurveList->Clear();
-		zedGraphUX->GraphPane->CurveList->Clear();
-		zedGraphUY->GraphPane->CurveList->Clear();
-		if (timeGraph > xScaleEX->Max - 1)
+		myPaneEX->CurveList->Clear();
+		myPaneEY->CurveList->Clear();
+		myPaneDEX->CurveList->Clear();
+		myPaneDEY->CurveList->Clear();
+		myPaneUX->CurveList->Clear();
+		myPaneUY->CurveList->Clear();
+		if (timeGraph > myPaneUY->XAxis->Scale->Max - 1)
 		{
 			timeGraph = 0;
 			PosEXList->Clear();
@@ -2226,23 +2253,12 @@ private: System::Windows::Forms::Label^  label34;
 
 		timeGraph++;
 
-		zedGraphEX->AxisChange();
-		zedGraphEY->AxisChange();
-		zedGraphDEX->AxisChange();
-		zedGraphDEY->AxisChange();
-		zedGraphUX->AxisChange();
-		zedGraphUY->AxisChange();
-
-		zedGraphEX->Invalidate();
-		zedGraphEY->Invalidate();
-		zedGraphDEX->Invalidate();
-		zedGraphDEY->Invalidate();
-		zedGraphUX->Invalidate();
-		zedGraphUY->Invalidate();
+		zedGraphMore->AxisChange();
+		zedGraphMore->Invalidate();
 	}
 #pragma endregion
-	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		findPorts();
+private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
+		//findPorts();
 		initGraph();
 		txtSetpointX->Text = "198";
 		txtSetpointY->Text = "214";
@@ -2270,196 +2286,359 @@ private: System::Windows::Forms::Label^  label34;
 		Init_Fuzzy();
 
 	}
-	private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (cbCOMLIST->Text != "")
-		{
-			if (bCONNECT->Text == "CONNECT")
-			{
-				bCONNECT->Text = "DISCONNECT";
-				cbCOMLIST->Enabled = false;
-				serialPort->PortName = cbCOMLIST->Text;
-				serialPort->Open();
-				//timerUART_Receive->Start();
-				//timerUART_Send->Start();
-			}
-			else
-			{
-				bCONNECT->Text = "CONNECT";
-				cbCOMLIST->Enabled = true;
-				serialPort->Close();
-				//timerUART_Receive->Stop();
-				//timerUART_Send->Stop();
-			}
-		}
-		else
-		{
-			MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
-			//findPorts();
-		}
-	}
 
-	private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e) 
-	{
-		txtSEND->Text = "@" + txtANGLE_X->Text + ":" + txtANGLE_Y->Text + "$";
-	}
-	private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
-		if (serialPort->IsOpen == true)
-		{
-			txtRECEIVE->Text = serialPort->ReadLine();
-		}
-	}
-
-
-	private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (bSEND->Text == "SEND" && bCONNECT->Text == "DISCONNECT")
-		{
-			timerUART_Send->Interval = 1;
-			timerUART_Send->Start(); 
-			bSEND->Text = "STOP SEND";
-		}
-		else if (bCONNECT->Text == "CONNECT")
-		{
-			MessageBox::Show("Please connect port !!!");
-		}
-		else
-		{
-			bSEND->Text = "SEND";
-			timerUART_Send->Stop();
-		}
-	}
-
-
-	private: System::Void etimerProcessing(System::Object^  sender, System::EventArgs^  e) {
-		camera.getFPS_start();
-		camera.getFrame();
-		camera.detectBall();
-
-		posX = camera.getX();
-		posY = camera.getY();
-
-		errX = setpointX - posX;
-		errY = setpointY - posY;
-
-		velX = (errX - pre_errX)*camera.fps_;
-		velY = (errY - pre_errY)*camera.fps_;
-
-		pre_errX = errX;
-		pre_errY = errY;
-
-		if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
-		{
-			pidX.setPIDPeriod(1 / camera.fps_);
-			pidX.setPIDOutputLimit(-10, 10);
-			pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
-			pidX.compute(errX);
-
-			pidY.setPIDPeriod(1 / camera.fps_);
-			pidY.setPIDOutputLimit(-10, 10);
-			pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
-			pidY.compute(errY);
-
-			txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
-			txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
-		}
-		if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
-		{
-			angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
-			angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
-			//txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
-			//txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
-		}
-		if (camera.getErrorStr() == "Tracking Object" && bSTART_GRAPH->Text == "STOP GRAPH")
-		{
-			if (tabPageXYGRAPH->Visible == true)
-			{
-				drawXY(posX, posY);
-			}
-			else if (tabPageTIMEGRAPH->Visible == true)
-			{
-				drawXYT(posX, posY);
-			}
-			else if (tabPageMOREGRAPH->Visible == true)
-			{
-				drawMORE(errX, errY, velX, velY, angleX, angleY);
-			}
-			else {}
-		}
-		if (bGetBall->Text == "UNGET BALL" /* && camera.getErrorStr() == "Tracking Object" */)
-		{
-			txtSetpointX->Text = posX.ToString();
-			txtSetpointY->Text = posY.ToString();
-		}
-		txtErrX->Text = errX.ToString();
-		txtErrY->Text = errY.ToString();
-		txtPosX->Text = posX.ToString();
-		txtPosY->Text = posY.ToString();
-		txtDErrX->Text = velX.ToString();
-		txtDErrY->Text = velY.ToString();
-		txtANGLE_X->Text = angleX.ToString();
-		txtANGLE_Y->Text = angleY.ToString();
-		txtTimeProcess->Text = processTime.ToString() + " ms";
-		if (bShowCam->Text == "UNSHOW CAM")
-		{
-			camera.showCamera(2);
-		}
-		camera.getFPS_end();
-		//camera.fps_ = 30;
-		processTime = ((int)(1000 / camera.fps_));
-	}
-	private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (bSTART->Text == "START CAM")
-		{
-			timerProcessing->Start();
-			bSTART->Text = "STOP CAM";
-		}
-		else
-		{
-			bSTART->Text = "START CAM";
-			timerProcessing->Stop();
-		}
-		
-
-	}
-
-	private: System::Void bSCROLL_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (bSCROLL->Text == "SCROLL")
-		{
-			bSCROLL->Text = "BLOCK";
-
-			myPaneXY->Title->Text = "TIMELINE GRAPH";
-			myPaneXY->XAxis->Title->Text = "TIME";
-			myPaneXY->YAxis->Title->Text = "POSTION";
-			xScaleXY->Max = 1000;
-			timeGraph = 0;
-			PosXList->Clear();
-			PosYList->Clear();
-
-			PosXSetpointList->Clear();
-			PosYSetpointList->Clear();
-		}
-		else
-		{
-			bSCROLL->Text = "SCROLL";
-
-			myPaneXY->Title->Text = "X-Y GRAPH";
-			myPaneXY->XAxis->Title->Text = "X";
-			myPaneXY->YAxis->Title->Text = "Y";
-			xScaleXY->Max = 400;
-		}
-
-	}
-private: System::Void bSETBALL_Click(System::Object^  sender, System::EventArgs^  e) {
-		setpointX = System::Convert::ToDouble(txtSetpointX->Text);
-		setpointY = System::Convert::ToDouble(txtSetpointY->Text);
-}
-private: System::Void bCALIB_Click(System::Object^  sender, System::EventArgs^  e) {
-	camera.createTrackbars();
-}
 private: System::Void txtSEND_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 	if (txtSEND->Text != "" && serialPort->IsOpen == true)
 	{
 		serialPort->Write(txtSEND->Text);
 	}
+}
+
+private: System::Void tbAngleX_Scroll(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_FUZZY->Text == "START FUZZY" && bSTART_PID->Text == "START PID")
+	{
+		angleX = tbAngleX->Value;
+		//txtANGLE_X->Text = tbAngleX->Value.ToString();
+	}
+}
+
+private: System::Void tbAngleY_Scroll(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_FUZZY->Text == "START FUZZY" && bSTART_PID->Text == "START PID")
+	{
+		//txtANGLE_Y->Text = tbAngleY->Value.ToString();
+		angleY = tbAngleY->Value;
+	}
+}
+
+private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	SaveFileDialog^ saveFileDialog_config = gcnew SaveFileDialog();
+	saveFileDialog_config->Filter = "Text File|*.txt";
+	saveFileDialog_config->Title = "Save setting to file";
+	saveFileDialog_config->ShowDialog();
+
+	// If the file name is not an empty string open it for saving.  
+	if (saveFileDialog_config->FileName != "")
+	{
+		StreamWriter^ sw = gcnew StreamWriter(saveFileDialog_config->FileName);
+		sw->WriteLine("A text file is born!");
+		sw->Write("You can use WriteLine");
+		sw->WriteLine("...or just Write");
+		sw->WriteLine("and do {0} output too.", "formatted");
+		sw->WriteLine("You can also send non-text objects:");
+		//sw->WriteLine(PRINTER2(samplingRate));
+		sw->WriteLine(DateTime::Now);
+		sw->Close();
+	}
+}
+private: System::Void bIMPORT_SETTING_Click(System::Object^  sender, System::EventArgs^  e) {
+	OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
+	openFileDialog1->Filter = "Text File|*.txt";
+	openFileDialog1->Title = "Load setting file";
+	openFileDialog1->ShowDialog();
+
+	// If the file name is not an empty string open it for saving.  
+	if (openFileDialog1->FileName != "")
+	{
+		try
+		{
+			StreamReader^ din = File::OpenText(openFileDialog1->FileName);
+
+			String^ str;
+			int count = 0;
+			while ((str = din->ReadLine()) != nullptr)
+			{
+				count++;
+				str = "line "+count.ToString()+": {1}" + str;
+			}
+			din->Close();
+			MessageBox::Show(str);
+		}
+		catch (Exception^ e)
+		{
+			if (dynamic_cast<FileNotFoundException^>(e))
+				Console::WriteLine("file '{0}' not found", openFileDialog1->FileName);
+			else
+				Console::WriteLine("problem reading file '{0}'", openFileDialog1->FileName);
+		}
+	}
+}
+private: System::Void txtSamplingRate_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (txtSamplingRate->Text != "")
+	{
+		samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
+		timerProcessing->Interval = samplingRate;
+	}
+}
+private: System::Void zedGraphEX_Load(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void txtImportTrajectory_Click(System::Object^  sender, System::EventArgs^  e) {
+	OpenFileDialog^ openFilePlan = gcnew OpenFileDialog();
+	openFilePlan->Filter = "Text File|*.txt";
+	openFilePlan->Title = "Load setting file";
+	openFilePlan->ShowDialog();
+
+	// If the file name is not an empty string open it for saving.  
+	if (openFilePlan->FileName != "")
+	{
+		try
+		{
+			StreamReader^ din = File::OpenText(openFilePlan->FileName);
+			String^ str1;
+			String^ str2;
+			int count = 0;
+			//1st element is num of points, 2nd element is time change to next point, 3rd to end is (x,y)
+			// a b
+			// b c
+			// ....
+			numOfPoint = System::Convert::ToInt32(din->ReadLine());
+			speedChangePoint = System::Convert::ToInt32(din->ReadLine());
+			for (int i = 0; i < numOfPoint; i++)
+			{
+				trajectoryData1->Add(System::Convert::ToInt32(din->ReadLine()));
+				trajectoryData2->Add(System::Convert::ToInt32(din->ReadLine()));
+			}
+			txtNumOfPoint->Text = numOfPoint.ToString();
+			txtSpeedChangePoint->Text = speedChangePoint.ToString();
+			din->Close();
+		}
+		catch (Exception^ e)
+		{
+			if (dynamic_cast<FileNotFoundException^>(e))
+				MessageBox::Show("file '{0}' not found", openFilePlan->FileName);
+			else
+				MessageBox::Show("problem reading file '{0}'", openFilePlan->FileName);
+		}
+	}
+}
+private: System::Void bSTART_TRACKING_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_TRACK->Text == "START TRACK")
+	{
+		bSTART_TRACK->Text = "STOP TRACK";
+		timerTracking->Interval = speedChangePoint;
+		timerTracking->Start();
+	}
+	else
+	{
+		bSTART_TRACK->Text = "START TRACK";
+		//timerTracking->Interval = speedChangePoint;
+		timerTracking->Stop();
+	}
+
+}
+
+#pragma region timer_event
+private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArgs^  e) {
+			 camera.getFPS_start();
+			 camera.getFrame();
+			 camera.detectBall();
+
+			 posX = camera.getX();
+			 posY = camera.getY();
+
+			 errX = setpointX - posX;
+			 errY = setpointY - posY;
+
+			 velX = (errX - pre_errX) * 1000 / samplingRate;
+			 velY = (errY - pre_errY) * 1000 / samplingRate;
+
+			 pre_errX = errX;
+			 pre_errY = errY;
+			 if (bShowCam->Text == "UNSHOW CAM")
+			 {
+				 camera.showCamera(2);
+			 }
+			 camera.getFPS_end();
+			 processTime = ((int)(1000 / camera.fps_));
+		 }
+private: System::Void timerDisplay_Tick(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART_GRAPH->Text == "STOP GRAPH")
+	{
+		drawXY(posX, posY);
+		drawXYT(posX, posY);
+		drawMORE(errX, errY, velX, velY, angleX, angleY);
+	}
+	if (bGetBall->Text == "UNGET BALL" /* && camera.getErrorStr() == "Tracking Object" */)
+	{
+		txtSetpointX->Text = posX.ToString();
+		txtSetpointY->Text = posY.ToString();
+	}
+	txtErrX->Text = errX.ToString();
+	txtErrY->Text = errY.ToString();
+	txtPosX->Text = posX.ToString();
+	txtPosY->Text = posY.ToString();
+	txtDErrX->Text = velX.ToString();
+	txtDErrY->Text = velY.ToString();
+	txtANGLE_X->Text = angleX.ToString();
+	txtANGLE_Y->Text = angleY.ToString();
+	txtTimeProcess->Text = processTime.ToString() + " ms";
+	if (bShowCam->Text == "UNSHOW CAM")
+	{
+		camera.showCamera(2);
+	}
+	camera.getFPS_end();
+	//camera.fps_ = 30;
+	processTime = ((int)(1000 / camera.fps_));
+}
+private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e)
+{
+	txtSEND->Text = "@" + txtANGLE_X->Text + ":" + txtANGLE_Y->Text + "$";
+}
+private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
+		if (serialPort->IsOpen == true)
+		{
+			txtRECEIVE->Text = serialPort->ReadLine();
+		}
+	}
+private: System::Void timerTracking_Tick(System::Object^  sender, System::EventArgs^  e) {
+	static int currentPoint = 0;
+	if (bSTART_TRACK->Text == "STOP TRACK" && numOfPoint != 0)
+	{
+		if (currentPoint < numOfPoint)
+		{
+			txtCurrentPointInPlan->Text = currentPoint.ToString();
+			setpointX = trajectoryData1[currentPoint];
+			setpointY = trajectoryData2[currentPoint];
+			currentPoint++;
+		}
+		else
+		{
+			currentPoint = 0;
+		}
+	}
+}
+private: System::Void etimerProcessing(System::Object^  sender, System::EventArgs^  e) {
+	errX = setpointX - posX;
+	errY = setpointY - posY;
+
+	velX = (errX - pre_errX) * 1000 / samplingRate;
+	velY = (errY - pre_errY) * 1000 / samplingRate;
+
+	pre_errX = errX;
+	pre_errY = errY;
+
+	if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
+	{
+		pidX.setPIDPeriod(1 / camera.fps_);
+		pidX.setPIDOutputLimit(-10, 10);
+		pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
+		pidX.compute(errX);
+
+		pidY.setPIDPeriod(1 / camera.fps_);
+		pidY.setPIDOutputLimit(-10, 10);
+		pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
+		pidY.compute(errY);
+
+		txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
+		txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
+	}
+	if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
+	{
+		angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
+		angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
+		//txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
+		//txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
+	}
+}
+
+
+
+#pragma endregion
+
+
+#pragma region button_event
+private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (cbCOMLIST->Text != "")
+	{
+		if (bCONNECT->Text == "CONNECT")
+		{
+			bCONNECT->Text = "DISCONNECT";
+			cbCOMLIST->Enabled = false;
+			serialPort->PortName = cbCOMLIST->Text;
+			serialPort->Open();
+			//timerUART_Receive->Start();
+			//timerUART_Send->Start();
+		}
+		else
+		{
+			bCONNECT->Text = "CONNECT";
+			cbCOMLIST->Enabled = true;
+			serialPort->Close();
+			//timerUART_Receive->Stop();
+			//timerUART_Send->Stop();
+		}
+	}
+	else
+	{
+		MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
+		findPorts();
+	}
+}
+private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bSEND->Text == "SEND" && bCONNECT->Text == "DISCONNECT")
+	{
+		timerUART_Send->Interval = 1;
+		timerUART_Send->Start();
+		bSEND->Text = "STOP SEND";
+	}
+	else if (bCONNECT->Text == "CONNECT")
+	{
+		MessageBox::Show("Please connect port !!!");
+	}
+	else
+	{
+		bSEND->Text = "SEND";
+		timerUART_Send->Stop();
+	}
+}
+private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bSTART->Text == "START CAM")
+	{
+		timerProcessing->Start();
+		bSTART->Text = "STOP CAM";
+	}
+	else
+	{
+		bSTART->Text = "START CAM";
+		timerProcessing->Stop();
+	}
+
+
+}
+private: System::Void bSCROLL_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (bSCROLL->Text == "SCROLL")
+	{
+		bSCROLL->Text = "BLOCK";
+
+		myPaneXY->Title->Text = "TIMELINE GRAPH";
+		myPaneXY->XAxis->Title->Text = "TIME";
+		myPaneXY->YAxis->Title->Text = "POSTION";
+		xScaleXY->Max = 1000;
+		timeGraph = 0;
+		PosXList->Clear();
+		PosYList->Clear();
+
+		PosXSetpointList->Clear();
+		PosYSetpointList->Clear();
+	}
+	else
+	{
+		bSCROLL->Text = "SCROLL";
+
+		myPaneXY->Title->Text = "X-Y GRAPH";
+		myPaneXY->XAxis->Title->Text = "X";
+		myPaneXY->YAxis->Title->Text = "Y";
+		xScaleXY->Max = 400;
+	}
+
+}
+
+private: System::Void bSETBALL_Click(System::Object^  sender, System::EventArgs^  e) {
+	setpointX = System::Convert::ToDouble(txtSetpointX->Text);
+	setpointY = System::Convert::ToDouble(txtSetpointY->Text);
+}
+private: System::Void bCALIB_Click(System::Object^  sender, System::EventArgs^  e) {
+	camera.createTrackbars();
 }
 private: System::Void bSTART_PID_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (bSTART_PID->Text == "START PID")
@@ -2560,82 +2739,9 @@ private: System::Void bSetPIDFactor_Click(System::Object^  sender, System::Event
 private: System::Void bClose_Click(System::Object^  sender, System::EventArgs^  e) {
 	Application::Exit();
 }
-private: System::Void tbAngleX_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	if (bSTART_FUZZY->Text == "START FUZZY" && bSTART_PID->Text == "START PID")
-	{
-		angleX = tbAngleX->Value;
-		//txtANGLE_X->Text = tbAngleX->Value.ToString();
-	}
-}
 
-private: System::Void tbAngleY_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	if (bSTART_FUZZY->Text == "START FUZZY" && bSTART_PID->Text == "START PID")
-	{
-		//txtANGLE_Y->Text = tbAngleY->Value.ToString();
-		angleY = tbAngleY->Value;
-	}
-}
 
-private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	SaveFileDialog^ saveFileDialog1 = gcnew SaveFileDialog();
-	saveFileDialog1->Filter = "Text File|*.txt";
-	saveFileDialog1->Title = "Save setting to file";
-	saveFileDialog1->ShowDialog();
-
-	// If the file name is not an empty string open it for saving.  
-	if (saveFileDialog1->FileName != "")
-	{
-		StreamWriter^ sw = gcnew StreamWriter(saveFileDialog1->FileName);
-		sw->WriteLine("A text file is born!");
-		sw->Write("You can use WriteLine");
-		sw->WriteLine("...or just Write");
-		sw->WriteLine("and do {0} output too.", "formatted");
-		sw->WriteLine("You can also send non-text objects:");
-		sw->WriteLine(DateTime::Now);
-		sw->Close();
-	}
-}
-private: System::Void bIMPORT_SETTING_Click(System::Object^  sender, System::EventArgs^  e) {
-	OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
-	openFileDialog1->Filter = "Text File|*.txt";
-	openFileDialog1->Title = "Load setting file";
-	openFileDialog1->ShowDialog();
-
-	// If the file name is not an empty string open it for saving.  
-	if (openFileDialog1->FileName != "")
-	{
-		try
-		{
-			StreamReader^ din = File::OpenText(openFileDialog1->FileName);
-
-			String^ str;
-			int count = 0;
-			while ((str = din->ReadLine()) != nullptr)
-			{
-				count++;
-				str = "line "+count.ToString()+": {1}" + str;
-			}
-			din->Close();
-			MessageBox::Show(str);
-		}
-		catch (Exception^ e)
-		{
-			if (dynamic_cast<FileNotFoundException^>(e))
-				Console::WriteLine("file '{0}' not found", openFileDialog1->FileName);
-			else
-				Console::WriteLine("problem reading file '{0}'", openFileDialog1->FileName);
-		}
-	}
-}
-private: System::Void groupBox3_Enter(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void txtSamplingRate_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (txtSamplingRate->Text != "")
-	{
-		samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
-		timerProcessing->Interval = samplingRate;
-	}
-}
+#pragma endregion
 };
 }

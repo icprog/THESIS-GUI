@@ -160,6 +160,7 @@
     <ClCompile Include="eFLL\fuzzy_ball_and_plate.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="pid\pid.cpp" />
+    <ClCompile Include="structure\iofile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera\camera.hpp" />
@@ -177,6 +178,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pid\pid.hpp" />
+    <ClInclude Include="structure\iofile.hpp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
