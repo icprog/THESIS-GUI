@@ -220,16 +220,16 @@ private: System::Windows::Forms::TextBox^  txtAxisMinX;
 private: System::Windows::Forms::Label^  label4;
 private: System::Windows::Forms::Label^  label2;
 private: System::Windows::Forms::Label^  label5;
-private: System::Windows::Forms::TrackBar^  trackBar6;
-private: System::Windows::Forms::TrackBar^  trackBar4;
-private: System::Windows::Forms::TrackBar^  trackBar2;
-private: System::Windows::Forms::TrackBar^  trackBar5;
-private: System::Windows::Forms::Label^  label20;
-private: System::Windows::Forms::TrackBar^  trackBar3;
-private: System::Windows::Forms::Label^  label19;
-private: System::Windows::Forms::TrackBar^  trackBar1;
-private: System::Windows::Forms::Label^  label10;
-private: System::Windows::Forms::GroupBox^  groupBox2;
+
+
+
+
+
+
+
+
+
+
 private: System::Windows::Forms::TextBox^  txtDisplayAngle6;
 
 
@@ -309,10 +309,11 @@ private: ZedGraph::ZedGraphControl^  zedGraphTime;
 private: System::Windows::Forms::TabPage^  tabPageXYGRAPH;
 private: ZedGraph::ZedGraphControl^  zedGraphXY;
 private: System::Windows::Forms::TabControl^  tabControlGraph;
-private: System::Windows::Forms::Button^  txtImportTrajectory;
+private: System::Windows::Forms::Button^  bImportTrajectory;
+
 private: System::Windows::Forms::Button^  bSTART_TRACK;
 
-private: System::Windows::Forms::Button^  txtExportTrajectory;
+
 private: System::Windows::Forms::Timer^  timerTracking;
 private: System::Windows::Forms::TextBox^  txtSpeedChangePoint;
 private: System::Windows::Forms::TextBox^  txtNumOfPoint;
@@ -323,6 +324,10 @@ private: System::Windows::Forms::Button^  bSTART;
 private: System::Windows::Forms::Label^  label36;
 private: System::Windows::Forms::Label^  label35;
 private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
+private: System::Windows::Forms::TextBox^  txtSetSPX;
+private: System::Windows::Forms::TextBox^  txtSetSPY;
+
+
 
 
 
@@ -461,26 +466,18 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->bSTART = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
-			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar4 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar5 = (gcnew System::Windows::Forms::TrackBar());
-			this->label20 = (gcnew System::Windows::Forms::Label());
-			this->trackBar3 = (gcnew System::Windows::Forms::TrackBar());
-			this->label19 = (gcnew System::Windows::Forms::Label());
-			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
-			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage6 = (gcnew System::Windows::Forms::TabPage());
+			this->txtSetSPY = (gcnew System::Windows::Forms::TextBox());
+			this->txtSetSPX = (gcnew System::Windows::Forms::TextBox());
+			this->bSET_SPEED_PLAN = (gcnew System::Windows::Forms::Button());
 			this->label36 = (gcnew System::Windows::Forms::Label());
 			this->label35 = (gcnew System::Windows::Forms::Label());
 			this->txtSpeedChangePoint = (gcnew System::Windows::Forms::TextBox());
 			this->txtNumOfPoint = (gcnew System::Windows::Forms::TextBox());
 			this->bSTART_TRACK = (gcnew System::Windows::Forms::Button());
-			this->txtExportTrajectory = (gcnew System::Windows::Forms::Button());
-			this->txtImportTrajectory = (gcnew System::Windows::Forms::Button());
-			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->bImportTrajectory = (gcnew System::Windows::Forms::Button());
 			this->label30 = (gcnew System::Windows::Forms::Label());
 			this->label33 = (gcnew System::Windows::Forms::Label());
 			this->label32 = (gcnew System::Windows::Forms::Label());
@@ -504,23 +501,15 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->timerTracking = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerCamera = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerDisplay = (gcnew System::Windows::Forms::Timer(this->components));
-			this->bSET_SPEED_PLAN = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
 			this->tabControlController->SuspendLayout();
 			this->tabPage->SuspendLayout();
 			this->tabPage5->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar6))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
 			this->tabPage6->SuspendLayout();
-			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			this->tabPageMOREGRAPH->SuspendLayout();
 			this->tabPageTIMEGRAPH->SuspendLayout();
@@ -533,19 +522,19 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->cbCOMLIST->FormattingEnabled = true;
 			this->cbCOMLIST->Location = System::Drawing::Point(7, 20);
 			this->cbCOMLIST->Name = L"cbCOMLIST";
-			this->cbCOMLIST->Size = System::Drawing::Size(92, 21);
+			this->cbCOMLIST->Size = System::Drawing::Size(73, 21);
 			this->cbCOMLIST->TabIndex = 0;
 			// 
 			// txtRECEIVE
 			// 
 			this->txtRECEIVE->Location = System::Drawing::Point(7, 75);
 			this->txtRECEIVE->Name = L"txtRECEIVE";
-			this->txtRECEIVE->Size = System::Drawing::Size(92, 20);
+			this->txtRECEIVE->Size = System::Drawing::Size(73, 20);
 			this->txtRECEIVE->TabIndex = 1;
 			// 
 			// bCONNECT
 			// 
-			this->bCONNECT->Location = System::Drawing::Point(106, 19);
+			this->bCONNECT->Location = System::Drawing::Point(83, 20);
 			this->bCONNECT->Name = L"bCONNECT";
 			this->bCONNECT->Size = System::Drawing::Size(93, 24);
 			this->bCONNECT->TabIndex = 2;
@@ -565,7 +554,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			this->txtSEND->Location = System::Drawing::Point(7, 49);
 			this->txtSEND->Name = L"txtSEND";
-			this->txtSEND->Size = System::Drawing::Size(91, 20);
+			this->txtSEND->Size = System::Drawing::Size(72, 20);
 			this->txtSEND->TabIndex = 3;
 			this->txtSEND->Text = L"00";
 			this->txtSEND->TextChanged += gcnew System::EventHandler(this, &MyForm::txtSEND_TextChanged);
@@ -576,7 +565,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bSEND
 			// 
-			this->bSEND->Location = System::Drawing::Point(106, 48);
+			this->bSEND->Location = System::Drawing::Point(83, 49);
 			this->bSEND->Name = L"bSEND";
 			this->bSEND->Size = System::Drawing::Size(93, 25);
 			this->bSEND->TabIndex = 4;
@@ -686,7 +675,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bSTART_CAM
 			// 
-			this->bSTART_CAM->Location = System::Drawing::Point(107, 111);
+			this->bSTART_CAM->Location = System::Drawing::Point(83, 100);
 			this->bSTART_CAM->Name = L"bSTART_CAM";
 			this->bSTART_CAM->Size = System::Drawing::Size(93, 23);
 			this->bSTART_CAM->TabIndex = 22;
@@ -765,9 +754,9 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->groupBox1->Controls->Add(this->txtErrX);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->txtErrY);
-			this->groupBox1->Location = System::Drawing::Point(12, 264);
+			this->groupBox1->Location = System::Drawing::Point(12, 239);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(219, 187);
+			this->groupBox1->Size = System::Drawing::Size(219, 212);
 			this->groupBox1->TabIndex = 27;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"PARAM";
@@ -1023,7 +1012,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bSTART_GRAPH
 			// 
-			this->bSTART_GRAPH->Location = System::Drawing::Point(206, 111);
+			this->bSTART_GRAPH->Location = System::Drawing::Point(182, 100);
 			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
 			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
 			this->bSTART_GRAPH->TabIndex = 37;
@@ -1033,7 +1022,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bSCROLL
 			// 
-			this->bSCROLL->Location = System::Drawing::Point(206, 141);
+			this->bSCROLL->Location = System::Drawing::Point(182, 130);
 			this->bSCROLL->Name = L"bSCROLL";
 			this->bSCROLL->Size = System::Drawing::Size(93, 23);
 			this->bSCROLL->TabIndex = 22;
@@ -1136,9 +1125,9 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bSETBALL
 			// 
-			this->bSETBALL->Location = System::Drawing::Point(9, 11);
+			this->bSETBALL->Location = System::Drawing::Point(11, 10);
 			this->bSETBALL->Name = L"bSETBALL";
-			this->bSETBALL->Size = System::Drawing::Size(158, 81);
+			this->bSETBALL->Size = System::Drawing::Size(134, 46);
 			this->bSETBALL->TabIndex = 22;
 			this->bSETBALL->Text = L"SET BALL";
 			this->bSETBALL->UseVisualStyleBackColor = true;
@@ -1146,7 +1135,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bCALIB
 			// 
-			this->bCALIB->Location = System::Drawing::Point(107, 170);
+			this->bCALIB->Location = System::Drawing::Point(83, 159);
 			this->bCALIB->Name = L"bCALIB";
 			this->bCALIB->Size = System::Drawing::Size(92, 25);
 			this->bCALIB->TabIndex = 31;
@@ -1156,9 +1145,9 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bClose
 			// 
-			this->bClose->Location = System::Drawing::Point(6, 140);
+			this->bClose->Location = System::Drawing::Point(5, 128);
 			this->bClose->Name = L"bClose";
-			this->bClose->Size = System::Drawing::Size(94, 24);
+			this->bClose->Size = System::Drawing::Size(74, 24);
 			this->bClose->TabIndex = 43;
 			this->bClose->Text = L"CLOSE";
 			this->bClose->UseVisualStyleBackColor = true;
@@ -1166,9 +1155,9 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bSTART_FUZZY
 			// 
-			this->bSTART_FUZZY->Location = System::Drawing::Point(6, 95);
+			this->bSTART_FUZZY->Location = System::Drawing::Point(20, 92);
 			this->bSTART_FUZZY->Name = L"bSTART_FUZZY";
-			this->bSTART_FUZZY->Size = System::Drawing::Size(143, 43);
+			this->bSTART_FUZZY->Size = System::Drawing::Size(127, 43);
 			this->bSTART_FUZZY->TabIndex = 39;
 			this->bSTART_FUZZY->Text = L"START FUZZY";
 			this->bSTART_FUZZY->UseVisualStyleBackColor = true;
@@ -1186,7 +1175,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bShowCam
 			// 
-			this->bShowCam->Location = System::Drawing::Point(107, 140);
+			this->bShowCam->Location = System::Drawing::Point(83, 129);
 			this->bShowCam->Name = L"bShowCam";
 			this->bShowCam->Size = System::Drawing::Size(93, 24);
 			this->bShowCam->TabIndex = 36;
@@ -1206,9 +1195,9 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bSetFuzzyScaleXY
 			// 
-			this->bSetFuzzyScaleXY->Location = System::Drawing::Point(155, 95);
+			this->bSetFuzzyScaleXY->Location = System::Drawing::Point(153, 92);
 			this->bSetFuzzyScaleXY->Name = L"bSetFuzzyScaleXY";
-			this->bSetFuzzyScaleXY->Size = System::Drawing::Size(150, 43);
+			this->bSetFuzzyScaleXY->Size = System::Drawing::Size(120, 43);
 			this->bSetFuzzyScaleXY->TabIndex = 40;
 			this->bSetFuzzyScaleXY->Text = L"SET";
 			this->bSetFuzzyScaleXY->UseVisualStyleBackColor = true;
@@ -1264,7 +1253,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bEXPORT_SETTING
 			// 
-			this->bEXPORT_SETTING->Location = System::Drawing::Point(205, 49);
+			this->bEXPORT_SETTING->Location = System::Drawing::Point(182, 50);
 			this->bEXPORT_SETTING->Name = L"bEXPORT_SETTING";
 			this->bEXPORT_SETTING->Size = System::Drawing::Size(94, 24);
 			this->bEXPORT_SETTING->TabIndex = 2;
@@ -1274,7 +1263,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bIMPORT_SETTING
 			// 
-			this->bIMPORT_SETTING->Location = System::Drawing::Point(205, 19);
+			this->bIMPORT_SETTING->Location = System::Drawing::Point(182, 20);
 			this->bIMPORT_SETTING->Name = L"bIMPORT_SETTING";
 			this->bIMPORT_SETTING->Size = System::Drawing::Size(94, 24);
 			this->bIMPORT_SETTING->TabIndex = 2;
@@ -1288,17 +1277,17 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->tbAngleX->Location = System::Drawing::Point(79, 10);
 			this->tbAngleX->Minimum = -10;
 			this->tbAngleX->Name = L"tbAngleX";
-			this->tbAngleX->Size = System::Drawing::Size(110, 45);
+			this->tbAngleX->Size = System::Drawing::Size(88, 45);
 			this->tbAngleX->TabIndex = 44;
 			this->tbAngleX->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleX_Scroll);
 			// 
 			// tbAngleY
 			// 
 			this->tbAngleY->LargeChange = 1;
-			this->tbAngleY->Location = System::Drawing::Point(200, 10);
+			this->tbAngleY->Location = System::Drawing::Point(173, 10);
 			this->tbAngleY->Minimum = -10;
 			this->tbAngleY->Name = L"tbAngleY";
-			this->tbAngleY->Size = System::Drawing::Size(110, 45);
+			this->tbAngleY->Size = System::Drawing::Size(88, 45);
 			this->tbAngleY->TabIndex = 44;
 			this->tbAngleY->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleY_Scroll);
 			// 
@@ -1312,7 +1301,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->tabControlController->Location = System::Drawing::Point(12, 12);
 			this->tabControlController->Name = L"tabControlController";
 			this->tabControlController->SelectedIndex = 0;
-			this->tabControlController->Size = System::Drawing::Size(324, 246);
+			this->tabControlController->Size = System::Drawing::Size(291, 221);
 			this->tabControlController->TabIndex = 45;
 			// 
 			// tabPage
@@ -1336,14 +1325,14 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->tabPage->Location = System::Drawing::Point(4, 22);
 			this->tabPage->Name = L"tabPage";
 			this->tabPage->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage->Size = System::Drawing::Size(316, 220);
+			this->tabPage->Size = System::Drawing::Size(283, 195);
 			this->tabPage->TabIndex = 3;
 			this->tabPage->Text = L"SETTING";
 			this->tabPage->UseVisualStyleBackColor = true;
 			// 
 			// bSetScale
 			// 
-			this->bSetScale->Location = System::Drawing::Point(206, 170);
+			this->bSetScale->Location = System::Drawing::Point(182, 159);
 			this->bSetScale->Name = L"bSetScale";
 			this->bSetScale->Size = System::Drawing::Size(93, 25);
 			this->bSetScale->TabIndex = 49;
@@ -1353,9 +1342,9 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// bSTART
 			// 
-			this->bSTART->Location = System::Drawing::Point(6, 111);
+			this->bSTART->Location = System::Drawing::Point(5, 99);
 			this->bSTART->Name = L"bSTART";
-			this->bSTART->Size = System::Drawing::Size(94, 23);
+			this->bSTART->Size = System::Drawing::Size(74, 23);
 			this->bSTART->TabIndex = 48;
 			this->bSTART->Text = L"START";
 			this->bSTART->UseVisualStyleBackColor = true;
@@ -1363,121 +1352,37 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(6, 171);
+			this->button1->Location = System::Drawing::Point(5, 159);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(94, 24);
+			this->button1->Size = System::Drawing::Size(74, 24);
 			this->button1->TabIndex = 47;
 			this->button1->Text = L"ABOUT ME";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// tabPage5
 			// 
-			this->tabPage5->Controls->Add(this->trackBar6);
-			this->tabPage5->Controls->Add(this->trackBar4);
-			this->tabPage5->Controls->Add(this->trackBar2);
+			this->tabPage5->Controls->Add(this->label30);
 			this->tabPage5->Controls->Add(this->tbAngleX);
-			this->tabPage5->Controls->Add(this->trackBar5);
-			this->tabPage5->Controls->Add(this->label20);
-			this->tabPage5->Controls->Add(this->trackBar3);
-			this->tabPage5->Controls->Add(this->label19);
-			this->tabPage5->Controls->Add(this->trackBar1);
-			this->tabPage5->Controls->Add(this->label10);
+			this->tabPage5->Controls->Add(this->label33);
 			this->tabPage5->Controls->Add(this->tbAngleY);
+			this->tabPage5->Controls->Add(this->label32);
 			this->tabPage5->Controls->Add(this->label11);
+			this->tabPage5->Controls->Add(this->label31);
+			this->tabPage5->Controls->Add(this->txtDisplayAngle2);
+			this->tabPage5->Controls->Add(this->label29);
+			this->tabPage5->Controls->Add(this->txtDisplayAngle1);
+			this->tabPage5->Controls->Add(this->label28);
+			this->tabPage5->Controls->Add(this->txtDisplayAngle3);
+			this->tabPage5->Controls->Add(this->txtDisplayAngle6);
+			this->tabPage5->Controls->Add(this->txtDisplayAngle4);
+			this->tabPage5->Controls->Add(this->txtDisplayAngle5);
 			this->tabPage5->Location = System::Drawing::Point(4, 22);
 			this->tabPage5->Name = L"tabPage5";
 			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage5->Size = System::Drawing::Size(316, 220);
+			this->tabPage5->Size = System::Drawing::Size(283, 220);
 			this->tabPage5->TabIndex = 2;
 			this->tabPage5->Text = L"MANUAL";
 			this->tabPage5->UseVisualStyleBackColor = true;
-			// 
-			// trackBar6
-			// 
-			this->trackBar6->LargeChange = 1;
-			this->trackBar6->Location = System::Drawing::Point(79, 163);
-			this->trackBar6->Minimum = -10;
-			this->trackBar6->Name = L"trackBar6";
-			this->trackBar6->Size = System::Drawing::Size(110, 45);
-			this->trackBar6->TabIndex = 44;
-			this->trackBar6->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleX_Scroll);
-			// 
-			// trackBar4
-			// 
-			this->trackBar4->LargeChange = 1;
-			this->trackBar4->Location = System::Drawing::Point(79, 112);
-			this->trackBar4->Minimum = -10;
-			this->trackBar4->Name = L"trackBar4";
-			this->trackBar4->Size = System::Drawing::Size(110, 45);
-			this->trackBar4->TabIndex = 44;
-			this->trackBar4->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleX_Scroll);
-			// 
-			// trackBar2
-			// 
-			this->trackBar2->LargeChange = 1;
-			this->trackBar2->Location = System::Drawing::Point(79, 61);
-			this->trackBar2->Minimum = -10;
-			this->trackBar2->Name = L"trackBar2";
-			this->trackBar2->Size = System::Drawing::Size(110, 45);
-			this->trackBar2->TabIndex = 44;
-			this->trackBar2->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleX_Scroll);
-			// 
-			// trackBar5
-			// 
-			this->trackBar5->LargeChange = 1;
-			this->trackBar5->Location = System::Drawing::Point(200, 163);
-			this->trackBar5->Minimum = -10;
-			this->trackBar5->Name = L"trackBar5";
-			this->trackBar5->Size = System::Drawing::Size(110, 45);
-			this->trackBar5->TabIndex = 44;
-			this->trackBar5->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleY_Scroll);
-			// 
-			// label20
-			// 
-			this->label20->AutoSize = true;
-			this->label20->Location = System::Drawing::Point(6, 172);
-			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(67, 13);
-			this->label20->TabIndex = 24;
-			this->label20->Text = L"ANGLE 5 - 6";
-			// 
-			// trackBar3
-			// 
-			this->trackBar3->LargeChange = 1;
-			this->trackBar3->Location = System::Drawing::Point(200, 112);
-			this->trackBar3->Minimum = -10;
-			this->trackBar3->Name = L"trackBar3";
-			this->trackBar3->Size = System::Drawing::Size(110, 45);
-			this->trackBar3->TabIndex = 44;
-			this->trackBar3->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleY_Scroll);
-			// 
-			// label19
-			// 
-			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(6, 121);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(67, 13);
-			this->label19->TabIndex = 24;
-			this->label19->Text = L"ANGLE 3 - 4";
-			// 
-			// trackBar1
-			// 
-			this->trackBar1->LargeChange = 1;
-			this->trackBar1->Location = System::Drawing::Point(200, 61);
-			this->trackBar1->Minimum = -10;
-			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Size = System::Drawing::Size(110, 45);
-			this->trackBar1->TabIndex = 44;
-			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::tbAngleY_Scroll);
-			// 
-			// label10
-			// 
-			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(6, 70);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(67, 13);
-			this->label10->TabIndex = 24;
-			this->label10->Text = L"ANGLE 1 - 2";
 			// 
 			// tabPage1
 			// 
@@ -1498,7 +1403,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(316, 220);
+			this->tabPage1->Size = System::Drawing::Size(283, 220);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"PID";
 			this->tabPage1->UseVisualStyleBackColor = true;
@@ -1522,35 +1427,59 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(316, 220);
+			this->tabPage2->Size = System::Drawing::Size(283, 220);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"FUZZY";
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
 			// tabPage6
 			// 
+			this->tabPage6->Controls->Add(this->txtSetSPY);
+			this->tabPage6->Controls->Add(this->txtSetSPX);
 			this->tabPage6->Controls->Add(this->bSET_SPEED_PLAN);
 			this->tabPage6->Controls->Add(this->label36);
 			this->tabPage6->Controls->Add(this->label35);
 			this->tabPage6->Controls->Add(this->txtSpeedChangePoint);
 			this->tabPage6->Controls->Add(this->txtNumOfPoint);
 			this->tabPage6->Controls->Add(this->bSTART_TRACK);
-			this->tabPage6->Controls->Add(this->txtExportTrajectory);
-			this->tabPage6->Controls->Add(this->txtImportTrajectory);
+			this->tabPage6->Controls->Add(this->bImportTrajectory);
 			this->tabPage6->Controls->Add(this->bSETBALL);
 			this->tabPage6->Location = System::Drawing::Point(4, 22);
 			this->tabPage6->Name = L"tabPage6";
 			this->tabPage6->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage6->Size = System::Drawing::Size(316, 220);
+			this->tabPage6->Size = System::Drawing::Size(283, 220);
 			this->tabPage6->TabIndex = 5;
 			this->tabPage6->Text = L"TRACKING";
 			this->tabPage6->UseVisualStyleBackColor = true;
-
+			// 
+			// txtSetSPY
+			// 
+			this->txtSetSPY->Location = System::Drawing::Point(155, 36);
+			this->txtSetSPY->Name = L"txtSetSPY";
+			this->txtSetSPY->Size = System::Drawing::Size(122, 20);
+			this->txtSetSPY->TabIndex = 45;
+			this->txtSetSPY->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
+			// 
+			// txtSetSPX
+			// 
+			this->txtSetSPX->Location = System::Drawing::Point(155, 10);
+			this->txtSetSPX->Name = L"txtSetSPX";
+			this->txtSetSPX->Size = System::Drawing::Size(122, 20);
+			this->txtSetSPX->TabIndex = 44;
+			// 
+			// bSET_SPEED_PLAN
+			// 
+			this->bSET_SPEED_PLAN->Location = System::Drawing::Point(11, 113);
+			this->bSET_SPEED_PLAN->Name = L"bSET_SPEED_PLAN";
+			this->bSET_SPEED_PLAN->Size = System::Drawing::Size(134, 46);
+			this->bSET_SPEED_PLAN->TabIndex = 43;
+			this->bSET_SPEED_PLAN->Text = L"SET";
+			this->bSET_SPEED_PLAN->UseVisualStyleBackColor = true;
 			// 
 			// label36
 			// 
 			this->label36->AutoSize = true;
-			this->label36->Location = System::Drawing::Point(153, 197);
+			this->label36->Location = System::Drawing::Point(185, 142);
 			this->label36->Name = L"label36";
 			this->label36->Size = System::Drawing::Size(43, 13);
 			this->label36->TabIndex = 42;
@@ -1559,7 +1488,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// label35
 			// 
 			this->label35->AutoSize = true;
-			this->label35->Location = System::Drawing::Point(13, 197);
+			this->label35->Location = System::Drawing::Point(145, 116);
 			this->label35->Name = L"label35";
 			this->label35->Size = System::Drawing::Size(83, 13);
 			this->label35->TabIndex = 42;
@@ -1567,72 +1496,42 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// txtSpeedChangePoint
 			// 
-			this->txtSpeedChangePoint->Location = System::Drawing::Point(202, 194);
+			this->txtSpeedChangePoint->Location = System::Drawing::Point(234, 139);
 			this->txtSpeedChangePoint->Name = L"txtSpeedChangePoint";
 			this->txtSpeedChangePoint->Size = System::Drawing::Size(43, 20);
 			this->txtSpeedChangePoint->TabIndex = 41;
 			// 
 			// txtNumOfPoint
 			// 
-			this->txtNumOfPoint->Location = System::Drawing::Point(102, 194);
+			this->txtNumOfPoint->Location = System::Drawing::Point(234, 113);
 			this->txtNumOfPoint->Name = L"txtNumOfPoint";
 			this->txtNumOfPoint->Size = System::Drawing::Size(43, 20);
 			this->txtNumOfPoint->TabIndex = 41;
 			// 
 			// bSTART_TRACK
 			// 
-			this->bSTART_TRACK->Location = System::Drawing::Point(173, 11);
+			this->bSTART_TRACK->Location = System::Drawing::Point(153, 62);
 			this->bSTART_TRACK->Name = L"bSTART_TRACK";
-			this->bSTART_TRACK->Size = System::Drawing::Size(137, 81);
+			this->bSTART_TRACK->Size = System::Drawing::Size(124, 45);
 			this->bSTART_TRACK->TabIndex = 40;
 			this->bSTART_TRACK->Text = L"START TRACK";
 			this->bSTART_TRACK->UseVisualStyleBackColor = true;
 			this->bSTART_TRACK->Click += gcnew System::EventHandler(this, &MyForm::bSTART_TRACKING_Click);
 			// 
-			// txtExportTrajectory
+			// bImportTrajectory
 			// 
-			this->txtExportTrajectory->Location = System::Drawing::Point(173, 98);
-			this->txtExportTrajectory->Name = L"txtExportTrajectory";
-			this->txtExportTrajectory->Size = System::Drawing::Size(137, 87);
-			this->txtExportTrajectory->TabIndex = 39;
-			this->txtExportTrajectory->Text = L"EXPORT";
-			this->txtExportTrajectory->UseVisualStyleBackColor = true;
-			// 
-			// txtImportTrajectory
-			// 
-			this->txtImportTrajectory->Location = System::Drawing::Point(10, 98);
-			this->txtImportTrajectory->Name = L"txtImportTrajectory";
-			this->txtImportTrajectory->Size = System::Drawing::Size(157, 87);
-			this->txtImportTrajectory->TabIndex = 38;
-			this->txtImportTrajectory->Text = L"IMPORT";
-			this->txtImportTrajectory->UseVisualStyleBackColor = true;
-			this->txtImportTrajectory->Click += gcnew System::EventHandler(this, &MyForm::txtImportTrajectory_Click);
-			// 
-			// groupBox2
-			// 
-			this->groupBox2->Controls->Add(this->label30);
-			this->groupBox2->Controls->Add(this->label33);
-			this->groupBox2->Controls->Add(this->label32);
-			this->groupBox2->Controls->Add(this->label31);
-			this->groupBox2->Controls->Add(this->label29);
-			this->groupBox2->Controls->Add(this->label28);
-			this->groupBox2->Controls->Add(this->txtDisplayAngle6);
-			this->groupBox2->Controls->Add(this->txtDisplayAngle5);
-			this->groupBox2->Controls->Add(this->txtDisplayAngle4);
-			this->groupBox2->Controls->Add(this->txtDisplayAngle3);
-			this->groupBox2->Controls->Add(this->txtDisplayAngle2);
-			this->groupBox2->Controls->Add(this->txtDisplayAngle1);
-			this->groupBox2->Location = System::Drawing::Point(237, 264);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(103, 187);
-			this->groupBox2->TabIndex = 48;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"ANGLE";
+			this->bImportTrajectory->Location = System::Drawing::Point(11, 62);
+			this->bImportTrajectory->Name = L"bImportTrajectory";
+			this->bImportTrajectory->Size = System::Drawing::Size(134, 45);
+			this->bImportTrajectory->TabIndex = 38;
+			this->bImportTrajectory->Text = L"IMPORT";
+			this->bImportTrajectory->UseVisualStyleBackColor = true;
+			this->bImportTrajectory->Click += gcnew System::EventHandler(this, &MyForm::txtImportTrajectory_Click);
 			// 
 			// label30
 			// 
 			this->label30->AutoSize = true;
-			this->label30->Location = System::Drawing::Point(3, 79);
+			this->label30->Location = System::Drawing::Point(20, 115);
 			this->label30->Name = L"label30";
 			this->label30->Size = System::Drawing::Size(52, 13);
 			this->label30->TabIndex = 49;
@@ -1641,7 +1540,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// label33
 			// 
 			this->label33->AutoSize = true;
-			this->label33->Location = System::Drawing::Point(3, 157);
+			this->label33->Location = System::Drawing::Point(150, 115);
 			this->label33->Name = L"label33";
 			this->label33->Size = System::Drawing::Size(52, 13);
 			this->label33->TabIndex = 49;
@@ -1650,7 +1549,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// label32
 			// 
 			this->label32->AutoSize = true;
-			this->label32->Location = System::Drawing::Point(3, 131);
+			this->label32->Location = System::Drawing::Point(150, 89);
 			this->label32->Name = L"label32";
 			this->label32->Size = System::Drawing::Size(52, 13);
 			this->label32->TabIndex = 49;
@@ -1659,7 +1558,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// label31
 			// 
 			this->label31->AutoSize = true;
-			this->label31->Location = System::Drawing::Point(3, 105);
+			this->label31->Location = System::Drawing::Point(150, 63);
 			this->label31->Name = L"label31";
 			this->label31->Size = System::Drawing::Size(52, 13);
 			this->label31->TabIndex = 49;
@@ -1668,7 +1567,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// label29
 			// 
 			this->label29->AutoSize = true;
-			this->label29->Location = System::Drawing::Point(3, 53);
+			this->label29->Location = System::Drawing::Point(20, 89);
 			this->label29->Name = L"label29";
 			this->label29->Size = System::Drawing::Size(52, 13);
 			this->label29->TabIndex = 49;
@@ -1677,7 +1576,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// label28
 			// 
 			this->label28->AutoSize = true;
-			this->label28->Location = System::Drawing::Point(3, 27);
+			this->label28->Location = System::Drawing::Point(20, 63);
 			this->label28->Name = L"label28";
 			this->label28->Size = System::Drawing::Size(52, 13);
 			this->label28->TabIndex = 49;
@@ -1685,44 +1584,44 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// txtDisplayAngle6
 			// 
-			this->txtDisplayAngle6->Location = System::Drawing::Point(61, 154);
+			this->txtDisplayAngle6->Location = System::Drawing::Point(208, 112);
 			this->txtDisplayAngle6->Name = L"txtDisplayAngle6";
-			this->txtDisplayAngle6->Size = System::Drawing::Size(34, 20);
+			this->txtDisplayAngle6->Size = System::Drawing::Size(53, 20);
 			this->txtDisplayAngle6->TabIndex = 0;
 			// 
 			// txtDisplayAngle5
 			// 
-			this->txtDisplayAngle5->Location = System::Drawing::Point(61, 128);
+			this->txtDisplayAngle5->Location = System::Drawing::Point(208, 86);
 			this->txtDisplayAngle5->Name = L"txtDisplayAngle5";
-			this->txtDisplayAngle5->Size = System::Drawing::Size(34, 20);
+			this->txtDisplayAngle5->Size = System::Drawing::Size(53, 20);
 			this->txtDisplayAngle5->TabIndex = 0;
 			// 
 			// txtDisplayAngle4
 			// 
-			this->txtDisplayAngle4->Location = System::Drawing::Point(61, 102);
+			this->txtDisplayAngle4->Location = System::Drawing::Point(208, 60);
 			this->txtDisplayAngle4->Name = L"txtDisplayAngle4";
-			this->txtDisplayAngle4->Size = System::Drawing::Size(34, 20);
+			this->txtDisplayAngle4->Size = System::Drawing::Size(53, 20);
 			this->txtDisplayAngle4->TabIndex = 0;
 			// 
 			// txtDisplayAngle3
 			// 
-			this->txtDisplayAngle3->Location = System::Drawing::Point(61, 76);
+			this->txtDisplayAngle3->Location = System::Drawing::Point(78, 112);
 			this->txtDisplayAngle3->Name = L"txtDisplayAngle3";
-			this->txtDisplayAngle3->Size = System::Drawing::Size(34, 20);
+			this->txtDisplayAngle3->Size = System::Drawing::Size(59, 20);
 			this->txtDisplayAngle3->TabIndex = 0;
 			// 
 			// txtDisplayAngle2
 			// 
-			this->txtDisplayAngle2->Location = System::Drawing::Point(62, 50);
+			this->txtDisplayAngle2->Location = System::Drawing::Point(79, 86);
 			this->txtDisplayAngle2->Name = L"txtDisplayAngle2";
-			this->txtDisplayAngle2->Size = System::Drawing::Size(34, 20);
+			this->txtDisplayAngle2->Size = System::Drawing::Size(59, 20);
 			this->txtDisplayAngle2->TabIndex = 0;
 			// 
 			// txtDisplayAngle1
 			// 
-			this->txtDisplayAngle1->Location = System::Drawing::Point(62, 24);
+			this->txtDisplayAngle1->Location = System::Drawing::Point(79, 60);
 			this->txtDisplayAngle1->Name = L"txtDisplayAngle1";
-			this->txtDisplayAngle1->Size = System::Drawing::Size(34, 20);
+			this->txtDisplayAngle1->Size = System::Drawing::Size(59, 20);
 			this->txtDisplayAngle1->TabIndex = 0;
 			// 
 			// groupBox3
@@ -1821,7 +1720,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			// zedGraphXY
 			// 
-			this->zedGraphXY->Location = System::Drawing::Point(6, 6);
+			this->zedGraphXY->Location = System::Drawing::Point(11, 9);
 			this->zedGraphXY->Name = L"zedGraphXY";
 			this->zedGraphXY->ScrollGrace = 0;
 			this->zedGraphXY->ScrollMaxX = 0;
@@ -1838,7 +1737,7 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->tabControlGraph->Controls->Add(this->tabPageXYGRAPH);
 			this->tabControlGraph->Controls->Add(this->tabPageTIMEGRAPH);
 			this->tabControlGraph->Controls->Add(this->tabPageMOREGRAPH);
-			this->tabControlGraph->Location = System::Drawing::Point(342, 17);
+			this->tabControlGraph->Location = System::Drawing::Point(309, 16);
 			this->tabControlGraph->Name = L"tabControlGraph";
 			this->tabControlGraph->SelectedIndex = 0;
 			this->tabControlGraph->Size = System::Drawing::Size(561, 583);
@@ -1857,22 +1756,12 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			// 
 			this->timerDisplay->Tick += gcnew System::EventHandler(this, &MyForm::timerDisplay_Tick);
 			// 
-			// bSET_SPEED_PLAN
-			// 
-			this->bSET_SPEED_PLAN->Location = System::Drawing::Point(259, 191);
-			this->bSET_SPEED_PLAN->Name = L"bSET_SPEED_PLAN";
-			this->bSET_SPEED_PLAN->Size = System::Drawing::Size(51, 23);
-			this->bSET_SPEED_PLAN->TabIndex = 43;
-			this->bSET_SPEED_PLAN->Text = L"SET";
-			this->bSET_SPEED_PLAN->UseVisualStyleBackColor = true;
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(919, 750);
+			this->ClientSize = System::Drawing::Size(884, 712);
 			this->Controls->Add(this->groupBox3);
-			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->tabControlGraph);
 			this->Controls->Add(this->tabControlController);
 			this->Controls->Add(this->groupBox1);
@@ -1888,20 +1777,12 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			this->tabPage->PerformLayout();
 			this->tabPage5->ResumeLayout(false);
 			this->tabPage5->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar6))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
 			this->tabPage2->ResumeLayout(false);
 			this->tabPage2->PerformLayout();
 			this->tabPage6->ResumeLayout(false);
 			this->tabPage6->PerformLayout();
-			this->groupBox2->ResumeLayout(false);
-			this->groupBox2->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
 			this->tabPageMOREGRAPH->ResumeLayout(false);
@@ -1989,8 +1870,8 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 		double KiY = 0;
 		double KdY = 0;
 		int processTime = 0;
-		int samplingRate = 20;
-		int maxTimeDisplay = 1000;
+		int samplingRate = 1;
+		int maxTimeDisplay = 5000;
 		int maxTimeCount = 10000;
 
 		//string data_in_file[2] = { "aaasdaa","aaa" };
@@ -2208,7 +2089,9 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 			else
 			{
 				myPaneX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max + 1;
+				myPaneX->XAxis->Scale->Min = 0;
 				myPaneY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+				myPaneY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
 			}
 		}
 		if (timeGraph > maxTimeCount)
@@ -2244,33 +2127,27 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 		myPaneDEY->CurveList->Clear();
 		myPaneUX->CurveList->Clear();
 		myPaneUY->CurveList->Clear();
-		if (timeGraph > myPaneX->XAxis->Scale->Max - 1)
-		{
-			if (bSCROLL->Text == "BLOCK")
-			{
-				myPaneEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneEX->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
-				myPaneEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneEY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
-				myPaneDEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneDEX->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
-				myPaneDEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneDEY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
-				myPaneUX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneUX->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
-				myPaneUY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneUY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
-			}
-			else
-			{
-				myPaneEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneDEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneDEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneUX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-				myPaneUY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-			}
-		}
+
+		myPaneEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneEX->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
+		myPaneEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneEY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
+		myPaneDEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneDEX->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
+		myPaneDEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneDEY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
+		myPaneUX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneUX->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
+		myPaneUY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneUY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
+
+		myPaneEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneDEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneDEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneUX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+		myPaneUY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
+
 		if (timeGraph > maxTimeCount)
 		{
 			timeGraph = 0;
@@ -2313,30 +2190,16 @@ private: System::Windows::Forms::Button^  bSET_SPEED_PLAN;
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 		findPorts();
 		initGraph();
-		txtSetpointX->Text = "198";
-		txtSetpointY->Text = "214";
-		txtErrX->Text = "0";
-		txtErrY->Text = "0";
-		txtANGLE_X->Text = "0";
-		txtANGLE_Y->Text = "0";
-		txtSEND->Text = "@0:0$";
-
-		txtKP1->Text = "0";
-		txtKI1->Text = "0";
-		txtKD1->Text = "0";
-		txtKP2->Text = "0";
-		txtKI2->Text = "0";
-		txtKD2->Text = "0";
-
 
 		camera.setSize(640, 480);
 		camera.setHSVParam(0, 84, 31, 255, 153, 255);
 		camera.setCropFrame(118, 16, 400, 400);
 		camera.applyCropFrame();
-		timerProcessing->Interval = samplingRate;
+		timerProcessing->Interval = 1;
 		timerCamera->Interval = 1;
 		timerDisplay->Interval = 1;
 		timerUART_Send->Interval = 20;
+		timerUART_Receive->Interval = 20;
 		Init_Fuzzy();
 
 	}
@@ -2366,10 +2229,14 @@ private: System::Void tbAngleY_Scroll(System::Object^  sender, System::EventArgs
 
 
 private: System::Void txtSamplingRate_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (txtSamplingRate->Text != "")
+	if (txtSamplingRate->Text != "" && System::Convert::ToInt32(txtSamplingRate->Text)!=0 )
 	{
 		samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
 		timerProcessing->Interval = samplingRate;
+	}
+	else
+	{
+		timerProcessing->Interval = 1;
 	}
 }
 
@@ -2383,6 +2250,8 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 posX = camera.getX();
 			 posY = camera.getY();
 
+
+
 			 errX = setpointX - posX;
 			 errY = setpointY - posY;
 
@@ -2391,11 +2260,41 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 
 			 pre_errX = errX;
 			 pre_errY = errY;
+
+			 if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
+			 {
+				 pidX.setPIDPeriod(1000 / samplingRate);
+				 pidX.setPIDOutputLimit(-10, 10);
+				 pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
+				 pidX.compute(errX);
+
+				 pidY.setPIDPeriod(1000 / samplingRate);
+				 pidY.setPIDOutputLimit(-10, 10);
+				 pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
+				 pidY.compute(errY);
+
+				 txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
+				 txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
+			 }
+			 if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
+			 {
+				 angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
+				 angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
+				 //txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
+				 //txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
+			 }
+
+
+
 			 if (bShowCam->Text == "UNSHOW CAM")
 			 {
 				 camera.showCamera(2);
 			 }
 			 camera.getFPS_end();
+			 if (txtSamplingRate->Text == "")
+			 {
+				 samplingRate = 1000 / camera.fps_;
+			 }
 			 processTime = ((int)(1000 / camera.fps_));
 		 }
 private: System::Void timerDisplay_Tick(System::Object^  sender, System::EventArgs^  e) {
@@ -2405,6 +2304,10 @@ private: System::Void timerDisplay_Tick(System::Object^  sender, System::EventAr
 		drawXYT(posX, posY);
 		drawMORE(errX, errY, velX, velY, angleX, angleY);
 	}
+	txtSetpointX->Text = setpointX.ToString();
+	txtSetpointY->Text = setpointY.ToString();
+	txtPosX->Text = posX.ToString();
+	txtPosY->Text = posY.ToString();
 	txtErrX->Text = errX.ToString();
 	txtErrY->Text = errY.ToString();
 	txtPosX->Text = posX.ToString();
@@ -2443,37 +2346,7 @@ private: System::Void timerTracking_Tick(System::Object^  sender, System::EventA
 	}
 }
 private: System::Void etimerProcessing(System::Object^  sender, System::EventArgs^  e) {
-	errX = setpointX - posX;
-	errY = setpointY - posY;
-
-	velX = (errX - pre_errX) * 1000 / samplingRate;
-	velY = (errY - pre_errY) * 1000 / samplingRate;
-
-	pre_errX = errX;
-	pre_errY = errY;
-
-	if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
-	{
-		pidX.setPIDPeriod(1 / camera.fps_);
-		pidX.setPIDOutputLimit(-10, 10);
-		pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
-		pidX.compute(errX);
-
-		pidY.setPIDPeriod(1 / camera.fps_);
-		pidY.setPIDOutputLimit(-10, 10);
-		pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
-		pidY.compute(errY);
-
-		txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
-		txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
-	}
-	if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
-	{
-		angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
-		angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
-		//txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
-		//txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
-	}
+	
 }
 
 
@@ -2512,8 +2385,8 @@ private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^
 private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (bSEND->Text == "SEND" && bCONNECT->Text == "DISCONNECT")
 	{
-		//timerUART_Send->Interval = 1;
 		timerUART_Send->Start();
+		timerUART_Receive->Start();
 		bSEND->Text = "STOP SEND";
 	}
 	else if (bCONNECT->Text == "CONNECT")
@@ -2524,19 +2397,20 @@ private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e
 	{
 		bSEND->Text = "SEND";
 		timerUART_Send->Stop();
+		timerUART_Receive->Stop();
 	}
 }
 private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (bSTART->Text == "START")
 	{
-		timerProcessing->Start();
+		//timerProcessing->Start();
 		timerDisplay->Start();
 		bSTART->Text = "STOP";
 	}
 	else
 	{
 		bSTART->Text = "START";
-		timerProcessing->Stop();
+		//timerProcessing->Stop();
 		timerDisplay->Stop();
 	}
 
@@ -2555,8 +2429,8 @@ private: System::Void bSCROLL_Click(System::Object^  sender, System::EventArgs^ 
 }
 
 private: System::Void bSETBALL_Click(System::Object^  sender, System::EventArgs^  e) {
-	setpointX = System::Convert::ToDouble(txtSetpointX->Text);
-	setpointY = System::Convert::ToDouble(txtSetpointY->Text);
+	setpointX = System::Convert::ToDouble(txtSetSPX->Text);
+	setpointY = System::Convert::ToDouble(txtSetSPY->Text);
 }
 private: System::Void bCALIB_Click(System::Object^  sender, System::EventArgs^  e) {
 	camera.createTrackbars();
@@ -2760,7 +2634,7 @@ private: System::Void bSTART_TRACKING_Click(System::Object^  sender, System::Eve
 
 }
 
-#pragma endregion
+
 private: System::Void bSTART_CAM_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (bSTART_CAM->Text == "START CAM")
 	{
@@ -2776,6 +2650,10 @@ private: System::Void bSTART_CAM_Click(System::Object^  sender, System::EventArg
 private: System::Void bSetScale_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 
-
+#pragma endregion
+private: System::Void txtExportTrajectory_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 }
