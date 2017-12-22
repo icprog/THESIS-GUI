@@ -1458,7 +1458,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->txtSetSPY->Name = L"txtSetSPY";
 			this->txtSetSPY->Size = System::Drawing::Size(122, 20);
 			this->txtSetSPY->TabIndex = 45;
-			this->txtSetSPY->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
+//			this->txtSetSPY->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
 			// 
 			// txtSetSPX
 			// 
@@ -1663,7 +1663,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->tabPageMOREGRAPH->Location = System::Drawing::Point(4, 22);
 			this->tabPageMOREGRAPH->Name = L"tabPageMOREGRAPH";
 			this->tabPageMOREGRAPH->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageMOREGRAPH->Size = System::Drawing::Size(553, 557);
+			this->tabPageMOREGRAPH->Size = System::Drawing::Size(637, 654);
 			this->tabPageMOREGRAPH->TabIndex = 2;
 			this->tabPageMOREGRAPH->Text = L"MORE GRAPH";
 			this->tabPageMOREGRAPH->UseVisualStyleBackColor = true;
@@ -1679,7 +1679,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->zedGraphMore->ScrollMinX = 0;
 			this->zedGraphMore->ScrollMinY = 0;
 			this->zedGraphMore->ScrollMinY2 = 0;
-			this->zedGraphMore->Size = System::Drawing::Size(541, 532);
+			this->zedGraphMore->Size = System::Drawing::Size(625, 630);
 			this->zedGraphMore->TabIndex = 0;
 			// 
 			// tabPageTIMEGRAPH
@@ -1688,7 +1688,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->tabPageTIMEGRAPH->Location = System::Drawing::Point(4, 22);
 			this->tabPageTIMEGRAPH->Name = L"tabPageTIMEGRAPH";
 			this->tabPageTIMEGRAPH->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageTIMEGRAPH->Size = System::Drawing::Size(553, 557);
+			this->tabPageTIMEGRAPH->Size = System::Drawing::Size(637, 654);
 			this->tabPageTIMEGRAPH->TabIndex = 1;
 			this->tabPageTIMEGRAPH->Text = L"TIME GRAPH";
 			this->tabPageTIMEGRAPH->UseVisualStyleBackColor = true;
@@ -1704,7 +1704,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->zedGraphTime->ScrollMinX = 0;
 			this->zedGraphTime->ScrollMinY = 0;
 			this->zedGraphTime->ScrollMinY2 = 0;
-			this->zedGraphTime->Size = System::Drawing::Size(522, 535);
+			this->zedGraphTime->Size = System::Drawing::Size(614, 637);
 			this->zedGraphTime->TabIndex = 0;
 			// 
 			// tabPageXYGRAPH
@@ -1713,7 +1713,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->tabPageXYGRAPH->Location = System::Drawing::Point(4, 22);
 			this->tabPageXYGRAPH->Name = L"tabPageXYGRAPH";
 			this->tabPageXYGRAPH->Padding = System::Windows::Forms::Padding(3);
-			this->tabPageXYGRAPH->Size = System::Drawing::Size(553, 557);
+			this->tabPageXYGRAPH->Size = System::Drawing::Size(637, 654);
 			this->tabPageXYGRAPH->TabIndex = 0;
 			this->tabPageXYGRAPH->Text = L"XY GRAPH";
 			this->tabPageXYGRAPH->UseVisualStyleBackColor = true;
@@ -1729,7 +1729,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->zedGraphXY->ScrollMinX = 0;
 			this->zedGraphXY->ScrollMinY = 0;
 			this->zedGraphXY->ScrollMinY2 = 0;
-			this->zedGraphXY->Size = System::Drawing::Size(536, 525);
+			this->zedGraphXY->Size = System::Drawing::Size(610, 627);
 			this->zedGraphXY->TabIndex = 5;
 			// 
 			// tabControlGraph
@@ -1740,7 +1740,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->tabControlGraph->Location = System::Drawing::Point(309, 16);
 			this->tabControlGraph->Name = L"tabControlGraph";
 			this->tabControlGraph->SelectedIndex = 0;
-			this->tabControlGraph->Size = System::Drawing::Size(561, 583);
+			this->tabControlGraph->Size = System::Drawing::Size(645, 680);
 			this->tabControlGraph->TabIndex = 46;
 			// 
 			// timerTracking
@@ -1760,7 +1760,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(884, 712);
+			this->ClientSize = System::Drawing::Size(966, 712);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->tabControlGraph);
 			this->Controls->Add(this->tabControlController);
@@ -1871,7 +1871,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		double KdY = 0;
 		int processTime = 0;
 		int samplingRate = 1;
-		int maxTimeDisplay = 5000;
+		int maxTimeDisplay = 500;
 		int maxTimeCount = 10000;
 
 		//string data_in_file[2] = { "aaasdaa","aaa" };
@@ -2290,6 +2290,25 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 {
 				 camera.showCamera(2);
 			 }
+			 if (bSTART_GRAPH->Text == "STOP GRAPH")
+			 {
+				 drawXY(posX, posY);
+				 drawXYT(posX, posY);
+				 drawMORE(errX, errY, velX, velY, angleX, angleY);
+			 }
+			 txtSetpointX->Text = setpointX.ToString();
+			 txtSetpointY->Text = setpointY.ToString();
+			 txtPosX->Text = posX.ToString();
+			 txtPosY->Text = posY.ToString();
+			 txtErrX->Text = errX.ToString();
+			 txtErrY->Text = errY.ToString();
+			 txtPosX->Text = posX.ToString();
+			 txtPosY->Text = posY.ToString();
+			 txtDErrX->Text = ((int)velX).ToString();
+			 txtDErrY->Text = ((int)velY).ToString();
+			 txtANGLE_X->Text = angleX.ToString();
+			 txtANGLE_Y->Text = angleY.ToString();
+			 txtTimeProcess->Text = processTime.ToString() + " ms";
 			 camera.getFPS_end();
 			 if (txtSamplingRate->Text == "")
 			 {
@@ -2298,25 +2317,7 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 processTime = ((int)(1000 / camera.fps_));
 		 }
 private: System::Void timerDisplay_Tick(System::Object^  sender, System::EventArgs^  e) {
-	if (bSTART_GRAPH->Text == "STOP GRAPH")
-	{
-		drawXY(posX, posY);
-		drawXYT(posX, posY);
-		drawMORE(errX, errY, velX, velY, angleX, angleY);
-	}
-	txtSetpointX->Text = setpointX.ToString();
-	txtSetpointY->Text = setpointY.ToString();
-	txtPosX->Text = posX.ToString();
-	txtPosY->Text = posY.ToString();
-	txtErrX->Text = errX.ToString();
-	txtErrY->Text = errY.ToString();
-	txtPosX->Text = posX.ToString();
-	txtPosY->Text = posY.ToString();
-	txtDErrX->Text = velX.ToString();
-	txtDErrY->Text = velY.ToString();
-	txtANGLE_X->Text = angleX.ToString();
-	txtANGLE_Y->Text = angleY.ToString();
-	txtTimeProcess->Text = processTime.ToString() + " ms";
+
 }
 private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e)
 {
