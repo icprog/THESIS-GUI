@@ -466,6 +466,18 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->bSTART = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
+			this->label30 = (gcnew System::Windows::Forms::Label());
+			this->label33 = (gcnew System::Windows::Forms::Label());
+			this->label32 = (gcnew System::Windows::Forms::Label());
+			this->label31 = (gcnew System::Windows::Forms::Label());
+			this->txtDisplayAngle2 = (gcnew System::Windows::Forms::TextBox());
+			this->label29 = (gcnew System::Windows::Forms::Label());
+			this->txtDisplayAngle1 = (gcnew System::Windows::Forms::TextBox());
+			this->label28 = (gcnew System::Windows::Forms::Label());
+			this->txtDisplayAngle3 = (gcnew System::Windows::Forms::TextBox());
+			this->txtDisplayAngle6 = (gcnew System::Windows::Forms::TextBox());
+			this->txtDisplayAngle4 = (gcnew System::Windows::Forms::TextBox());
+			this->txtDisplayAngle5 = (gcnew System::Windows::Forms::TextBox());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage6 = (gcnew System::Windows::Forms::TabPage());
@@ -478,18 +490,6 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->txtNumOfPoint = (gcnew System::Windows::Forms::TextBox());
 			this->bSTART_TRACK = (gcnew System::Windows::Forms::Button());
 			this->bImportTrajectory = (gcnew System::Windows::Forms::Button());
-			this->label30 = (gcnew System::Windows::Forms::Label());
-			this->label33 = (gcnew System::Windows::Forms::Label());
-			this->label32 = (gcnew System::Windows::Forms::Label());
-			this->label31 = (gcnew System::Windows::Forms::Label());
-			this->label29 = (gcnew System::Windows::Forms::Label());
-			this->label28 = (gcnew System::Windows::Forms::Label());
-			this->txtDisplayAngle6 = (gcnew System::Windows::Forms::TextBox());
-			this->txtDisplayAngle5 = (gcnew System::Windows::Forms::TextBox());
-			this->txtDisplayAngle4 = (gcnew System::Windows::Forms::TextBox());
-			this->txtDisplayAngle3 = (gcnew System::Windows::Forms::TextBox());
-			this->txtDisplayAngle2 = (gcnew System::Windows::Forms::TextBox());
-			this->txtDisplayAngle1 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->tabPageMOREGRAPH = (gcnew System::Windows::Forms::TabPage());
 			this->zedGraphMore = (gcnew ZedGraph::ZedGraphControl());
@@ -1379,10 +1379,106 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->tabPage5->Location = System::Drawing::Point(4, 22);
 			this->tabPage5->Name = L"tabPage5";
 			this->tabPage5->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage5->Size = System::Drawing::Size(283, 220);
+			this->tabPage5->Size = System::Drawing::Size(283, 195);
 			this->tabPage5->TabIndex = 2;
 			this->tabPage5->Text = L"MANUAL";
 			this->tabPage5->UseVisualStyleBackColor = true;
+			// 
+			// label30
+			// 
+			this->label30->AutoSize = true;
+			this->label30->Location = System::Drawing::Point(20, 115);
+			this->label30->Name = L"label30";
+			this->label30->Size = System::Drawing::Size(52, 13);
+			this->label30->TabIndex = 49;
+			this->label30->Text = L"THETA 3";
+			// 
+			// label33
+			// 
+			this->label33->AutoSize = true;
+			this->label33->Location = System::Drawing::Point(150, 115);
+			this->label33->Name = L"label33";
+			this->label33->Size = System::Drawing::Size(52, 13);
+			this->label33->TabIndex = 49;
+			this->label33->Text = L"THETA 6";
+			// 
+			// label32
+			// 
+			this->label32->AutoSize = true;
+			this->label32->Location = System::Drawing::Point(150, 89);
+			this->label32->Name = L"label32";
+			this->label32->Size = System::Drawing::Size(52, 13);
+			this->label32->TabIndex = 49;
+			this->label32->Text = L"THETA 5";
+			// 
+			// label31
+			// 
+			this->label31->AutoSize = true;
+			this->label31->Location = System::Drawing::Point(150, 63);
+			this->label31->Name = L"label31";
+			this->label31->Size = System::Drawing::Size(52, 13);
+			this->label31->TabIndex = 49;
+			this->label31->Text = L"THETA 4";
+			// 
+			// txtDisplayAngle2
+			// 
+			this->txtDisplayAngle2->Location = System::Drawing::Point(79, 86);
+			this->txtDisplayAngle2->Name = L"txtDisplayAngle2";
+			this->txtDisplayAngle2->Size = System::Drawing::Size(59, 20);
+			this->txtDisplayAngle2->TabIndex = 0;
+			// 
+			// label29
+			// 
+			this->label29->AutoSize = true;
+			this->label29->Location = System::Drawing::Point(20, 89);
+			this->label29->Name = L"label29";
+			this->label29->Size = System::Drawing::Size(52, 13);
+			this->label29->TabIndex = 49;
+			this->label29->Text = L"THETA 2";
+			// 
+			// txtDisplayAngle1
+			// 
+			this->txtDisplayAngle1->Location = System::Drawing::Point(79, 60);
+			this->txtDisplayAngle1->Name = L"txtDisplayAngle1";
+			this->txtDisplayAngle1->Size = System::Drawing::Size(59, 20);
+			this->txtDisplayAngle1->TabIndex = 0;
+			// 
+			// label28
+			// 
+			this->label28->AutoSize = true;
+			this->label28->Location = System::Drawing::Point(20, 63);
+			this->label28->Name = L"label28";
+			this->label28->Size = System::Drawing::Size(52, 13);
+			this->label28->TabIndex = 49;
+			this->label28->Text = L"THETA 1";
+			// 
+			// txtDisplayAngle3
+			// 
+			this->txtDisplayAngle3->Location = System::Drawing::Point(78, 112);
+			this->txtDisplayAngle3->Name = L"txtDisplayAngle3";
+			this->txtDisplayAngle3->Size = System::Drawing::Size(59, 20);
+			this->txtDisplayAngle3->TabIndex = 0;
+			// 
+			// txtDisplayAngle6
+			// 
+			this->txtDisplayAngle6->Location = System::Drawing::Point(208, 112);
+			this->txtDisplayAngle6->Name = L"txtDisplayAngle6";
+			this->txtDisplayAngle6->Size = System::Drawing::Size(53, 20);
+			this->txtDisplayAngle6->TabIndex = 0;
+			// 
+			// txtDisplayAngle4
+			// 
+			this->txtDisplayAngle4->Location = System::Drawing::Point(208, 60);
+			this->txtDisplayAngle4->Name = L"txtDisplayAngle4";
+			this->txtDisplayAngle4->Size = System::Drawing::Size(53, 20);
+			this->txtDisplayAngle4->TabIndex = 0;
+			// 
+			// txtDisplayAngle5
+			// 
+			this->txtDisplayAngle5->Location = System::Drawing::Point(208, 86);
+			this->txtDisplayAngle5->Name = L"txtDisplayAngle5";
+			this->txtDisplayAngle5->Size = System::Drawing::Size(53, 20);
+			this->txtDisplayAngle5->TabIndex = 0;
 			// 
 			// tabPage1
 			// 
@@ -1403,7 +1499,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(283, 220);
+			this->tabPage1->Size = System::Drawing::Size(283, 195);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"PID";
 			this->tabPage1->UseVisualStyleBackColor = true;
@@ -1427,7 +1523,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(283, 220);
+			this->tabPage2->Size = System::Drawing::Size(283, 195);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"FUZZY";
 			this->tabPage2->UseVisualStyleBackColor = true;
@@ -1447,7 +1543,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->tabPage6->Location = System::Drawing::Point(4, 22);
 			this->tabPage6->Name = L"tabPage6";
 			this->tabPage6->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage6->Size = System::Drawing::Size(283, 220);
+			this->tabPage6->Size = System::Drawing::Size(283, 195);
 			this->tabPage6->TabIndex = 5;
 			this->tabPage6->Text = L"TRACKING";
 			this->tabPage6->UseVisualStyleBackColor = true;
@@ -1458,7 +1554,6 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->txtSetSPY->Name = L"txtSetSPY";
 			this->txtSetSPY->Size = System::Drawing::Size(122, 20);
 			this->txtSetSPY->TabIndex = 45;
-//			this->txtSetSPY->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
 			// 
 			// txtSetSPX
 			// 
@@ -1527,102 +1622,6 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->bImportTrajectory->Text = L"IMPORT";
 			this->bImportTrajectory->UseVisualStyleBackColor = true;
 			this->bImportTrajectory->Click += gcnew System::EventHandler(this, &MyForm::txtImportTrajectory_Click);
-			// 
-			// label30
-			// 
-			this->label30->AutoSize = true;
-			this->label30->Location = System::Drawing::Point(20, 115);
-			this->label30->Name = L"label30";
-			this->label30->Size = System::Drawing::Size(52, 13);
-			this->label30->TabIndex = 49;
-			this->label30->Text = L"THETA 3";
-			// 
-			// label33
-			// 
-			this->label33->AutoSize = true;
-			this->label33->Location = System::Drawing::Point(150, 115);
-			this->label33->Name = L"label33";
-			this->label33->Size = System::Drawing::Size(52, 13);
-			this->label33->TabIndex = 49;
-			this->label33->Text = L"THETA 6";
-			// 
-			// label32
-			// 
-			this->label32->AutoSize = true;
-			this->label32->Location = System::Drawing::Point(150, 89);
-			this->label32->Name = L"label32";
-			this->label32->Size = System::Drawing::Size(52, 13);
-			this->label32->TabIndex = 49;
-			this->label32->Text = L"THETA 5";
-			// 
-			// label31
-			// 
-			this->label31->AutoSize = true;
-			this->label31->Location = System::Drawing::Point(150, 63);
-			this->label31->Name = L"label31";
-			this->label31->Size = System::Drawing::Size(52, 13);
-			this->label31->TabIndex = 49;
-			this->label31->Text = L"THETA 4";
-			// 
-			// label29
-			// 
-			this->label29->AutoSize = true;
-			this->label29->Location = System::Drawing::Point(20, 89);
-			this->label29->Name = L"label29";
-			this->label29->Size = System::Drawing::Size(52, 13);
-			this->label29->TabIndex = 49;
-			this->label29->Text = L"THETA 2";
-			// 
-			// label28
-			// 
-			this->label28->AutoSize = true;
-			this->label28->Location = System::Drawing::Point(20, 63);
-			this->label28->Name = L"label28";
-			this->label28->Size = System::Drawing::Size(52, 13);
-			this->label28->TabIndex = 49;
-			this->label28->Text = L"THETA 1";
-			// 
-			// txtDisplayAngle6
-			// 
-			this->txtDisplayAngle6->Location = System::Drawing::Point(208, 112);
-			this->txtDisplayAngle6->Name = L"txtDisplayAngle6";
-			this->txtDisplayAngle6->Size = System::Drawing::Size(53, 20);
-			this->txtDisplayAngle6->TabIndex = 0;
-			// 
-			// txtDisplayAngle5
-			// 
-			this->txtDisplayAngle5->Location = System::Drawing::Point(208, 86);
-			this->txtDisplayAngle5->Name = L"txtDisplayAngle5";
-			this->txtDisplayAngle5->Size = System::Drawing::Size(53, 20);
-			this->txtDisplayAngle5->TabIndex = 0;
-			// 
-			// txtDisplayAngle4
-			// 
-			this->txtDisplayAngle4->Location = System::Drawing::Point(208, 60);
-			this->txtDisplayAngle4->Name = L"txtDisplayAngle4";
-			this->txtDisplayAngle4->Size = System::Drawing::Size(53, 20);
-			this->txtDisplayAngle4->TabIndex = 0;
-			// 
-			// txtDisplayAngle3
-			// 
-			this->txtDisplayAngle3->Location = System::Drawing::Point(78, 112);
-			this->txtDisplayAngle3->Name = L"txtDisplayAngle3";
-			this->txtDisplayAngle3->Size = System::Drawing::Size(59, 20);
-			this->txtDisplayAngle3->TabIndex = 0;
-			// 
-			// txtDisplayAngle2
-			// 
-			this->txtDisplayAngle2->Location = System::Drawing::Point(79, 86);
-			this->txtDisplayAngle2->Name = L"txtDisplayAngle2";
-			this->txtDisplayAngle2->Size = System::Drawing::Size(59, 20);
-			this->txtDisplayAngle2->TabIndex = 0;
-			// 
-			// txtDisplayAngle1
-			// 
-			this->txtDisplayAngle1->Location = System::Drawing::Point(79, 60);
-			this->txtDisplayAngle1->Name = L"txtDisplayAngle1";
-			this->txtDisplayAngle1->Size = System::Drawing::Size(59, 20);
-			this->txtDisplayAngle1->TabIndex = 0;
 			// 
 			// groupBox3
 			// 
@@ -1695,7 +1694,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			// 
 			// zedGraphTime
 			// 
-			this->zedGraphTime->Location = System::Drawing::Point(6, 3);
+			this->zedGraphTime->Location = System::Drawing::Point(6, 6);
 			this->zedGraphTime->Name = L"zedGraphTime";
 			this->zedGraphTime->ScrollGrace = 0;
 			this->zedGraphTime->ScrollMaxX = 0;
@@ -1872,7 +1871,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		int processTime = 0;
 		int samplingRate = 1;
 		int maxTimeDisplay = 500;
-		int maxTimeCount = 10000;
+		int maxTimeCount = 1000;
 
 		//string data_in_file[2] = { "aaasdaa","aaa" };
 		//List<String^>^ dinosaurs = gcnew List<String^>();
@@ -2150,7 +2149,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 
 		if (timeGraph > maxTimeCount)
 		{
-			timeGraph = 0;
+			//timeGraph = 0;
 			PosEXList->Clear();
 			PosEYList->Clear();
 			PosDEXList->Clear();
@@ -2283,9 +2282,6 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 				 //txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
 				 //txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
 			 }
-
-
-
 			 if (bShowCam->Text == "UNSHOW CAM")
 			 {
 				 camera.showCamera(2);
@@ -2387,7 +2383,7 @@ private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e
 	if (bSEND->Text == "SEND" && bCONNECT->Text == "DISCONNECT")
 	{
 		timerUART_Send->Start();
-		timerUART_Receive->Start();
+//		timerUART_Receive->Start();
 		bSEND->Text = "STOP SEND";
 	}
 	else if (bCONNECT->Text == "CONNECT")
@@ -2398,21 +2394,21 @@ private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e
 	{
 		bSEND->Text = "SEND";
 		timerUART_Send->Stop();
-		timerUART_Receive->Stop();
+//		timerUART_Receive->Stop();
 	}
 }
 private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (bSTART->Text == "START")
 	{
 		//timerProcessing->Start();
-		timerDisplay->Start();
+	//	timerDisplay->Start();
 		bSTART->Text = "STOP";
 	}
 	else
 	{
 		bSTART->Text = "START";
 		//timerProcessing->Stop();
-		timerDisplay->Stop();
+	//	timerDisplay->Stop();
 	}
 
 
