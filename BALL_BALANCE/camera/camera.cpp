@@ -269,6 +269,7 @@ void
 Camera::createTrackbars(){
 	//create window for trackbars
     cv::namedWindow("TB",0);
+	cv::resizeWindow("TB",300, 450);
 	//create memory to store trackbar name on window
 	/*char TrackbarName[50];
 	sprintf( TrackbarName, "H_MIN", lowH_);
@@ -292,6 +293,7 @@ Camera::createTrackbars(){
 	cv::createTrackbar("Y", "TB", &myROI.y, height_/2);
 	cv::createTrackbar("WIDTH", "TB", &myROI.width, width_);
 	cv::createTrackbar("HEIGHT", "TB", &myROI.height, height_);
+
 }
 
 

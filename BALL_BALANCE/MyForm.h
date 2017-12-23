@@ -1026,7 +1026,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->bSCROLL->Name = L"bSCROLL";
 			this->bSCROLL->Size = System::Drawing::Size(93, 23);
 			this->bSCROLL->TabIndex = 22;
-			this->bSCROLL->Text = L"SCROLL";
+			this->bSCROLL->Text = L"SLIDE";
 			this->bSCROLL->UseVisualStyleBackColor = true;
 			this->bSCROLL->Click += gcnew System::EventHandler(this, &MyForm::bSCROLL_Click);
 			// 
@@ -1703,7 +1703,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			this->zedGraphTime->ScrollMinX = 0;
 			this->zedGraphTime->ScrollMinY = 0;
 			this->zedGraphTime->ScrollMinY2 = 0;
-			this->zedGraphTime->Size = System::Drawing::Size(614, 637);
+			this->zedGraphTime->Size = System::Drawing::Size(625, 637);
 			this->zedGraphTime->TabIndex = 0;
 			// 
 			// tabPageXYGRAPH
@@ -1871,7 +1871,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		int processTime = 0;
 		int samplingRate = 1;
 		int maxTimeDisplay = 500;
-		int maxTimeCount = 1000;
+		int maxTimeCount = 10000;
 
 		//string data_in_file[2] = { "aaasdaa","aaa" };
 		//List<String^>^ dinosaurs = gcnew List<String^>();
@@ -2057,7 +2057,10 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 	private: void drawXY(double x, double y)
 	{
 		myPaneXY->CurveList->Clear();
-		PosXYList->Clear();
+		if (bSCROLL->Text == "SLIDE" || timeGraph>=maxTimeCount/10)
+		{
+			PosXYList->Clear();
+		}
 		PosXYList->Add(x, y);
 			
 		PosXYSetpointList->Clear();
@@ -2093,14 +2096,6 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 				myPaneY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
 			}
 		}
-		if (timeGraph > maxTimeCount)
-		{
-			timeGraph = 0;
-			PosXList->Clear();
-			PosYList->Clear();
-			PosXSetpointList->Clear();
-			PosYSetpointList->Clear();
-		}
 		PosXList->Add(timeGraph, x);
 		PosYList->Add(timeGraph, y);
 
@@ -2113,7 +2108,15 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		PosYCurve = myPaneY->AddCurve("Pos Y", PosYList, Color::Red, SymbolType::None);
 		PosYSetpointCurve = myPaneY->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue, SymbolType::None);
 
-		timeGraph++;
+		if (timeGraph >= maxTimeCount)
+		{
+			//timeGraph = 0;
+			PosXList->Clear();
+			PosYList->Clear();
+			PosXSetpointList->Clear();
+			PosYSetpointList->Clear();
+		}
+		//timeGraph++;
 
 		zedGraphTime->AxisChange();
 		zedGraphTime->Invalidate();
@@ -2140,23 +2143,8 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		myPaneUY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
 		myPaneUY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
 
-		myPaneEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-		myPaneEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-		myPaneDEX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-		myPaneDEY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-		myPaneUX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
-		myPaneUY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
 
-		if (timeGraph > maxTimeCount)
-		{
-			//timeGraph = 0;
-			PosEXList->Clear();
-			PosEYList->Clear();
-			PosDEXList->Clear();
-			PosDEYList->Clear();
-			PosUXList->Clear();
-			PosUYList->Clear();
-		}
+
 		PosEXList->Add(timeGraph, ex);
 		PosEYList->Add(timeGraph, ey);
 		PosDEXList->Add(timeGraph, dex);
@@ -2171,6 +2159,20 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		PosUXCurve = myPaneUX->AddCurve("Pos UX", PosUXList, Color::Red, SymbolType::None);
 		PosUYCurve = myPaneUY->AddCurve("Pos UY", PosUYList, Color::Red, SymbolType::None);
 
+
+		if (timeGraph >= maxTimeCount)
+		{
+			//timeGraph = 0;
+			PosEXList->Clear();
+			PosEYList->Clear();
+			PosDEXList->Clear();
+			PosDEYList->Clear();
+			PosUXList->Clear();
+			PosUYList->Clear();
+		}
+
+
+		//timeGraph++;
 		zedGraphMore->AxisChange();
 		zedGraphMore->Invalidate();
 	}
@@ -2228,15 +2230,7 @@ private: System::Void tbAngleY_Scroll(System::Object^  sender, System::EventArgs
 
 
 private: System::Void txtSamplingRate_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-	if (txtSamplingRate->Text != "" && System::Convert::ToInt32(txtSamplingRate->Text)!=0 )
-	{
-		samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
-		timerProcessing->Interval = samplingRate;
-	}
-	else
-	{
-		timerProcessing->Interval = 1;
-	}
+
 }
 
 
@@ -2291,6 +2285,11 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 				 drawXY(posX, posY);
 				 drawXYT(posX, posY);
 				 drawMORE(errX, errY, velX, velY, angleX, angleY);
+				 timeGraph++;
+				 if (timeGraph > maxTimeCount)
+				 {
+					 timeGraph = 0;
+				 }
 			 }
 			 txtSetpointX->Text = setpointX.ToString();
 			 txtSetpointY->Text = setpointY.ToString();
@@ -2306,9 +2305,15 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 txtANGLE_Y->Text = angleY.ToString();
 			 txtTimeProcess->Text = processTime.ToString() + " ms";
 			 camera.getFPS_end();
-			 if (txtSamplingRate->Text == "")
+			 if (txtSamplingRate->Text != "" && System::Convert::ToInt32(txtSamplingRate->Text) != 0)
+			 {
+				 samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
+				 timerCamera->Interval = samplingRate;
+			 }
+			 else
 			 {
 				 samplingRate = 1000 / camera.fps_;
+				 timerCamera->Interval = 1;
 			 }
 			 processTime = ((int)(1000 / camera.fps_));
 		 }
@@ -2317,7 +2322,7 @@ private: System::Void timerDisplay_Tick(System::Object^  sender, System::EventAr
 }
 private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e)
 {
-	txtSEND->Text = "@" + txtANGLE_X->Text + ":" + txtANGLE_Y->Text + "$";
+	txtSEND->Text = "@" + txtANGLE_X->Text + ":" + txtANGLE_Y->Text + ":$";
 }
 private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
 		if (serialPort->IsOpen == true)
@@ -2414,13 +2419,13 @@ private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  
 
 }
 private: System::Void bSCROLL_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (bSCROLL->Text == "SCROLL")
+	if (bSCROLL->Text == "SLIDE")
 	{
 		bSCROLL->Text = "BLOCK";
 	}
 	else
 	{
-		bSCROLL->Text = "SCROLL";
+		bSCROLL->Text = "SLIDE";
 	}
 
 }
@@ -2436,6 +2441,7 @@ private: System::Void bSTART_PID_Click(System::Object^  sender, System::EventArg
 	if (bSTART_PID->Text == "START PID")
 	{
 		bSTART_PID->Text = "STOP PID";
+		
 	}
 	else
 	{
