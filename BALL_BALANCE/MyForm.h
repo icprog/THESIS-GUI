@@ -28,7 +28,7 @@ namespace BALL_BALANCE {
 	Camera camera(0);
 	PID pidX;
 	PID pidY;
-	
+
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 #pragma region auto_code
@@ -1842,6 +1842,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		LineItem^ PosXYSetpointCurve;
 		LineItem^ PosTrajectoryCurve;
 
+
 	private:
 		double posX = 0;
 		double posY = 0;
@@ -2053,7 +2054,12 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		zedGraphTime->AxisChange();
 		zedGraphMore->AxisChange();
 	}
-	
+	private: void updateGraph()
+	{
+		zedGraphXY->Refresh();
+		zedGraphTime->Refresh();
+		zedGraphMore->Refresh();
+	}
 	private: void drawXY(double x, double y)
 	{
 		myPaneXY->CurveList->Clear();
@@ -2072,8 +2078,9 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		{
 			PosTrajectoryCurve = myPaneXY->AddCurve("Trajectory", PosTrajectoryList, Color::Blue, SymbolType::None);
 		}
-		zedGraphXY->AxisChange();
-		zedGraphXY->Invalidate();
+		//zedGraphXY->AxisChange();
+		//zedGraphXY->Invalidate();
+//		zedGraphXY->Refresh();
 	}
 	private: void drawXYT(double x, double y)
 	{
@@ -2118,8 +2125,9 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		}
 		//timeGraph++;
 
-		zedGraphTime->AxisChange();
-		zedGraphTime->Invalidate();
+		//zedGraphTime->AxisChange();
+		//zedGraphTime->Invalidate();
+//		zedGraphTime->Refresh();
 	}
 	private: void drawMORE(double ex, double ey, double dex, double dey, double ux, double uy)
 	{
@@ -2174,7 +2182,8 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 
 		//timeGraph++;
 		zedGraphMore->AxisChange();
-		zedGraphMore->Invalidate();
+//		zedGraphMore->Invalidate();
+//		zedGraphMore->Refresh();
 	}
 
 	private: void initTrajectory()
@@ -2198,7 +2207,7 @@ private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e
 		camera.applyCropFrame();
 		timerProcessing->Interval = 1;
 		timerCamera->Interval = 1;
-		timerDisplay->Interval = 1;
+		timerDisplay->Interval = 100;
 		timerUART_Send->Interval = 1;
 		timerUART_Receive->Interval = 1;
 		Init_Fuzzy();
@@ -2242,8 +2251,6 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 
 			 posX = camera.getX();
 			 posY = camera.getY();
-
-
 
 			 errX = setpointX - posX;
 			 errY = setpointY - posY;
@@ -2293,8 +2300,24 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 txtDErrY->Text = ((int)velY).ToString();
 			 txtANGLE_X->Text = angleX.ToString();
 			 txtANGLE_Y->Text = angleY.ToString();
-			 txtTimeProcess->Text = processTime.ToString() + " ms";
-			 
+
+			
+			 if (bSTART_GRAPH->Text == "STOP GRAPH")
+			 {
+				 drawXY(posX, posY);
+				 drawXYT(posX, posY);
+				 drawMORE(errX, errY, velX, velY, angleX, angleY);
+				 timeGraph++;
+				 if ((int)(timeGraph) % 2 == 0)
+				 {
+					 updateGraph();
+				 }
+				 if (timeGraph > maxTimeCount)
+				 {
+					 timeGraph = 0;
+				 }
+			 }
+
 			 camera.getFPS_end();
 			 if (txtSamplingRate->Text != "" && System::Convert::ToInt32(txtSamplingRate->Text) != 0)
 			 {
@@ -2307,9 +2330,10 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 				 timerCamera->Interval = 1;
 			 }
 			 processTime = ((int)(1000 / camera.fps_));
+			 txtTimeProcess->Text = processTime.ToString() + " ms";
 		 }
 private: System::Void timerDisplay_Tick(System::Object^  sender, System::EventArgs^  e) {
-
+	updateGraph();
 }
 private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e)
 {
@@ -2340,17 +2364,7 @@ private: System::Void timerTracking_Tick(System::Object^  sender, System::EventA
 	}
 }
 private: System::Void etimerProcessing(System::Object^  sender, System::EventArgs^  e) {
-	if (bSTART_GRAPH->Text == "STOP GRAPH")
-	{
-		drawXY(posX, posY);
-		drawXYT(posX, posY);
-		drawMORE(errX, errY, velX, velY, angleX, angleY);
-		timeGraph++;
-		if (timeGraph > maxTimeCount)
-		{
-			timeGraph = 0;
-		}
-	}
+
 }
 
 
@@ -2407,15 +2421,15 @@ private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e
 private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (bSTART->Text == "START")
 	{
-		timerProcessing->Start();
-	//	timerDisplay->Start();
+		//timerProcessing->Start();
+		timerDisplay->Start();
 		bSTART->Text = "STOP";
 	}
 	else
 	{
 		bSTART->Text = "START";
-		timerProcessing->Stop();
-	//	timerDisplay->Stop();
+	//	timerProcessing->Stop();
+		timerDisplay->Stop();
 	}
 
 
@@ -2659,5 +2673,6 @@ private: System::Void txtExportTrajectory_Click(System::Object^  sender, System:
 }
 private: System::Void textBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 }
+
 };
 }
