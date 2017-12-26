@@ -529,7 +529,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 			// 
 			this->txtRECEIVE->Location = System::Drawing::Point(7, 75);
 			this->txtRECEIVE->Name = L"txtRECEIVE";
-			this->txtRECEIVE->Size = System::Drawing::Size(73, 20);
+			this->txtRECEIVE->Size = System::Drawing::Size(268, 20);
 			this->txtRECEIVE->TabIndex = 1;
 			// 
 			// bCONNECT
@@ -2245,43 +2245,43 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 
 
 
-			 //errX = setpointX - posX;
-			 //errY = setpointY - posY;
+			 errX = setpointX - posX;
+			 errY = setpointY - posY;
 
-			 //velX = (errX - pre_errX) * 1000 / samplingRate;
-			 //velY = (errY - pre_errY) * 1000 / samplingRate;
+			 velX = (errX - pre_errX) * 1000 / samplingRate;
+			 velY = (errY - pre_errY) * 1000 / samplingRate;
 
-			 //pre_errX = errX;
-			 //pre_errY = errY;
+			 pre_errX = errX;
+			 pre_errY = errY;
 
-			 //if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
-			 //{
-				// pidX.setPIDPeriod(1000 / samplingRate);
-				// pidX.setPIDOutputLimit(-10, 10);
-				// pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
-				// pidX.compute(errX);
+			 if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
+			 {
+				 pidX.setPIDPeriod(1000 / samplingRate);
+				 pidX.setPIDOutputLimit(-10, 10);
+				 pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
+				 pidX.compute(errX);
 
-				// pidY.setPIDPeriod(1000 / samplingRate);
-				// pidY.setPIDOutputLimit(-10, 10);
-				// pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
-				// pidY.compute(errY);
+				 pidY.setPIDPeriod(1000 / samplingRate);
+				 pidY.setPIDOutputLimit(-10, 10);
+				 pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
+				 pidY.compute(errY);
 
-				// txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
-				// txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
-			 //}
-			 //if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
-			 //{
-				// angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
-				// angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
-				// //txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
-				// //txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
-			 //}
+				 txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
+				 txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
+			 }
+			 if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
+			 {
+				 angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
+				 angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
+				 //txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
+				 //txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
+			 }
 			 if (bShowCam->Text == "UNSHOW CAM")
 			 {
 				 camera.showCamera(2);
 			 }
 			 
-			 /*txtSetpointX->Text = setpointX.ToString();
+			 txtSetpointX->Text = setpointX.ToString();
 			 txtSetpointY->Text = setpointY.ToString();
 			 txtPosX->Text = posX.ToString();
 			 txtPosY->Text = posY.ToString();
@@ -2294,9 +2294,9 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 txtANGLE_X->Text = angleX.ToString();
 			 txtANGLE_Y->Text = angleY.ToString();
 			 txtTimeProcess->Text = processTime.ToString() + " ms";
-			 */
+			 
 			 camera.getFPS_end();
-			 /*if (txtSamplingRate->Text != "" && System::Convert::ToInt32(txtSamplingRate->Text) != 0)
+			 if (txtSamplingRate->Text != "" && System::Convert::ToInt32(txtSamplingRate->Text) != 0)
 			 {
 				 samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
 				 timerCamera->Interval = samplingRate;
@@ -2306,7 +2306,7 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 				 samplingRate = 1000 / camera.fps_;
 				 timerCamera->Interval = 1;
 			 }
-			 processTime = ((int)(1000 / camera.fps_));*/
+			 processTime = ((int)(1000 / camera.fps_));
 		 }
 private: System::Void timerDisplay_Tick(System::Object^  sender, System::EventArgs^  e) {
 
@@ -2314,12 +2314,12 @@ private: System::Void timerDisplay_Tick(System::Object^  sender, System::EventAr
 private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e)
 {
 	//txtSEND->Text = "@" + txtANGLE_X->Text + ":" + txtANGLE_Y->Text + "$";
-	txtSEND->Text = "@" + posX + ":" + posY + "$";
+	txtSEND->Text = "@" + setpointX + ":"+ setpointY + ":" + posX + ":" + posY + ":" + scale_errX + ":" + scale_velX + ":" + txtScaleErr3->Text + ":" + scale_outX + ":" + +scale_errY + ":" + scale_velY + ":" + txtScaleVel3->Text + ":" + scale_outY + "$";
 }
 private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
 		if (serialPort->IsOpen == true)
 		{
-			txtRECEIVE->Text = serialPort->ReadLine();
+			txtRECEIVE->Text = serialPort->ReadExisting();
 		}
 	}
 private: System::Void timerTracking_Tick(System::Object^  sender, System::EventArgs^  e) {
@@ -2390,7 +2390,7 @@ private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e
 	if (bSEND->Text == "SEND" && bCONNECT->Text == "DISCONNECT")
 	{
 		timerUART_Send->Start();
-//		timerUART_Receive->Start();
+		timerUART_Receive->Start();
 		bSEND->Text = "STOP SEND";
 	}
 	else if (bCONNECT->Text == "CONNECT")
@@ -2401,7 +2401,7 @@ private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e
 	{
 		bSEND->Text = "SEND";
 		timerUART_Send->Stop();
-//		timerUART_Receive->Stop();
+		timerUART_Receive->Stop();
 	}
 }
 private: System::Void bSTART_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -2443,7 +2443,6 @@ private: System::Void bSTART_PID_Click(System::Object^  sender, System::EventArg
 	if (bSTART_PID->Text == "START PID")
 	{
 		bSTART_PID->Text = "STOP PID";
-		
 	}
 	else
 	{
@@ -2483,14 +2482,14 @@ private: System::Void bSetFuzzyScaleXY_Click(System::Object^  sender, System::Ev
 	}
 	else
 	{
-		scale_errX = System::Convert::ToDouble(txtScaleErr1->Text) / System::Convert::ToDouble(txtScaleErr3->Text);
-		scale_errY = System::Convert::ToDouble(txtScaleErr2->Text) / System::Convert::ToDouble(txtScaleErr3->Text);
+		scale_errX = System::Convert::ToDouble(txtScaleErr1->Text);
+		scale_errY = System::Convert::ToDouble(txtScaleErr2->Text);
 
-		scale_velX = System::Convert::ToDouble(txtScaleVel1->Text) / System::Convert::ToDouble(txtScaleVel3->Text);
-		scale_velY = System::Convert::ToDouble(txtScaleVel2->Text) / System::Convert::ToDouble(txtScaleVel3->Text);
+		scale_velX = System::Convert::ToDouble(txtScaleVel1->Text);
+		scale_velY = System::Convert::ToDouble(txtScaleVel2->Text);
 
-		scale_outX = System::Convert::ToDouble(txtScaleOut1->Text) / System::Convert::ToDouble(txtScaleOut3->Text);
-		scale_outY = System::Convert::ToDouble(txtScaleOut2->Text) / System::Convert::ToDouble(txtScaleOut3->Text);
+		scale_outX = System::Convert::ToDouble(txtScaleOut1->Text);
+		scale_outY = System::Convert::ToDouble(txtScaleOut2->Text);
 	}
 
 
