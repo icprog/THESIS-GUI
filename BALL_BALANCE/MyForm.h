@@ -2308,7 +2308,15 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 				 drawXYT(posX, posY);
 				 drawMORE(errX, errY, velX, velY, angleX, angleY);
 				 timeGraph++;
-				 if ((int)(timeGraph) % 2 == 0)
+				 if (txtSamplingRate->Text != "" && System::Convert::ToInt32(txtSamplingRate->Text) != 0)
+				 {
+					 samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
+				 }
+				 else
+				 {
+					 samplingRate = 1;
+				 }
+				 if ((int)(timeGraph) % samplingRate == 0)
 				 {
 					 updateGraph();
 				 }
@@ -2319,16 +2327,6 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 }
 
 			 camera.getFPS_end();
-			 if (txtSamplingRate->Text != "" && System::Convert::ToInt32(txtSamplingRate->Text) != 0)
-			 {
-				 samplingRate = System::Convert::ToInt32(txtSamplingRate->Text);
-				 timerCamera->Interval = samplingRate;
-			 }
-			 else
-			 {
-				 samplingRate = 1000 / camera.fps_;
-				 timerCamera->Interval = 1;
-			 }
 			 processTime = ((int)(1000 / camera.fps_));
 			 txtTimeProcess->Text = processTime.ToString() + " ms";
 		 }
