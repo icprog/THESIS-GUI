@@ -130,7 +130,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>opencv_world320.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\WORKSPACE_THESIS\BALL_BALANCE\BALL_BALANCE\opencv\build\x64\vc14\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\opencv\build\x64\vc14\lib</AdditionalLibraryDirectories>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
