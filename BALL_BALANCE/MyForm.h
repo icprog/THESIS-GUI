@@ -1854,7 +1854,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		double velY = 0;
 		double angleX = 0;
 		double angleY = 0;
-		double timeGraph = 0;
+		int timeGraph = 0;
 		double setpointX = 0;
 		double setpointY = 0;
 		double scale_errX = 1;
@@ -1872,7 +1872,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 		int processTime = 0;
 		int samplingRate = 1;
 		int maxTimeDisplay = 500;
-		int maxTimeCount = 10000;
+		int maxTimeCount = 1000;
 
 		//string data_in_file[2] = { "aaasdaa","aaa" };
 		//List<String^>^ dinosaurs = gcnew List<String^>();
@@ -2063,7 +2063,7 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 	private: void drawXY(double x, double y)
 	{
 		myPaneXY->CurveList->Clear();
-		if (bSCROLL->Text == "SLIDE" || timeGraph>=maxTimeCount/10)
+		if (bSCROLL->Text == "SLIDE" || timeGraph*100>=maxTimeCount)
 		{
 			PosXYList->Clear();
 		}
@@ -2117,7 +2117,6 @@ private: System::Windows::Forms::TextBox^  txtSetSPY;
 
 		if (timeGraph >= maxTimeCount)
 		{
-			//timeGraph = 0;
 			PosXList->Clear();
 			PosYList->Clear();
 			PosXSetpointList->Clear();
@@ -2337,6 +2336,7 @@ private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e)
 {
 	//txtSEND->Text = "@" + txtANGLE_X->Text + ":" + txtANGLE_Y->Text + "$";
 	txtSEND->Text = "@" + setpointX + ":"+ setpointY + ":" + posX + ":" + posY + ":" + scale_errX + ":" + scale_velX + ":" + txtScaleErr3->Text + ":" + scale_outX + ":" + +scale_errY + ":" + scale_velY + ":" + txtScaleVel3->Text + ":" + scale_outY + "$";
+	//txtSEND->Text = "@" + setpointX + ":" + setpointY + ":" + posX + ":" + posY + ":" + KpX + ":" + KdX + ":" + 10000 + ":" + KiX + ":" +KpY + ":" + KdY + ":" + 10000 + ":" + KiY + "$";
 }
 private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
 		if (serialPort->IsOpen == true)
