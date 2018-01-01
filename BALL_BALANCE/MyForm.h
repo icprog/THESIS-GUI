@@ -1,11 +1,11 @@
 ﻿#pragma once
 #include "camera/camera.hpp"
-#include "pid/pid.hpp"
+//#include "pid/pid.hpp"
 #include <sstream>
 #include <string>
 #include <iostream>
-#include "eFLL/fuzzy_ball_and_plate.h"
-#include "structure/iofile.hpp"
+//#include "eFLL/fuzzy_ball_and_plate.h"
+//#include "structure/iofile.hpp"
 #include<fstream>
 
 
@@ -27,8 +27,8 @@ namespace BALL_BALANCE {
 	/// Summary for MyForm
 	/// </summary>
 	Camera camera(0);
-	PID pidX;
-	PID pidY;
+	//PID pidX;
+	//PID pidY;
 
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
@@ -172,14 +172,15 @@ private: System::Windows::Forms::Button^  bShowCam;
 
 
 
-private: System::Windows::Forms::TextBox^  txtScaleVel3;
+
 
 private: System::Windows::Forms::TextBox^  txtScaleVel2;
+private: System::Windows::Forms::TextBox^  txtScaleFuzzy;
 
-private: System::Windows::Forms::TextBox^  txtScaleErr3;
+
 
 private: System::Windows::Forms::TextBox^  txtScaleErr2;
-private: System::Windows::Forms::TextBox^  txtScaleOut3;
+
 
 
 
@@ -346,6 +347,13 @@ private: System::Windows::Forms::Label^  label4;
 private: System::Windows::Forms::Label^  label2;
 private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 private: System::Windows::Forms::PictureBox^  pictureBox1;
+private: System::Windows::Forms::TextBox^  txtScalePID;
+private: System::Windows::Forms::Label^  label19;
+
+private: System::Windows::Forms::Label^  label11;
+private: System::Windows::Forms::Label^  label10;
+private: System::Windows::Forms::Label^  label22;
+private: System::Windows::Forms::Label^  label20;
 
 
 
@@ -467,11 +475,9 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			this->bShowCam = (gcnew System::Windows::Forms::Button());
 			this->bSetPIDFactor = (gcnew System::Windows::Forms::Button());
 			this->bSetFuzzyScaleXY = (gcnew System::Windows::Forms::Button());
-			this->txtScaleVel3 = (gcnew System::Windows::Forms::TextBox());
 			this->txtScaleVel2 = (gcnew System::Windows::Forms::TextBox());
-			this->txtScaleErr3 = (gcnew System::Windows::Forms::TextBox());
+			this->txtScaleFuzzy = (gcnew System::Windows::Forms::TextBox());
 			this->txtScaleErr2 = (gcnew System::Windows::Forms::TextBox());
-			this->txtScaleOut3 = (gcnew System::Windows::Forms::TextBox());
 			this->txtScaleOut2 = (gcnew System::Windows::Forms::TextBox());
 			this->tbAngleX = (gcnew System::Windows::Forms::TrackBar());
 			this->tbAngleY = (gcnew System::Windows::Forms::TrackBar());
@@ -522,6 +528,12 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			this->timerCamera = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerDisplay = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->txtScalePID = (gcnew System::Windows::Forms::TextBox());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
+			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
@@ -669,27 +681,27 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			this->label7->AutoSize = true;
 			this->label7->Location = System::Drawing::Point(14, 62);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(21, 13);
+			this->label7->Size = System::Drawing::Size(27, 13);
 			this->label7->TabIndex = 19;
-			this->label7->Text = L"KP";
+			this->label7->Text = L"KpX";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
 			this->label8->Location = System::Drawing::Point(14, 90);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(17, 13);
+			this->label8->Size = System::Drawing::Size(23, 13);
 			this->label8->TabIndex = 20;
-			this->label8->Text = L"KI";
+			this->label8->Text = L"KiX";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Location = System::Drawing::Point(14, 117);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(22, 13);
+			this->label9->Size = System::Drawing::Size(27, 13);
 			this->label9->TabIndex = 21;
-			this->label9->Text = L"KD";
+			this->label9->Text = L"KdX";
 			// 
 			// bSTART_CAM
 			// 
@@ -720,27 +732,27 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			this->label12->AutoSize = true;
 			this->label12->Location = System::Drawing::Point(141, 63);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(21, 13);
+			this->label12->Size = System::Drawing::Size(27, 13);
 			this->label12->TabIndex = 19;
-			this->label12->Text = L"KP";
+			this->label12->Text = L"KpY";
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
 			this->label13->Location = System::Drawing::Point(141, 91);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(17, 13);
+			this->label13->Size = System::Drawing::Size(23, 13);
 			this->label13->TabIndex = 20;
-			this->label13->Text = L"KI";
+			this->label13->Text = L"KiY";
 			// 
 			// label14
 			// 
 			this->label14->AutoSize = true;
 			this->label14->Location = System::Drawing::Point(141, 118);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(22, 13);
+			this->label14->Size = System::Drawing::Size(27, 13);
 			this->label14->TabIndex = 21;
-			this->label14->Text = L"KD";
+			this->label14->Text = L"KdY";
 			// 
 			// groupBox1
 			// 
@@ -857,51 +869,51 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			// label18
 			// 
 			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(13, 67);
+			this->label18->Location = System::Drawing::Point(19, 111);
 			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(54, 13);
+			this->label18->Size = System::Drawing::Size(27, 13);
 			this->label18->TabIndex = 34;
-			this->label18->Text = L"Scale Out";
+			this->label18->Text = L"KuX";
 			// 
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Location = System::Drawing::Point(13, 44);
+			this->label17->Location = System::Drawing::Point(19, 88);
 			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(52, 13);
+			this->label17->Size = System::Drawing::Size(27, 13);
 			this->label17->TabIndex = 34;
-			this->label17->Text = L"Scale Vel";
+			this->label17->Text = L"KdX";
 			// 
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(13, 15);
+			this->label16->Location = System::Drawing::Point(19, 59);
 			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(50, 13);
+			this->label16->Size = System::Drawing::Size(27, 13);
 			this->label16->TabIndex = 34;
-			this->label16->Text = L"Scale Err";
+			this->label16->Text = L"KpX";
 			// 
 			// txtScaleOut1
 			// 
-			this->txtScaleOut1->Location = System::Drawing::Point(74, 67);
+			this->txtScaleOut1->Location = System::Drawing::Point(66, 111);
 			this->txtScaleOut1->Name = L"txtScaleOut1";
-			this->txtScaleOut1->Size = System::Drawing::Size(57, 20);
+			this->txtScaleOut1->Size = System::Drawing::Size(71, 20);
 			this->txtScaleOut1->TabIndex = 33;
 			this->txtScaleOut1->Text = L"10";
 			// 
 			// txtScaleVel1
 			// 
-			this->txtScaleVel1->Location = System::Drawing::Point(74, 41);
+			this->txtScaleVel1->Location = System::Drawing::Point(66, 85);
 			this->txtScaleVel1->Name = L"txtScaleVel1";
-			this->txtScaleVel1->Size = System::Drawing::Size(57, 20);
+			this->txtScaleVel1->Size = System::Drawing::Size(71, 20);
 			this->txtScaleVel1->TabIndex = 33;
 			this->txtScaleVel1->Text = L"1";
 			// 
 			// txtScaleErr1
 			// 
-			this->txtScaleErr1->Location = System::Drawing::Point(74, 15);
+			this->txtScaleErr1->Location = System::Drawing::Point(66, 59);
 			this->txtScaleErr1->Name = L"txtScaleErr1";
-			this->txtScaleErr1->Size = System::Drawing::Size(57, 20);
+			this->txtScaleErr1->Size = System::Drawing::Size(71, 20);
 			this->txtScaleErr1->TabIndex = 33;
 			this->txtScaleErr1->Text = L"1";
 			// 
@@ -959,9 +971,9 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			// 
 			// bSTART_FUZZY
 			// 
-			this->bSTART_FUZZY->Location = System::Drawing::Point(6, 93);
+			this->bSTART_FUZZY->Location = System::Drawing::Point(6, 7);
 			this->bSTART_FUZZY->Name = L"bSTART_FUZZY";
-			this->bSTART_FUZZY->Size = System::Drawing::Size(127, 43);
+			this->bSTART_FUZZY->Size = System::Drawing::Size(133, 43);
 			this->bSTART_FUZZY->TabIndex = 39;
 			this->bSTART_FUZZY->Text = L"START FUZZY";
 			this->bSTART_FUZZY->UseVisualStyleBackColor = true;
@@ -999,7 +1011,7 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			// 
 			// bSetFuzzyScaleXY
 			// 
-			this->bSetFuzzyScaleXY->Location = System::Drawing::Point(137, 92);
+			this->bSetFuzzyScaleXY->Location = System::Drawing::Point(143, 6);
 			this->bSetFuzzyScaleXY->Name = L"bSetFuzzyScaleXY";
 			this->bSetFuzzyScaleXY->Size = System::Drawing::Size(120, 43);
 			this->bSetFuzzyScaleXY->TabIndex = 40;
@@ -1007,51 +1019,35 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			this->bSetFuzzyScaleXY->UseVisualStyleBackColor = true;
 			this->bSetFuzzyScaleXY->Click += gcnew System::EventHandler(this, &MyForm::bSetFuzzyScaleXY_Click);
 			// 
-			// txtScaleVel3
-			// 
-			this->txtScaleVel3->Location = System::Drawing::Point(200, 40);
-			this->txtScaleVel3->Name = L"txtScaleVel3";
-			this->txtScaleVel3->Size = System::Drawing::Size(57, 20);
-			this->txtScaleVel3->TabIndex = 33;
-			this->txtScaleVel3->Text = L"650";
-			// 
 			// txtScaleVel2
 			// 
-			this->txtScaleVel2->Location = System::Drawing::Point(137, 40);
+			this->txtScaleVel2->Location = System::Drawing::Point(190, 82);
 			this->txtScaleVel2->Name = L"txtScaleVel2";
-			this->txtScaleVel2->Size = System::Drawing::Size(57, 20);
+			this->txtScaleVel2->Size = System::Drawing::Size(69, 20);
 			this->txtScaleVel2->TabIndex = 33;
 			this->txtScaleVel2->Text = L"1";
 			// 
-			// txtScaleErr3
+			// txtScaleFuzzy
 			// 
-			this->txtScaleErr3->Location = System::Drawing::Point(200, 14);
-			this->txtScaleErr3->Name = L"txtScaleErr3";
-			this->txtScaleErr3->Size = System::Drawing::Size(57, 20);
-			this->txtScaleErr3->TabIndex = 33;
-			this->txtScaleErr3->Text = L"200";
+			this->txtScaleFuzzy->Location = System::Drawing::Point(80, 137);
+			this->txtScaleFuzzy->Name = L"txtScaleFuzzy";
+			this->txtScaleFuzzy->Size = System::Drawing::Size(57, 20);
+			this->txtScaleFuzzy->TabIndex = 33;
+			this->txtScaleFuzzy->Text = L"10000";
 			// 
 			// txtScaleErr2
 			// 
-			this->txtScaleErr2->Location = System::Drawing::Point(137, 14);
+			this->txtScaleErr2->Location = System::Drawing::Point(190, 56);
 			this->txtScaleErr2->Name = L"txtScaleErr2";
-			this->txtScaleErr2->Size = System::Drawing::Size(57, 20);
+			this->txtScaleErr2->Size = System::Drawing::Size(69, 20);
 			this->txtScaleErr2->TabIndex = 33;
 			this->txtScaleErr2->Text = L"1";
 			// 
-			// txtScaleOut3
-			// 
-			this->txtScaleOut3->Location = System::Drawing::Point(200, 66);
-			this->txtScaleOut3->Name = L"txtScaleOut3";
-			this->txtScaleOut3->Size = System::Drawing::Size(57, 20);
-			this->txtScaleOut3->TabIndex = 33;
-			this->txtScaleOut3->Text = L"1";
-			// 
 			// txtScaleOut2
 			// 
-			this->txtScaleOut2->Location = System::Drawing::Point(137, 66);
+			this->txtScaleOut2->Location = System::Drawing::Point(190, 108);
 			this->txtScaleOut2->Name = L"txtScaleOut2";
-			this->txtScaleOut2->Size = System::Drawing::Size(57, 20);
+			this->txtScaleOut2->Size = System::Drawing::Size(69, 20);
 			this->txtScaleOut2->TabIndex = 33;
 			this->txtScaleOut2->Text = L"10";
 			// 
@@ -1241,6 +1237,8 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->label22);
+			this->tabPage1->Controls->Add(this->txtScalePID);
 			this->tabPage1->Controls->Add(this->bSetPIDFactor);
 			this->tabPage1->Controls->Add(this->bSTART_PID);
 			this->tabPage1->Controls->Add(this->txtKD2);
@@ -1267,15 +1265,17 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			// 
 			this->tabPage2->Controls->Add(this->bSetFuzzyScaleXY);
 			this->tabPage2->Controls->Add(this->bSTART_FUZZY);
+			this->tabPage2->Controls->Add(this->label19);
+			this->tabPage2->Controls->Add(this->label20);
 			this->tabPage2->Controls->Add(this->label18);
+			this->tabPage2->Controls->Add(this->label11);
 			this->tabPage2->Controls->Add(this->label16);
-			this->tabPage2->Controls->Add(this->txtScaleVel3);
 			this->tabPage2->Controls->Add(this->txtScaleOut1);
 			this->tabPage2->Controls->Add(this->txtScaleVel2);
 			this->tabPage2->Controls->Add(this->txtScaleOut2);
 			this->tabPage2->Controls->Add(this->txtScaleVel1);
-			this->tabPage2->Controls->Add(this->txtScaleOut3);
-			this->tabPage2->Controls->Add(this->txtScaleErr3);
+			this->tabPage2->Controls->Add(this->txtScaleFuzzy);
+			this->tabPage2->Controls->Add(this->label10);
 			this->tabPage2->Controls->Add(this->label17);
 			this->tabPage2->Controls->Add(this->txtScaleErr2);
 			this->tabPage2->Controls->Add(this->txtScaleErr1);
@@ -1570,6 +1570,59 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 			this->pictureBox1->TabIndex = 47;
 			this->pictureBox1->TabStop = false;
 			// 
+			// txtScalePID
+			// 
+			this->txtScalePID->Location = System::Drawing::Point(59, 137);
+			this->txtScalePID->Name = L"txtScalePID";
+			this->txtScalePID->Size = System::Drawing::Size(67, 20);
+			this->txtScalePID->TabIndex = 38;
+			this->txtScalePID->Text = L"10000";
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(143, 88);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(27, 13);
+			this->label10->TabIndex = 34;
+			this->label10->Text = L"KdY";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(143, 59);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(27, 13);
+			this->label11->TabIndex = 34;
+			this->label11->Text = L"KpY";
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(143, 111);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(27, 13);
+			this->label19->TabIndex = 34;
+			this->label19->Text = L"KuY";
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->Location = System::Drawing::Point(19, 140);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(61, 13);
+			this->label20->TabIndex = 34;
+			this->label20->Text = L"Scale Input";
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->Location = System::Drawing::Point(19, 140);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(34, 13);
+			this->label22->TabIndex = 39;
+			this->label22->Text = L"Scale";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1688,7 +1741,7 @@ private: System::Windows::Forms::PictureBox^  pictureBox1;
 		int samplingRate = 1;
 		int maxTimeDisplay = 500;
 		int maxTimeCount = 1000;
-
+		double scale_input = 10000;
 		//string data_in_file[2] = { "aaasdaa","aaa" };
 		//List<String^>^ dinosaurs = gcnew List<String^>();
 
@@ -2059,7 +2112,7 @@ private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e
 		timerCamera->Interval = 1;
 		timerUART_Send->Interval = 1;
 		timerUART_Receive->Interval = 1;
-		Init_Fuzzy();
+//		Init_Fuzzy();
 
 		radioPoint->Checked = true;
 		if (radioPoint->Checked == true)
@@ -2119,28 +2172,28 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 //pre_errX = errX;
 			 //pre_errY = errY;
 
-			 if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
-			 {
-				 pidX.setPIDPeriod(1000 / samplingRate);
-				 pidX.setPIDOutputLimit(-10, 10);
-				 pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
-				 pidX.compute(errX);
+			 //if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
+			 //{
+				// pidX.setPIDPeriod(1000 / samplingRate);
+				// pidX.setPIDOutputLimit(-10, 10);
+				// pidX.setPIDParam(System::Convert::ToDouble(txtKP1->Text), System::Convert::ToDouble(txtKI1->Text), System::Convert::ToDouble(txtKD1->Text), 0.01);
+				// pidX.compute(errX);
 
-				 pidY.setPIDPeriod(1000 / samplingRate);
-				 pidY.setPIDOutputLimit(-10, 10);
-				 pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
-				 pidY.compute(errY);
+				// pidY.setPIDPeriod(1000 / samplingRate);
+				// pidY.setPIDOutputLimit(-10, 10);
+				// pidY.setPIDParam(System::Convert::ToDouble(txtKP2->Text), System::Convert::ToDouble(txtKI2->Text), System::Convert::ToDouble(txtKD2->Text), 0.01);
+				// pidY.compute(errY);
 
-				 txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
-				 txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
-			 }
-			 if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
-			 {
-				 angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
-				 angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
-				 //txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
-				 //txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
-			 }
+				// txtANGLE_X->Text = ((int)pidX.getOutput(0)).ToString();
+				// txtANGLE_Y->Text = (-(int)pidY.getOutput(0)).ToString();
+			 //}
+			 //if (bSTART_PID->Text == "START PID" && bSTART_FUZZY->Text == "STOP FUZZY")
+			 //{
+				// angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
+				// angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
+				// //txtANGLE_X->Text = Fuzzy_OutPut((float)200, (float)200, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10).ToString();
+				// //txtANGLE_Y->Text = (-Fuzzy_OutPut((float)200, (float)200, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10)).ToString();
+			 //}
 			 if (bShowCam->Text == "UNSHOW CAM")
 			 {
 				 camera.showCamera(2);
@@ -2190,9 +2243,23 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 		 }
 private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e)
 {
-	//txtSEND->Text = "@" + txtANGLE_X->Text + ":" + txtANGLE_Y->Text + "$";
-	txtSEND->Text = "@" + setpointX + ":"+ setpointY + ":" + posX + ":" + posY + ":" + scale_errX + ":" + scale_velX + ":" + txtScaleErr3->Text + ":" + scale_outX + ":" + +scale_errY + ":" + scale_velY + ":" + txtScaleVel3->Text + ":" + scale_outY + "$";
-	//txtSEND->Text = "@" + setpointX + ":" + setpointY + ":" + posX + ":" + posY + ":" + KpX + ":" + KdX + ":" + 10000 + ":" + KiX + ":" +KpY + ":" + KdY + ":" + 10000 + ":" + KiY + "$";
+	if (mode == 1) //PID
+	{
+		txtSEND->Text = "@" + setpointX + ":" + setpointY + ":" + posX + ":" + posY + ":" + KpX + ":" + KdX + ":" + KiX + ":" +KpY + ":" + KdY + ":" + KiY + ":" + scale_input + ":" + mode + "$";
+	}
+	else if (mode == 2)//Fuzzy
+	{
+		txtSEND->Text = "@" + setpointX + ":" + setpointY + ":" + posX + ":" + posY + ":" + scale_errX + ":" + scale_velX + ":" + scale_outX + ":" + +scale_errY + ":" + scale_velY + ":" + scale_outY + ":" + scale_input + ":" + mode + "$";
+	}
+	else if (mode == 3) //Manual
+	{
+		txtSEND->Text = "@" + angleX + ":" + angleY + ":" + 3 + ":" + 4 + ":" + 5 + ":" + 6 + ":" + 7 + ":" + 8 + ":" + 9+ ":" + 10 + ":" + 11 + ":" +  mode +"$";
+	}
+	else
+	{ }
+	
+	
+	
 }
 private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
 		if (serialPort->IsOpen == true)
@@ -2361,12 +2428,12 @@ private: System::Void bSTART_FUZZY_Click(System::Object^  sender, System::EventA
 	}
 }
 private: System::Void bSetFuzzyScaleXY_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (txtScaleErr1->Text == "" || txtScaleErr2->Text == "" || txtScaleErr3->Text == "" ||
-		txtScaleErr1->Text == "0" || txtScaleErr2->Text == "0" || txtScaleErr3->Text == "0" ||
-		txtScaleVel1->Text == "" || txtScaleVel2->Text == "" || txtScaleVel3->Text == "" ||
-		txtScaleVel1->Text == "0" || txtScaleVel2->Text == "0" || txtScaleVel3->Text == "0" ||
-		txtScaleOut1->Text == "" || txtScaleOut2->Text == "" || txtScaleOut3->Text == "" ||
-		txtScaleOut1->Text == "0" || txtScaleOut2->Text == "0" || txtScaleOut3->Text == "0"
+	if (txtScaleErr1->Text == "" || txtScaleErr2->Text == "" || txtScaleFuzzy->Text == "" ||
+		txtScaleErr1->Text == "0" || txtScaleErr2->Text == "0" || txtScaleFuzzy->Text == "0" ||
+		txtScaleVel1->Text == "" || txtScaleVel2->Text == "" ||
+		txtScaleVel1->Text == "0" || txtScaleVel2->Text == "0" ||
+		txtScaleOut1->Text == "" || txtScaleOut2->Text == "" || 
+		txtScaleOut1->Text == "0" || txtScaleOut2->Text == "0"
 		)
 	{
 		MessageBox::Show("Invalid input !!!! 'All input must be not null and zero.");
@@ -2381,6 +2448,8 @@ private: System::Void bSetFuzzyScaleXY_Click(System::Object^  sender, System::Ev
 
 		scale_outX = System::Convert::ToDouble(txtScaleOut1->Text);
 		scale_outY = System::Convert::ToDouble(txtScaleOut2->Text);
+
+		scale_input = System::Convert::ToDouble(txtScaleFuzzy->Text);
 	}
 
 
@@ -2401,7 +2470,7 @@ private: System::Void bShowCam_Click(System::Object^  sender, System::EventArgs^
 }
 private: System::Void bSetPIDFactor_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (txtKP1->Text == "" || txtKI1->Text == "" || txtKD1->Text == "" ||
-		txtKP2->Text == "" || txtKI2->Text == "" || txtKD2->Text == ""
+		txtKP2->Text == "" || txtKI2->Text == "" || txtKD2->Text == "" || txtScalePID->Text == "" || txtScalePID->Text == "0"
 		)
 	{
 		MessageBox::Show("Invalid input !!!! 'All input must be not null.");
@@ -2414,6 +2483,7 @@ private: System::Void bSetPIDFactor_Click(System::Object^  sender, System::Event
 		KpY = System::Convert::ToDouble(txtKP2->Text);
 		KiY = System::Convert::ToDouble(txtKI2->Text);
 		KdY = System::Convert::ToDouble(txtKD2->Text);
+		scale_input = System::Convert::ToDouble(txtScalePID->Text);
 	}
 
 }
