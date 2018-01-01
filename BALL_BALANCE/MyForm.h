@@ -498,7 +498,13 @@ private: System::Windows::Forms::Label^  label20;
 			this->txtDisplayAngle4 = (gcnew System::Windows::Forms::TextBox());
 			this->txtDisplayAngle5 = (gcnew System::Windows::Forms::TextBox());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->txtScalePID = (gcnew System::Windows::Forms::TextBox());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->tabPage6 = (gcnew System::Windows::Forms::TabPage());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -528,12 +534,6 @@ private: System::Windows::Forms::Label^  label20;
 			this->timerCamera = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerDisplay = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->txtScalePID = (gcnew System::Windows::Forms::TextBox());
-			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label19 = (gcnew System::Windows::Forms::Label());
-			this->label20 = (gcnew System::Windows::Forms::Label());
-			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
@@ -788,6 +788,7 @@ private: System::Windows::Forms::Label^  label20;
 			this->txtSamplingRate->Name = L"txtSamplingRate";
 			this->txtSamplingRate->Size = System::Drawing::Size(61, 20);
 			this->txtSamplingRate->TabIndex = 42;
+			this->txtSamplingRate->Text = L"15";
 			// 
 			// txtDErrY
 			// 
@@ -907,7 +908,7 @@ private: System::Windows::Forms::Label^  label20;
 			this->txtScaleVel1->Name = L"txtScaleVel1";
 			this->txtScaleVel1->Size = System::Drawing::Size(71, 20);
 			this->txtScaleVel1->TabIndex = 33;
-			this->txtScaleVel1->Text = L"1";
+			this->txtScaleVel1->Text = L"55";
 			// 
 			// txtScaleErr1
 			// 
@@ -915,7 +916,7 @@ private: System::Windows::Forms::Label^  label20;
 			this->txtScaleErr1->Name = L"txtScaleErr1";
 			this->txtScaleErr1->Size = System::Drawing::Size(71, 20);
 			this->txtScaleErr1->TabIndex = 33;
-			this->txtScaleErr1->Text = L"1";
+			this->txtScaleErr1->Text = L"73";
 			// 
 			// txtKD2
 			// 
@@ -1025,7 +1026,7 @@ private: System::Windows::Forms::Label^  label20;
 			this->txtScaleVel2->Name = L"txtScaleVel2";
 			this->txtScaleVel2->Size = System::Drawing::Size(69, 20);
 			this->txtScaleVel2->TabIndex = 33;
-			this->txtScaleVel2->Text = L"1";
+			this->txtScaleVel2->Text = L"55";
 			// 
 			// txtScaleFuzzy
 			// 
@@ -1041,7 +1042,7 @@ private: System::Windows::Forms::Label^  label20;
 			this->txtScaleErr2->Name = L"txtScaleErr2";
 			this->txtScaleErr2->Size = System::Drawing::Size(69, 20);
 			this->txtScaleErr2->TabIndex = 33;
-			this->txtScaleErr2->Text = L"1";
+			this->txtScaleErr2->Text = L"73";
 			// 
 			// txtScaleOut2
 			// 
@@ -1261,6 +1262,23 @@ private: System::Windows::Forms::Label^  label20;
 			this->tabPage1->Text = L"PID";
 			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->Location = System::Drawing::Point(19, 140);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(34, 13);
+			this->label22->TabIndex = 39;
+			this->label22->Text = L"Scale";
+			// 
+			// txtScalePID
+			// 
+			this->txtScalePID->Location = System::Drawing::Point(59, 137);
+			this->txtScalePID->Name = L"txtScalePID";
+			this->txtScalePID->Size = System::Drawing::Size(67, 20);
+			this->txtScalePID->TabIndex = 38;
+			this->txtScalePID->Text = L"10000";
+			// 
 			// tabPage2
 			// 
 			this->tabPage2->Controls->Add(this->bSetFuzzyScaleXY);
@@ -1286,6 +1304,42 @@ private: System::Windows::Forms::Label^  label20;
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"FUZZY";
 			this->tabPage2->UseVisualStyleBackColor = true;
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(143, 111);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(27, 13);
+			this->label19->TabIndex = 34;
+			this->label19->Text = L"KuY";
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->Location = System::Drawing::Point(19, 140);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(61, 13);
+			this->label20->TabIndex = 34;
+			this->label20->Text = L"Scale Input";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(143, 59);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(27, 13);
+			this->label11->TabIndex = 34;
+			this->label11->Text = L"KpY";
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(143, 88);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(27, 13);
+			this->label10->TabIndex = 34;
+			this->label10->Text = L"KdY";
 			// 
 			// tabPage6
 			// 
@@ -1569,59 +1623,6 @@ private: System::Windows::Forms::Label^  label20;
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 47;
 			this->pictureBox1->TabStop = false;
-			// 
-			// txtScalePID
-			// 
-			this->txtScalePID->Location = System::Drawing::Point(59, 137);
-			this->txtScalePID->Name = L"txtScalePID";
-			this->txtScalePID->Size = System::Drawing::Size(67, 20);
-			this->txtScalePID->TabIndex = 38;
-			this->txtScalePID->Text = L"10000";
-			// 
-			// label10
-			// 
-			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(143, 88);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(27, 13);
-			this->label10->TabIndex = 34;
-			this->label10->Text = L"KdY";
-			// 
-			// label11
-			// 
-			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(143, 59);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(27, 13);
-			this->label11->TabIndex = 34;
-			this->label11->Text = L"KpY";
-			// 
-			// label19
-			// 
-			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(143, 111);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(27, 13);
-			this->label19->TabIndex = 34;
-			this->label19->Text = L"KuY";
-			// 
-			// label20
-			// 
-			this->label20->AutoSize = true;
-			this->label20->Location = System::Drawing::Point(19, 140);
-			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(61, 13);
-			this->label20->TabIndex = 34;
-			this->label20->Text = L"Scale Input";
-			// 
-			// label22
-			// 
-			this->label22->AutoSize = true;
-			this->label22->Location = System::Drawing::Point(19, 140);
-			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(34, 13);
-			this->label22->TabIndex = 39;
-			this->label22->Text = L"Scale";
 			// 
 			// MyForm
 			// 
@@ -2116,7 +2117,6 @@ private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e
 		timerCamera->Interval = 1;
 		timerUART_Send->Interval = 1;
 		timerUART_Receive->Interval = 1;
-		txtSamplingRate->Text = "15";
 //		Init_Fuzzy();
 
 		radioPoint->Checked = true;
@@ -2208,14 +2208,12 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 txtSetpointY->Text = setpointY.ToString();
 			 txtPosX->Text = posX.ToString();
 			 txtPosY->Text = posY.ToString();
-			 txtErrX->Text = errX.ToString();
-			 txtErrY->Text = errY.ToString();
-			 txtPosX->Text = posX.ToString();
-			 txtPosY->Text = posY.ToString();
-			 txtDErrX->Text = ((int)velX).ToString();
-			 txtDErrY->Text = ((int)velY).ToString();
-			 txtANGLE_X->Text = angleX.ToString();
-			 txtANGLE_Y->Text = angleY.ToString();
+			 //txtErrX->Text = errX.ToString();
+			 //txtErrY->Text = errY.ToString();
+			 //txtDErrX->Text = ((int)velX).ToString();
+			 //txtDErrY->Text = ((int)velY).ToString();
+			 //txtANGLE_X->Text = angleX.ToString();
+			 //txtANGLE_Y->Text = angleY.ToString();
 			
 			
 			 if (bSTART_GRAPH->Text == "STOP GRAPH")
@@ -2280,16 +2278,15 @@ private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  
 			//for (int word = 0; word < words->Length; word++)
 			//	txtRECEIVE->Text = txtRECEIVE->Text + words[word] + " ";
 			if (words->Length == 14)
-			{
-				errX = System::Convert::ToInt32(words[1]);
-				errY = System::Convert::ToInt32(words[2]);
+			{				
+				txtErrX->Text = words[1];
+				txtErrY->Text = words[2];
+				txtDErrX->Text = words[3];
+				txtDErrY->Text = words[4];
+				txtANGLE_X->Text = words[5];
+				txtANGLE_Y->Text = words[6];
 
-				velX = System::Convert::ToInt32(words[3]);
-				velY = System::Convert::ToInt32(words[4]);
 
-				angleX = System::Convert::ToInt32(words[5]);
-				angleY = System::Convert::ToInt32(words[6]);
-		
 				txtDisplayAngle1->Text = words[7];
 				txtDisplayAngle2->Text = words[8];
 				txtDisplayAngle3->Text = words[9];
