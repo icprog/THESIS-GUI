@@ -1740,7 +1740,7 @@ private: System::Windows::Forms::Label^  label20;
 		int processTime = 0;
 		int samplingRate = 1;
 		int maxTimeDisplay = 500;
-		int maxTimeCount = 1000;
+		int maxTimeCount = 2000;
 		double scale_input = 10000;
 		//string data_in_file[2] = { "aaasdaa","aaa" };
 		//List<String^>^ dinosaurs = gcnew List<String^>();
@@ -1756,15 +1756,19 @@ private: System::Windows::Forms::Label^  label20;
 		int mode = 0; // 0 : none, 1 : PID, 2 : Fuzzy, 3 : Mannual
 		//===============================================
 		//=======CODE START HERE=========================
-
 #pragma region Declare function 
 	private: void findPorts(void)
 	{
 		// get port names
 		array<Object^>^ objectArray = serialPort->GetPortNames();
 		// add string array to combobox
-		cbCOMLIST->Items->Clear();
-		cbCOMLIST->Items->AddRange(objectArray);
+		if (objectArray->Length > 0)
+		{
+			cbCOMLIST->Items->Clear();
+			cbCOMLIST->Items->AddRange(objectArray);
+			cbCOMLIST->SelectedIndex = 0;
+		}
+		
 	}
 	
 #pragma endregion
@@ -1939,7 +1943,7 @@ private: System::Windows::Forms::Label^  label20;
 	private: void drawXY(double x, double y)
 	{
 		myPaneXY->CurveList->Clear();
-		if (bSCROLL->Text == "SLIDE" || timeGraph*100>=maxTimeCount)
+		if (bSCROLL->Text == "SLIDE" || timeGraph*10>=maxTimeCount)
 		{
 			PosXYList->Clear();
 		}
@@ -1991,13 +1995,13 @@ private: System::Windows::Forms::Label^  label20;
 		PosYCurve = myPaneY->AddCurve("Pos Y", PosYList, Color::Red, SymbolType::None);
 		PosYSetpointCurve = myPaneY->AddCurve("Pos Set point Y", PosYSetpointList, Color::Blue, SymbolType::None);
 
-		if (timeGraph >= maxTimeCount)
-		{
-			PosXList->Clear();
-			PosYList->Clear();
-			PosXSetpointList->Clear();
-			PosYSetpointList->Clear();
-		}
+		//if (timeGraph >= maxTimeCount)
+		//{
+		//	PosXList->Clear();
+		//	PosYList->Clear();
+		//	PosXSetpointList->Clear();
+		//	PosYSetpointList->Clear();
+		//}
 		//timeGraph++;
 
 		//zedGraphTime->AxisChange();
@@ -2043,16 +2047,16 @@ private: System::Windows::Forms::Label^  label20;
 		PosUYCurve = myPaneUY->AddCurve("Pos UY", PosUYList, Color::Red, SymbolType::None);
 
 
-		if (timeGraph >= maxTimeCount)
-		{
-			//timeGraph = 0;
-			PosEXList->Clear();
-			PosEYList->Clear();
-			PosDEXList->Clear();
-			PosDEYList->Clear();
-			PosUXList->Clear();
-			PosUYList->Clear();
-		}
+		//if (timeGraph >= maxTimeCount)
+		//{
+		//	//timeGraph = 0;
+		//	PosEXList->Clear();
+		//	PosEYList->Clear();
+		//	PosDEXList->Clear();
+		//	PosDEYList->Clear();
+		//	PosUXList->Clear();
+		//	PosUYList->Clear();
+		//}
 
 
 		//timeGraph++;
@@ -2106,12 +2110,13 @@ private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e
 		initGraph();
 		
 		camera.setSize(640, 480);
-		camera.setHSVParam(0, 84, 31, 255, 153, 255);
+		camera.setHSVParam(0, 84, 100, 255, 153, 255);
 		camera.setCropFrame(118, 16, 400, 400);
 		camera.applyCropFrame();
 		timerCamera->Interval = 1;
 		timerUART_Send->Interval = 1;
 		timerUART_Receive->Interval = 1;
+		txtSamplingRate->Text = "15";
 //		Init_Fuzzy();
 
 		radioPoint->Checked = true;
@@ -2211,7 +2216,7 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 txtDErrY->Text = ((int)velY).ToString();
 			 txtANGLE_X->Text = angleX.ToString();
 			 txtANGLE_Y->Text = angleY.ToString();
-
+			
 			
 			 if (bSTART_GRAPH->Text == "STOP GRAPH")
 			 {
@@ -2234,6 +2239,7 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 				 if (timeGraph > maxTimeCount)
 				 {
 					 timeGraph = 0;
+					 clearGraph();
 				 }
 			 }
 
@@ -2262,9 +2268,37 @@ private: System::Void eUARTSend(System::Object^  sender, System::EventArgs^  e)
 	
 }
 private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  e) {
-		if (serialPort->IsOpen == true)
+		if (serialPort->IsOpen == true && serialPort->BytesToRead > 0)
 		{
-			txtRECEIVE->Text = serialPort->ReadExisting();
+			String^ line = serialPort->ReadExisting();
+			String^ delimStr = "@:$";
+			array<Char>^ delimiter = delimStr->ToCharArray();
+			array<String^>^ words;
+			
+			words = line->Split(delimiter);
+			//txtRECEIVE->Text = "";
+			//for (int word = 0; word < words->Length; word++)
+			//	txtRECEIVE->Text = txtRECEIVE->Text + words[word] + " ";
+			if (words->Length == 14)
+			{
+				errX = System::Convert::ToInt32(words[1]);
+				errY = System::Convert::ToInt32(words[2]);
+
+				velX = System::Convert::ToInt32(words[3]);
+				velY = System::Convert::ToInt32(words[4]);
+
+				angleX = System::Convert::ToInt32(words[5]);
+				angleY = System::Convert::ToInt32(words[6]);
+		
+				txtDisplayAngle1->Text = words[7];
+				txtDisplayAngle2->Text = words[8];
+				txtDisplayAngle3->Text = words[9];
+				txtDisplayAngle4->Text = words[10];
+				txtDisplayAngle5->Text = words[11];
+				txtDisplayAngle6->Text = words[12];
+			}
+			txtRECEIVE->Text = line;
+			
 		}
 	}
 private: System::Void timerTracking_Tick(System::Object^  sender, System::EventArgs^  e) {
@@ -2313,7 +2347,7 @@ private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^
 	}
 	else
 	{
-		MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
+//		MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
 		findPorts();
 	}
 }
@@ -2326,7 +2360,7 @@ private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e
 	}
 	else if (bCONNECT->Text == "CONNECT")
 	{
-		MessageBox::Show("Please connect port !!!");
+	//	MessageBox::Show("Please connect port !!!");
 	}
 	else
 	{
@@ -2587,8 +2621,11 @@ private: System::Void bImportTrajectory_Click(System::Object^  sender, System::E
 			// a b
 			// b c
 			// ....
+
 			numOfPoint = System::Convert::ToInt32(din->ReadLine());
 			speedChangePoint = System::Convert::ToInt32(din->ReadLine());
+			trajectoryData1->Clear();
+			trajectoryData2->Clear();
 			for (int i = 0; i < numOfPoint; i++)
 			{
 				trajectoryData1->Add(System::Convert::ToInt32(din->ReadLine()));
