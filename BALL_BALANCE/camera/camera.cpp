@@ -202,7 +202,7 @@ Camera::morphOps(cv::Mat &thresh) {
 //#ifdef DEBUG
 //	cv::imshow("Erosion 2", thresh);
 //#endif // DEBUG
-//	dilate(thresh, thresh, dilateElement);
+	dilate(thresh, thresh, dilateElement);
 //#ifdef DEBUG
 //	cv::imshow("Dilation 1", thresh);
 //#endif // DEBUG

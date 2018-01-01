@@ -345,6 +345,7 @@ private: System::Windows::Forms::RadioButton^  radioPoint;
 private: System::Windows::Forms::Label^  label4;
 private: System::Windows::Forms::Label^  label2;
 private: System::Windows::Forms::TextBox^  txtRadiusCircle;
+private: System::Windows::Forms::PictureBox^  pictureBox1;
 
 
 
@@ -409,6 +410,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->cbCOMLIST = (gcnew System::Windows::Forms::ComboBox());
 			this->txtRECEIVE = (gcnew System::Windows::Forms::TextBox());
 			this->bCONNECT = (gcnew System::Windows::Forms::Button());
@@ -519,6 +521,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			this->timerTracking = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerCamera = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerDisplay = (gcnew System::Windows::Forms::Timer(this->components));
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
@@ -533,6 +536,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			this->tabPageTIMEGRAPH->SuspendLayout();
 			this->tabPageXYGRAPH->SuspendLayout();
 			this->tabControlGraph->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// cbCOMLIST
@@ -593,9 +597,9 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// txtSetpointX
 			// 
-			this->txtSetpointX->Location = System::Drawing::Point(107, 27);
+			this->txtSetpointX->Location = System::Drawing::Point(136, 27);
 			this->txtSetpointX->Name = L"txtSetpointX";
-			this->txtSetpointX->Size = System::Drawing::Size(46, 20);
+			this->txtSetpointX->Size = System::Drawing::Size(64, 20);
 			this->txtSetpointX->TabIndex = 6;
 			// 
 			// label1
@@ -609,9 +613,9 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// txtSetpointY
 			// 
-			this->txtSetpointY->Location = System::Drawing::Point(159, 27);
+			this->txtSetpointY->Location = System::Drawing::Point(206, 27);
 			this->txtSetpointY->Name = L"txtSetpointY";
-			this->txtSetpointY->Size = System::Drawing::Size(46, 20);
+			this->txtSetpointY->Size = System::Drawing::Size(61, 20);
 			this->txtSetpointY->TabIndex = 8;
 			// 
 			// label3
@@ -625,23 +629,23 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// txtPosX
 			// 
-			this->txtPosX->Location = System::Drawing::Point(107, 53);
+			this->txtPosX->Location = System::Drawing::Point(136, 53);
 			this->txtPosX->Name = L"txtPosX";
-			this->txtPosX->Size = System::Drawing::Size(46, 20);
+			this->txtPosX->Size = System::Drawing::Size(64, 20);
 			this->txtPosX->TabIndex = 10;
 			// 
 			// txtPosY
 			// 
-			this->txtPosY->Location = System::Drawing::Point(159, 53);
+			this->txtPosY->Location = System::Drawing::Point(206, 53);
 			this->txtPosY->Name = L"txtPosY";
-			this->txtPosY->Size = System::Drawing::Size(46, 20);
+			this->txtPosY->Size = System::Drawing::Size(61, 20);
 			this->txtPosY->TabIndex = 12;
 			// 
 			// txtErrY
 			// 
-			this->txtErrY->Location = System::Drawing::Point(159, 79);
+			this->txtErrY->Location = System::Drawing::Point(206, 79);
 			this->txtErrY->Name = L"txtErrY";
-			this->txtErrY->Size = System::Drawing::Size(46, 20);
+			this->txtErrY->Size = System::Drawing::Size(61, 20);
 			this->txtErrY->TabIndex = 16;
 			// 
 			// label6
@@ -655,15 +659,15 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// txtErrX
 			// 
-			this->txtErrX->Location = System::Drawing::Point(107, 79);
+			this->txtErrX->Location = System::Drawing::Point(136, 79);
 			this->txtErrX->Name = L"txtErrX";
-			this->txtErrX->Size = System::Drawing::Size(46, 20);
+			this->txtErrX->Size = System::Drawing::Size(64, 20);
 			this->txtErrX->TabIndex = 14;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(24, 38);
+			this->label7->Location = System::Drawing::Point(14, 62);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(21, 13);
 			this->label7->TabIndex = 19;
@@ -672,7 +676,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(24, 66);
+			this->label8->Location = System::Drawing::Point(14, 90);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(17, 13);
 			this->label8->TabIndex = 20;
@@ -681,7 +685,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(24, 93);
+			this->label9->Location = System::Drawing::Point(14, 117);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(22, 13);
 			this->label9->TabIndex = 21;
@@ -691,7 +695,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			this->bSTART_CAM->Location = System::Drawing::Point(9, 101);
 			this->bSTART_CAM->Name = L"bSTART_CAM";
-			this->bSTART_CAM->Size = System::Drawing::Size(93, 23);
+			this->bSTART_CAM->Size = System::Drawing::Size(129, 23);
 			this->bSTART_CAM->TabIndex = 22;
 			this->bSTART_CAM->Text = L"START CAM";
 			this->bSTART_CAM->UseVisualStyleBackColor = true;
@@ -699,22 +703,22 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// txtANGLE_Y
 			// 
-			this->txtANGLE_Y->Location = System::Drawing::Point(159, 132);
+			this->txtANGLE_Y->Location = System::Drawing::Point(206, 132);
 			this->txtANGLE_Y->Name = L"txtANGLE_Y";
-			this->txtANGLE_Y->Size = System::Drawing::Size(46, 20);
+			this->txtANGLE_Y->Size = System::Drawing::Size(61, 20);
 			this->txtANGLE_Y->TabIndex = 25;
 			// 
 			// txtANGLE_X
 			// 
-			this->txtANGLE_X->Location = System::Drawing::Point(107, 132);
+			this->txtANGLE_X->Location = System::Drawing::Point(136, 132);
 			this->txtANGLE_X->Name = L"txtANGLE_X";
-			this->txtANGLE_X->Size = System::Drawing::Size(46, 20);
+			this->txtANGLE_X->Size = System::Drawing::Size(64, 20);
 			this->txtANGLE_X->TabIndex = 23;
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(104, 39);
+			this->label12->Location = System::Drawing::Point(141, 63);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(21, 13);
 			this->label12->TabIndex = 19;
@@ -723,7 +727,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(104, 67);
+			this->label13->Location = System::Drawing::Point(141, 91);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(17, 13);
 			this->label13->TabIndex = 20;
@@ -732,7 +736,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(104, 94);
+			this->label14->Location = System::Drawing::Point(141, 118);
 			this->label14->Name = L"label14";
 			this->label14->Size = System::Drawing::Size(22, 13);
 			this->label14->TabIndex = 21;
@@ -768,30 +772,30 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// txtSamplingRate
 			// 
-			this->txtSamplingRate->Location = System::Drawing::Point(159, 158);
+			this->txtSamplingRate->Location = System::Drawing::Point(206, 158);
 			this->txtSamplingRate->Name = L"txtSamplingRate";
-			this->txtSamplingRate->Size = System::Drawing::Size(46, 20);
+			this->txtSamplingRate->Size = System::Drawing::Size(61, 20);
 			this->txtSamplingRate->TabIndex = 42;
 			// 
 			// txtDErrY
 			// 
-			this->txtDErrY->Location = System::Drawing::Point(159, 105);
+			this->txtDErrY->Location = System::Drawing::Point(206, 105);
 			this->txtDErrY->Name = L"txtDErrY";
-			this->txtDErrY->Size = System::Drawing::Size(46, 20);
+			this->txtDErrY->Size = System::Drawing::Size(61, 20);
 			this->txtDErrY->TabIndex = 41;
 			// 
 			// txtDErrX
 			// 
-			this->txtDErrX->Location = System::Drawing::Point(107, 105);
+			this->txtDErrX->Location = System::Drawing::Point(136, 105);
 			this->txtDErrX->Name = L"txtDErrX";
-			this->txtDErrX->Size = System::Drawing::Size(46, 20);
+			this->txtDErrX->Size = System::Drawing::Size(64, 20);
 			this->txtDErrX->TabIndex = 40;
 			// 
 			// txtTimeProcess
 			// 
-			this->txtTimeProcess->Location = System::Drawing::Point(159, 185);
+			this->txtTimeProcess->Location = System::Drawing::Point(206, 185);
 			this->txtTimeProcess->Name = L"txtTimeProcess";
-			this->txtTimeProcess->Size = System::Drawing::Size(46, 20);
+			this->txtTimeProcess->Size = System::Drawing::Size(61, 20);
 			this->txtTimeProcess->TabIndex = 35;
 			// 
 			// label21
@@ -832,9 +836,9 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// bSTART_GRAPH
 			// 
-			this->bSTART_GRAPH->Location = System::Drawing::Point(108, 101);
+			this->bSTART_GRAPH->Location = System::Drawing::Point(144, 101);
 			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
-			this->bSTART_GRAPH->Size = System::Drawing::Size(93, 24);
+			this->bSTART_GRAPH->Size = System::Drawing::Size(119, 24);
 			this->bSTART_GRAPH->TabIndex = 37;
 			this->bSTART_GRAPH->Text = L"START GRAPH";
 			this->bSTART_GRAPH->UseVisualStyleBackColor = true;
@@ -842,9 +846,9 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// bSCROLL
 			// 
-			this->bSCROLL->Location = System::Drawing::Point(108, 131);
+			this->bSCROLL->Location = System::Drawing::Point(144, 131);
 			this->bSCROLL->Name = L"bSCROLL";
-			this->bSCROLL->Size = System::Drawing::Size(93, 23);
+			this->bSCROLL->Size = System::Drawing::Size(119, 23);
 			this->bSCROLL->TabIndex = 22;
 			this->bSCROLL->Text = L"SLIDE";
 			this->bSCROLL->UseVisualStyleBackColor = true;
@@ -903,51 +907,51 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// txtKD2
 			// 
-			this->txtKD2->Location = System::Drawing::Point(131, 87);
+			this->txtKD2->Location = System::Drawing::Point(169, 111);
 			this->txtKD2->Name = L"txtKD2";
-			this->txtKD2->Size = System::Drawing::Size(46, 20);
+			this->txtKD2->Size = System::Drawing::Size(83, 20);
 			this->txtKD2->TabIndex = 32;
 			// 
 			// txtKP2
 			// 
-			this->txtKP2->Location = System::Drawing::Point(131, 35);
+			this->txtKP2->Location = System::Drawing::Point(169, 59);
 			this->txtKP2->Name = L"txtKP2";
-			this->txtKP2->Size = System::Drawing::Size(46, 20);
+			this->txtKP2->Size = System::Drawing::Size(83, 20);
 			this->txtKP2->TabIndex = 30;
 			// 
 			// txtKI2
 			// 
-			this->txtKI2->Location = System::Drawing::Point(131, 61);
+			this->txtKI2->Location = System::Drawing::Point(169, 85);
 			this->txtKI2->Name = L"txtKI2";
-			this->txtKI2->Size = System::Drawing::Size(46, 20);
+			this->txtKI2->Size = System::Drawing::Size(83, 20);
 			this->txtKI2->TabIndex = 31;
 			// 
 			// txtKD1
 			// 
-			this->txtKD1->Location = System::Drawing::Point(51, 87);
+			this->txtKD1->Location = System::Drawing::Point(41, 111);
 			this->txtKD1->Name = L"txtKD1";
-			this->txtKD1->Size = System::Drawing::Size(46, 20);
+			this->txtKD1->Size = System::Drawing::Size(85, 20);
 			this->txtKD1->TabIndex = 29;
 			// 
 			// txtKP1
 			// 
-			this->txtKP1->Location = System::Drawing::Point(51, 35);
+			this->txtKP1->Location = System::Drawing::Point(41, 59);
 			this->txtKP1->Name = L"txtKP1";
-			this->txtKP1->Size = System::Drawing::Size(46, 20);
+			this->txtKP1->Size = System::Drawing::Size(85, 20);
 			this->txtKP1->TabIndex = 27;
 			// 
 			// txtKI1
 			// 
-			this->txtKI1->Location = System::Drawing::Point(51, 61);
+			this->txtKI1->Location = System::Drawing::Point(41, 85);
 			this->txtKI1->Name = L"txtKI1";
-			this->txtKI1->Size = System::Drawing::Size(46, 20);
+			this->txtKI1->Size = System::Drawing::Size(85, 20);
 			this->txtKI1->TabIndex = 28;
 			// 
 			// bCALIB
 			// 
 			this->bCALIB->Location = System::Drawing::Point(9, 160);
 			this->bCALIB->Name = L"bCALIB";
-			this->bCALIB->Size = System::Drawing::Size(92, 25);
+			this->bCALIB->Size = System::Drawing::Size(128, 25);
 			this->bCALIB->TabIndex = 31;
 			this->bCALIB->Text = L"CALIB";
 			this->bCALIB->UseVisualStyleBackColor = true;
@@ -967,7 +971,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			this->bSTART_PID->Location = System::Drawing::Point(4, 6);
 			this->bSTART_PID->Name = L"bSTART_PID";
-			this->bSTART_PID->Size = System::Drawing::Size(93, 24);
+			this->bSTART_PID->Size = System::Drawing::Size(133, 39);
 			this->bSTART_PID->TabIndex = 36;
 			this->bSTART_PID->Text = L"START PID";
 			this->bSTART_PID->UseVisualStyleBackColor = true;
@@ -977,7 +981,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			this->bShowCam->Location = System::Drawing::Point(9, 130);
 			this->bShowCam->Name = L"bShowCam";
-			this->bShowCam->Size = System::Drawing::Size(93, 24);
+			this->bShowCam->Size = System::Drawing::Size(129, 24);
 			this->bShowCam->TabIndex = 36;
 			this->bShowCam->Text = L"SHOW CAM";
 			this->bShowCam->UseVisualStyleBackColor = true;
@@ -985,9 +989,9 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// bSetPIDFactor
 			// 
-			this->bSetPIDFactor->Location = System::Drawing::Point(103, 6);
+			this->bSetPIDFactor->Location = System::Drawing::Point(143, 6);
 			this->bSetPIDFactor->Name = L"bSetPIDFactor";
-			this->bSetPIDFactor->Size = System::Drawing::Size(84, 23);
+			this->bSetPIDFactor->Size = System::Drawing::Size(120, 38);
 			this->bSetPIDFactor->TabIndex = 37;
 			this->bSetPIDFactor->Text = L"SET";
 			this->bSetPIDFactor->UseVisualStyleBackColor = true;
@@ -1107,9 +1111,9 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			// bClearGraph
 			// 
-			this->bClearGraph->Location = System::Drawing::Point(108, 160);
+			this->bClearGraph->Location = System::Drawing::Point(144, 160);
 			this->bClearGraph->Name = L"bClearGraph";
-			this->bClearGraph->Size = System::Drawing::Size(93, 25);
+			this->bClearGraph->Size = System::Drawing::Size(119, 25);
 			this->bClearGraph->TabIndex = 49;
 			this->bClearGraph->Text = L"CLEAR";
 			this->bClearGraph->UseVisualStyleBackColor = true;
@@ -1555,11 +1559,23 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			// 
 			this->timerCamera->Tick += gcnew System::EventHandler(this, &MyForm::timerCamera_Tick);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->InitialImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.InitialImage")));
+			this->pictureBox1->Location = System::Drawing::Point(12, 12);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(277, 215);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 47;
+			this->pictureBox1->TabStop = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(949, 712);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->tabControlGraph);
 			this->Controls->Add(this->tabControlController);
 			this->Controls->Add(this->groupBox1);
@@ -1586,6 +1602,7 @@ private: System::Windows::Forms::TextBox^  txtRadiusCircle;
 			this->tabPageTIMEGRAPH->ResumeLayout(false);
 			this->tabPageXYGRAPH->ResumeLayout(false);
 			this->tabControlGraph->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -2093,14 +2110,14 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 posX = camera.getX();
 			 posY = camera.getY();
 
-			 errX = setpointX - posX;
-			 errY = setpointY - posY;
+			 //errX = setpointX - posX;
+			 //errY = setpointY - posY;
 
-			 velX = (errX - pre_errX) * 1000 / samplingRate;
-			 velY = (errY - pre_errY) * 1000 / samplingRate;
+			 //velX = (errX - pre_errX) * 1000 / samplingRate;
+			 //velY = (errY - pre_errY) * 1000 / samplingRate;
 
-			 pre_errX = errX;
-			 pre_errY = errY;
+			 //pre_errX = errX;
+			 //pre_errY = errY;
 
 			 if (bSTART_PID->Text == "STOP PID" && bSTART_FUZZY->Text == "START FUZZY")
 			 {
