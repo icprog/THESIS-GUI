@@ -2243,12 +2243,12 @@ private: System::Void timerCamera_Tick(System::Object^  sender, System::EventArg
 			 txtSetpointY->Text = setpointY.ToString();
 			 txtPosX->Text = posX.ToString();
 			 txtPosY->Text = posY.ToString();
-			 //txtErrX->Text = errX.ToString();
-			 //txtErrY->Text = errY.ToString();
-			 //txtDErrX->Text = ((int)velX).ToString();
-			 //txtDErrY->Text = ((int)velY).ToString();
-			 //txtANGLE_X->Text = angleX.ToString();
-			 //txtANGLE_Y->Text = angleY.ToString();
+			 txtErrX->Text = errX.ToString();
+			 txtErrY->Text = errY.ToString();
+			 txtDErrX->Text = ((int)velX).ToString();
+			 txtDErrY->Text = ((int)velY).ToString();
+			 txtANGLE_X->Text = angleX.ToString();
+			 txtANGLE_Y->Text = angleY.ToString();
 			
 			
 			 if (bSTART_GRAPH->Text == "STOP GRAPH")
@@ -2314,19 +2314,35 @@ private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  
 			//	txtRECEIVE->Text = txtRECEIVE->Text + words[word] + " ";
 			if (words->Length == 14)
 			{				
-				txtErrX->Text = words[1];
+				/*txtErrX->Text = words[1];
 				txtErrY->Text = words[2];
 				txtDErrX->Text = words[3];
 				txtDErrY->Text = words[4];
 				txtANGLE_X->Text = words[5];
-				txtANGLE_Y->Text = words[6];
+				txtANGLE_Y->Text = words[6];*/
+				try
+				{
+					errX = System::Convert::ToInt32(words[1]);
+					errY = System::Convert::ToInt32(words[2]);
+					velX = System::Convert::ToInt32(words[3]);
+					velY = System::Convert::ToInt32(words[4]);
+					angleX = System::Convert::ToInt32(words[5]);
+					angleY = System::Convert::ToInt32(words[6]);
+				}
+				catch (ArgumentOutOfRangeException^)
+				{
 
-				txtDisplayAngle1->Text = words[7];
+				}
+				catch(System::FormatException^)
+				{ }
+
+
+				/*txtDisplayAngle1->Text = words[7];
 				txtDisplayAngle2->Text = words[8];
 				txtDisplayAngle3->Text = words[9];
 				txtDisplayAngle4->Text = words[10];
 				txtDisplayAngle5->Text = words[11];
-				txtDisplayAngle6->Text = words[12];
+				txtDisplayAngle6->Text = words[12];*/
 			}
 			txtRECEIVE->Text = line;
 		}
