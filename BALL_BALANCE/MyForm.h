@@ -1790,21 +1790,12 @@ private: System::Windows::Forms::TextBox^  txtReceiveHC05;
 		{
 			cbCOMLIST->Items->Clear();
 			cbCOMLIST->Items->AddRange(objectArray);
-			cbCOMLIST->SelectedIndex = 0;
-		}
-		else if (objectArray->Length > 1)
-		{
-			cbCOMLIST->Items->Clear();
-			cbCOMLIST->Items->AddRange(objectArray);
-			cbCOMLIST->SelectedIndex = 0;
 
 			cbCOMLIST_1->Items->Clear();
 			cbCOMLIST_1->Items->AddRange(objectArray);
-			cbCOMLIST_1->SelectedIndex = 1;
 		}
 		else 
 		{ }
-		
 	}
 	
 #pragma endregion
@@ -2405,74 +2396,109 @@ private: System::Void timerTracking_Tick(System::Object^  sender, System::EventA
 
 #pragma region button_event
 private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (cbCOMLIST->Text != "" && cbCOMLIST_1->Text != "")
+	if (bCONNECT->Text == "CONNECT")
 	{
-		if (bCONNECT->Text == "CONNECT")
+		if (cbCOMLIST->Text != "")
 		{
-			bCONNECT->Text = "DISCONNECT";
 			cbCOMLIST->Enabled = false;
 			serialPort->PortName = cbCOMLIST->Text;
 			serialPort->Open();
-
+			bCONNECT->Text = "DISCONNECT";
+		}
+		if (cbCOMLIST_1->Text != "")
+		{
 			cbCOMLIST_1->Enabled = false;
 			serialPort_HC05->PortName = cbCOMLIST_1->Text;
 			serialPort_HC05->Open();
-		}
-		else
-		{
-			bCONNECT->Text = "CONNECT";
-			cbCOMLIST->Enabled = true;
-			serialPort->Close();
-
-			cbCOMLIST_1->Enabled = true;
-			serialPort_HC05->Close();
-		}
-	}
-	else if (cbCOMLIST->Text != "" && cbCOMLIST_1->Text == "")
-	{
-		if (bCONNECT->Text == "CONNECT")
-		{
 			bCONNECT->Text = "DISCONNECT";
-			cbCOMLIST->Enabled = false;
-			serialPort->PortName = cbCOMLIST->Text;
-			serialPort->Open();
-
-			cbCOMLIST_1->Enabled = false;
-		}
-		else
-		{
-			bCONNECT->Text = "CONNECT";
-			cbCOMLIST->Enabled = true;
-			serialPort->Close();
-
-			cbCOMLIST_1->Enabled = true;
-		}
-	}
-	else if (cbCOMLIST->Text == "" && cbCOMLIST_1->Text != "")
-	{
-		if (bCONNECT->Text == "CONNECT")
-		{
-			bCONNECT->Text = "DISCONNECT";
-			cbCOMLIST->Enabled = false;
-
-			cbCOMLIST_1->Enabled = false;
-			serialPort_HC05->PortName = cbCOMLIST_1->Text;
-			serialPort_HC05->Open();
-		}
-		else
-		{
-			bCONNECT->Text = "CONNECT";
-			cbCOMLIST->Enabled = true;
-
-			cbCOMLIST_1->Enabled = true;
-			serialPort_HC05->Close();
 		}
 	}
 	else
 	{
-//		MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
+		if (serialPort->IsOpen == true)
+		{
+			bCONNECT->Text = "CONNECT";
+			cbCOMLIST->Enabled = true;
+			serialPort->Close();
+		}
+		if (serialPort->IsOpen == true)
+		{
+			bCONNECT->Text = "CONNECT";
+			cbCOMLIST_1->Enabled = true;
+			serialPort_HC05->Close();
+		}
 		findPorts();
 	}
+	
+//	
+//	if (cbCOMLIST->Text != "" && cbCOMLIST_1->Text != "")
+//	{
+//		if (bCONNECT->Text == "CONNECT")
+//		{
+//			bCONNECT->Text = "DISCONNECT";
+//			cbCOMLIST->Enabled = false;
+//			serialPort->PortName = cbCOMLIST->Text;
+//			serialPort->Open();
+//
+//			cbCOMLIST_1->Enabled = false;
+//			serialPort_HC05->PortName = cbCOMLIST_1->Text;
+//			serialPort_HC05->Open();
+//		}
+//		else
+//		{
+//			bCONNECT->Text = "CONNECT";
+//			cbCOMLIST->Enabled = true;
+//			serialPort->Close();
+//
+//			cbCOMLIST_1->Enabled = true;
+//			serialPort_HC05->Close();
+//		}
+//	}
+//	else if (cbCOMLIST->Text != "" && cbCOMLIST_1->Text == "")
+//	{
+//		if (bCONNECT->Text == "CONNECT")
+//		{
+//			bCONNECT->Text = "DISCONNECT";
+//			cbCOMLIST->Enabled = false;
+//			serialPort->PortName = cbCOMLIST->Text;
+//			serialPort->Open();
+//
+//			cbCOMLIST_1->Enabled = false;
+//		}
+//		else
+//		{
+//			bCONNECT->Text = "CONNECT";
+//			cbCOMLIST->Enabled = true;
+//			serialPort->Close();
+//
+//			cbCOMLIST_1->Enabled = true;
+//		}
+//	}
+//	else if (cbCOMLIST->Text == "" && cbCOMLIST_1->Text != "")
+//	{
+//		if (bCONNECT->Text == "CONNECT")
+//		{
+//			bCONNECT->Text = "DISCONNECT";
+//			cbCOMLIST->Enabled = false;
+//
+//			cbCOMLIST_1->Enabled = false;
+//			serialPort_HC05->PortName = cbCOMLIST_1->Text;
+//			serialPort_HC05->Open();
+//		}
+//		else
+//		{
+//			bCONNECT->Text = "CONNECT";
+//			cbCOMLIST->Enabled = true;
+//
+//			cbCOMLIST_1->Enabled = true;
+//			serialPort_HC05->Close();
+//		}
+//	}
+//	else
+//	{
+////		MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
+//		findPorts();
+//	}
 
 }
 private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e) {
