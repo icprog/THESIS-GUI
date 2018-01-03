@@ -1785,17 +1785,18 @@ private: System::Windows::Forms::TextBox^  txtReceiveHC05;
 	{
 		// get port names
 		array<Object^>^ objectArray = serialPort->GetPortNames();
+		array<Object^>^ objectArray1 = serialPort_HC05->GetPortNames();
 		// add string array to combobox
 		if (objectArray->Length > 0)
 		{
 			cbCOMLIST->Items->Clear();
 			cbCOMLIST->Items->AddRange(objectArray);
-
-			cbCOMLIST_1->Items->Clear();
-			cbCOMLIST_1->Items->AddRange(objectArray);
 		}
-		else 
-		{ }
+		if (objectArray->Length > 0)
+		{
+			cbCOMLIST_1->Items->Clear();
+			cbCOMLIST_1->Items->AddRange(objectArray1);
+		}
 	}
 	
 #pragma endregion
