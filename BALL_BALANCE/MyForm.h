@@ -2405,7 +2405,7 @@ private: System::Void timerTracking_Tick(System::Object^  sender, System::EventA
 
 #pragma region button_event
 private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^  e) {
-	if (cbCOMLIST->Text != "")
+	if (cbCOMLIST->Text != "" && cbCOMLIST_1->Text != "")
 	{
 		if (bCONNECT->Text == "CONNECT")
 		{
@@ -2413,16 +2413,59 @@ private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^
 			cbCOMLIST->Enabled = false;
 			serialPort->PortName = cbCOMLIST->Text;
 			serialPort->Open();
-			//timerUART_Receive->Start();
-			//timerUART_Send->Start();
+
+			cbCOMLIST_1->Enabled = false;
+			serialPort_HC05->PortName = cbCOMLIST->Text;
+			serialPort_HC05->Open();
 		}
 		else
 		{
 			bCONNECT->Text = "CONNECT";
 			cbCOMLIST->Enabled = true;
 			serialPort->Close();
-			//timerUART_Receive->Stop();
-			//timerUART_Send->Stop();
+
+			cbCOMLIST_1->Enabled = true;
+			serialPort_HC05->Close();
+		}
+	}
+	else if (cbCOMLIST->Text != "" && cbCOMLIST_1->Text == "")
+	{
+		if (bCONNECT->Text == "CONNECT")
+		{
+			bCONNECT->Text = "DISCONNECT";
+			cbCOMLIST->Enabled = false;
+			serialPort->PortName = cbCOMLIST->Text;
+			serialPort->Open();
+
+			cbCOMLIST_1->Enabled = false;
+		}
+		else
+		{
+			bCONNECT->Text = "CONNECT";
+			cbCOMLIST->Enabled = true;
+			serialPort->Close();
+
+			cbCOMLIST_1->Enabled = true;
+		}
+	}
+	else if (cbCOMLIST->Text == "" && cbCOMLIST_1->Text != "")
+	{
+		if (bCONNECT->Text == "CONNECT")
+		{
+			bCONNECT->Text = "DISCONNECT";
+			cbCOMLIST->Enabled = false;
+
+			cbCOMLIST_1->Enabled = false;
+			serialPort_HC05->PortName = cbCOMLIST->Text;
+			serialPort_HC05->Open();
+		}
+		else
+		{
+			bCONNECT->Text = "CONNECT";
+			cbCOMLIST->Enabled = true;
+
+			cbCOMLIST_1->Enabled = true;
+			serialPort_HC05->Close();
 		}
 	}
 	else
@@ -2430,6 +2473,7 @@ private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^
 //		MessageBox::Show("PLEASE CHOOSE PORT !!!!! ^_^ ");
 		findPorts();
 	}
+
 }
 private: System::Void bSEND_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (bSEND->Text == "SEND" && bCONNECT->Text == "DISCONNECT")
