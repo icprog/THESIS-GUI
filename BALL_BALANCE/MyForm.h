@@ -354,6 +354,9 @@ private: System::Windows::Forms::Label^  label11;
 private: System::Windows::Forms::Label^  label10;
 private: System::Windows::Forms::Label^  label22;
 private: System::Windows::Forms::Label^  label20;
+private: System::Windows::Forms::ComboBox^  cbCOMLIST_1;
+private: System::IO::Ports::SerialPort^  serialPort_HC05;
+private: System::Windows::Forms::TextBox^  txtReceiveHC05;
 
 
 
@@ -484,6 +487,7 @@ private: System::Windows::Forms::Label^  label20;
 			this->tabControlController = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage = (gcnew System::Windows::Forms::TabPage());
 			this->bClearGraph = (gcnew System::Windows::Forms::Button());
+			this->cbCOMLIST_1 = (gcnew System::Windows::Forms::ComboBox());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
 			this->label30 = (gcnew System::Windows::Forms::Label());
 			this->label33 = (gcnew System::Windows::Forms::Label());
@@ -534,6 +538,8 @@ private: System::Windows::Forms::Label^  label20;
 			this->timerCamera = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerDisplay = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->serialPort_HC05 = (gcnew System::IO::Ports::SerialPort(this->components));
+			this->txtReceiveHC05 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleX))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->tbAngleY))->BeginInit();
@@ -554,23 +560,23 @@ private: System::Windows::Forms::Label^  label20;
 			// cbCOMLIST
 			// 
 			this->cbCOMLIST->FormattingEnabled = true;
-			this->cbCOMLIST->Location = System::Drawing::Point(9, 20);
+			this->cbCOMLIST->Location = System::Drawing::Point(9, 6);
 			this->cbCOMLIST->Name = L"cbCOMLIST";
 			this->cbCOMLIST->Size = System::Drawing::Size(73, 21);
 			this->cbCOMLIST->TabIndex = 0;
 			// 
 			// txtRECEIVE
 			// 
-			this->txtRECEIVE->Location = System::Drawing::Point(9, 75);
+			this->txtRECEIVE->Location = System::Drawing::Point(9, 33);
 			this->txtRECEIVE->Name = L"txtRECEIVE";
 			this->txtRECEIVE->Size = System::Drawing::Size(254, 20);
 			this->txtRECEIVE->TabIndex = 1;
 			// 
 			// bCONNECT
 			// 
-			this->bCONNECT->Location = System::Drawing::Point(88, 17);
+			this->bCONNECT->Location = System::Drawing::Point(9, 91);
 			this->bCONNECT->Name = L"bCONNECT";
-			this->bCONNECT->Size = System::Drawing::Size(87, 24);
+			this->bCONNECT->Size = System::Drawing::Size(128, 24);
 			this->bCONNECT->TabIndex = 2;
 			this->bCONNECT->Text = L"CONNECT";
 			this->bCONNECT->UseVisualStyleBackColor = true;
@@ -586,9 +592,9 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// txtSEND
 			// 
-			this->txtSEND->Location = System::Drawing::Point(9, 49);
+			this->txtSEND->Location = System::Drawing::Point(88, 7);
 			this->txtSEND->Name = L"txtSEND";
-			this->txtSEND->Size = System::Drawing::Size(254, 20);
+			this->txtSEND->Size = System::Drawing::Size(175, 20);
 			this->txtSEND->TabIndex = 3;
 			this->txtSEND->Text = L"00";
 			this->txtSEND->TextChanged += gcnew System::EventHandler(this, &MyForm::txtSEND_TextChanged);
@@ -599,9 +605,9 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// bSEND
 			// 
-			this->bSEND->Location = System::Drawing::Point(181, 16);
+			this->bSEND->Location = System::Drawing::Point(144, 91);
 			this->bSEND->Name = L"bSEND";
-			this->bSEND->Size = System::Drawing::Size(82, 25);
+			this->bSEND->Size = System::Drawing::Size(119, 25);
 			this->bSEND->TabIndex = 4;
 			this->bSEND->Text = L"SEND";
 			this->bSEND->UseVisualStyleBackColor = true;
@@ -705,7 +711,7 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// bSTART_CAM
 			// 
-			this->bSTART_CAM->Location = System::Drawing::Point(9, 101);
+			this->bSTART_CAM->Location = System::Drawing::Point(9, 121);
 			this->bSTART_CAM->Name = L"bSTART_CAM";
 			this->bSTART_CAM->Size = System::Drawing::Size(129, 23);
 			this->bSTART_CAM->TabIndex = 22;
@@ -849,7 +855,7 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// bSTART_GRAPH
 			// 
-			this->bSTART_GRAPH->Location = System::Drawing::Point(144, 101);
+			this->bSTART_GRAPH->Location = System::Drawing::Point(144, 121);
 			this->bSTART_GRAPH->Name = L"bSTART_GRAPH";
 			this->bSTART_GRAPH->Size = System::Drawing::Size(119, 24);
 			this->bSTART_GRAPH->TabIndex = 37;
@@ -859,7 +865,7 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// bSCROLL
 			// 
-			this->bSCROLL->Location = System::Drawing::Point(144, 131);
+			this->bSCROLL->Location = System::Drawing::Point(144, 151);
 			this->bSCROLL->Name = L"bSCROLL";
 			this->bSCROLL->Size = System::Drawing::Size(119, 23);
 			this->bSCROLL->TabIndex = 22;
@@ -962,7 +968,7 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// bCALIB
 			// 
-			this->bCALIB->Location = System::Drawing::Point(9, 160);
+			this->bCALIB->Location = System::Drawing::Point(9, 180);
 			this->bCALIB->Name = L"bCALIB";
 			this->bCALIB->Size = System::Drawing::Size(128, 25);
 			this->bCALIB->TabIndex = 31;
@@ -992,7 +998,7 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// bShowCam
 			// 
-			this->bShowCam->Location = System::Drawing::Point(9, 130);
+			this->bShowCam->Location = System::Drawing::Point(9, 150);
 			this->bShowCam->Name = L"bShowCam";
 			this->bShowCam->Size = System::Drawing::Size(129, 24);
 			this->bShowCam->TabIndex = 36;
@@ -1087,11 +1093,13 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// tabPage
 			// 
+			this->tabPage->Controls->Add(this->txtReceiveHC05);
 			this->tabPage->Controls->Add(this->bClearGraph);
 			this->tabPage->Controls->Add(this->bSTART_GRAPH);
 			this->tabPage->Controls->Add(this->bCALIB);
 			this->tabPage->Controls->Add(this->bSCROLL);
 			this->tabPage->Controls->Add(this->bSTART_CAM);
+			this->tabPage->Controls->Add(this->cbCOMLIST_1);
 			this->tabPage->Controls->Add(this->cbCOMLIST);
 			this->tabPage->Controls->Add(this->bShowCam);
 			this->tabPage->Controls->Add(this->bCONNECT);
@@ -1108,13 +1116,21 @@ private: System::Windows::Forms::Label^  label20;
 			// 
 			// bClearGraph
 			// 
-			this->bClearGraph->Location = System::Drawing::Point(144, 160);
+			this->bClearGraph->Location = System::Drawing::Point(144, 180);
 			this->bClearGraph->Name = L"bClearGraph";
 			this->bClearGraph->Size = System::Drawing::Size(119, 25);
 			this->bClearGraph->TabIndex = 49;
 			this->bClearGraph->Text = L"CLEAR";
 			this->bClearGraph->UseVisualStyleBackColor = true;
 			this->bClearGraph->Click += gcnew System::EventHandler(this, &MyForm::bClearGraph_Click);
+			// 
+			// cbCOMLIST_1
+			// 
+			this->cbCOMLIST_1->FormattingEnabled = true;
+			this->cbCOMLIST_1->Location = System::Drawing::Point(9, 59);
+			this->cbCOMLIST_1->Name = L"cbCOMLIST_1";
+			this->cbCOMLIST_1->Size = System::Drawing::Size(73, 21);
+			this->cbCOMLIST_1->TabIndex = 0;
 			// 
 			// tabPage5
 			// 
@@ -1624,6 +1640,13 @@ private: System::Windows::Forms::Label^  label20;
 			this->pictureBox1->TabIndex = 47;
 			this->pictureBox1->TabStop = false;
 			// 
+			// txtReceiveHC05
+			// 
+			this->txtReceiveHC05->Location = System::Drawing::Point(88, 60);
+			this->txtReceiveHC05->Name = L"txtReceiveHC05";
+			this->txtReceiveHC05->Size = System::Drawing::Size(175, 20);
+			this->txtReceiveHC05->TabIndex = 50;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1769,6 +1792,18 @@ private: System::Windows::Forms::Label^  label20;
 			cbCOMLIST->Items->AddRange(objectArray);
 			cbCOMLIST->SelectedIndex = 0;
 		}
+		else if (objectArray->Length > 1)
+		{
+			cbCOMLIST->Items->Clear();
+			cbCOMLIST->Items->AddRange(objectArray);
+			cbCOMLIST->SelectedIndex = 0;
+
+			cbCOMLIST_1->Items->Clear();
+			cbCOMLIST_1->Items->AddRange(objectArray);
+			cbCOMLIST_1->SelectedIndex = 1;
+		}
+		else 
+		{ }
 		
 	}
 	
@@ -1944,7 +1979,7 @@ private: System::Windows::Forms::Label^  label20;
 	private: void drawXY(double x, double y)
 	{
 		myPaneXY->CurveList->Clear();
-		if (bSCROLL->Text == "SLIDE" || timeGraph*10>=maxTimeCount)
+		if (bSCROLL->Text == "SLIDE" || maxTimeCount % 50 == 0)
 		{
 			PosXYList->Clear();
 		}
@@ -1971,7 +2006,7 @@ private: System::Windows::Forms::Label^  label20;
 		{
 			if (bSCROLL->Text == "BLOCK")
 			{
-				myPaneX->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max + 1;
+				myPaneX->XAxis->Scale->Max = timeGraph + 1;
 				myPaneX->XAxis->Scale->Min = myPaneX->XAxis->Scale->Max - maxTimeDisplay;
 				myPaneY->XAxis->Scale->Max = myPaneX->XAxis->Scale->Max;
 				myPaneY->XAxis->Scale->Min = myPaneX->XAxis->Scale->Min;
@@ -2286,7 +2321,6 @@ private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  
 				txtANGLE_X->Text = words[5];
 				txtANGLE_Y->Text = words[6];
 
-
 				txtDisplayAngle1->Text = words[7];
 				txtDisplayAngle2->Text = words[8];
 				txtDisplayAngle3->Text = words[9];
@@ -2295,7 +2329,35 @@ private: System::Void eUARTReceive(System::Object^  sender, System::EventArgs^  
 				txtDisplayAngle6->Text = words[12];
 			}
 			txtRECEIVE->Text = line;
-			
+		}
+		if (serialPort_HC05->IsOpen == true && serialPort_HC05->BytesToRead > 0)
+		{
+			String^ data_control = serialPort_HC05->ReadTo("@");
+			if (data_control == "a")
+			{
+				setpointX++;
+				numOfPoint = 0;
+			}
+			else if (data_control == "b")
+			{
+				setpointX--;
+				numOfPoint = 0;
+			}
+			else if (data_control == "c")
+			{
+				setpointY++;
+				numOfPoint = 0;
+			}
+			else if (data_control == "d")
+			{
+				setpointY--;
+				numOfPoint = 0;
+			}
+			else
+			{
+
+			}
+			txtReceiveHC05->Text = data_control;
 		}
 	}
 private: System::Void timerTracking_Tick(System::Object^  sender, System::EventArgs^  e) {
@@ -2312,6 +2374,11 @@ private: System::Void timerTracking_Tick(System::Object^  sender, System::EventA
 		{
 			currentPoint = 0;
 		}
+	}
+	else
+	{
+		bSTART_TRACK->Text = "START TRACK";
+		timerTracking->Stop();
 	}
 }
 
@@ -2561,8 +2628,7 @@ private: System::Void radioButton1_CheckedChanged(System::Object^  sender, Syste
 		bImportTrajectory->Enabled = false;
 		txtSpeedChangePoint->Enabled = false;
 		bSTART_TRACK->Enabled = false;
-		bSTART_TRACK->Text = "START TRACK";
-		timerTracking->Stop();
+
 	}
 }
 private: System::Void radioCircle_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
