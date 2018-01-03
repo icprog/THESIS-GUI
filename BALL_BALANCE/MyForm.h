@@ -2415,7 +2415,7 @@ private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^
 			serialPort->Open();
 
 			cbCOMLIST_1->Enabled = false;
-			serialPort_HC05->PortName = cbCOMLIST->Text;
+			serialPort_HC05->PortName = cbCOMLIST_1->Text;
 			serialPort_HC05->Open();
 		}
 		else
@@ -2456,7 +2456,7 @@ private: System::Void bCONNECT_Click(System::Object^  sender, System::EventArgs^
 			cbCOMLIST->Enabled = false;
 
 			cbCOMLIST_1->Enabled = false;
-			serialPort_HC05->PortName = cbCOMLIST->Text;
+			serialPort_HC05->PortName = cbCOMLIST_1->Text;
 			serialPort_HC05->Open();
 		}
 		else
